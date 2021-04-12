@@ -9,6 +9,7 @@
 	karma and tumblbug
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<input type="button" value="payment" >
+
 </body>
 </html>
