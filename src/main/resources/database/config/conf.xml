@@ -6,6 +6,8 @@
   <configuration>
   
   	<typeAliases>
+  	
+  	<typeAlias type="leepantam.s3.sponsor.SponsorDTO" alias="SponsorDTO"/>
   		
   		
   	</typeAliases>
