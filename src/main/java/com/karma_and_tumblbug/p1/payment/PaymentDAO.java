@@ -17,4 +17,11 @@ public class PaymentDAO {
 	public List<PaymentDTO> getList(PaymentDTO paymentDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", paymentDTO);
 	}
+	public int setDelete(PaymentDTO paymentDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", paymentDTO);
+	}
+	
+	public int setInsert(PaymentDTO paymentDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsert", paymentDTO);
+	}
 }

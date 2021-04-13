@@ -29,11 +29,11 @@
 						<h6 class="card-subtitle mb-2 text-muted">${pay.securityNumber}</h6>
 					</c:if>
 					
-					<a href="#" class="card-link">삭제</a> 
+					<a href="./paymentDelete?num=${pay.num}" class="card-link">삭제</a> 
 				</div>
 			</div>
 		</c:forEach>
-		<a href="#" type="button" class="btn btn-primary"> 결제 수단 추가 </a>
+		<a href="./paymentInsert" type="button" class="btn btn-primary"> 결제 수단 추가 </a>
 	</div>
 
 </body>

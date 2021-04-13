@@ -9,5 +9,13 @@
 select * from payment where id=#{id}
 </select>
 
+<delete id="setDelete" parameterType="PaymentDTO">
+delete from payment where num=#{num}
+</delete>
+
+<insert id="setInsert" parameterType="PaymentDTO">
+insert into payment values(payment_seq.nextval,#{id},#{division},#{bankName},#{bankAccount},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
+</insert>
+
 
 </mapper>

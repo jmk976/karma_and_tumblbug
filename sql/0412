@@ -40,10 +40,10 @@ securityNumber number(2)
 create sequence payment_seq;
 
 insert into payment
-values(payment_seq.nextval,'id1','account','woori','111-222333-44-555',(select name from membership where id='id1'),(select birth from membership where id='id1'),null,null,null);
+values(payment_seq.nextval,'id1','account','del','111-222333-44-555',(select name from membership where id='id1'),(select birth from membership where id='id1'),null,null,null);
 
 insert into payment
-values(payment_seq.nextval,'id1','card',null,null,(select name from membership where id='id1'),(select birth from membership where id='id1'),'1111-2222-3333-4444','MM/YY',22);
+values(payment_seq.nextval,'id1','card',null,null,(select name from membership where id='id1'),(select birth from membership where id='id1'),'1111-2222-3334del','MM/YY',22);
 
 select * from payment;
 

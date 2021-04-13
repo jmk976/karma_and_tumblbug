@@ -14,4 +14,12 @@ public class PaymentService {
 	public List<PaymentDTO> getList(PaymentDTO paymentDTO) throws Exception{
 		return paymentDAO.getList(paymentDTO);
 	}
+	public int setDelete(PaymentDTO paymentDTO) throws Exception{
+		return paymentDAO.setDelete(paymentDTO);
+	}
+	public int setInsert(PaymentDTO paymentDTO) throws Exception{
+		return paymentDAO.setInsert(paymentDTO);
+	}
+	
+	
 }
