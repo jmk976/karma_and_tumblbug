@@ -7,7 +7,9 @@
   
   	<typeAliases>
   	
-  	<typeAlias type="leepantam.s3.sponsor.SponsorDTO" alias="SponsorDTO"/>
+  	<typeAlias type="com.karma_and_tumblbug.p1.sponsor.SponsorDTO" alias="SponsorDTO"/>
+  	
+  	<typeAlias type="com.karma_and_tumblbug.p1.util.Pager" alias="Pager"/>
   		
   		
   	</typeAliases>
