@@ -130,7 +130,48 @@
 		let result = $("#sponMonth").val()*$("#money").val()
 		alert(result);
 		$("#totalMoney").val(result);
+		
+		 let d = new Date()
+
+		  let monthOfYear = d.getMonth()
+
+		  let sponMonth = $("#sponMonth").val();
+		  sponMonth = Number(sponMonth);
+		
+		  d.setMonth(monthOfYear + sponMonth);
+		  let lastPay = getDateStr(d)
+		  alert(typeof lastPay);  
+		  
+		
+		$("#lastPay").val(lastPay);
 	});
+	
+	/* 날짜 객체 받아서 문자열로 리턴하는 함수 */
+	function getDateStr(myDate){
+		return (myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate())
+	}
+	
+	/* 오늘 날짜를 문자열로 반환 */
+	function today() {
+	  var d = new Date()
+	  return getDateStr(d)
+	}
+
+
+	/* 오늘로부터 개월후 날짜 반환 */
+	function lastMonth() {
+	  var d = new Date()
+
+	  var monthOfYear = d.getMonth()
+
+	  let sponMonth = $("#sponMonth").val();
+	  sponMonth = Number(sponMonth);
+	
+	  d.setMonth(monthOfYear + sponMonth);
+	  return getDateStr(d)
+	}
+	
+	
 </script> 
 
 
