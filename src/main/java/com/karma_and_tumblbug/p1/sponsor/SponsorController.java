@@ -2,9 +2,13 @@ package com.karma_and_tumblbug.p1.sponsor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping(value="/sponsor/**")
@@ -12,6 +16,35 @@ public class SponsorController {
 
 	@Autowired
 	private SponsorService sponsorService;
+	
+	@GetMapping("sponsorJoin")
+	public ModelAndView setInsert()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("sponsor/sponsorJoin");
+		
+		return mv;
+		
+	}
+	
+	@PostMapping("sponsorJoin")
+	public String setInsert(SponsorDTO sponsorDTO, Model model) throws Exception {
+		int result = sponsorService.setInsert(sponsorDTO);
+		String message="후원 신청이 실패했습니다. 다시 시도해주세요.";
+		   
+		if(result>0) {
+			message="후원해주셔서 감사합니다.";
+		    
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path","./sponsorJoin");
+		return "common/commonResult";
+		
+	}
+	
+	@GetMapping("sponsorCheck")
+	public void sponsorCheck() throws Exception{
+		
+	}
 	
 	@GetMapping("sponsorSelect")
     public ModelAndView getSelect(SponsorDTO sponsorDTO) throws Exception {

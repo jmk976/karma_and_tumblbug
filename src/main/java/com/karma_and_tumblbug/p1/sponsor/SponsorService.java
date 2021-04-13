@@ -8,6 +8,10 @@ public class SponsorService {
 	
 	@Autowired
 	private SponsorDAO sponsorDAO;
+	
+	public int setInsert(SponsorDTO sponsorDTO)throws Exception {
+		return sponsorDAO.setInsert(sponsorDTO);
+	}
 
 	public SponsorDTO getSelect(SponsorDTO sponsorDTO) throws Exception{
 		return sponsorDAO.getSelect(sponsorDTO);

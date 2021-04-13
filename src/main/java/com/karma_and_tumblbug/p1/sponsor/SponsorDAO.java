@@ -12,6 +12,10 @@ public class SponsorDAO {
 	
 	private final String NAMESPACE="com.karma_and_tumblbug.p1.sponsor.SponsorDAO.";
 	
+	public int setInsert(SponsorDTO sponsorDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setInsert", sponsorDTO);
+	}
+	
 	
 	public SponsorDTO getSelect(SponsorDTO sponsorDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", sponsorDTO);
