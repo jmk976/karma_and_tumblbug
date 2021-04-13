@@ -10,6 +10,17 @@ public class SponsorDTO {
 	private String sponSort;
 	private String payment;
 	private long money;
+	private Date firstPay;
+	private Date lastPay;
+	private long sponMonth;
+	private long totalMoney;
+	private String name;
+	private String phone;
+	private String email;
+	private String address;
+	private String id;
+	
+	
 	public long getSponNum() {
 		return sponNum;
 	}
@@ -34,16 +45,17 @@ public class SponsorDTO {
 	public void setMoney(long money) {
 		this.money = money;
 	}
-	public DATE getFirstPay() {
+	
+	public Date getFirstPay() {
 		return firstPay;
 	}
-	public void setFirstPay(DATE firstPay) {
+	public void setFirstPay(Date firstPay) {
 		this.firstPay = firstPay;
 	}
-	public DATE getLastPay() {
+	public Date getLastPay() {
 		return lastPay;
 	}
-	public void setLastPay(DATE lastPay) {
+	public void setLastPay(Date lastPay) {
 		this.lastPay = lastPay;
 	}
 	public long getSponMonth() {
@@ -88,15 +100,7 @@ public class SponsorDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private DATE firstPay;
-	private DATE lastPay;
-	private long sponMonth;
-	private long totalMoney;
-	private String name;
-	private String phone;
-	private String email;
-	private String address;
-	private String id;
+	
 	
 
 }

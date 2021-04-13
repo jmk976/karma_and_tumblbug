@@ -30,12 +30,11 @@
   	
   	
   <div class="form-group">
-    <label for="name">후원금액</label>
+    <label for="money">후원금액</label>
      <h6>매 달 </h6>
      	<form>
-		  <select name="cars" class="custom-select">
-		    <option selected> </option>
-		    <option value="5000">5000원</option>
+		  <select id="money" name="money" class="custom-select">
+		    <option selected value="5000">5000원</option>
 		    <option value="10000">10000원</option>
 		    <option value="20000">20000원</option>
 		    <option value="30000">30000원</option>
@@ -53,55 +52,53 @@
   
     <div class="form-group">
    
-       <form class="form-inline" action="/action_page.php">
+     
         <label for="firstPay" class="mr-sm-2">첫 결제일</label>
-  		<input type="text" class="form-control mb-2 mr-sm-2" value="sysdate" id="firstPay">
+  		<input id="firstPay" type="date">
 		  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
-		  <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter password" id="sponMonth">
+		  <input type="text" class="form-control mb-2 mr-sm-2" value="3" id="sponMonth">
 		   개월 
 		  
-		  <button type="submit" class="btn btn-primary mb-2"> 계산하기 </button>
-		</form>
+		  <button type="submit" id="cal" class="btn btn-primary mb-2"> 계산하기 </button>
+	
    </div>
    <div class="form-group">
    
-       <form class="form-inline" action="/action_page.php">
         <label for="lastPay" class="mr-sm-2">최종 결제일</label>
   		<input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="lastPay">
 		  <label for="totalMoney" class="mr-sm-2">총 금액</label>
 		  <input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="totalMoney">
 		   원
-		  
-
-		</form>
    </div>
   
   
   
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control etc" id="name" name="name" >
+    <input type="text" class="form-control etc" value="${member.name}" id="name" name="name" >
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
-    <input type="text" class="form-control etc" id="phone" name="phone" >
+    <input type="text" class="form-control etc" value="${member.phone}"id="phone" name="phone" >
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="email">E-mail</label>
-    <input type="text" class="form-control etc" id="email" name="email" aria-describedby="#">
+    <input type="text" class="form-control etc" value="${member.email}" id="email" name="email" aria-describedby="#">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
      <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="address">주소</label>
-    <input type="text" class="form-control etc" id="address" name="address" >
+    <input type="text" class="form-control etc" value="${member.address}" id="address" name="address" >
     <!-- 비어 있으면 안됨 -->
   </div>
+      <input type="hidden" class="form-control etc" value="${member.id}" id="id" name="id" >
+  
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1"> 동의</label>
+    <label class="form-check-label" for="exampleCheck1"> 선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
   </div>
   
    
@@ -117,6 +114,25 @@
 <!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+ <!-- input에 오늘날짜 기본값으로 넣기 -->
+ <script type="text/javascript">
+	window.onload = function() {
+		today = new Date();
+		console.log("today.toISOString() >>>" + today.toISOString());
+		today = today.toISOString().slice(0, 10);
+		console.log("today >>>> " + today);
+		bir = document.getElementById("firstPay");
+		bir.value = today;
+	}
+	
+	$("#cal").click(function(){
+		let result = $("#sponMonth").val()*$("#money").val()
+		alert(result);
+		$("#totalMoney").val(result);
+	});
+</script> 
+
 
     
 </body>

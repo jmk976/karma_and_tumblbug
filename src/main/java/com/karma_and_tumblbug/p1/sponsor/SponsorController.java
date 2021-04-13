@@ -18,8 +18,9 @@ public class SponsorController {
 	private SponsorService sponsorService;
 	
 	@GetMapping("sponsorJoin")
-	public ModelAndView setInsert()throws Exception{
+	public ModelAndView setInsert(SponsorDTO sponsorDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto", sponsorDTO);
 		mv.setViewName("sponsor/sponsorJoin");
 		
 		return mv;

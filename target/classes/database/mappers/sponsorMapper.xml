@@ -7,7 +7,7 @@
 
 	<insert id="setInsert" parameterType="SponsorDTO">
 		insert into sponsor value(spon_seq.nextval, #{sponSort}, #{payment},
-    #{money}, sysdate, sysdate, #{sponMonth}, #{totalMoney},
+    #{money}, sysdate, #{lastPay}, #{sponMonth}, #{totalMoney},
     #{name}, #{phone}, #{email}, #{address}, #{id})
 	</insert>
 	<delete id="setDelete" parameterType="SponsorDTO">

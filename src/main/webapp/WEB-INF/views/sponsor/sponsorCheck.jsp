@@ -19,8 +19,10 @@
 3. 입양지원 : 유기동물의 안락사 수를 줄이고 입양을 통한 새 삶의 기회 부여
 4. 개인보호소 지원 : 열악한 개인보호소 지원을 통한 동물보호 및 자립심 부여
 
-<a href="./sponsorJoin" class="btn btn-danger"> 정기후원 신청 </a>
-<a href="./sponsorGeneral?id=${dto.id}" class="btn btn-info"> 일시후원 신청 </a>
+<a href="./sponsorJoin?sponSort=${'정기후원'}" class="btn btn-danger"> 정기후원 신청 </a>
+<a href="./sponsorJoin?sponSort=${'일시후원'}" class="btn btn-info"> 일시후원 신청 </a>
+<a href="./sponsorJoin?sponSort=${'일시후원'}" class="btn btn-info"> 일시후원 신청 </a>
+
 
 
 
