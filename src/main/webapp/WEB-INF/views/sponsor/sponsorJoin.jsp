@@ -15,7 +15,7 @@
 	  	  <div class="col">
 			  	  <form>
 			  	   <label for="payment"> 후원방법 </label>
-					  <select name="payment" class="custom-select">
+					  <select name="payment" class="custom-select myCheck">
 					    <option selected>결제방법</option>
 					    <option value="credit">신용카드</option>
 					    <option value="account">계좌이체</option>
@@ -33,7 +33,7 @@
     <label for="money">후원금액</label>
      <h6>매 달 </h6>
      	<form>
-		  <select id="money" name="money" class="custom-select">
+		  <select id="money" name="money" class="custom-select myCheck">
 		    <option selected value="5000">5000원</option>
 		    <option value="10000">10000원</option>
 		    <option value="20000">20000원</option>
@@ -54,9 +54,9 @@
    
      
         <label for="firstPay" class="mr-sm-2">첫 결제일</label>
-  		<input id="firstPay" type="date">
+  		<input id="firstPay" type="date" class="myCheck">
 		  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
-		  <input type="text" class="form-control mb-2 mr-sm-2" value="3" id="sponMonth">
+		  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" value="3" id="sponMonth">
 		   개월 
 		  
 		  <button type="submit" id="cal" class="btn btn-primary mb-2"> 계산하기 </button>
@@ -65,9 +65,11 @@
    <div class="form-group">
    
         <label for="lastPay" class="mr-sm-2">최종 결제일</label>
-  		<input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="lastPay">
+  		<input type="hidden" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="lastPay">
+  		<input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="last">
+  		
 		  <label for="totalMoney" class="mr-sm-2">총 금액</label>
-		  <input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" id="totalMoney">
+		  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" placeholder="자동입력" id="totalMoney">
 		   원
    </div>
   
@@ -75,12 +77,12 @@
   
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control etc" value="${member.name}" id="name" name="name" >
+    <input type="text" class="form-control etc myCheck" value="${member.name}" id="name" name="name" >
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
-    <input type="text" class="form-control etc" value="${member.phone}"id="phone" name="phone" >
+    <input type="text" class="form-control etc myCheck" value="${member.phone}"id="phone" name="phone" >
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
@@ -105,7 +107,7 @@
  
   
   <input type="submit" id="btn" value="결제" class="btn btn-primary">
-  <input type="button" id="btn" value="취소" class="btn btn-primary">
+  <input type="button" id="back" value="취소" class="btn btn-primary">
 </form></div>
 
 
@@ -117,6 +119,39 @@
  
  <!-- input에 오늘날짜 기본값으로 넣기 -->
  <script type="text/javascript">
+ 
+ $("#btn").click(function(){
+		alert("click");
+	
+		
+		
+		let result = true;
+		
+		$(".myCheck").each(function(s1, s2){
+			console.log(s1);
+				console.log($(s2).val());
+				console.log($(this).val());
+				
+				if($(this).val()==""){
+					result = false;
+				}
+			
+					
+		});
+		
+		
+	if(result){
+		
+		$("#frm").submit();
+		}else {
+			alert("필수요소를 입력하세요 ");
+		}
+
+		
+	});
+ 
+ 
+ 
 	window.onload = function() {
 		today = new Date();
 		console.log("today.toISOString() >>>" + today.toISOString());
@@ -128,7 +163,7 @@
 	
 	$("#cal").click(function(){
 		let result = $("#sponMonth").val()*$("#money").val()
-		alert(result);
+		
 		$("#totalMoney").val(result);
 		
 		 let d = new Date()
@@ -139,9 +174,20 @@
 		  sponMonth = Number(sponMonth);
 		
 		  d.setMonth(monthOfYear + sponMonth);
-		  let lastPay = getDateStr(d)
-		  alert(typeof lastPay);  
 		  
+		  let last = getDateStr(d)
+		  
+		  $("#last").val(last)
+		  
+		   alert(last);
+		  
+		  const str = last;
+		 
+          const strArr = last.split('-');
+
+          const lastPay = new Date(strArr[0], strArr[1]-1, strArr[2]);
+		  
+          alert(lastPay);
 		
 		$("#lastPay").val(lastPay);
 	});

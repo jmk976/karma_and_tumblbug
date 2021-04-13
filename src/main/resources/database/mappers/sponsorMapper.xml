@@ -19,7 +19,48 @@
  	</select>
   
   	<select id="getList" parameterType="Pager" resultType="SponsorDTO">
+    	 select * from
+			(select rownum R, N.* from 
+				(select * from sponsor where 
+				<choose>
+				   <when test="kind =='Month'">
+				       month
+				   </when>
+				   
+				   <when test="kind =='Id'">
+				       id
+				   </when>
+				   
+				   <otherwise>
+				       sponSort
+				   </otherwise>
+				   
+				 </choose>
+				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
+		where R between #{startRow} and #{lastRow}
+	  
     </select>
+    
+     <select id="getTotalCount" resultType="Long" parameterType="Pager">
+	      select count(sponNum) from sponsor
+	      where
+	      <choose>
+				   <when test="kind =='Month'">
+				       month
+				   </when>
+				   
+				   <when test="kind =='Id'">
+				       id
+				   </when>
+				   
+				   <otherwise>
+				       sponSort
+				   </otherwise>
+				   
+				 </choose>
+				 like '%'||#{search}||'%' and sponNum > 0
+	  </select>
+	  
 
 
 </mapper>

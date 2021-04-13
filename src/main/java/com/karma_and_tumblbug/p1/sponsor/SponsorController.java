@@ -1,5 +1,7 @@
 package com.karma_and_tumblbug.p1.sponsor;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+
+import com.karma_and_tumblbug.p1.util.Pager;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -56,4 +61,20 @@ public class SponsorController {
     	
     	return mv;
     }
+	
+	@RequestMapping("sponsorList")
+	public ModelAndView getList(Pager pager) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		System.out.println(pager.getCurPage());
+		
+		System.out.println("Service 호출전: "+pager.getTotalPage());
+		List<SponsorDTO> ar = sponsorService.getList(pager);
+		System.out.println("Service 호출: "+pager.getTotalPage());
+
+
+		modelAndView.addObject("list", ar);
+		modelAndView.setViewName("sponsor/sponsorList");
+		modelAndView.addObject("pager",pager);
+		return modelAndView;
+	}
 }
