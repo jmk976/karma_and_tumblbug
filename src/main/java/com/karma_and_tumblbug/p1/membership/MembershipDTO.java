@@ -7,9 +7,6 @@ public class MembershipDTO {
 	private String birth;
 	private String phone;
 	private String address;
-	private String fileName;
-	private String origineName;
-	
 	
 	public String getId() {
 		return id;
@@ -47,16 +44,5 @@ public class MembershipDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	public String getOrigineName() {
-		return origineName;
-	}
-	public void setOrigineName(String origineName) {
-		this.origineName = origineName;
-	}
+	
 }

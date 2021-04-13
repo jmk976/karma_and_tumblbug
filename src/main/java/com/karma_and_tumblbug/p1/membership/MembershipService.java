@@ -10,9 +10,16 @@ public class MembershipService {
 	private MembershipDAO membershipDAO;
 	
 	public MembershipDTO login(MembershipDTO membershipDTO) throws Exception{
-		System.out.println("ser S");
 		membershipDTO = membershipDAO.login(membershipDTO);
-		System.out.println("ser F");
 		return membershipDTO;
+	}
+	public int join(MembershipDTO membershipDTO) throws Exception{
+		return membershipDAO.join(membershipDTO);
+	}
+	public int update(MembershipDTO membershipDTO) throws Exception{
+		return membershipDAO.update(membershipDTO);
+	}
+	public int delete(MembershipDTO membershipDTO) throws Exception{
+		return membershipDAO.delete(membershipDTO);
 	}
 }

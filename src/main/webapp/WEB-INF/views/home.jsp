@@ -3,30 +3,18 @@
 <html>
 <head>
 	<title>Home</title>
+	<c:import url="./template/bootStrap.jsp"></c:import>
 </head>
 <body>
+<c:import url="./template/header.jsp"></c:import>
 <h1>
 	karma and tumblbug
 </h1>
 
-
-<a type="button" href="./payment/paymentList" id="payment">payment</a>
-<c:if test="${empty membership}">
-
-<a type="button" href="./membership/login" id="login">login</a>
-
-</c:if>
-<h3>${membership.id}</h3>
-<h3>${membership.pw}</h3>
-<h3>${membership.name}</h3>
-<c:if test="${not empty membership}">
-
-<a type="button" href="./membership/login" id="login">logout</a>
-
-</c:if>
+<a href="./payment/paymentList"> payment </a>
 
 
-<p>${membership.name}</p>
+
 
 
 

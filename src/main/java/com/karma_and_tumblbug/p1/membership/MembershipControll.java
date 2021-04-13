@@ -11,20 +11,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value="/membership/**")
 public class MembershipControll {
-	
+
 	@Autowired
 	private MembershipService membershipService;
-	
-	
+
+
 	@GetMapping(value="login")
 	public void login()throws Exception{
-		
+
 	}
-	
+
 	@PostMapping(value="login")
 	public String login(MembershipDTO membershipDTO,HttpSession session) throws Exception{
 		membershipDTO = membershipService.login(membershipDTO);
 		session.setAttribute("membership", membershipDTO);
 		return "redirect:../";
 	}
+
+	@GetMapping(value="logout")
+	public String logout(HttpSession session)throws Exception{
+		session.invalidate();
+		return "redirect:../";
+	}
+
+	@GetMapping(value="join")
+	public void join() throws Exception{
+
+	}
+
+	@PostMapping(value="join")
+	public String join(MembershipDTO membershipDTO) throws Exception{
+		int result = membershipService.join(membershipDTO);
+		return "redirect:../";
+	}
+	@GetMapping(value="memberPage")
+	public void memberPage()throws Exception{
+
+	}
+	@GetMapping(value="update")
+	public void update() throws Exception{
+		
+	}
+	
+	@PostMapping(value="update")
+	public String update(MembershipDTO membershipDTO, HttpSession session) throws Exception{
+		int result = membershipService.update(membershipDTO);
+		session.setAttribute("membership", membershipDTO);
+		return "redirect:./memberPage";
+	}
+	
+	@GetMapping(value="delete")
+	public String delete(MembershipDTO membershipDTO, HttpSession session) throws Exception{
+		int result = membershipService.delete(membershipDTO);
+		session.invalidate();
+		return "redirect:../";
+	}
+	
 }

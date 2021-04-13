@@ -2,12 +2,29 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
-<mapper namespace="com.karma_and_tumblbug.p1.membership.MembershipDAO">
 
-<select id="login" parameterType="MembershipDTO" resultType="MembershipDTO">
-select * from membership where id=#{id} and pw=#{pw}
-</select>
+<mapper
+	namespace="com.karma_and_tumblbug.p1.membership.MembershipDAO">
 
+	<select id="login" parameterType="MembershipDTO"
+		resultType="MembershipDTO">
+		select * from membership where id=#{id} and pw=#{pw}
+	</select>
+
+	<insert id="join" parameterType="MembershipDTO">
+		insert into membership
+		values(#{id},#{pw},#{name},#{birth},#{phone},#{address})
+	</insert>
+
+	<update id="update" parameterType="MembershipDTO">
+		update membership set
+		pw=#{pw}, name=#{name},birth=#{birth},
+		phone=#{phone},address=#{address} where
+		id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="MembershipDTO">
+		delete from membership where id=#{id}
+	</delete>
 
 </mapper>

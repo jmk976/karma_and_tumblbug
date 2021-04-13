@@ -1,3 +1,6 @@
+drop table payment;
+drop table membership;
+
 select * from tab;
 
 create table membership(
@@ -6,13 +9,14 @@ pw varchar2(20),
 name varchar2(20),
 birth varchar2(20),
 phone varchar2(20),
-address varchar2(20),
-filename varchar2(20),
-originename varchar2(20)
+address varchar2(20)
 )
 
 insert into membership
-values('id1','pw1','name_test','1995-02-05','010-2223-4442','address_test','filename','originename')
+values('id1','pw1','name_test','1990-01-31','010-2003-1112','address_test')
+
+insert into membership
+values('admin','admin','name_test','1995-02-05','010-2223-4442','address_test')
 
 select * from membership;
 
