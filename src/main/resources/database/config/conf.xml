@@ -6,7 +6,7 @@
   <configuration>
   
   	<typeAliases>
-  		
+  		<typeAlias type="com.karma_and_tumblbug.p1.membership.MembershipDTO" alias="MembershipDTO"/>
   		
   	</typeAliases>
   	  
