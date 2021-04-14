@@ -25,7 +25,7 @@
 
 <a href="./sponsorJoin?sponSort=${'정기후원'}" class="btn btn-danger"> 정기후원 신청 </a>
 <a href="./sponsorJoin?sponSort=${'일시후원'}" class="btn btn-info"> 일시후원 신청 </a>
-<a href="./sponsorJoin?sponSort=${'일시후원'}" class="btn btn-info"> 일시후원 신청 </a>
+
 
 
 
