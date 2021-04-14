@@ -5,16 +5,14 @@
 
 
 <mapper namespace="com.karma_and_tumblbug.p1.shipping.ShippingDAO">
-<!-- 
 	<update id="setUpdate" parameterType="ShippingDTO">
 		update shipping set shipName=#{shipName}, shipAddress=#{shipAddress}, shipPhone=#{shipPhone} where ?=#{?}
 	</update>
 
- -->
+
 	<insert id="setInsert" parameterType="ShippingDTO">
 		insert into shipping values(#{shipName},#{shipAddress},#{shipPhone},#{id})
 	</insert>
-	<!-- 
 	<select id="getSelect" parameterType="ShippingDTO" resultType="ShippingDTO">
 		select * from shipping where ?=#{?}
 	</select>
@@ -22,7 +20,6 @@
 	<select id="getList" resultType="ShippingDTO"> 
 		select * from shipping order by ? desc
 	</select>
-	 -->
 	<delete id="setDelete" parameterType="ShippingDTO">
 		delete shipping where id = #{id}
 	</delete>

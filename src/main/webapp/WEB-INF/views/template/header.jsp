@@ -32,6 +32,12 @@
       <a class="nav-link" href="${pageContext.request.contextPath}/membership/logout">Logout</a>
     </li>
     </c:if>
+    <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorCheck">Sponsor</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
+    </li>
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
