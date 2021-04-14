@@ -118,6 +118,8 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
  
  <!-- input에 오늘날짜 기본값으로 넣기 -->
+  <script type="text/javascript" src="../resources/js/sponsorJoin.js">
+</script>
  <script type="text/javascript">
  
  $("#btn").click(function(){
