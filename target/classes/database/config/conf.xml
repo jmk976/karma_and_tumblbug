@@ -6,7 +6,7 @@
   <configuration>
   
   	<typeAliases>
-  		
+  		<typeAlias type="com.com.karma_and_tumblbug.p1.shipping.ShippingDTO" alias="ShippingDTO"/> 
   		
   	</typeAliases>
   	  
