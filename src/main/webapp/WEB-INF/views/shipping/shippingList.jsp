@@ -14,12 +14,12 @@
 
 	<a href="./shippingInsert" type="button" class="btn btn-primary">+추가</a>
 	<div class="container">
-		<c:forEach items="${list}" var="shipping">
+		<c:forEach items="${list}" var="dto">
 			<h2>${dto.shipName}</h2>
-			<p>${dto.shipAdress}</p>
+			<p>${dto.shipAddress}</p>
 			<p>${dto.shipPhone}</p>
 		</c:forEach>
-		<h2>나와라ㅣ발</h2>
+		<h2>나와라...</h2>
 
 	</div>
 

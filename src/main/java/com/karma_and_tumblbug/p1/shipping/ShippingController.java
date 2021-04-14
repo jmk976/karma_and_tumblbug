@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
-import com.karma_and_tumblbug.p1.util.Pager;
 
 @Controller
 @RequestMapping("/shipping/**")
@@ -89,7 +88,7 @@ public class ShippingController {
 		mv.setViewName("shipping/shippingInsert");
 	}
 	
-	//리스트
+	//리스트	
 	@RequestMapping("shippingList")
 	public ModelAndView getList(ShippingDTO shippingDTO, HttpSession httpSession)throws Exception{
 		ModelAndView mv = new ModelAndView();
