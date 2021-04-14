@@ -13,15 +13,14 @@
 	<h2>등록된 배송지</h2>
 
 	<a href="./shippingInsert" type="button" class="btn btn-primary">+추가</a>
-	<div class="container">
-		<c:forEach items="${list}" var="dto">
+	<c:forEach items="${list}" var="dto">
+		<div class="container p-3 my-3 border">
 			<h2>${dto.shipName}</h2>
 			<p>${dto.shipAddress}</p>
 			<p>${dto.shipPhone}</p>
-		</c:forEach>
-		<h2>나와라...</h2>
+		</div>
+	</c:forEach>
 
-	</div>
 
 
 </body>
