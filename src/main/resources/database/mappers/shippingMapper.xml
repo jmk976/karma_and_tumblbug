@@ -17,8 +17,8 @@
 		select * from shipping where shipNum=#{shipNum}
 	</select>
 	
-	<select id="getList" resultType="ShippingDTO"> 
-		select * from shipping order by shipNum desc
+	<select id="getList" parameterType="ShippingDTO" resultType="ShippingDTO"> 
+		select * from shipping where id=#{id}
 	</select>
 	<delete id="setDelete" parameterType="ShippingDTO">
 		delete shipping where id = #{id}
