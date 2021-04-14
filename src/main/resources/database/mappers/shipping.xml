@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mapper schema -->
+
+
+<mapper namespace="com.karma_and_tumblbug.p1.shipping.ShippingDAO">
+	<update id="setUpdate" parameterType="ShippingDTO">
+		update shipping set shipName=#{shipName}, shipAddress=#{shipAddress}, shipPhone=#{shipPhone} where ?=#{?}
+	</update>
+
+	<insert id="setInsert" parameterType="ShippingDTO">
+		insert into shipping values(#{shipName},#{shipAddress},#{shipPhone},#{id})
+	</insert>
+	
+	<select id="getSelect" parameterType="ShippingDTO" resultType="ShippingDTO">
+		select * from shipping where ?=#{?}
+	</select>
+	
+	<select id="getList" resultType="ShippingDTO"> 
+		select * from shipping order by ? desc
+	</select>
+	
+	<delete id="setDelete" parameterType="ShippingDTO">
+		delete shipping where id = #{id}
+	</delete>
+	
+	</mapper>
