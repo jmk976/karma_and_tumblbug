@@ -11,7 +11,7 @@
 	karma and tumblbug
 </h1>
 
-<a href="./payment/paymentList"> payment </a>
+
 
 
 
