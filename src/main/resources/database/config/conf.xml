@@ -7,6 +7,10 @@
   
   	<typeAliases>
   		<typeAlias type="com.com.karma_and_tumblbug.p1.shipping.ShippingDTO" alias="ShippingDTO"/> 
+
+  		<typeAlias type="com.karma_and_tumblbug.p1.membership.MembershipDTO" alias="MembershipDTO"/>
+  		<typeAlias type="com.karma_and_tumblbug.p1.payment.PaymentDTO" alias="PaymentDTO"/>
+
   		
   	</typeAliases>
   	  
