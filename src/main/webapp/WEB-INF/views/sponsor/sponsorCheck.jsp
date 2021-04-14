@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
+
 
 “주인을 잃고 길거리에서 죽음을 맞이하거나 버림 받아 안락사 되는 생명이 없는 세상을 만들어요.”
 후원을 통한 일정한 후원금 조성을 통해 좀 더 안정적인 동물보호활동 및 보호소 지원 활동을 할 수 있습니다.
