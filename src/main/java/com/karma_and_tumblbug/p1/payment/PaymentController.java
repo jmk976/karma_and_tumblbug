@@ -54,7 +54,7 @@ public class PaymentController {
 	
 	@PostMapping(value="paymentInsert")
 	public String getInsertAccount(PaymentDTO paymentDTO) throws Exception{
-		/*
+
 		System.out.println(paymentDTO.getId());
 		System.out.println(paymentDTO.getDivision());
 		System.out.println(paymentDTO.getBankName());
@@ -64,7 +64,7 @@ public class PaymentController {
 		System.out.println(paymentDTO.getCardNumber());
 		System.out.println(paymentDTO.getExpirationDate());
 		System.out.println(paymentDTO.getSecurityNumber());
-		*/
+
 		int result = paymentService.setInsert(paymentDTO);
 		return "redirect:./paymentList";
 	}

@@ -26,7 +26,6 @@
 					<c:if test="${pay.division eq 'card'}">
 						<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
 						<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
-						<h6 class="card-subtitle mb-2 text-muted">${pay.securityNumber}</h6>
 					</c:if>
 					
 					<a href="./paymentDelete?num=${pay.num}" class="card-link">삭제</a> 
