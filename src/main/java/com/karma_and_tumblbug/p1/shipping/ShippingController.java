@@ -2,6 +2,8 @@ package com.karma_and_tumblbug.p1.shipping;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma_and_tumblbug.p1.membership.MembershipDTO;
 import com.karma_and_tumblbug.p1.util.Pager;
 
 @Controller
@@ -88,15 +91,13 @@ public class ShippingController {
 	
 	//리스트
 	@RequestMapping("shippingList")
-	public ModelAndView getList(Pager pager)throws Exception{
+	public ModelAndView getList(ShippingDTO shippingDTO, HttpSession httpSession)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getCurPage());
-		
-		List<ShippingDTO> ar = shippingService.getList(pager);
-		
+		MembershipDTO membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");		
+		shippingDTO.setId(membershipDTO.getId());
+		List<ShippingDTO> ar = shippingService.getList(shippingDTO);
 		mv.addObject("list", ar);
 		mv.setViewName("shipping/shippingList");
-		mv.addObject("pager", pager);
 		return mv;
 	}
 	

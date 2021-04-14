@@ -29,20 +29,10 @@ public class ShippingService {
 		return shippingDAO.getSelect(shippingDTO);
 	}
 
-	public List<ShippingDTO> getList(Pager pager)throws Exception{
-		// ---- startRow, lastRow ----
-		pager.makeRow();
-
-		// ---- 페이징 계산 -------------
-		long totalCount = shippingDAO.getTotalCount(pager);
-		pager.makeNum(totalCount);
-
-		return shippingDAO.getList(pager);
+	public List<ShippingDTO> getList(ShippingDTO shippingDTO)throws Exception{
+		return shippingDAO.getList(shippingDTO);
 	}
 	
-	public long getTotalCount(Pager pager)throws Exception{
-		return shippingDAO.getTotalCount(pager);
-	}
 
 
 

@@ -28,12 +28,12 @@ public class ShippingDAO {
 		return sqlsession.insert(NAMESPACE+"setInsert", shippingDTO);
 	}
 	
-	public List<ShippingDTO> getList(ShippingDTO shippingDTO)throws Exception{
-		return sqlsession.selectList(NAMESPACE+"getList", shippingDTO);
+	public ShippingDTO getSelect(ShippingDTO shippingDTO)throws Exception{
+		return sqlsession.selectOne(NAMESPACE+"getSelect", shippingDTO);
 	}
 	
-	public long getTotalCount(ShippingDTO shippingDTO)throws Exception{
-		return sqlsession.selectOne(NAMESPACE+"getTotalCount", shippingDTO);
+	public List<ShippingDTO> getList(ShippingDTO shippingDTO)throws Exception{
+		return sqlsession.selectList(NAMESPACE+"getList", shippingDTO);
 	}
 	
 	
