@@ -34,15 +34,17 @@ public class SponsorController {
 	
 	@PostMapping("sponsorJoin")
 	public String setInsert(SponsorDTO sponsorDTO, Model model) throws Exception {
+		
+		System.out.println(sponsorDTO.getLastPay());
 		int result = sponsorService.setInsert(sponsorDTO);
 		String message="후원 신청이 실패했습니다. 다시 시도해주세요.";
-		   
+		String path="./sponsorCheck";
 		if(result>0) {
 			message="후원해주셔서 감사합니다.";
-		    
+		    path="../";
 		}
 		model.addAttribute("msg", message);
-		model.addAttribute("path","./sponsorJoin");
+		model.addAttribute("path",path);
 		return "common/commonResult";
 		
 	}

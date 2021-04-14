@@ -6,7 +6,7 @@
 <mapper namespace="com.karma_and_tumblbug.p1.sponsor.SponsorDAO">
 
 	<insert id="setInsert" parameterType="SponsorDTO">
-		insert into sponsor value(spon_seq.nextval, #{sponSort}, #{payment},
+		insert into sponsor values(spon_seq.nextval, #{sponSort}, #{payment},
     #{money}, sysdate, #{lastPay}, #{sponMonth}, #{totalMoney},
     #{name}, #{phone}, #{email}, #{address}, #{id})
 	</insert>
