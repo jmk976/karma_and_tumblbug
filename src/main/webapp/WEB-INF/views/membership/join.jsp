@@ -13,11 +13,14 @@
 
 <div class="container">
 		<h2>memberJoin</h2>
+		
 		<form action="./join" method="post" id="frm" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">ID</label> <input type="text" class="form-control"
 					id="id" name="id">
-					<button>check</button>
+					<!-- 
+					<a id="joinCheck" type="button" class="btn btn-outline-secondary">check</a>
+					 -->
 				<h4 id="idCheckResult"></h4>
 				<!-- 6글자 이상 -->
 			</div>
@@ -36,21 +39,47 @@
 			<div class="form-group">
 				<label for="name">NAME</label> <input type="text"
 					class="form-control" id="name" name="name" class="etc">
+					<h4 id="nameResult" ></h4>
 				<!-- 비어있으면 안됨 -->
 			</div>
 			<div class="form-group">
-				<label for="birth">BIRTH</label> <input type="text"
-					class="form-control" id="birth" name="birth" class="etc">
+				<label for="birth">BIRTH</label>
+				<table style="width:100%; height:38px;">
+				<thead></thead>
+				<tbody>
+				<tr>
+				<td>
+				<input type="text"
+					class="form-control" id="year" name="birth" class="etc">
+				</td>
+				<td>
+				<select style="width:150px; height:38px;" class="form-select" aria-label="Default select example" id="month" name="birth" class="etc">
+				<c:forEach begin="1" end="12" var="i">
+				<option>${i} 월</option>
+				</c:forEach>
+				</select>
+				</td>
+				<td>
+				<input type="text"
+					class="form-control" id="day" name="birth" class="etc">
+				</td>
+				</tr>
+				</tbody>
+				</table>
+				
+					<h4 id="birthResult" ></h4>
 				<!-- 비어있으면 안됨 -->
 			</div>
 			<div class="form-group">
 				<label for="phone">PHONE</label> <input type="text"
 					class="form-control" id="phone" name="phone" class="etc">
+					<h4 id="phoneResult" ></h4>
 				<!-- 비어있으면 안됨 -->
 			</div>
 			<div class="form-group">
 				<label for="address">ADDRESS</label> <input type="text"
 					class="form-control" id="address" name="address" class="etc">
+					<h4 id="pw2Result" ></h4>
 				<!-- 비어있으면 안됨 -->
 			</div>
 			
@@ -59,6 +88,6 @@
 
 		</form>
 	</div>
-
+<script type="text/javascript" src="../resources/jquery/membershipJoin.js"></script>
 </body>
 </html>

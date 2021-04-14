@@ -1,0 +1,31 @@
+ create table shipping (
+ shipNum number,
+ shipName varchar2(200),
+ shipAddress varchar2(4000),
+ shipPhone varchar2(200),
+ id varchar2(20)
+);
+
+
+create table sponsor(
+    sponNum number constraint spon_sn_pk primary key,
+    sponSort varchar2(20),
+    payment varchar2(20),
+    money number,
+    firstPay date default sysdate,
+    lastPay date, 
+    sponMonth number,
+    totalMoney number,
+    name varchar2(20),
+    phone varchar2(20),
+    email varchar2(100),
+    address varchar2(1000),
+    id varchar2(20) 
+    )
+    
+    
+    CREATE SEQUENCE spon_seq;
+
+
+
+commit work;

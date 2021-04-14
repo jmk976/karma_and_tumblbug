@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,18 @@ public class MembershipControll {
 	@Autowired
 	private MembershipService membershipService;
 
+	
+	@GetMapping(value="joinCheck")
+	public String getIdCheck(MembershipDTO membershipDTO, Model model)throws Exception{
+		membershipDTO = membershipService.getIdCheck(membershipDTO);
+		String result = "불가";
+		if(membershipDTO == null) {
+			result = "가능";
+		}
+		model.addAttribute("result", result);
+		
+		return "common/ajaxResult";
+	}
 
 	@GetMapping(value="login")
 	public void login()throws Exception{
