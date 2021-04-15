@@ -11,31 +11,37 @@
 <style type="text/css">
 h1 {
 	color: green;
+	padding-top:20%;
+	text-align: center;
 }
+
+p{
+color:red;
+height:15px;
+}
+
 </style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<h1>log-in</h1>
+<div class="container">
 
-	<form action="./login" method="post">
-		<table>
-			<thead></thead>
-			<tbody>
+	<h1>LOGIN</h1>
 
-				<tr>
-					<td>id</td>
-					<td><input type="text" name="id"></td>
-				</tr>
-
-				<tr>
-					<td>password</td>
-					<td><input type="password" name="pw"></td>
-				</tr>
-
-			</tbody>
-		</table>
-		<button>login</button>
+	<form action="./login" method="post" id="frm">
+	<div class="form-group">
+				<input type="text" class="form-control"
+					id="id" name="id" placeholder="아이디">
+			</div>
+			<div class="form-group">
+				<input type="password"
+					class="form-control" id="pw" name="pw" placeholder="비밀번호">
+			</div>
+			<p id="state"></p>
+			<a type="button" class="btn btn-success btn-block" id="btn">LOGIN</a>
 	</form>
+	</div>
+	
+	<script type="text/javascript" src="../resources/jquery/membershipLogin.js"></script>
 </body>
 </html>

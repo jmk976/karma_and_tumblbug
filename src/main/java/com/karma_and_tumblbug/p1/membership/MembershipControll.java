@@ -54,6 +54,7 @@ public class MembershipControll {
 
 	@PostMapping(value="join")
 	public String join(MembershipDTO membershipDTO) throws Exception{
+		membershipDTO.setBirth(membershipDTO.getBirth().replace(",", "-"));
 		int result = membershipService.join(membershipDTO);
 		return "redirect:../";
 	}
