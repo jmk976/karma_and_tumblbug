@@ -33,7 +33,7 @@
 				</label>
 			</div>
 
-			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
+			<input type="button" id="btn" value="ADD" class="btn btn-primary">
 		</form>
 	</div>
 </body>
