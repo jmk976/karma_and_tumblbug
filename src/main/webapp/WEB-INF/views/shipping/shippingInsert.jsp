@@ -32,8 +32,9 @@
 					class="form-check-input" value="?">기본 배송지로 등록
 				</label>
 			</div>
-
-			<input type="button" id="btn" value="ADD" class="btn btn-primary">
+			
+			<button type="submit" class="btn btn-primary">Submit</button>
+			<!-- <input type="button" id="btn" value="ADD" class="btn btn-primary"> -->
 		</form>
 	</div>
 </body>
