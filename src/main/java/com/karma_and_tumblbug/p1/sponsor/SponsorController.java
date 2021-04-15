@@ -72,6 +72,10 @@ public class SponsorController {
 		System.out.println("Service 호출전: "+pager.getTotalPage());
 		List<SponsorDTO> ar = sponsorService.getList(pager);
 		System.out.println("Service 호출: "+pager.getTotalPage());
+		
+		long totalSum = sponsorService.getTotalSum(pager);
+		
+		modelAndView.addObject("totalSum", totalSum);
 
 
 		modelAndView.addObject("list", ar);
@@ -79,4 +83,7 @@ public class SponsorController {
 		modelAndView.addObject("pager",pager);
 		return modelAndView;
 	}
+	
+	
+
 }

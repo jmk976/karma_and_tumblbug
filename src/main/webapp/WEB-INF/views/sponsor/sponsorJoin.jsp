@@ -160,13 +160,11 @@
   
   
     <div class="form-group">
-   
-     
         
-  	   <input type="hidden" id="firstPay">
-  	    <input type="hidden" id="lastPay">
+  	   <input type="hidden" id="firstPay" name="firstPay">
+  	    <input type="hidden" id="lastPay" name="lastPay" value="">
 	   <input type="hidden" class="form-control mb-2 mr-sm-2 myCheck" name="sponMonth" value="1" id="sponMonth">
-	   <input type="text" class="form-control mb-2 mr-sm-2 myCheck"  name="totalMoney" value="${dto.money}" id="totalMoney">
+	   <input type="hidden" class="form-control mb-2 mr-sm-2 myCheck"  name="totalMoney" value="5000" id="totalMoney">
 		 
    </div>
   
@@ -209,12 +207,16 @@
 
 
 <script type="text/javascript">
- $("#money").blur(function(){
+
+$("#money").blur(function(){
 	 let money = $("#money").val();
 	 $("#totalMoney").val(money);
-	 
- });
+});
 
+
+$("#document").ready(function(){
+ $("#lastPay").val(new Date().toISOString().substring(0, 10))
+});
 </script>
 
 

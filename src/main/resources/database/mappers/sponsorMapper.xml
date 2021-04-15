@@ -20,9 +20,51 @@
   
   	<select id="getList" parameterType="Pager" resultType="SponsorDTO">
     	 select * from
-			(select rownum R, N.* from 
-				(select * from sponsor where 
+    	 (select rownum R, N.* or M.*  from 
+    	 <if test="kind=='firstPay'">
+    	 
+    	 
+	   			( select sponSort, money, sponMonth, name, id, to_char(firstPay, 'YYYY/mm') f,
+	   			 to_char(lastPay, 'YYYY/mm') l from sponsor) M
+            where f <![CDATA[<=]]> #{search} and #{search} <![CDATA[<=]]> l) 
+            
+    	 
+    	 </if>
+    	 <if test="kind=='Id'" >
+    	 
+    	 
+    	 (select rownum R, N.* from 
+				(select * from sponsor 
+				where 
 				<choose>
+				   <when test="kind =='Id'"> 
+				       id
+				   </when>
+				   
+				   <when test="kind =='Name'">
+				        name
+				   </when>
+				   
+				   <otherwise>
+				       sponSort
+				   </otherwise>
+				   
+				 </choose>
+				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
+		   
+    	 
+    	 </if>
+    	  where R between #{startRow} and #{lastRow}
+    
+			
+    </select>
+    
+    
+    
+     <select id="getTotalCount" resultType="Long" parameterType="Pager">
+	      select count(sponNum) from sponsor
+	      where
+	      <choose>
 				   <when test="kind =='Month'">
 				       month
 				   </when>
@@ -36,13 +78,11 @@
 				   </otherwise>
 				   
 				 </choose>
-				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
-		where R between #{startRow} and #{lastRow}
+				 like '%'||#{search}||'%' and sponNum > 0
+	  </select>
 	  
-    </select>
-    
-     <select id="getTotalCount" resultType="Long" parameterType="Pager">
-	      select count(sponNum) from sponsor
+	   <select id="getTotalSum" resultType="Long" parameterType="Pager">
+	      select sum(totalMoney) from sponsor
 	      where
 	      <choose>
 				   <when test="kind =='Month'">

@@ -6,36 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- jquery UI -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- // jquery UI -->
-<script type="text/javascript" src="../resources/jquery/jquery.mtz.monthpicker.js"></script><!-- monthPicker js -->
-<script type="text/javascript">
-$(document).ready(function(){
-    var options = {
-        pattern: 'yyyy-mm'       // input태그에 표시될 형식
-       ,selectedYear: 2019       // 선택할 연도
-       ,startYear: 2010          // 시작연도
-       ,finalYear: 2022          // 마지막연도
-       // ,monthNames: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
-       ,monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']         // 화면에 보여줄 월이름
-       ,openOnFocus: true       // focus시에 달력이 보일지 유무
-       ,disableMonths : [ ]     // 월 비활성화
-    };
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    // 방법1) options 따로 지정
-    $("#monthPicker").monthpicker(options);
+<script>
 
-    // 방법2) input 태그에서 연도 지정
-    $("#monthPicker2").monthpicker();
-    
-    $('#btn_monthPicker').bind('click', function () {
-        $('#monthPicker2').monthpicker('show');
-    });
-});
-
+   $(function() {
+       //input을 datepicker로 선언
+       $("#datepicker").datepicker({
+           dateFormat: 'yy-mm-dd' //달력 날짜 형태
+           ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+           ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+           ,changeYear: true //option값 년 선택 가능
+           ,changeMonth: true //option값  월 선택 가능                
+           ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+           ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+           ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+           ,buttonText: "선택" //버튼 호버 텍스트              
+           ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+           ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+           ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+           ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+           ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+           ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+           ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+       });                    
+       
+       //초기값을 오늘 날짜로 설정해줘야 합니다.
+       $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+   });
 </script>
 
 <c:import url="../template/bootStrap.jsp"></c:import>
@@ -92,7 +92,7 @@ $(document).ready(function(){
     <div class="card bg-light text-dark">
     	<div class="card-body">
     		<h5 class="card-title">총 금액</h5>
-    		<p class="card-text">Some example text. Some example text.</p>
+    		<p class="card-text">${totalSum} 원</p>
    		 </div>
   	</div>
  	
@@ -119,8 +119,9 @@ $(document).ready(function(){
 		<input type="hidden" name="curPage" value="1" id="curPage">
   <div class="input-group-prepend">
    	<select class="form-control" name="kind" id="kind">
-    	<option class="sel">Month</option>
-    	<option class="sel">Id</option>
+    	<option class="sel" value="firstPay"> firstPay</option>
+    	<option class="sel" value="name">Name</option>
+    	<option class="sel" value="id">Id</option>
     	<option class="sel">SponSort</option>
  	 </select>
   </div>
@@ -131,6 +132,7 @@ $(document).ready(function(){
     <button class="btn btn-success" type="submit">Search</button>
   </div>
  </form> 
+ 
  월별 총 후원 금액 보기
   <input type="text" id="perMonth"  name="perMonth" class="btn btn-danger" />
  <input type="button" id="btn_perMonth"  name="btn_perMonth" class="btn btn-danger" value="클릭" />
@@ -140,6 +142,9 @@ $(document).ready(function(){
 
 </div>
 </div>
+    <p>일정을 선택해주세요. <input type="text" id="datepicker"></p>
+
+<div>
  <table>
         <colgroup>
             <col style="width: 30%" />
@@ -147,7 +152,7 @@ $(document).ready(function(){
         </colgroup>
         <tr>
             <th>monthPicker</th>
-            <td><input type="text" id="monthPicker" name="monthPicker" style="" /></td>
+            <td><input type="text" id="monthPicker" name="monthPicker"  /></td>
         </tr>
         <tr>
             <th>monthPicker with button</th>
@@ -157,39 +162,16 @@ $(document).ready(function(){
             </td>
         </tr>
     </table>
-    
-    
-  <p class="demo"> <b>Get Month/Year & Validation API Demonstration</b>
-
-            <br />This demonstrates API usage for the GetSelectedMonthYear(), GetSelectedYear() and GetSelectedMonth() function calls which will also perform date validation. Clear() will clear the text field and any validation messages.
-            <br />
-            <br />Choose a month:
-            <input id="GetYearDemo" class="GetYearDemo" type="text" value="02/2012" />
-            <br />
-            <br />
-            <button type="button" onclick="alert($('.GetYearDemo').MonthPicker('GetSelectedYear'));">Get Year</button>
-            <button type="button" onclick="alert($('#GetYearDemo').MonthPicker('GetSelectedMonth'));">Get Month</button>
-            <button type="button" onclick="alert($('#GetYearDemo').MonthPicker('GetSelectedMonthYear'));">Get Month and Year</button>
-            <button type="button" onclick="$('#GetYearDemo').MonthPicker('Clear');">Clear</button>
-        </p>
-
-
+    </div>
 
 
   <script type="text/javascript">
   
-$(document).ready(function() {
-	
-	$('#id').MonthPicker(); 
-	
-	$('#GetYearDemo').MonthPicker({
-	    ValidationErrorMessage: 'Invalid Date!'
-	});
-	
-	});
+
 
   
   
+ 
   
 	  let kind='${pager.kind}';
 	  $(".sel").each(function(){
