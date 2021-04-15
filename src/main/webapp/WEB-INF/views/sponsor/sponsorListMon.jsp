@@ -5,17 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-
 <div class="container">
 	
-	<h2>후원현황</h2>
+	<h2> ${pagerMon.search} 월 후원현황</h2>
 
 	<table class ="table">
 	
@@ -31,24 +28,22 @@
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${list}" var="dto"> 
+		<c:forEach items="${listMon}" var="dto"> 
 			<tr>
 				<td>${dto.sponSort}</td>
 				<td>${dto.money}</td>
 				<td>${dto.firstPay}</td>
 				<td>${dto.sponMonth}</td>
 				<td>${dto.name}</td>
-				<c:catch>
 				<td><a href="./sponsorSelect?id=${dto.id}&sponNum=${dto.sponNum}">
 				${dto.id}</a></td>
-				</c:catch>
 				
 			
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
-	</div>
+	
 	
  <%-- <c:catch>
 	<c:if test="${member.id=='admin'}">
@@ -64,7 +59,7 @@
     <div class="card bg-light text-dark">
     	<div class="card-body">
     		<h5 class="card-title">총 금액</h5>
-    		<p class="card-text">${totalSum} 원</p>
+    		<p class="card-text"> ${totalSumMon} 원</p>
    		 </div>
   	</div>
  	
@@ -72,62 +67,59 @@
  	<div class="container">
      
   <ul class="pagination">
-    <c:if test="${pager.pre}">
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+    <c:if test="${pagerMon.pre}">
+    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.startNum-1}">Previous</a></li>
     </c:if>
     
-    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"> 
+    <c:forEach begin="${pagerMon.startNum}" end="${pagerMon.lastNum}" var="i"> 
     <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
     </c:forEach>
     
-    <c:if test="${pager.next}">    
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+    <c:if test="${pagerMon.next}">    
+    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.lastNum+1}">Next</a></li>
     </c:if> 
   </ul>
   
   <div class="input-group mt-3 mb-3">
   
-<form id="frm" action="./sponsorList" class="form-inline">
+<form id="frm" action="./sponsorListMon" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
-  <div class="input-group-prepend">
-   	<select class="form-control" name="kind" id="kind">
-
-    	<option class="sel">Name</option>
-    	<option class="sel">Id</option>
-    	<option class="sel">SponSort</option>
- 	 </select>
-  </div>
   
-  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
+  <input type="month" class="form-control" name="search" id="search" value="${pagerMon.search}" placeholder="">
   
     <div class="input-group-append">
-    <button class="btn btn-success" type="submit">Search</button>
+    <button class="btn btn-success" id="sub" type="submit">Search</button>
   </div>
  </form> 
- </div>
- 
-  <a href="./sponsorListMon" class="btn btn-info" role="button">  월별 총 후원 금액 보기 </a>
  
  
+  <a href="./sponsorList" class="btn btn-info"> 전체 후원금 보기 </a>
+ 
+ 
+ 
+</div>
 
-
-
+</div>
+</div>
    
 
   <script type="text/javascript">
+  
+
+
+  
  
-	  let kind='${pager.kind}';
-	  $(".sel").each(function(){
-		 let t = $(this).text(); 
-		 if(t==kind) {
-			 $(this).prop("selected", true);
-		 }
-	  });
+  
+ $("#sub").click(function(){
+	 alert($("#search").val());
+ });
+  
+	 
   
   $(".p").click(function(){
 	  let curPage = $(this).attr("title");
 	  $("#curPage").val(curPage);
-	  let search = '${pager.search}';
+	  let search = '${pagerMon.search}';
 	 
 	  $("#frm").submit();
 	  
@@ -143,9 +135,9 @@
   
   </script>
   
- </div>
-
-
  
+
+
+
 </body>
 </html>

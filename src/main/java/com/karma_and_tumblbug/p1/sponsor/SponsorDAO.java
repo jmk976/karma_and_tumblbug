@@ -22,7 +22,17 @@ public class SponsorDAO {
 		return sqlSession.selectList(NAMESPACE+"getList",pager);
 	}
 	
+	public List<SponsorDTO> getListMon(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getListMon", pager);
+	}
 	
+	public long getTotalSumMon(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalSumMon", pager);	
+	}
+	
+	public long getTotalCountMon(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCountMon", pager);
+	}
 
 	
 	public long getTotalSum(Pager pager) throws Exception {

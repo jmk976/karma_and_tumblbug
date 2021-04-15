@@ -15,24 +15,11 @@
 	</delete>
 
  	<select id="getSelect" parameterType="SponsorDTO" resultType="SponsorDTO">
-   		 select * from sponsor where id = #{id}
+   		 select * from sponsor where sponNum=#{sponNum}
  	</select>
   
   	<select id="getList" parameterType="Pager" resultType="SponsorDTO">
-    	 select * from
-    	 (select rownum R, N.* or M.*  from 
-    	 <if test="kind=='firstPay'">
-    	 
-    	 
-	   			( select sponSort, money, sponMonth, name, id, to_char(firstPay, 'YYYY/mm') f,
-	   			 to_char(lastPay, 'YYYY/mm') l from sponsor) M
-            where f <![CDATA[<=]]> #{search} and #{search} <![CDATA[<=]]> l) 
-            
-    	 
-    	 </if>
-    	 <if test="kind=='Id'" >
-    	 
-    	 
+    	 select * from 
     	 (select rownum R, N.* from 
 				(select * from sponsor 
 				where 
@@ -51,13 +38,45 @@
 				   
 				 </choose>
 				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
-		   
-    	 
-    	 </if>
+		  
     	  where R between #{startRow} and #{lastRow}
     
 			
     </select>
+    
+    <select id="getListMon" parameterType="Pager" resultType="SponsorDTO">
+      
+        select * 
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+   where R between #{startRow} and #{lastRow}
+    
+    </select>
+    
+    <select id="getTotalCountMon" resultType="Long" parameterType="Pager">
+	    select count(sponNum)
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+	  </select>
+	  
+	  <select id="getTotalSumMon" resultType="Long" parameterType="Pager">
+	       select sum(money)
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+	  </select>
+	  
     
     
     
@@ -65,12 +84,12 @@
 	      select count(sponNum) from sponsor
 	      where
 	      <choose>
-				   <when test="kind =='Month'">
-				       month
+				   <when test="kind =='Id'"> 
+				       id
 				   </when>
 				   
-				   <when test="kind =='Id'">
-				       id
+				   <when test="kind =='Name'">
+				        name
 				   </when>
 				   
 				   <otherwise>
@@ -85,12 +104,12 @@
 	      select sum(totalMoney) from sponsor
 	      where
 	      <choose>
-				   <when test="kind =='Month'">
-				       month
+				  <when test="kind =='Id'"> 
+				       id
 				   </when>
 				   
-				   <when test="kind =='Id'">
-				       id
+				   <when test="kind =='Name'">
+				        name
 				   </when>
 				   
 				   <otherwise>

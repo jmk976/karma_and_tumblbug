@@ -29,7 +29,7 @@
     <c:if test="${dto.sponSort =='일시후원'}">
         <h3>결제일 : ${dto.firstPay}</h3> 
     </c:if> 
-    
+     후원번호: ${dto.sponNum}
 </div>
      
 		

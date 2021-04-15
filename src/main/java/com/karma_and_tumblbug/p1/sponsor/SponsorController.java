@@ -84,6 +84,20 @@ public class SponsorController {
 		return modelAndView;
 	}
 	
+	@GetMapping("sponsorListMon")
+	public ModelAndView getListMon(Pager pager)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		List<SponsorDTO> arr = sponsorService.getListMon(pager);
+		
+//     	long totalSumMon = sponsorService.getTotalSumMon(pager);
+//		
+//	    modelAndView.addObject("totalSumMon", totalSumMon);
+		modelAndView.addObject("listMon", arr);
+		modelAndView.addObject("pagerMon",pager);
+		modelAndView.setViewName("sponsor/sponsorListMon");
+		return modelAndView;
+	}
+	
 	
 
 }
