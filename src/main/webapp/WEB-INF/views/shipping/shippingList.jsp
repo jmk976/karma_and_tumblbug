@@ -6,6 +6,10 @@
 <head>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>Insert title here</title>
+<style>
+    .menu a{cursor:pointer;}
+    .menu .hide{display:none;}
+</style>
 
 </head>
 <body>
@@ -14,12 +18,32 @@
 
 	<a href="./shippingInsert" type="button" class="btn btn-primary">+추가</a>
 	<c:forEach items="${list}" var="dto">
-		<div class="container p-3 my-3 border">
+		<div  class="container p-3 my-3 border">
 			<h2>${dto.shipName}</h2>
 			<p>${dto.shipAddress}</p>
 			<p>${dto.shipPhone}</p>
+			<div align="right">
+			<ul>
+			<li class="menu">
+			<a><img src="" alt="***"/></a>
+				<ul class="hide">
+					<li>수정</li>
+					<li>삭제</li>
+				</ul>
+			</li>
+			</ul>
+			</div>
 		</div>
 	</c:forEach>
+		
+	
+	<script>
+		$(document).ready(function() {
+			$(".menu>a").click(function() {
+				$(this).next("ul").toggleClass("hide");
+			});
+		});
+	</script>
 
 
 
