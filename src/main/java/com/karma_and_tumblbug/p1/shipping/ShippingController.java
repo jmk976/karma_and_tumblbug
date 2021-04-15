@@ -69,15 +69,8 @@ public class ShippingController {
 	@PostMapping("shippingInsert")
 	public String setInsert(ShippingDTO shippingDTO, Model model)throws Exception{
 		int result = shippingService.setInsert(shippingDTO);
-		String message = "X 배송지 등록 실패 X";
-		
-		if(result>0) {
-			message="배송지 등록 성공";
-		}
-		model.addAttribute("msg", message);
-		model.addAttribute("path", "./shippingList");
-		
-		return "common/commonResult";
+
+		return "redirect:./shippingList";
 		
 	}
 	
