@@ -6,19 +6,19 @@
 
 <mapper namespace="com.karma_and_tumblbug.p1.shipping.ShippingDAO">
 	<update id="setUpdate" parameterType="ShippingDTO">
-		update shipping set shipName=#{shipName}, shipAddress=#{shipAddress}, shipPhone=#{shipPhone} where ?=#{?}
+		update shipping set shipName=#{shipName}, shipAddress=#{shipAddress}, shipPhone=#{shipPhone} 
+		where shipNum=#{shipNum}
 	</update>
 
-
 	<insert id="setInsert" parameterType="ShippingDTO">
-		insert into shipping values(#{shipName},#{shipAddress},#{shipPhone},#{id})
+		insert into shipping values(ship_seq.nextval, #{shipName},#{shipAddress},#{shipPhone},#{id})
 	</insert>
 	<select id="getSelect" parameterType="ShippingDTO" resultType="ShippingDTO">
-		select * from shipping where ?=#{?}
+		select * from shipping where shipNum=#{shipNum}
 	</select>
 	
-	<select id="getList" resultType="ShippingDTO"> 
-		select * from shipping order by ? desc
+	<select id="getList" parameterType="ShippingDTO" resultType="ShippingDTO"> 
+		select * from shipping where id=#{id}
 	</select>
 	<delete id="setDelete" parameterType="ShippingDTO">
 		delete shipping where id = #{id}

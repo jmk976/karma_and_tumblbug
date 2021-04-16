@@ -2,6 +2,8 @@ package com.karma_and_tumblbug.p1.shipping;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.karma_and_tumblbug.p1.util.Pager;
+import com.karma_and_tumblbug.p1.membership.MembershipDTO;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/shipping/**")
@@ -19,6 +23,19 @@ public class ShippingController {
 	@Autowired
 	private ShippingService shippingService;
 	
+//	@GetMapping("shippingUpdate")
+//	public void setUpdate(ShippingDTO shippingDTO, Model model)throws Exception{
+//		shippingDTO = shippingService.getSelect(shippingDTO);
+//		model.addAttribute("dto", shippingDTO);
+//	}
+//	
+//	@PostMapping("shippingUpdate")
+//	public String setUpdate(ShippingDTO shippingDTO)throws Exception{
+//		int result = shippingService.setUpdate(shippingDTO);
+//		return "redirect:./shippingList";
+//	}
+//	
+//	
 	
 	//업데이트
 	@PostMapping("shippingUpdate")
@@ -35,6 +52,7 @@ public class ShippingController {
 		return mv;
 	}
 	
+	
 	@GetMapping("shippingUpdate")
 	public ModelAndView setUpdate(ShippingDTO shippingDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -46,7 +64,7 @@ public class ShippingController {
 	}
 	
 	//삭제
-	@PostMapping("shippingDelete")
+	@RequestMapping("shippingDelete")
 	public ModelAndView setDelete(ShippingDTO shippingDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = shippingService.setDelete(shippingDTO);
@@ -67,15 +85,8 @@ public class ShippingController {
 	@PostMapping("shippingInsert")
 	public String setInsert(ShippingDTO shippingDTO, Model model)throws Exception{
 		int result = shippingService.setInsert(shippingDTO);
-		String message = "X 배송지 등록 실패 X";
-		
-		if(result>0) {
-			message="배송지 등록 성공";
-		}
-		model.addAttribute("msg", message);
-		model.addAttribute("path", "./shippingList");
-		
-		return "common/commonResult";
+
+		return "redirect:./shippingList";
 		
 	}
 	
@@ -86,17 +97,15 @@ public class ShippingController {
 		mv.setViewName("shipping/shippingInsert");
 	}
 	
-	//리스트
+	//리스트	
 	@RequestMapping("shippingList")
-	public ModelAndView getList(Pager pager)throws Exception{
+	public ModelAndView getList(ShippingDTO shippingDTO, HttpSession httpSession)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(pager.getCurPage());
-		
-		List<ShippingDTO> ar = shippingService.getList(pager);
-		
+		MembershipDTO membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");		
+		shippingDTO.setId(membershipDTO.getId());
+		List<ShippingDTO> ar = shippingService.getList(shippingDTO);
 		mv.addObject("list", ar);
 		mv.setViewName("shipping/shippingList");
-		mv.addObject("pager", pager);
 		return mv;
 	}
 	
