@@ -27,7 +27,6 @@ height:15px;
 <div class="container">
 
 	<h1>LOGIN</h1>
-	<p>1</p>
 
 	<form action="./login" method="post" id="frm">
 	<div class="form-group">
