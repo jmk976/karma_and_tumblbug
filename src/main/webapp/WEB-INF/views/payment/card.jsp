@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
 
 	<h1>CARD</h1>
 

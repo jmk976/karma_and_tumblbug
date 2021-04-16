@@ -10,12 +10,13 @@
 <style type="text/css">
 p {
 	color: red;
-	height:15px;
+	height: 15px;
 }
 
 .b {
 	color: blue;
 }
+
 </style>
 </head>
 <body>
@@ -24,8 +25,7 @@ p {
 	<div class="container">
 		<h2>memberJoin</h2>
 
-		<form action="./join" method="post" id="frm"
-			enctype="multipart/form-data">
+		<form action="./join" method="post" id="frm">
 			<div class="form-group">
 				<label for="id">ID</label> <input type="text" class="form-control"
 					id="id" name="id">
@@ -57,12 +57,12 @@ p {
 						<option>월</option>
 
 						<c:forEach begin="1" end="12" var="i">
-						<c:if test="${i<10}">
-							<option value="0${i}">${i}월</option>
-						</c:if>
-						<c:if test="${i>9}">
-							<option value="${i}">${i}월</option>
-						</c:if>
+							<c:if test="${i<10}">
+								<option value="0${i}">${i}월</option>
+							</c:if>
+							<c:if test="${i>9}">
+								<option value="${i}">${i}월</option>
+							</c:if>
 						</c:forEach>
 
 					</select> <input type="text" class="form-control" placeholder="일" id="day"
@@ -74,13 +74,21 @@ p {
 				<label for="phone">PHONE</label> <input type="text"
 					class="form-control" id="phone" name="phone" class="etc">
 				<p id="phoneResult"></p>
+				
 			</div>
-			<div class="form-group">
-				<label for="address">ADDRESS</label> <input type="text"
-					class="form-control" id="address" name="address" class="etc">
+			
+			<div>
+			<label for="address">ADDRESS</label>
+			<div class="input-group mb-3" id="findBtn">
+				<input type="text" readonly="readonly" class="form-control" id="road_name" name="address" placeholder="주소 검색">
+				<div class="input-group-append">
+					<a class="btn btn-success" type="button" >FIND</a>
+				</div>
+				</div>
+					<input type="text" class="form-control" id="address" name="address"
+						class="etc" placeholder="상세주소">
 				<p id="addressResult"></p>
 			</div>
-
 
 			<a type="button" class="btn btn-primary" id="btn">JOIN</a>
 
@@ -88,5 +96,8 @@ p {
 	</div>
 	<script type="text/javascript"
 		src="../resources/jquery/membershipJoin.js"></script>
+	<script
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </body>
 </html>

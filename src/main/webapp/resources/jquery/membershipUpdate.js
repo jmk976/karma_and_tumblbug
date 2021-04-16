@@ -1,45 +1,52 @@
+/**
+ * 
+
+$("#joinCheck").click(function(){
+	let id=$("#id").val();
+	$.get("joinCheck?id="+id,function(result){
+		result = result.trim();
+		let str = "사용가능";
+		if(result=="불가"){
+			str = "사용 불가능";
+		}
+		$("#idCheckResult").text(str);
+	})
+	
+})
+ */
 
 
-let idCheck=false;
+$("#test").click(function(){
+	alert($("#address2").val());
+	
+})
+
+$(document).ready(function(){
+	let birth=$("#birth").attr("title");
+let yearInit = birth.substr(0,4);
+let monthInit = birth.substr(5,2);
+let dayInit = birth.substr(8);
+
+let address=$("#addressParse").attr("title");
+let point = address.indexOf(",");
+let address1 = address.substr(0,point);
+let address2 = address.substr(point+1);
+
+	
+	
+	$("#year").val(yearInit);
+	$("#month").val(monthInit);
+	$("#day").val(dayInit);
+	$("#address1").val(address1);
+	$("#address2").val(address2);
+	
+})
+
 let pwCheck=false;
 let nameCheck=false;
 let birthCheck=false;
 let phoneCheck=false;
 let addressCheck=false;
-
-checkId = function(){
-	let id=$("#id").val();
-	let result="";
-			idCheck=false;
-	if(id!=""){
-		$.get("joinCheck?id="+id,function(result){
-			result = result.trim();
-			let str = "사용 불가능";
-			let color = "r";
-			if(result=="가능"){
-				str = "사용가능";
-				color="b";
-				idCheck=true;
-			}
-			
-			$("#idCheckResult").text(str);
-			$("#idCheckResult").attr("class",color);
-			
-		})
-	}else{	
-		
-		$("#idCheckResult").text("필수 정보 입니다.");
-		$("#idCheckResult").attr("class","r");
-	}
-	
-	}
-
-$("#id").blur(checkId);
-
-
-$("#id").focus(function(){
-	$("#idCheckResult").text("");
-})
 
 pwFunc=function(){
 	let pw = $("#pw").val();
@@ -113,13 +120,13 @@ birthFunc=function(){
 	}else{
 		let lastDay=0;
 		switch($("#month").val()){
-			case "4월":
-			case "6월":
-			case "9월":
-			case "11월":
+			case "04":
+			case "06":
+			case "09":
+			case "11":
 				lastDay=30;
 				break;
-			case "2월":
+			case "02":
 				if($("#year").val()%4==0){
 					lastDay=29;
 				}else{
@@ -162,10 +169,9 @@ phoneFunc=function(){
 $("#phone").blur(phoneFunc)
 
 addressFunc=function(){
-	let address = $("#address").val();
-	let road_name = $("#road_name").val();
+	let add = $("#address2").val();
 	addressCheck=false;
-	if(address.length<1 || road_name.length<1){
+	if(add.length<1){
 		$("#addressResult").text("필수 정보 입니다.");
 	}else{
 		$("#addressResult").text("");
@@ -173,15 +179,17 @@ addressFunc=function(){
 	}
 }
 
-$("#address").blur(addressFunc)
+$("#address2").blur(addressFunc);
 
 
 
 
 $("#findBtn").click(function() {
+ 
+
     new daum.Postcode({
         oncomplete: function(data) {
-            $("#road_name").val(data.roadAddress);
+            $("#address1").val(data.roadAddress);
         }
     }).open();
 })
@@ -189,11 +197,16 @@ $("#findBtn").click(function() {
 
 
 $("#btn").click(function(){
-	if(idCheck && pwCheck && nameCheck && birthCheck && phoneCheck && addressCheck){
+
+	pwFunc();
+	nameFunc();
+	birthFunc();
+	phoneFunc();
+	addressFunc();
+	if(pwCheck && nameCheck && birthCheck && phoneCheck && addressCheck){
 		if($("#day").val()<10){
 			$("#day").val("0"+$("#day").val());
 		}
 		$("#frm").submit();
-	} 
+	}
 })
-

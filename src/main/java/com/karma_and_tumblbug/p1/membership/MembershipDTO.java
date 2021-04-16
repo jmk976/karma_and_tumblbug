@@ -45,4 +45,7 @@ public class MembershipDTO {
 		this.address = address;
 	}
 	
+	
+	
+	
 }

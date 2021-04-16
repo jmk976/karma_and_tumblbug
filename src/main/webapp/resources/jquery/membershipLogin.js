@@ -1,8 +1,14 @@
 /**
  * 
 
-가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.
+
  */
+
+$(document).ready(function(){
+	if($("#id").val().length>0){
+		$("#state").text("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+	}
+});
 
 $("#btn").click(function(){
 	if($("#id").val()==""){

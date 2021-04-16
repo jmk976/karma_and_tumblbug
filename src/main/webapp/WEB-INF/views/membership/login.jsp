@@ -31,7 +31,7 @@ height:15px;
 	<form action="./login" method="post" id="frm">
 	<div class="form-group">
 				<input type="text" class="form-control"
-					id="id" name="id" placeholder="아이디">
+					id="id" name="id" placeholder="아이디" value="${dto.id}">
 			</div>
 			<div class="form-group">
 				<input type="password"
