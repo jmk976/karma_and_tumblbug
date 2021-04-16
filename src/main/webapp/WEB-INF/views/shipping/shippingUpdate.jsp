@@ -14,17 +14,17 @@
 			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="shipName">받는 사람</label> <input type="text"
-					class="form-control myCheck" placeholder="${shipping.shipName}"
+					class="form-control myCheck" value="${shipping.shipName}"
 					id="shipName" name="shipName">
 			</div>
 			<div class="form-group">
 				<label for="shipAddress">주소</label> <input type="text"
-					class="form-control myCheck" placeholder="${shipping.shipAddress}"
+					class="form-control myCheck" value="${shipping.shipAddress}"
 					id="shipAddress" name="shipAddress">
 			</div>
 			<div class="form-group">
 				<label for="shipPhone">받는 사람 휴대폰 번호</label> <input type="text"
-					class="form-control myCheck" placeholder="${shipping.shipPhone}"
+					class="form-control myCheck" value="${shipping.shipPhone}"
 					id="shipPhone" name="shipPhone">
 			</div>
 			<div class="form-check">
@@ -39,7 +39,7 @@
 
 
 
-			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
+			<input type="button" id="btn" value="UPDATE" class="btn btn-primary">
 		</form>
 	</div>
 
