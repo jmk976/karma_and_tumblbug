@@ -26,9 +26,5 @@
 	<delete id="delete" parameterType="MembershipDTO">
 		delete from membership where id=#{id}
 	</delete>
-	
-	<select id="getIdCheck" parameterType="MembershipDTO" resultType="MembershipDTO">
-	select * from membership where id=#{id}
-	</select>
 
 </mapper>

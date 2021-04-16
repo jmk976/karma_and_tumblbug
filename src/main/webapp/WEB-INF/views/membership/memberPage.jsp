@@ -17,7 +17,7 @@
 				<h4 id="idCheckResult"></h4>
 				<!-- 6글자 이상 -->
 			</div>
-			<div class="form-group" hidden="hidden">
+			<div class="form-group">
 				<label for="pw">Password</label> <input type="text"
 					class="form-control" id="pw" value="${membership.pw}" readonly="readonly">
 					<h4 id="pwResult"></h4>

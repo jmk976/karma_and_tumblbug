@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
 </head>
 <body>
 	<div class="container">
@@ -34,19 +33,8 @@
 				</label>
 			</div>
 
-			<div class="form-group">
-				<input type="hidden" id="id" name="id" value="${membership.id}">
-			</div>
-
-			<button type="submit" class="btn btn-primary">Submit</button>
-			<!-- <input type="button" id="btn" value="ADD" class="btn btn-primary"> -->
+			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
-
-	
-
-
-
-	
-
+	</div>
 </body>
 </html>

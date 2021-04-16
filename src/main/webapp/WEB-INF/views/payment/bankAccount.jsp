@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 <h1>BANK ACCOUNT</h1>
 
 <div class="container">
