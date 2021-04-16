@@ -26,7 +26,7 @@ public class SponsorDAO {
 		return sqlSession.selectList(NAMESPACE+"getListMon", pager);
 	}
 	
-	public long getTotalSumMon(Pager pager) throws Exception {
+	public Long getTotalSumMon(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalSumMon", pager);	
 	}
 	

@@ -88,15 +88,26 @@ public class SponsorController {
 	public ModelAndView getListMon(Pager pager)throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		List<SponsorDTO> arr = sponsorService.getListMon(pager);
+		System.out.println("list service호출후 get search: "+pager.getSearch());
 		
-     	long totalSumMon = sponsorService.getTotalSumMon(pager);
-	
-        modelAndView.addObject("totalSumMon", totalSumMon);
+		
+     	
+		Long totalSumMon = sponsorService.getTotalSumMon(pager);
+		if(totalSumMon == null) {
+			System.out.println("r괜찮다");
+		   totalSumMon =(long) 0;
+			
+		}else {
+		modelAndView.addObject("totalSumMon", totalSumMon);
+		}
+
+      
 		modelAndView.addObject("listMon", arr);
 		modelAndView.addObject("pagerMon",pager);
 		modelAndView.setViewName("sponsor/sponsorListMon");
 		return modelAndView;
 	}
+	
 	
 	
 

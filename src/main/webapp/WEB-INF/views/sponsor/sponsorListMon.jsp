@@ -67,6 +67,7 @@
  	<div class="container">
      
   <ul class="pagination">
+  
     <c:if test="${pagerMon.pre}">
     <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.startNum-1}">Previous</a></li>
     </c:if>

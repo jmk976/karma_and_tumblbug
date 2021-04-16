@@ -68,13 +68,11 @@
 	  </select>
 	  
 	  <select id="getTotalSumMon" resultType="Long" parameterType="Pager">
-	       select sum(money)
+	    select sum(money)
         from 
-        (select rownum R, N.*  
-        from 
-            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
-            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
-   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+            ( select money,
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor)
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l
 	  </select>
 	  
     
