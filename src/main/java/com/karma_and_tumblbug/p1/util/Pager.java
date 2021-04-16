@@ -136,6 +136,9 @@ public class Pager {
 	}
 
 	public long getStartNum() {
+		if(startNum < 1) {
+			startNum = 1;
+		}
 		return startNum;
 	}
 
@@ -144,6 +147,9 @@ public class Pager {
 	}
 
 	public long getLastNum() {
+		if(lastNum < 1) {
+			lastNum = 1;
+		}
 		return lastNum;
 	}
 

@@ -22,6 +22,22 @@ public class SponsorService {
 		return sponsorDAO.getSelect(sponsorDTO);
 	}
 	
+	public List<SponsorDTO> getListMon(Pager pager)throws Exception{
+		pager.makeRow();
+		long totalCountMon = sponsorDAO.getTotalCountMon(pager);
+		pager.makeRow();
+		
+		return sponsorDAO.getListMon(pager);
+	}
+	
+	public long getTotalCountMon(Pager pager)throws Exception{
+		return 0;
+	}
+	
+	public long getTotalSumMon(Pager pager)throws Exception{
+		return sponsorDAO.getTotalSumMon(pager);
+	}
+	
 	public List<SponsorDTO> getList(Pager pager) throws Exception{
 		
 		
@@ -42,7 +58,13 @@ public class SponsorService {
 	public long getTotalCount(Pager pager) throws Exception {
 		
 		return 0;
+	
 	}
+	
+	public long getTotalSum(Pager pager) throws Exception{
+		return sponsorDAO.getTotalSum(pager);
+	}
+
 	
 	
 }

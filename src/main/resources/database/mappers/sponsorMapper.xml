@@ -6,7 +6,7 @@
 <mapper namespace="com.karma_and_tumblbug.p1.sponsor.SponsorDAO">
 
 	<insert id="setInsert" parameterType="SponsorDTO">
-		insert into sponsor value(spon_seq.nextval, #{sponSort}, #{payment},
+		insert into sponsor values(spon_seq.nextval, #{sponSort}, #{payment},
     #{money}, sysdate, #{lastPay}, #{sponMonth}, #{totalMoney},
     #{name}, #{phone}, #{email}, #{address}, #{id})
 	</insert>
@@ -15,20 +15,21 @@
 	</delete>
 
  	<select id="getSelect" parameterType="SponsorDTO" resultType="SponsorDTO">
-   		 select * from sponsor where id = #{id}
+   		 select * from sponsor where sponNum=#{sponNum}
  	</select>
   
   	<select id="getList" parameterType="Pager" resultType="SponsorDTO">
-    	 select * from
-			(select rownum R, N.* from 
-				(select * from sponsor where 
+    	 select * from 
+    	 (select rownum R, N.* from 
+				(select * from sponsor 
+				where 
 				<choose>
-				   <when test="kind =='Month'">
-				       month
+				   <when test="kind =='Id'"> 
+				       id
 				   </when>
 				   
-				   <when test="kind =='Id'">
-				       id
+				   <when test="kind =='Name'">
+				        name
 				   </when>
 				   
 				   <otherwise>
@@ -37,20 +38,78 @@
 				   
 				 </choose>
 				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
-		where R between #{startRow} and #{lastRow}
-	  
+		  
+    	  where R between #{startRow} and #{lastRow}
+    
+			
     </select>
+    
+    <select id="getListMon" parameterType="Pager" resultType="SponsorDTO">
+      
+        select * 
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+   where R between #{startRow} and #{lastRow}
+    
+    </select>
+    
+    <select id="getTotalCountMon" resultType="Long" parameterType="Pager">
+	    select count(sponNum)
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+	  </select>
+	  
+	  <select id="getTotalSumMon" resultType="Long" parameterType="Pager">
+	       select sum(money)
+        from 
+        (select rownum R, N.*  
+        from 
+            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l)
+	  </select>
+	  
+    
+    
     
      <select id="getTotalCount" resultType="Long" parameterType="Pager">
 	      select count(sponNum) from sponsor
 	      where
 	      <choose>
-				   <when test="kind =='Month'">
-				       month
+				   <when test="kind =='Id'"> 
+				       id
 				   </when>
 				   
-				   <when test="kind =='Id'">
+				   <when test="kind =='Name'">
+				        name
+				   </when>
+				   
+				   <otherwise>
+				       sponSort
+				   </otherwise>
+				   
+				 </choose>
+				 like '%'||#{search}||'%' and sponNum > 0
+	  </select>
+	  
+	   <select id="getTotalSum" resultType="Long" parameterType="Pager">
+	      select sum(totalMoney) from sponsor
+	      where
+	      <choose>
+				  <when test="kind =='Id'"> 
 				       id
+				   </when>
+				   
+				   <when test="kind =='Name'">
+				        name
 				   </when>
 				   
 				   <otherwise>

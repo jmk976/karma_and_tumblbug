@@ -38,6 +38,9 @@
         <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">마이페이지Sponsor</a>
+    </li>
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
