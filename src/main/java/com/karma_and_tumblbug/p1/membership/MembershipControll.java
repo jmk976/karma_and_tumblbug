@@ -4,9 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value="/membership/**")
@@ -15,6 +17,18 @@ public class MembershipControll {
 	@Autowired
 	private MembershipService membershipService;
 
+	
+	@GetMapping(value="joinCheck")
+	public String getIdCheck(MembershipDTO membershipDTO, Model model)throws Exception{
+		membershipDTO = membershipService.getIdCheck(membershipDTO);
+		String result = "불가";
+		if(membershipDTO == null) {
+			result = "가능";
+		}
+		model.addAttribute("result", result);
+		
+		return "common/ajaxResult";
+	}
 
 	@GetMapping(value="login")
 	public void login()throws Exception{
@@ -22,10 +36,19 @@ public class MembershipControll {
 	}
 
 	@PostMapping(value="login")
-	public String login(MembershipDTO membershipDTO,HttpSession session) throws Exception{
+	public ModelAndView login(MembershipDTO membershipDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(membershipDTO.getId());
+		System.out.println(membershipDTO.getPw());
+		mv.addObject("dto", membershipDTO);
+		String path="membership/login";
 		membershipDTO = membershipService.login(membershipDTO);
-		session.setAttribute("membership", membershipDTO);
-		return "redirect:../";
+		if(membershipDTO!=null) {
+			session.setAttribute("membership", membershipDTO);
+			path="redirect:../";
+		}
+		mv.setViewName(path);
+		return mv;
 	}
 
 	@GetMapping(value="logout")
@@ -41,6 +64,7 @@ public class MembershipControll {
 
 	@PostMapping(value="join")
 	public String join(MembershipDTO membershipDTO) throws Exception{
+		membershipDTO.setBirth(membershipDTO.getBirth().replace(",", "-"));
 		int result = membershipService.join(membershipDTO);
 		return "redirect:../";
 	}
@@ -55,6 +79,7 @@ public class MembershipControll {
 	
 	@PostMapping(value="update")
 	public String update(MembershipDTO membershipDTO, HttpSession session) throws Exception{
+		membershipDTO.setBirth(membershipDTO.getBirth().replace(",", "-"));
 		int result = membershipService.update(membershipDTO);
 		session.setAttribute("membership", membershipDTO);
 		return "redirect:./memberPage";
