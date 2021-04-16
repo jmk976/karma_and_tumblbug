@@ -9,22 +9,21 @@
 <body>
 	<div class="container">
 		<h2>배송지 수정</h2>
-		<!-- 지도 입력으로 받아온 주소 ... 띄워주기 -->
 		<form id="frm" action="./shippingUpdate" method="post"
 			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="shipName">받는 사람</label> <input type="text"
-					class="form-control myCheck" value="${shipping.shipName}"
+					class="form-control myCheck" value="${dto.shipName}"
 					id="shipName" name="shipName">
 			</div>
 			<div class="form-group">
 				<label for="shipAddress">주소</label> <input type="text"
-					class="form-control myCheck" value="${shipping.shipAddress}"
+					class="form-control myCheck" value="${dto.shipAddress}"
 					id="shipAddress" name="shipAddress">
 			</div>
 			<div class="form-group">
 				<label for="shipPhone">받는 사람 휴대폰 번호</label> <input type="text"
-					class="form-control myCheck" value="${shipping.shipPhone}"
+					class="form-control myCheck" value="${dto.shipPhone}"
 					id="shipPhone" name="shipPhone">
 			</div>
 			<div class="form-check">

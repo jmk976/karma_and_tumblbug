@@ -23,48 +23,48 @@ public class ShippingController {
 	@Autowired
 	private ShippingService shippingService;
 	
-	@GetMapping("shippingUpdate")
-	public void setUpdate(ShippingDTO shippingDTO, Model model)throws Exception{
-		shippingDTO = shippingService.getSelect(shippingDTO);
-		model.addAttribute("dto", shippingDTO);
-	}
-	
-	@PostMapping("shippingUpdate")
-	public String setUpdate(ShippingDTO shippingDTO)throws Exception{
-		int result = shippingService.setUpdate(shippingDTO);
-		return "redirect:./shippingList";
-	}
-	
-	
+//	@GetMapping("shippingUpdate")
+//	public void setUpdate(ShippingDTO shippingDTO, Model model)throws Exception{
+//		shippingDTO = shippingService.getSelect(shippingDTO);
+//		model.addAttribute("dto", shippingDTO);
+//	}
+//	
+//	@PostMapping("shippingUpdate")
+//	public String setUpdate(ShippingDTO shippingDTO)throws Exception{
+//		int result = shippingService.setUpdate(shippingDTO);
+//		return "redirect:./shippingList";
+//	}
+//	
+//	
 	
 	//업데이트
-//	@PostMapping("shippingUpdate")
-//	public ModelAndView setUpdate(ShippingDTO shippingDTO, ModelAndView mv)throws Exception{
-//		int result = shippingService.setUpdate(shippingDTO);
-//		if(result>0) {
-//			//성공시 리스트로
-//			mv.setViewName("redirect:./shippingList");
-//		}else {
-//			mv.addObject("msg", "X 수정 실패 X");
-//			mv.addObject("path", "./shippingList");
-//			mv.setViewName("common/commonResult");
-//		}
-//		return mv;
-//	}
+	@PostMapping("shippingUpdate")
+	public ModelAndView setUpdate(ShippingDTO shippingDTO, ModelAndView mv)throws Exception{
+		int result = shippingService.setUpdate(shippingDTO);
+		if(result>0) {
+			//성공시 리스트로
+			mv.setViewName("redirect:./shippingList");
+		}else {
+			mv.addObject("msg", "X 수정 실패 X");
+			mv.addObject("path", "./shippingList");
+			mv.setViewName("common/commonResult");
+		}
+		return mv;
+	}
 	
 	
-//	@GetMapping("shippingUpdate")
-//	public ModelAndView setUpdate(ShippingDTO shippingDTO)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		shippingDTO = shippingService.getSelect(shippingDTO);
-//		mv.addObject("dto", shippingDTO);
-//		mv.setViewName("shipping/shippingUpdate");
-//		
-//		return mv;
-//	}
+	@GetMapping("shippingUpdate")
+	public ModelAndView setUpdate(ShippingDTO shippingDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		shippingDTO = shippingService.getSelect(shippingDTO);
+		mv.addObject("dto", shippingDTO);
+		mv.setViewName("shipping/shippingUpdate");
+		
+		return mv;
+	}
 	
 	//삭제
-	@PostMapping("shippingDelete")
+	@RequestMapping("shippingDelete")
 	public ModelAndView setDelete(ShippingDTO shippingDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = shippingService.setDelete(shippingDTO);
