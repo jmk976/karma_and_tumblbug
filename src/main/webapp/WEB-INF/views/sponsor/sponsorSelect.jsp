@@ -6,8 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
+
 
 
 <div class="container">
@@ -26,7 +29,7 @@
     <c:if test="${dto.sponSort =='일시후원'}">
         <h3>결제일 : ${dto.firstPay}</h3> 
     </c:if> 
-    
+     후원번호: ${dto.sponNum}
 </div>
      
 		

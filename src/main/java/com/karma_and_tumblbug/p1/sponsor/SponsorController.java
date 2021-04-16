@@ -34,15 +34,17 @@ public class SponsorController {
 	
 	@PostMapping("sponsorJoin")
 	public String setInsert(SponsorDTO sponsorDTO, Model model) throws Exception {
+		
+		System.out.println(sponsorDTO.getLastPay());
 		int result = sponsorService.setInsert(sponsorDTO);
 		String message="후원 신청이 실패했습니다. 다시 시도해주세요.";
-		   
+		String path="./sponsorCheck";
 		if(result>0) {
 			message="후원해주셔서 감사합니다.";
-		    
+		    path="../";
 		}
 		model.addAttribute("msg", message);
-		model.addAttribute("path","./sponsorJoin");
+		model.addAttribute("path",path);
 		return "common/commonResult";
 		
 	}
@@ -70,6 +72,10 @@ public class SponsorController {
 		System.out.println("Service 호출전: "+pager.getTotalPage());
 		List<SponsorDTO> ar = sponsorService.getList(pager);
 		System.out.println("Service 호출: "+pager.getTotalPage());
+		
+		Long totalSum = sponsorService.getTotalSum(pager);
+		
+		modelAndView.addObject("totalSum", totalSum);
 
 
 		modelAndView.addObject("list", ar);
@@ -77,4 +83,32 @@ public class SponsorController {
 		modelAndView.addObject("pager",pager);
 		return modelAndView;
 	}
+	
+	@GetMapping("sponsorListMon")
+	public ModelAndView getListMon(Pager pager)throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		List<SponsorDTO> arr = sponsorService.getListMon(pager);
+		System.out.println("list service호출후 get search: "+pager.getSearch());
+		
+		
+     	
+		Long totalSumMon = sponsorService.getTotalSumMon(pager);
+		if(totalSumMon == null) {
+			System.out.println("r괜찮다");
+		   totalSumMon =(long) 0;
+			
+		}else {
+		modelAndView.addObject("totalSumMon", totalSumMon);
+		}
+
+      
+		modelAndView.addObject("listMon", arr);
+		modelAndView.addObject("pagerMon",pager);
+		modelAndView.setViewName("sponsor/sponsorListMon");
+		return modelAndView;
+	}
+	
+	
+	
+
 }

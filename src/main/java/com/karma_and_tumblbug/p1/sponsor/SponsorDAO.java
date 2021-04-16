@@ -1,5 +1,6 @@
 package com.karma_and_tumblbug.p1.sponsor;
 
+import java.awt.print.Paper;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,24 @@ public class SponsorDAO {
 		return sqlSession.selectList(NAMESPACE+"getList",pager);
 	}
 	
-	public long getTotalCount(Pager pager) throws Exception {
+	public List<SponsorDTO> getListMon(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getListMon", pager);
+	}
+	
+	public Long getTotalSumMon(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalSumMon", pager);	
+	}
+	
+	public Long getTotalCountMon(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCountMon", pager);
+	}
+
+	
+	public Long getTotalSum(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalSum", pager);
+	}
+	
+	public Long getTotalCount(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
