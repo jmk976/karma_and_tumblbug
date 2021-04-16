@@ -94,7 +94,7 @@
 
     	<option class="sel">Name</option>
     	<option class="sel">Id</option>
-    	<option class="sel">SponSort</option>
+    	<option class="sel" selected>SponSort</option>
  	 </select>
   </div>
   

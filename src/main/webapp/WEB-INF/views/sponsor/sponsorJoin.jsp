@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.mr-sm-2{
+ width: 100%;
+ display:inline-block;
+}
+
+</style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
@@ -54,27 +61,36 @@
   </div>
   
   
-    <div class="form-group">
    
-     
-        <label for="firstPay" class="mr-sm-2">첫 결제일</label>
-  		<input id="firstPay" type="date" class="myCheck">
-		  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
-		  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" name="sponMonth" value="3" id="sponMonth">
-		   개월 
-		  
-		  <input type="button" id="cal" class="btn btn-primary mb-2" value="계산하기" />
-	
-   </div>
-   <div class="form-group">
    
+   <div class="row">
+	  	  <div class="col">
+	        <label for="firstPay" class="mr-sm-2">첫 결제일</label>
+	  		<input id="firstPay" type="date" class="myCheck">
+	  		</div>
+	  		<div class="col">
+			  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
+			  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" name="sponMonth" value="3" id="sponMonth">
+			   개월 
+			   </div>
+			 
+			  <input type="button" id="cal" class="btn btn-primary mb-2 display:inline-block;" value="계산하기" />
+	    
+	       </div>
+ 
+   <div class="row">
+   <div class="col">
         <label for="lastPay" class="mr-sm-2">최종 결제일</label>
-  		<input type="text" class="form-control mb-2 mr-sm-2" placeholder="자동입력" name="lastPay" id="lastPay">
-  		
+  		<input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2" placeholder="자동입력" name="lastPay" id="lastPay">
+  		   </div>
+  		   <div class="col">
 		  <label for="totalMoney" class="mr-sm-2">총 금액</label>
-		  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" placeholder="자동입력" name="totalMoney" id="totalMoney">
+		  <input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2 myCheck" placeholder="자동입력" name="totalMoney" id="totalMoney">
 		   원
-   </div>
+		   </div>
+		   </div>
+		   
+   
   
   
   
@@ -109,16 +125,19 @@
    
  
   
-  <input type="submit" id="btn" value="결제" class="btn btn-primary">
+  <input type="button" id="btnRegular" value="결제" class="btn btn-primary">
   <a href="./sponsorCheck"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
 </form></div>
+
+
+
 
 </c:if>
 
 <c:if test="${dto.sponSort=='일시후원'}">
 
 <div class ="container">
-		<h2> 정기후원 신청 </h2>
+		<h2> 일시후원 신청 </h2>
 	<form id="frm" action="./sponsorJoin" method="post" enctype="multipart/form-data">
 	
   	<div class="row">
@@ -133,7 +152,7 @@
 	   	  </div>
 	   	  <div class="col">
 	   		    <label for="sponSort"> 후원분류 </label>
-	     		<input type="text" readonly="readonly" class="form-control" value="${dto.sponSort}" name="sponSort">
+	     		<input type="text" readonly="readonly" class="form-control" value="${dto.sponSort}" name="sponSort" id="sponSort">
 	   	  </div>
   	</div>
   	
@@ -162,7 +181,7 @@
     <div class="form-group">
         
   	   <input type="hidden" id="firstPay" name="firstPay">
-  	    <input type="hidden" id="lastPay" name="lastPay" value="">
+  	    <input type="hidden" id="lastPay" name="lastPay" >
 	   <input type="hidden" class="form-control mb-2 mr-sm-2 myCheck" name="sponMonth" value="1" id="sponMonth">
 	   <input type="hidden" class="form-control mb-2 mr-sm-2 myCheck"  name="totalMoney" value="5000" id="totalMoney">
 		 
@@ -201,11 +220,9 @@
    
  
   
-  <input type="submit" id="btn" value="결제" class="btn btn-primary">
-  <a href="./sponsorCheck"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
+  <input type="button" id="btnGeneral" value="결제" class="btn btn-primary">
+  <a href="./sponsorCheck"><input type="button" id="back" value="취소" class="can btn-primary"></a>
 </form></div>
-
-
 <script type="text/javascript">
 
 $("#money").blur(function(){
@@ -219,8 +236,13 @@ $("#document").ready(function(){
 });
 </script>
 
-
 </c:if>
+
+
+
+
+
+
 
 
 
