@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 삭제페이지여요~
+ 삭제페이지
 </body>
 </html>
