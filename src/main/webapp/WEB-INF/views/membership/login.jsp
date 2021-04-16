@@ -32,6 +32,7 @@ h1 {
 					<td>password</td>
 					<td><input type="password" name="pw"></td>
 				</tr>
+	<h1>LOGIN</h1>
 
 			</tbody>
 		</table>
