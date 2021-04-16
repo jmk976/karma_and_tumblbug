@@ -20,6 +20,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h2>등록된 배송지</h2>
+	<h1>ship hsp ship ship hisp hsip hsip</h1>
 
 	<a href="./shippingInsert" type="button" class="btn btn-primary">+추가</a>
 	<c:forEach items="${list}" var="dto">
