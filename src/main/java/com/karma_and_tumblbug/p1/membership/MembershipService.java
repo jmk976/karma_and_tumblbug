@@ -22,4 +22,7 @@ public class MembershipService {
 	public int delete(MembershipDTO membershipDTO) throws Exception{
 		return membershipDAO.delete(membershipDTO);
 	}
+	public MembershipDTO getIdCheck(MembershipDTO membershipDTO) throws Exception{
+		return membershipDAO.getIdCheck(membershipDTO);
+	}
 }

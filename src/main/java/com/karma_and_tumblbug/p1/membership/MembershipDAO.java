@@ -25,4 +25,7 @@ public class MembershipDAO {
 	public int delete(MembershipDTO membershipDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delete", membershipDTO);
 	}
+	public MembershipDTO getIdCheck(MembershipDTO membershipDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getIdCheck", membershipDTO);
+	}
 }
