@@ -48,7 +48,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	</div>
+	
 	
  <%-- <c:catch>
 	<c:if test="${member.id=='admin'}">
@@ -87,7 +87,11 @@
   
   <div class="input-group mt-3 mb-3">
   
-<form id="frm" action="./sponsorList" class="form-inline">
+  
+  <c:catch>
+  <c:if test="${membership.id == 'admin'}">
+  
+  <form id="frm" action="./sponsorList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
   <div class="input-group-prepend">
    	<select class="form-control" name="kind" id="kind">
@@ -107,11 +111,15 @@
  </div>
  
   <a href="./sponsorListMon" class="btn btn-info" role="button">  월별 총 후원 금액 보기 </a>
- 
- 
+  
+  
+  </c:if>
+  </c:catch>
+  
 
 
 
+</div>
    
 
   <script type="text/javascript">

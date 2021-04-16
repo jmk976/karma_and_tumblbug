@@ -61,7 +61,7 @@ public class SponsorService {
 	
 	}
 	
-	public long getTotalSum(Pager pager) throws Exception{
+	public Long getTotalSum(Pager pager) throws Exception{
 		return sponsorDAO.getTotalSum(pager);
 	}
 

@@ -26,6 +26,8 @@
       <div class="dropdown-menu">
 		<a class="dropdown-item" href="${pageContext.request.contextPath}/membership/memberPage">MyPage</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/payment/paymentList">Payment</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
+        
       </div>
     </li>
         <li class="nav-item">
@@ -38,9 +40,7 @@
         <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">마이페이지Sponsor</a>
-    </li>
+    
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">

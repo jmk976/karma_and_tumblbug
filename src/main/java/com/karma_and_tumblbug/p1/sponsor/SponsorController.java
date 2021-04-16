@@ -73,7 +73,7 @@ public class SponsorController {
 		List<SponsorDTO> ar = sponsorService.getList(pager);
 		System.out.println("Service 호출: "+pager.getTotalPage());
 		
-		long totalSum = sponsorService.getTotalSum(pager);
+		Long totalSum = sponsorService.getTotalSum(pager);
 		
 		modelAndView.addObject("totalSum", totalSum);
 

@@ -13,6 +13,12 @@
 <div class="container">
 	
 	<h2> ${pagerMon.search} 월 후원현황</h2>
+	 <div class="card bg-light text-dark">
+    	<div class="card-body">
+    		<h5 class="card-title">총 금액</h5>
+    		<p class="card-text"> ${totalSumMon} 원</p>
+   		 </div>
+  	</div>
 
 	<table class ="table">
 	
@@ -56,12 +62,7 @@
  
  	
    
-    <div class="card bg-light text-dark">
-    	<div class="card-body">
-    		<h5 class="card-title">총 금액</h5>
-    		<p class="card-text"> ${totalSumMon} 원</p>
-   		 </div>
-  	</div>
+   
  	
  	
  	<div class="container">

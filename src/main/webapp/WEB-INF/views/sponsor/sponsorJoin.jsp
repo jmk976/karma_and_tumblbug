@@ -21,7 +21,7 @@
 <c:if test="${dto.sponSort=='정기후원'}">
 <div class ="container">
 		<h2> 정기후원 신청 </h2>
-	<form id="frm" action="./sponsorJoin" method="post" enctype="multipart/form-data">
+	<form id="frmReg" action="./sponsorJoin" method="post" enctype="multipart/form-data">
 	
   	<div class="row">
 	  	  <div class="col">
@@ -97,11 +97,14 @@
   <div class="form-group"> 
     <label for="name">Name</label>
     <input type="text" class="form-control etc myCheck" value="${membership.name}" id="name" name="name" >
+    <small id="nameHelp" class="form-text text-muted" style="color:red">필수요소</small>
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
     <input type="text" class="form-control etc myCheck" value="${membership.phone}"id="phone" name="phone" >
+       <small id="phoneHelp" class="form-text text-muted" style="color:red">필수요소</small>
+   
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
@@ -118,7 +121,7 @@
       <input type="hidden" class="form-control etc" value="${membership.id}" id="id" name="id" >
   
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <input type="checkbox" class="form-check-input" id="agreeCheck">
     <label class="form-check-label" for="exampleCheck1"> 선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
   </div>
   
@@ -192,11 +195,15 @@
   <div class="form-group"> 
     <label for="name">Name</label>
     <input type="text" class="form-control etc myCheck" value="${membership.name}" id="name" name="name" >
+    <small id="nameHelp" class="form-text text-muted" style="color:red">필수요소</small>
+    
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
     <input type="text" class="form-control etc myCheck" value="${membership.phone}"id="phone" name="phone" >
+    <small id="phoneHelp" class="form-text text-muted" style="color:red">필수요소</small>
+   
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
@@ -213,7 +220,7 @@
       <input type="hidden" class="form-control etc" value="${membership.id}" id="id" name="id" >
   
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <input type="checkbox" class="form-check-input" id="agreeCheck">
     <label class="form-check-label" for="exampleCheck1"> 선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
   </div>
   
@@ -244,11 +251,8 @@ $("#document").ready(function(){
 
 
 
-
-
-
-  <script type="text/javascript" src="../resources/jquery/sponsorJoin.js">
-</script>
+  <script type="text/javascript" src="../resources/jquery/sponsorJoin2.js"></script>
+  <script type="text/javascript" src="../resources/jquery/sponsorJoin.js"></script>
  
     
 </body>

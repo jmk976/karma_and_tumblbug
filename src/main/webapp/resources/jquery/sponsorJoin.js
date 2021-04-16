@@ -2,41 +2,39 @@
  * 
  */
 
-			let d = new Date()
-			let monthOfYear = d.getMonth()
-			let sponMonth = $("#sponMonth").val();
-		  sponMonth = Number(sponMonth);
-		  d.setMonth(monthOfYear + sponMonth-1);
-		 let lastPay = getDateStr(d)
-	
-	let totalMoney = $("#sponMonth").val()*$("#money").val()
-		
-	
+
 	$("#cal").click(function(){
+	
 			let d = new Date()
 			let monthOfYear = d.getMonth()
-			let sponMonth = $("#sponMonth").val();
-		  sponMonth = Number(sponMonth);
+			   sponMonth = Number($("#sponMonth").val());
+				if(sponMonth<1){
+				  sponMonth =1;
+		          $("#sponMonth").val(1);
+				  alert("납부개월을 1개월 이하로 설정할 수 없습니다.");
+				
+				}
 		  d.setMonth(monthOfYear + sponMonth-1);
 		 let lastPay = getDateStr(d)
-		let totalMoney = $("#sponMonth").val()*$("#money").val()
+	
+		  let totalMoney = sponMonth*$("#money").val()
 		
 		$("#totalMoney").val(totalMoney);
 		
-		 
-	
-	      
+
 		$("#lastPay").val(lastPay);
 		  
-      
-		
 	});
+
+	
 
 
  $("#btnRegular").click(function(){
-		alert("ver9")
+		//alert("ver1")
 		
 		let result = true;
+	    let cal =true;
+        let agree =true;
 		
 		$(".myCheck").each(function(s1, s2){
 			console.log(s1);
@@ -48,81 +46,63 @@
 				}
 		
 		});
-	 alert(lastPay);
-     alert($("#lastPay").val());
+		
+	
 
 /* 납부 개월 검사 */
-if($("#sponMonth").val()<1){
-	$("#sponMonth").val(1);
-}
-
-alert($("#sponMonth").val());
 
 /* 최종 후원일 , 총 금액 검사 */
 
-	
-alert('정기후원들어');
-	 if(lastPay != $("#lastPay").val()){
-		alert("계산하기를 다시 눌러주세요.");
-		result= false;
-	   }
-    if(totalMoney != $("#totalMoney").val()){
-		alert("계산하기를 다시 눌러주세요.");
-		result= false;
-	   }
-
-
-
-	
-		
-	if(result){
-		
-		$("#frm").submit();
-		}else {
-			alert("필수요소를 입력하세요 ");
-			
-		}
-
-		
-	});
-	
-	
-	
-	$("#btnGeneral").click(function(){
-		alert("ver6")
-		
-		let result = true;
-		
-		$(".myCheck").each(function(s1, s2){
-			console.log(s1);
-				console.log($(s2).val());
-				console.log($(this).val());
+let d = new Date()
+let monthOfYear = d.getMonth()
+sponMonth = Number($("#sponMonth").val());
+	if(sponMonth<1){
+				  sponMonth =1;
+		          $("#sponMonth").val(1);
+				  alert("납부개월을 1개월 이하로 설정할 수 없습니다.");
 				
-				if($(this).val()==""){
-					result = false;
 				}
-		
-		});
-	 alert(lastPay);
-     alert($("#lastPay").val());
+	 d.setMonth(monthOfYear + sponMonth-1);
+ let lastPay = getDateStr(d)
+	
+ let totalMoney = sponMonth*$("#money").val()
+
+	
 
 
-		
-	if(result){
-		
-		$("#frm").submit();
-		}else {
-			alert("필수요소를 입력하세요 ");
-			
-		}
+	 if(lastPay != $("#lastPay").val() || totalMoney != $("#totalMoney").val()){
+		alert("계산하기를 다시 눌러주세요.");
+		cal= false;
+	   };
 
+    
+
+
+/*   동의 체크 확인  */
+     let agreeCheck =$("#agreeCheck").prop("checked");
+		if(!agreeCheck){
+			alert("동의 체크해주셔야 진행하실 수 있습니다.");
+			agree=false;
+			}
 		
-	});
- 
- 
- 
- 
-	window.onload = function() {
+
+	
+		
+if(result){
+	if(agree){
+		if(cal){
+			$("#frmReg").submit()
+				}
+			 }
+	}else {
+			alert("이름과 연락처를 작성했는지 확인해주세요.")
+	
+	}
+		
+});
+
+
+window.onload = function() {
 		today = new Date();
 		console.log("today.toISOString() >>>" + today.toISOString());
 		today = today.toISOString().slice(0, 10);
@@ -157,4 +137,6 @@ alert('정기후원들어');
 	  d.setMonth(monthOfYear + sponMonth);
 	  return getDateStr(d)
 	}
+	
+	
 	

@@ -30,16 +30,16 @@ public class SponsorDAO {
 		return sqlSession.selectOne(NAMESPACE+"getTotalSumMon", pager);	
 	}
 	
-	public long getTotalCountMon(Pager pager) throws Exception {
+	public Long getTotalCountMon(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCountMon", pager);
 	}
 
 	
-	public long getTotalSum(Pager pager) throws Exception {
+	public Long getTotalSum(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalSum", pager);
 	}
 	
-	public long getTotalCount(Pager pager) throws Exception {
+	public Long getTotalCount(Pager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
