@@ -66,7 +66,7 @@
    <div class="row">
 	  	  <div class="col">
 	        <label for="firstPay" class="mr-sm-2">첫 결제일</label>
-	  		<input id="firstPay" type="date" class="myCheck">
+	  		<input id="firstPay" readonly="readonly" type="date" class="myCheck">
 	  		</div>
 	  		<div class="col">
 			  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
@@ -228,8 +228,10 @@
  
   
   <input type="button" id="btnGeneral" value="결제" class="btn btn-primary">
-  <a href="./sponsorCheck"><input type="button" id="back" value="취소" class="can btn-primary"></a>
-</form></div>
+ <button type="button" id="back" onclick="location.href='./sponsorCheck'"  class="btn btn-primary">취소</button>
+</form>
+</div>
+
 <script type="text/javascript">
 
 $("#money").blur(function(){
