@@ -7,6 +7,9 @@ let cNumber = false;
 let expiration = false;
 let security = false;
 let ownerBirth = false;
+let check =  $("#agreeCheck").is(":checked");
+$("#checkResult").hide();
+
 
 cNumberCheck = function(){
 	
@@ -25,9 +28,9 @@ cNumberCheck = function(){
 	}
 }
 
-
+/*
 $(".cardNumber").blur(cNumberCheck);
-
+*/
 
 
 expirationCheck = function(){
@@ -76,14 +79,25 @@ $("#ownerBirth").blur(birthCheck);
 
 
 $("#addBtn").click(function(){
+	check =  $("#agreeCheck").is(":checked");
 	cNumberCheck();
 	expirationCheck();
 	sNumberCheck();
 	birthCheck();
-	if(cNumber && expiration && security && ownerBirth){
-		$("#frm").submit();
-		setTimeout(
-			opener.location.reload()
-		,2000);
+	/*
+	$("#default").val($("#default").is(":checked"));
+	alert($("#default").val());
+	*/
+	if(!check){
+		$("#checkResult").text("결제사 정보제공에 동의하셔야 합니다.");
+		$("#checkResult").show();
+	}else{
+		$("#checkResult").hide();
 	}
+	
+	if(cNumber && expiration && security && ownerBirth && check){
+		
+		$("#frm").submit();
+		
+		}
 });

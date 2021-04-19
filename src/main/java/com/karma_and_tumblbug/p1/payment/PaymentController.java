@@ -54,7 +54,7 @@ public class PaymentController {
 	
 	@PostMapping(value="paymentInsert")
 	public String getInsertAccount(PaymentDTO paymentDTO) throws Exception{
-
+		System.out.println(paymentDTO.getDefaultMethod());
 		System.out.println(paymentDTO.getId());
 		System.out.println(paymentDTO.getDivision());
 		System.out.println(paymentDTO.getBankName());

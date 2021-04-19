@@ -99,8 +99,10 @@ color:red;
 			</table>
 			
 			<div>
-			<input type="checkbox">결제사 정보제공 동의 <a href="#">내용보기</a> <br>
-			<input type="checkbox">기본 결제수단으로 등록 <br> 
+			<input type="checkbox" id="agreeCheck">결제사 정보제공 동의 <a href="#">내용보기</a> <br>
+			<p id="checkResult" ></p>
+			<p hidden="hidden"><input type="checkbox" name="defaultMethod" value="false" checked="checked">false</p>
+			<input type="checkbox" name="defaultMethod" id="default" value="true">기본 결제수단으로 등록 <br> 
 			</div>
 
 		</form>

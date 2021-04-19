@@ -17,7 +17,9 @@
 		<c:forEach items="${list}" var="pay">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title">${pay.division}</h5>
+				<div>
+					<h5 class="card-title">${pay.division}<span style="color:red;">기본</span></h5>
+				</div>
 					<c:if test="${pay.division eq 'account'}">
 						<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
 						<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>

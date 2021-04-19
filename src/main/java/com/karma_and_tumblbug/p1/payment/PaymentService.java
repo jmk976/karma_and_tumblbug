@@ -18,6 +18,27 @@ public class PaymentService {
 		return paymentDAO.setDelete(paymentDTO);
 	}
 	public int setInsert(PaymentDTO paymentDTO) throws Exception{
+		String division = paymentDTO.getDivision();
+		System.out.println(division);
+		if(division.equals("account")) {
+			String str = paymentDTO.getBankAccount();
+			System.out.println(str);
+			str = str.replace(",", "-");
+			paymentDTO.setBankAccount(str);
+		}
+		
+		if(division.equals("card")) {
+			String str = paymentDTO.getCardNumber();
+			System.out.println(str);
+			str = str.replace(",", "");
+			System.out.println(str);
+			paymentDTO.setCardNumber(str);
+			String str2 = paymentDTO.getExpirationDate();
+			str2 = str2.replace(",", "/");
+			paymentDTO.setExpirationDate(str2);
+			System.out.println(str2);
+		}
+		
 		return paymentDAO.setInsert(paymentDTO);
 	}
 	

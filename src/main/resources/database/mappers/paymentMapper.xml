@@ -14,8 +14,13 @@ delete from payment where num=#{num}
 </delete>
 
 <insert id="setInsert" parameterType="PaymentDTO">
-insert into payment values(payment_seq.nextval,#{id},#{division},#{bankName},#{bankAccount},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
+insert into payment values(payment_seq.nextval,#{id},#{division},#{defaultMethod},#{bankName},#{bankAccount},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
 </insert>
+
+<update id="setUpdate" parameterType="paymentDTO">
+update payment set
+num=#{num},id=#{id},division=#{division}
+</update>
 
 
 </mapper>
