@@ -35,5 +35,6 @@
 		<a type="button" class="btn btn-primary" id="addBtn">결제 수단 추가 </a>
 	</div>
 <script type="text/javascript" src="../resources/jquery/paymentList.js"></script>
+
 </body>
 </html>

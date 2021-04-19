@@ -7,6 +7,16 @@
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
 
+<style type="text/css">
+p {
+	height: 15px;
+	color: red;
+}
+.r {
+color:red;
+}
+</style>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,26 +26,45 @@
 
 	<div class="container">
 		<form action="./paymentInsert" method="post" id="frm">
-			<div class="form-group">
-				<input type="hidden" name="id" value="${membership.id}">
-				<input type="hidden" name="division" value="card">
-			<input type="hidden" name="bankName" value="inull">
-			<input type="hidden" name="bankAccount" value="inull">
-			<input type="hidden" name="ownerName" value="inull">
+
+			<input type="hidden" name="id" value="${membership.id}"> <input
+				type="hidden" name="division" value="card"> <input
+				type="hidden" name="bankName" value="inull"> <input
+				type="hidden" name="bankAccount" value="inull"> <input
+				type="hidden" name="ownerName" value="inull">
+
 			
-				<label for="cardNumber">카드번호</label> <input type="text" class="form-control"
-					id="cardNumber" name="cardNumber">
+
+			<div>
+				<label for="cardNumber">카드번호</label>
+			<div class="input-group mb-3 form-control cardNumberDiv" style="border: solid 1px; height:50px;" >
+				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
+				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
+				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
+				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">
+				</div>
+				<p id="cardNumberResult"></p>
 			</div>
 			<div class="form-group">
-				<label for="expirationDate">카드 유효기간</label> <select class="expirationDate" name="expirationDate">
+				<label for="expirationDate">카드 유효기간</label>
+				<select class="expirationDate" name="expirationDate" id="expirationMonth">
+						<option> 월 </option>
 					<c:forEach begin="1" end="12" var="i">
-						<option>${i}월</option>
-					</c:forEach>
-				</select> <select class="expirationDate" name="expirationDate">
-					<c:forEach begin="2021" end="2031" var="i">
-						<option>${i}</option>
+					<c:if test="${i<10}">
+						<option value="0${i}">${i}월</option>
+					</c:if>
+					<c:if test="${i>9}">
+						<option value="${i}">${i}월</option>
+					</c:if>
 					</c:forEach>
 				</select>
+				<select class="expirationDate" name="expirationDate" id="expirationYear">
+						<option> 년 </option>
+					<c:forEach begin="21" end="31" var="i">
+						<option value="${i}">20${i}</option>
+					</c:forEach>
+				</select>
+				<p id="expirationDateResult"></p>
 			</div>
 
 			<table class="table">
@@ -46,25 +75,37 @@
 							<div class="form-group">
 								<label for="securityNumber">카드 비밀번호 앞 두자리</label> <input
 									type="password" inputmode="numeric" pattern="[0-9]*"
-									class="form-control" id="securityNumber" name="securityNumber"
-									autocomplete="off">
+									class="form-control" id="securityNumber" name="securityNumbe" placeholder="앞 2자리를 입력해 주세요." maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+									
 							</div>
 						</td>
 						<td>
 							<div class="form-group">
 								<label for="ownerBirth">소유주 생년월일</label> <input type="text"
-									class="form-control" id="ownerBirth" name="ownerBirth">
+									class="form-control" id="ownerBirth" name="ownerBirth" placeholder="예) 920101" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+									
 							</div>
 						</td>
 					</tr>
+					<tr>
+					<td>
+					<p id="securityNumberResult"></p>
+					</td>
+					<td>
+					<p id="ownerBirthResult"></p>
+					</td>
+					</tr>
 				</tbody>
 			</table>
+			
+			<div>
 			<input type="checkbox">결제사 정보제공 동의 <a href="#">내용보기</a> <br>
-			<input type="checkbox">기본 결제수단으로 등록 <br> <input
-				type="submit" class="btn btn-primary" value="join" id="btn">
+			<input type="checkbox">기본 결제수단으로 등록 <br> 
+			</div>
 
 		</form>
+			<a type="button" class="btn btn-primary" id="addBtn">Add Payment</a>
 	</div>
-
+<script type="text/javascript" src="../resources/jquery/paymentInsert_Card.js"></script>
 </body>
 </html>

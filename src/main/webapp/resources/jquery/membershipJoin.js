@@ -141,11 +141,8 @@ birthFunc=function(){
 	
 };
 
-$("#year").blur(birthFunc);
+$("#year, #month, #day").blur(birthFunc);
 
-$("#month").blur(birthFunc);
-
-$("#day").blur(birthFunc);
 
 
 phoneFunc=function(){

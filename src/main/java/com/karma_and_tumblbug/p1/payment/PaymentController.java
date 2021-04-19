@@ -66,7 +66,7 @@ public class PaymentController {
 		System.out.println(paymentDTO.getSecurityNumber());
 
 		int result = paymentService.setInsert(paymentDTO);
-		return "redirect:./paymentList";
+		return "payment/temp";
 	}
 	@PostMapping(value="card")
 	public void getInsertcard(PaymentDTO paymentDTO) throws Exception{
