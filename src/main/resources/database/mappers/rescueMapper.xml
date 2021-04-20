@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.karma_and_tumblbug.p1.rescue.rescueDAO">
-	<select id="getList" parameterType="RescueDTO" resultType="RescueDTO">
+<mapper namespace="com.karma_and_tumblbug.p1.rescue.RescueDAO">
+	<!-- <select id="getList" parameterType="RescueDTO" resultType="RescueDTO">
        select * from rescue 
        where
        
@@ -36,7 +36,7 @@
        </trim> 
        
        <![CDATA[ rownum <10 ]]>
-	</select>
+	</select> -->
 	
 	<insert id="setInsert" parameterType="RescueDTO">
 		insert into rescue values(#{status}, #{sn}, #{zoneSn}, #{resDate}, #{province}, #{city}, #{location}, 
