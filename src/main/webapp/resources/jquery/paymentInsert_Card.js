@@ -8,8 +8,9 @@ let expiration = false;
 let security = false;
 let ownerBirth = false;
 let check =  $("#agreeCheck").is(":checked");
+let isDefault = $("#default").is(":checked");
+$("#defaultMethod").val(isDefault);
 $("#checkResult").hide();
-
 
 cNumberCheck = function(){
 	
@@ -78,16 +79,22 @@ birthCheck = function(){
 $("#ownerBirth").blur(birthCheck);
 
 
+
+
+
+
+
+
+
 $("#addBtn").click(function(){
 	check =  $("#agreeCheck").is(":checked");
 	cNumberCheck();
 	expirationCheck();
 	sNumberCheck();
 	birthCheck();
-	/*
-	$("#default").val($("#default").is(":checked"));
-	alert($("#default").val());
-	*/
+	isDefault = $("#default").is(":checked");
+	$("#defaultMethod").val(isDefault);
+	
 	if(!check){
 		$("#checkResult").text("결제사 정보제공에 동의하셔야 합니다.");
 		$("#checkResult").show();

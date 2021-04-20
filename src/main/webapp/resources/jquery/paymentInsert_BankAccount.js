@@ -4,13 +4,17 @@
  */
 
 
-let check =  $("#agreeCheck").is(":checked");
-$("#checkResult").hide();
 
 let bankNameCheck = false;
 let accountCheck = false;
 let ownerNameCheck = false;
 let ownerBirth = false;
+let check =  $("#agreeCheck").is(":checked");
+let isDefault = $("#default").is(":checked");
+let isBusiness = $("#business").is(":checked");
+$("#businessResult").val(isBusiness);
+$("#defaultMethod").val(isDefault);
+$("#checkResult").hide();
 
 bName = function(){
 	bankNameCheck = false;
@@ -70,13 +74,16 @@ $("#ownerBirth").blur(oBirth);
 
 
 $("#addBtn").click(function(){
-	alert($("#buisness").is(":checked"));
 	check =  $("#agreeCheck").is(":checked");
 	bName();
 	account();
 	oName();
 	oBirth();
 	
+	isBusiness = $("#business").is(":checked");
+	$("#businessResult").val(isBusiness);
+	isDefault = $("#default").is(":checked");
+	$("#defaultMethod").val(isDefault);
 	
 	if(!check){
 		$("#checkResult").text("결제사 정보제공에 동의하셔야 합니다.");

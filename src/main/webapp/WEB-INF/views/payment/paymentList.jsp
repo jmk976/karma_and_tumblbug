@@ -13,30 +13,62 @@
 	<h1>${membership.name}'spayList</h1>
 
 	<div class="container">
+		<a type="button" class="btn btn-primary" id="addBtn">결제 수단 추가 </a>
+
 
 		<c:forEach items="${list}" var="pay">
-			<div class="card" style="width: 18rem;">
-				<div class="card-body">
-				<div>
-					<h5 class="card-title">${pay.division}<span style="color:red;">기본</span></h5>
-				</div>
-					<c:if test="${pay.division eq 'account'}">
-						<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
-						<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>
-						<h6 class="card-subtitle mb-2 text-muted">${pay.bankAccount}</h6>
-					</c:if>
-					<c:if test="${pay.division eq 'card'}">
-						<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
-						<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
-					</c:if>
+			<c:if test="${pay.defaultMethod eq 'true'}">
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<div>
+							<h5 class="card-title">${pay.division}
+								<span style="color: red;">기본</span>
 
-					<a href="./paymentDelete?num=${pay.num}" class="card-link">삭제</a>
+
+							</h5>
+						</div>
+						<c:if test="${pay.division eq 'account'}">
+							<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.bankAccount}</h6>
+						</c:if>
+						<c:if test="${pay.division eq 'card'}">
+							<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
+						</c:if>
+
+						<a href="./paymentDelete?num=${pay.num}" class="card-link">삭제</a>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</c:forEach>
-		<a type="button" class="btn btn-primary" id="addBtn">결제 수단 추가 </a>
+
+		<c:forEach items="${list}" var="pay">
+			<c:if test="${pay.defaultMethod ne 'true'}">
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<div>
+							<h5 class="card-title">${pay.division}</h5>
+						</div>
+						<c:if test="${pay.division eq 'account'}">
+							<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.bankAccount}</h6>
+						</c:if>
+						<c:if test="${pay.division eq 'card'}">
+							<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
+						</c:if>
+
+						<a href="./paymentDelete?num=${pay.num}" class="card-link">삭제</a>
+					</div>
+				</div>
+			</c:if>
+		</c:forEach>
 	</div>
-<script type="text/javascript" src="../resources/jquery/paymentList.js"></script>
+
+
+	<script type="text/javascript" src="../resources/jquery/paymentList.js"></script>
 
 </body>
 </html>

@@ -40,7 +40,8 @@ p {
 				<label for="bankAccount">계좌번호</label> <input type="text"
 					class="form-control" id="bankAccount" name="bankAccount" placeholder="공백, -없이 입력해주세요." maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				<p id="bankAccountResult"></p>
-				<input type="checkbox" name="buisness" id="buisness">사업자 계좌입니다.<br>
+				<input type="checkbox"   id="business">사업자 계좌입니다.<br>
+				<input type="hidden"  name="business" id="businessResult">
 			</div>
 
 			<table class="table">
@@ -70,7 +71,10 @@ p {
 
 			<input type="checkbox" id="agreeCheck">결제사 정보제공 동의 <a href="#">내용보기</a> <br>
 			<p id="checkResult"></p>
-			<input type="checkbox" name="defaultMethod" id="default">기본 결제수단으로 등록 <br>
+			
+			<input type="checkbox" id="default">기본 결제수단으로 등록 <br> 
+			<input type="hidden" name="defaultMethod" id="defaultMethod">
+			
 		</form>
 		<a type="button" class="btn btn-primary" id="addBtn">Add Payment</a>
 	</div>

@@ -14,13 +14,18 @@ delete from payment where num=#{num}
 </delete>
 
 <insert id="setInsert" parameterType="PaymentDTO">
-insert into payment values(payment_seq.nextval,#{id},#{division},#{defaultMethod},#{bankName},#{bankAccount},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
+insert into payment values(payment_seq.nextval,#{id},#{division},#{defaultMethod},#{bankName},#{bankAccount},#{business},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
 </insert>
 
-<update id="setUpdate" parameterType="paymentDTO">
+<update id="setUpdateDefault" parameterType="paymentDTO">
 update payment set
-num=#{num},id=#{id},division=#{division}
+id=#{id},division=#{division},defaultMethod='false',bankName=#{bankName},bankAccount=#{bankAccount},business=#{business},ownerName=#{ownerName},ownerBirth=#{ownerBirth},cardNumber=#{cardNumber},expirationDate=#{expirationDate},securityNumber=#{securityNumber}
+where num=#{num}
 </update>
+
+<select id="getDefault" parameterType="paymentDTO" resultType="paymentDTO">
+	select * from payment where id=#{id} and defaultMethod = #{defaultMethod}
+</select>
 
 
 </mapper>

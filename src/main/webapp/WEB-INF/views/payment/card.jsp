@@ -31,7 +31,8 @@ color:red;
 				type="hidden" name="division" value="card"> <input
 				type="hidden" name="bankName" value="inull"> <input
 				type="hidden" name="bankAccount" value="inull"> <input
-				type="hidden" name="ownerName" value="inull">
+				type="hidden" name="ownerName" value="inull"> <input
+				type="hidden" name="business" value="inull">
 
 			
 
@@ -101,8 +102,11 @@ color:red;
 			<div>
 			<input type="checkbox" id="agreeCheck">결제사 정보제공 동의 <a href="#">내용보기</a> <br>
 			<p id="checkResult" ></p>
+			<!-- 
 			<p hidden="hidden"><input type="checkbox" name="defaultMethod" value="false" checked="checked">false</p>
-			<input type="checkbox" name="defaultMethod" id="default" value="true">기본 결제수단으로 등록 <br> 
+			 -->
+			<input type="checkbox" id="default">기본 결제수단으로 등록 <br> 
+			<input type="hidden" name="defaultMethod" id="defaultMethod">
 			</div>
 
 		</form>

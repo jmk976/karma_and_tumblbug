@@ -10,7 +10,7 @@ public class PaymentService {
 
 	@Autowired
 	private PaymentDAO paymentDAO;
-	
+
 	public List<PaymentDTO> getList(PaymentDTO paymentDTO) throws Exception{
 		return paymentDAO.getList(paymentDTO);
 	}
@@ -18,6 +18,24 @@ public class PaymentService {
 		return paymentDAO.setDelete(paymentDTO);
 	}
 	public int setInsert(PaymentDTO paymentDTO) throws Exception{
+		if(paymentDTO.getDefaultMethod().equals("true")) {
+			PaymentDTO temp = new PaymentDTO();
+			temp.setId(paymentDTO.getId());
+			temp.setDefaultMethod("true");
+			temp = paymentDAO.getDefault(temp);
+			if(temp != null) {
+				int tempResult = paymentDAO.setUpdateDefault(temp);
+			}
+		} else {
+			PaymentDTO temp = new PaymentDTO();
+			temp.setId(paymentDTO.getId());
+			temp.setDefaultMethod("true");
+			temp = paymentDAO.getDefault(temp);
+			if(temp == null) {
+				paymentDTO.setDefaultMethod("true");
+			}
+		}
+
 		String division = paymentDTO.getDivision();
 		System.out.println(division);
 		if(division.equals("account")) {
@@ -26,7 +44,7 @@ public class PaymentService {
 			str = str.replace(",", "-");
 			paymentDTO.setBankAccount(str);
 		}
-		
+
 		if(division.equals("card")) {
 			String str = paymentDTO.getCardNumber();
 			System.out.println(str);
@@ -38,9 +56,9 @@ public class PaymentService {
 			paymentDTO.setExpirationDate(str2);
 			System.out.println(str2);
 		}
-		
+
 		return paymentDAO.setInsert(paymentDTO);
 	}
-	
-	
+
+
 }

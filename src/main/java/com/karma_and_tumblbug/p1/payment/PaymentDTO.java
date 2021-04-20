@@ -12,9 +12,16 @@ public class PaymentDTO {
 	private String expirationDate;
 	private int securityNumber;
 	private String defaultMethod;
+	private String business;
 	
 	
 	
+	public String getBusiness() {
+		return business;
+	}
+	public void setBusiness(String business) {
+		this.business = business;
+	}
 	public String getDefaultMethod() {
 		return defaultMethod;
 	}
