@@ -13,7 +13,6 @@ $("#defaultMethod").val(isDefault);
 $("#checkResult").hide();
 
 cNumberCheck = function(){
-	
 	$(".cardNumberDiv input").each(function(index, item){
 		cNumber = false;
 		if($(item).val().length==4){

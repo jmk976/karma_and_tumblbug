@@ -14,6 +14,15 @@ setTimeout(function() {
     self.close(); //현재창 닫기
     }, 2000); // 2초후 실행 1000당 1초
  */
+$(document).ready(function(){
+	$(".cardNum").each(function(index, item){
+	let cNum = $(item).attr("title");
+	let showNum = cNum.substr(12);
+	let result = "************"+showNum
+	$(item).text(result);
+		
+	})
+})
 
 openPopup = function() {
     var _width = '650';

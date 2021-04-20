@@ -39,10 +39,10 @@ color:red;
 			<div>
 				<label for="cardNumber">카드번호</label>
 			<div class="input-group mb-3 form-control cardNumberDiv" style="border: solid 1px; height:50px;" >
-				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
-				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
-				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">_
-				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4">
+				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">_
+				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">_
+				<input type="password" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">_
+				<input type="text" class="form-control cardNumber" placeholder="0000" style="border: none;" name="cardNumber" maxlength="4"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				</div>
 				<p id="cardNumberResult"></p>
 			</div>

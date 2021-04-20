@@ -33,7 +33,7 @@
 							<h6 class="card-subtitle mb-2 text-muted">${pay.bankAccount}</h6>
 						</c:if>
 						<c:if test="${pay.division eq 'card'}">
-							<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
+							<h6 class="card-subtitle mb-2 text-muted cardNum" title="${pay.cardNumber}" ></h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
 						</c:if>
 
@@ -56,7 +56,7 @@
 							<h6 class="card-subtitle mb-2 text-muted">${pay.bankAccount}</h6>
 						</c:if>
 						<c:if test="${pay.division eq 'card'}">
-							<h6 class="card-subtitle mb-2 text-muted">${pay.cardNumber}</h6>
+							<h6 class="card-subtitle mb-2 text-muted cardNum" title="${pay.cardNumber}"></h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
 						</c:if>
 

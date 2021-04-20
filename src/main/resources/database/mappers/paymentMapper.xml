@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.karma_and_tumblbug.p1.PaymentDAO">
+<mapper namespace="com.karma_and_tumblbug.p1.payment.PaymentDAO">
 
 <select id="getList" parameterType="PaymentDTO" resultType="PaymentDTO">
 select * from payment where id=#{id}

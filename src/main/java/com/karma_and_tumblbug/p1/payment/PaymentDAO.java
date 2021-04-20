@@ -12,7 +12,7 @@ public class PaymentDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private String NAMESPACE ="com.karma_and_tumblbug.p1.PaymentDAO.";
+	private String NAMESPACE ="com.karma_and_tumblbug.p1.payment.PaymentDAO.";
 	
 	public List<PaymentDTO> getList(PaymentDTO paymentDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", paymentDTO);
