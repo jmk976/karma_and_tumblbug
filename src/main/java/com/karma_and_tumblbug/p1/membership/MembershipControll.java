@@ -45,7 +45,11 @@ public class MembershipControll {
 		membershipDTO = membershipService.login(membershipDTO);
 		if(membershipDTO!=null) {
 			session.setAttribute("membership", membershipDTO);
-			path="redirect:../";
+			if(session.getAttribute("state")==null) {
+				path="redirect:../";				
+			}else {
+				path="redirect:../project/projectInsert";
+			}
 		}
 		mv.setViewName(path);
 		return mv;

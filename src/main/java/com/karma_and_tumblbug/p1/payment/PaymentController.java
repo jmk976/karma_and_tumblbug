@@ -32,7 +32,7 @@ public class PaymentController {
 		MembershipDTO dto = ((MembershipDTO)session.getAttribute("membership"));
 		paymentDTO.setId(dto.getId());
 		List<PaymentDTO> array = paymentService.getList(paymentDTO);
-		mv.addObject("list", array);
+		mv.addObject("PaymentList", array);
 		mv.setViewName("payment/paymentList");
 		
 		return mv;

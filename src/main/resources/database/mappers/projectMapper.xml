@@ -5,12 +5,18 @@
     
 <mapper namespace="com.karma_and_tumblbug.p1.project.ProjectDAO">
 
+<select id="getProjectList" resultType="ProjectDTO">
+select * from Project
+</select>
+
 <select id="getProject" parameterType="ProjectDTO" resultType="ProjectDTO">
 select * from project where id=#{id}
 </select>
 
-<select id="getProjectMedia" parameterType="ProjectDTO" resultType="ProjectDTO">
-select * from project_media where id=#{id}
+<select id="getProjectMedia" parameterType="ProjectDTO" resultType="MediaDTO">
+select * from project_media where num=#{num}
 </select>
-
+<select id="getProjectGift" parameterType="ProjectDTO" resultType="GiftDTO">
+select * from project_gift where num=#{num}
+</select>
 </mapper>

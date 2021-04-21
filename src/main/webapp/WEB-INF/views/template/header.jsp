@@ -40,6 +40,12 @@
         <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectList">Project</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsert?id="${membership.id}">ProjectUpload</a>
+    </li>
     
 
     <!-- Dropdown -->
