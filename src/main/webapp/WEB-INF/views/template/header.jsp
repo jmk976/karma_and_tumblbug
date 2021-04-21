@@ -27,7 +27,7 @@
 		<a class="dropdown-item" href="${pageContext.request.contextPath}/membership/memberPage">MyPage</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/payment/paymentList">Payment</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
-        
+         <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
       </div>
     </li>
         <li class="nav-item">
@@ -37,9 +37,9 @@
     <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorCheck">Sponsor</a>
     </li>
-        <li class="nav-item">
+<%--         <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
-    </li>
+    </li> --%>
     
 
     <!-- Dropdown -->

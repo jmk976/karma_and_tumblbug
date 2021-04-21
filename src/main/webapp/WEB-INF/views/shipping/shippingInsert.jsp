@@ -38,8 +38,8 @@
 				<input type="hidden" id="id" name="id" value="${membership.id}">
 			</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
-			<!-- <input type="button" id="btn" value="ADD" class="btn btn-primary"> -->
+		<!-- 	<button type="submit" class="btn btn-primary">Submit</button> -->
+			<input type="button" id="btn" value="ADD" class="btn btn-primary">
 		</form>
 
 	
