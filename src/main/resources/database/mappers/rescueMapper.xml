@@ -4,44 +4,72 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.karma_and_tumblbug.p1.rescue.RescueDAO">
-	<!-- <select id="getList" parameterType="RescueDTO" resultType="RescueDTO">
+
+	<update id="setUpdate" parameterType="RescueDTO">
+		update rescue set status=#{status}, zoneSn=#{zoneSn}, resDate=#{resDate}, province=#{province}, 
+		city=#{city}, location=#{location}, species=#{species},kind=#{kind}, sex=#{sex}, age=#{age}, 
+		color=#{color}, desex=#{desex}, character=#{character}, weight=#{weight}, health=#{health}, 
+		feature=#{feature}, adoptDate=#{adoptDate},returnDate=#{returnDate} 
+		where sn=#{sn}
+	</update>
+
+
+	<delete id="setDelete" parameterType="RescueDTO">
+		delete rescue where sn=#{sn}
+	</delete>
+
+	<select id="getSelect" parameterType="RescueDTO" resultType="RescueDTO">
+   		 select * from rescue where sn=#{sn}
+ 	</select>
+ 	
+	
+      
+ <select id="getList"  parameterType="RescueDTO" resultType="RescueDTO">
        select * from rescue 
-       where
        
-       <trim suffix="and  ">
-       <foreach collection="map" index="key" item="val" separator="and">
-        	<if test="key == 'S'.toString()">
-        	   species like #{val}
+       <where>
+       		<if test="#{status} != null">
+        	   status like '%'||#{status}||'%'
         	</if>
-        	<if test="key == 'K'.toString()">
-        	   kind like #{val}
+        	<if test="#{sn} != null">
+        	   AND sn like '%'||#{sn}||'%'
         	</if>
-        	<if test="key == 'P'.toString()">
-        	   locationP like #{val}
+        	<if test="#{zoneSn} != null">
+        	   AND zoneSn like '%'||#{zoneSn}||'%'
         	</if>
-        	<if test="key == 'C'.toString()">
-        	   locationC like #{val}
+        	<if test="#{species} != null">
+        	   AND species like '%'||#{species}||'%'
         	</if>
-        	<if test="key == 'N'.toString()">
-        	   sn like #{val}
+        	<if test="#{kind} != null">
+        	   AND kind like '%'||#{kind}||'%'
         	</if>
-        	<if test="key == 'Z'.toString()">
-        	   zoneSn like #{val}
+        	<if test="#{province} != null">
+        	   AND province like '%'||#{province}||'%'
         	</if>
-        	<if test="key == 'F'.toString()">
-        	   feature like #{val}
+        	<if test="#{city} != null">
+        	   AND city like '%'||#{city}||'%'
         	</if>
+        	<if test="#{feature} != null">
+        	   AND feature like '%'||#{feature}||'%'
+        	</if>
+      
        
-       </foreach>
-       </trim> 
+       </where>
        
-       <![CDATA[ rownum <10 ]]>
-	</select> -->
+
+	</select> 
+	
+			
+
 	
 	<insert id="setInsert" parameterType="RescueDTO">
 		insert into rescue values(#{status}, #{sn}, #{zoneSn}, #{resDate}, #{province}, #{city}, #{location}, 
 		#{species}, #{kind}, #{sex}, #{age}, #{color}, #{desex}, #{character}, #{weight}, #{health}, #{feature}, 
 		#{adoptDate}, #{returnDate})
 	</insert>
+	
+	
 
 </mapper>
+
+   

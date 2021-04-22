@@ -2,7 +2,10 @@ package com.karma_and_tumblbug.p1.rescue;
 
 import java.sql.Date;
 
-public class RescueDTO {
+import com.karma_and_tumblbug.p1.util.Pager;
+
+public class RescueDTO extends Pager {
+	
 
 	private String status;
 	private String sn;
@@ -133,9 +136,11 @@ public class RescueDTO {
 		this.adoptDate = adoptDate;
 	}
 	public Date getReturnDate() {
+		
 		return returnDate;
 	}
 	public void setReturnDate(Date returnDate) {
+		
 		this.returnDate = returnDate;
 	}
 	

@@ -1,22 +1,25 @@
 package com.karma_and_tumblbug.p1.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Pager {
 	//1 DB에서 일정갯수만큼 조회
 	//2 JSP 페이지에 일정한 갯수만큼 번호를 curPager번호 출력
 
-	private long perPage; //DB에서 조회할 갯수 (몇개씩 조회할거냐)
-	private long perBlock; //JSP에 출력할 갯수 (몇개씩 출력할거냐)
+	protected long perPage; //DB에서 조회할 갯수 (몇개씩 조회할거냐)
+	protected long perBlock; //JSP에 출력할 갯수 (몇개씩 출력할거냐)
 
-	private Pager() {
+	protected Pager() {
 		this.perPage=10;
 		this.perBlock=5;
 		this.curPage=1;
 	}
 
-	private long curPage; //현재 페이지 번호
+	protected long curPage; //현재 페이지 번호
 
-	private long startRow;
-	private long lastRow;
+	protected long startRow;
+	protected long lastRow;
 
 	//rownum 계산하는 메서드
 	public void makeRow() {
@@ -30,11 +33,11 @@ public class Pager {
 
 //--------------------------------------------------------------- 페이징 계산	
 	
-	private long totalPage;
-	private long startNum;
-	private long lastNum;
-	private boolean pre;
-	private boolean next;
+	protected long totalPage;
+	protected long startNum;
+	protected long lastNum;
+	protected boolean pre;
+	protected boolean next;
 
 	//페이징 계산하는 메서드
 	public void makeNum(long totalCount) {
@@ -176,8 +179,8 @@ public class Pager {
 	
 	//------------------- 검색----------------------
 	
-	private String kind; //검색할 column명 담은 변수
-	private String search; //검색어 담은 변수
+	protected String kind; //검색할 column명 담은 변수
+	protected String search; //검색어 담은 변수
 	
 	
 	
@@ -199,6 +202,23 @@ public class Pager {
 		}
 		this.search = search;
 	}
+	
+	//-------------검색 배열 맵
+	HashMap<String, String> map = new HashMap<String, String>();
 
+	public HashMap<String, String> getMap() {
+		return map;
+	}
+
+
+	public void setMap(HashMap<String, String> map) {
+		
+		this.map = map;
+	}
+	
+	
+
+
+	
 	
 }
