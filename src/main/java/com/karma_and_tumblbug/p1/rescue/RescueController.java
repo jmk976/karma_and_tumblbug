@@ -28,6 +28,11 @@ public class RescueController {
 	@Autowired
 	private RescueService rescueService;
 	
+	@GetMapping("rescueGallery")
+	public void rescueGallery() {
+		
+	}
+	
 	@GetMapping("rescueList")
 	public ModelAndView getList(RescueDTO rescueDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();

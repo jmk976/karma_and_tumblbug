@@ -65,6 +65,17 @@
       </div>
     </li>
     
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Rescue
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueGallery">Rescue Animals</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/returnGallery">Return to family</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/adoptGallery">Adopted!</a>
+      </div>
+    </li>
+    
   </ul>
 </nav>
     
