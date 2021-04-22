@@ -177,16 +177,19 @@ function categoryChange(e) {
 	  	  </div>
     </div>
     
-   <!--  <div class="form-group">
+    <div class="form-group">
    		 <label for="file">file</label>
     	 <input type="file" class="form-control etc" id="avatar" name="avatar" >
-  	</div> -->
+  	</div> 
   
    
 
    <input type="button" id="btn" value="입력" class="btn btn-primary">
   <a href="./rescueInsert"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
 </form>
+
+
+
  
 
 </div>

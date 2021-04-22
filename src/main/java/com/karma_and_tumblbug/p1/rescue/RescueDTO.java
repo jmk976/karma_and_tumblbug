@@ -6,7 +6,16 @@ import com.karma_and_tumblbug.p1.util.Pager;
 
 public class RescueDTO extends Pager {
 	
+	private RescueFileDTO rescueFileDTO;
 
+	public RescueFileDTO getRescueFileDTO() {
+		return rescueFileDTO;
+	}
+	public void setRescueFileDTO(RescueFileDTO rescueFileDTO) {
+		this.rescueFileDTO = rescueFileDTO;
+	}
+	
+	
 	private String status;
 	private String sn;
 	private String zoneSn;

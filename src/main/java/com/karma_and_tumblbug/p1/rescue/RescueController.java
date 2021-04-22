@@ -6,12 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.util.Pager;
@@ -80,7 +83,7 @@ public class RescueController {
     public ModelAndView getSelect(RescueDTO rescueDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
     	rescueDTO = rescueService.getSelect(rescueDTO);
-    	mv.addObject("dto", rescueDTO);
+    	mv.addObject("rescue", rescueDTO);
     	mv.setViewName("rescue/rescueSelect");
     	
     	return mv;
@@ -94,9 +97,14 @@ public class RescueController {
 	
 	
 	@PostMapping("rescueInsert")
-	public String setInsert(RescueDTO rescueDTO, Model model) throws Exception {
+	public String setInsert(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception {
 		
-		int result = rescueService.setInsert(rescueDTO);
+		int result = rescueService.setInsert(rescueDTO, avatar, session);
+		System.out.println(avatar.getName()); //파라미터명
+		System.out.println(avatar.getOriginalFilename());//업로드시의 파일 , 확장자를 알 수 있음. 
+		System.out.println(avatar.getSize());// 파일의 크기(byte)
+		System.out.println(avatar.isEmpty());// 파일의 존재 유무
+		
 		String message="등록 실패";
 		String path="./rescueInsert";
 		if(result>0) {

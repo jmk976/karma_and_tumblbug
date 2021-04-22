@@ -87,9 +87,9 @@
   
   <div class="input-group mt-3 mb-3">
   
-  
+  <%-- 
   <c:catch>
-  <c:if test="${membership.id == 'admin'}">
+  <c:if test="${membership.id == 'admin'}"> --%>
   
   <form id="frm" action="./sponsorList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
@@ -113,8 +113,8 @@
   <a href="./sponsorListMon" class="btn btn-info" role="button">  월별 총 후원 금액 보기 </a>
   
   
-  </c:if>
-  </c:catch>
+  <%-- </c:if>
+  </c:catch> --%>
   
 
 

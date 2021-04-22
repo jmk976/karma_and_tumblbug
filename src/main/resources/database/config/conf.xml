@@ -22,6 +22,9 @@
 		<typeAlias
 			type="com.karma_and_tumblbug.p1.rescue.RescueDTO"
 			alias="RescueDTO" />
+		<typeAlias
+			type="com.karma_and_tumblbug.p1.rescue.RescueFileDTO"
+			alias="RescueFileDTO" />
 		<typeAlias type="com.karma_and_tumblbug.p1.util.Pager"
 			alias="Pager" />
 

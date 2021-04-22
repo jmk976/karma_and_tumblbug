@@ -19,9 +19,46 @@
 	</delete>
 
 	<select id="getSelect" parameterType="RescueDTO" resultType="RescueDTO">
-   		 select * from rescue where sn=#{sn}
+   		 select R.*, RF.*
+			from rescue R left join rescueFile RF
+			on R.sn = RF.sn
+		      where R.sn = #{sn}
  	</select>
  	
+ 	<resultMap type="RescueDTO" id="getSelectResult">
+ 		<id property="sn" column="sn" />
+ 		<result property="status" column="status"/>
+ 		<result property="zoneSn" column="zoneSn"/>
+ 	    <result property="resDate" column="resDate"/>
+ 		<result property="province" column="province"/>
+ 		<result property="city" column="city"/>
+ 	    <result property="location" column="location"/>
+ 	    <result property="species" column="species"/>
+ 		<result property="kind" column="kind"/>
+ 	    <result property="sex" column="sex"/>
+ 	    <result property="age" column="age"/>
+ 		<result property="color" column="color"/>
+ 	    <result property="desex" column="desex"/>
+ 	    <result property="character" column="character"/>
+ 		<result property="weight" column="weight"/>
+ 	    <result property="health" column="health"/>
+ 	    <result property="feature" column="feature"/>
+ 		<result property="adoptDate" column="adoptDate"/>
+ 	    <result property="returnDate" column="returnDate"/>
+ 	    <association property="rescueFileDTO" javaType="RescueFileDTO" resultMap="rescueFileResult">
+ 	    
+ 	    </association>
+ 	</resultMap>
+ 	
+ 	<resultMap type="RescueFileDTO" id="rescueFileResult">
+ 		<id property="num" column="num"/>
+ 		<result property="fileName" column="fileName"/>
+ 		<result property="originalName" column="originalName"/>
+ 	</resultMap>
+ 	
+ 	<select id="getSelectFile" resultType="RescueFileDTO" parameterType="RescueDTO">
+		select * from rescueFile where sn=#{sn}
+	</select>
 	
       
  <select id="getList"  parameterType="RescueDTO" resultType="RescueDTO">
@@ -66,6 +103,10 @@
 		insert into rescue values(#{status}, #{sn}, #{zoneSn}, #{resDate}, #{province}, #{city}, #{location}, 
 		#{species}, #{kind}, #{sex}, #{age}, #{color}, #{desex}, #{character}, #{weight}, #{health}, #{feature}, 
 		#{adoptDate}, #{returnDate})
+	</insert>
+	
+	<insert id="setFileInsert" parameterType="RescueFileDTO">
+	 	insert into RescueFile values(FN_SEQ.nextval, #{sn}, #{fileName}, #{originalName})
 	</insert>
 	
 	
