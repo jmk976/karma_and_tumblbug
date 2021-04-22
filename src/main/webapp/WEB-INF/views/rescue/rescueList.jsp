@@ -9,6 +9,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+<script type="text/javascript">
+function categoryChange(e) {
+	  var city_s = ["지역전체", "강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
+	  var city_g = ["지역전체", "고양시","과천시","광명시","광주시","구리시","군포시","김포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안성시","안양시","양주시","오산시","용인시","의왕시","의정부시","이천시","파주시","평택시","포천시","하남시","화성시","가평군","양평군","여주군","연천군"];
+	  var city_i = ["지역전체","계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군"];
+	  var target = document.getElementById("city");
+	 
+	  if(e.value == "s") var d = city_s;
+	  else if(e.value == "g") var d = city_g;
+	  else if(e.value == "i") var d = city_i;
+	 
+	  target.options.length = 0;
+	 
+	  for (x in d) {
+	    var opt = document.createElement("option");
+	    opt.value = d[x];
+	    opt.innerHTML = d[x];
+	    target.appendChild(opt);
+	  } 
+	}
+
+function categoryChange2(e) {
+	  var kind_d = ["Mix", "그레이하운즈", "시츄", "강서구", "광진구", "구로구", "금천구"];
+	  var kind_c = ["코리안숏헤어", "과천시", "광명시", "구리시"];
+	  var kind_e = ["거북이", "고슴도치", "닭", "동구", "부평구"];
+	  var target = document.getElementById("kind");
+	 
+	  if(e.value == "d") var d = kind_d;
+	  else if(e.value == "c") var d = kind_c;
+	  else if(e.value == "e") var d = kind_e;
+	 
+	  target.options.length = 0;
+	 
+	  for (x in d) {
+	    var opt = document.createElement("option");
+	    opt.value = d[x];
+	    opt.innerHTML = d[x];
+	    target.appendChild(opt);
+	  } 
+	}
+
+
+	
+
+</script>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -16,7 +61,7 @@
 
 <div class="container">
 	
-	<h2>구조 동물 관리7</h2>
+	<h2>구조 동물 관리</h2>
 
 	<table class ="table">
 	
@@ -87,13 +132,74 @@
   
   <form id="frm" action="./rescueList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
-		
-  <label for="status" class="mb-2 mr-sm-2">status:</label>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="status" name="status">
-    <label for="sn" class="mb-2 mr-sm-2">sn:</label>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="sn"  name="sn">
+  <div class="form-group">
       
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    <div class="row">
+     
+	  	  <div class="col">
+	  	         
+	  	  	       <select onchange="categoryChange2(this)" name="species" id="species" class="custom-select">
+					 <option value="" disabled selected hidden> 축종 </option>
+					    <option value="d">개</option>
+					    <option value="c">고양이</option>
+					    <option value="e">기타</option>
+					</select>
+		   </div>
+		  <div class="col">
+					<select id="kind" name="kind" class="custom-select">
+					    <option value="" disabled selected hidden> 종류 </option>
+					</select>
+	  	  </div> 
+	  	 
+	  	  
+    </div>
+    </div>
+  	
+		 <div class="form-group">
+ 
+    <div class="row">
+     
+	  	  <div class="col">
+	  	         
+	  	  	       <select onchange="categoryChange(this)" name="province" id="province" class="custom-select">
+					 <option value="" disabled selected hidden> 지역구를 선택해주세요 </option>
+					    <option value="s">서울특별시</option>
+					    <option value="g">경기도</option>
+					    <option value="i">인천광역시</option>
+					</select>
+		   </div>
+		  <div class="col">
+					<select id="city" name="city" class="custom-select">
+					    <option value="" disabled selected hidden> 지역전체 </option>
+					</select>
+	  	  </div> 
+	  	 
+	  	  <div class="col">
+  		        <input type="text" class="form-control mb-2 mr-sm-2" name="location" placeholder="나머지주소" id="location">
+	  	  </div>
+    </div>
+    </div>
+  	
+   <div class="row">
+   <div class="col">
+   status:
+    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="status" name="status">
+     </div>
+     <div class="col">
+    sn:
+    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="sn"  name="sn">
+     </div>
+     <div class="col">
+    zoneSn:
+    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="zoneSn"  name="zoneSn">
+     </div>
+     <div class="col">
+    feature: 
+    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="feature"  name="feature">
+     </div> 
+    <button type="button" id="search" class="btn btn-primary mb-2">Submit</button>
+    </div>
+  
  </form> 
  </div>
  
@@ -109,17 +215,33 @@
 
 <script type="text/javascript">
 
-/* $("#search").click(function(){
-	let t = $("#status").val();
+$("#species").prop("")
+
+ $("#search").click(function(){
+	let s = $("#species").val();
+	let result = "";
+	console.log(s);
 	
-	let s = $("#sn").val();
+	if(s == "d"){
+		result ="개";
+	}else if(s=="c"){
+		result = "고양이"
+	}else if(s=="e"){
+		result="기타"
+	}
+	
+	console.log(result);
+	if(result !=""){
+	$("#species").val(result);
+	}
+	alert($("#species").val());
 	
 	
-	  if(t != null || s !=null){
+	  if($("#species").val() != "d" & $("#species").val() !="c" & $("#species").val() !="e"){
 	
 		  $("#frm").submit();
-}
-}); */
+	  }
+});
 
 
  /* 
@@ -137,7 +259,7 @@
 	  let search = '${pager.search}';
 	 
 	  $("#frm").submit();
-	  
+  });
 	/*   $("#curPage").val(curPage);
 	  $("#kind").val(kind);
 	  $("#search").val(search);

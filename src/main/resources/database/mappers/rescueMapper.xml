@@ -28,28 +28,28 @@
        select * from rescue 
        
        <where>
-       		<if test="#{status} != null">
+       		<if test="status != null">
         	   status like '%'||#{status}||'%'
         	</if>
-        	<if test="#{sn} != null">
+        	<if test="sn != null">
         	   AND sn like '%'||#{sn}||'%'
         	</if>
-        	<if test="#{zoneSn} != null">
+        	<if test="zoneSn != null">
         	   AND zoneSn like '%'||#{zoneSn}||'%'
         	</if>
-        	<if test="#{species} != null">
+        	<if test="species != null">
         	   AND species like '%'||#{species}||'%'
         	</if>
-        	<if test="#{kind} != null">
+        	<if test="kind != null">
         	   AND kind like '%'||#{kind}||'%'
         	</if>
-        	<if test="#{province} != null">
+        	<if test="province != null">
         	   AND province like '%'||#{province}||'%'
         	</if>
-        	<if test="#{city} != null">
+        	<if test="city != null">
         	   AND city like '%'||#{city}||'%'
         	</if>
-        	<if test="#{feature} != null">
+        	<if test="feature != null">
         	   AND feature like '%'||#{feature}||'%'
         	</if>
       
