@@ -21,7 +21,7 @@
 		select * from shipping where id=#{id}
 	</select>
 	<delete id="setDelete" parameterType="ShippingDTO">
-		delete shipping where id = #{id}
+		delete shipping where shipNum = #{shipNum}
 	</delete>
 	
 	</mapper>

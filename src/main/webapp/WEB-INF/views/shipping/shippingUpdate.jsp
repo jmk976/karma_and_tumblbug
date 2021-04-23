@@ -34,11 +34,12 @@
 
 			<div class="form-group">
 				<input type="hidden" id="id" name="id" value="${membership.id}">
+				<input type="hidden" id="shipNum" name="shipNum" value="${dto.shipNum}">
 			</div>
 
 
-
-			<input type="button" id="btn" value="UPDATE" class="btn btn-primary">
+		<button type="submit" class="btn btn-primary">Update</button>
+			
 		</form>
 	</div>
 

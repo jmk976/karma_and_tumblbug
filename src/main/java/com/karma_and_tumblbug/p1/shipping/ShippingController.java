@@ -23,45 +23,20 @@ public class ShippingController {
 	@Autowired
 	private ShippingService shippingService;
 	
-//	@GetMapping("shippingUpdate")
-//	public void setUpdate(ShippingDTO shippingDTO, Model model)throws Exception{
-//		shippingDTO = shippingService.getSelect(shippingDTO);
-//		model.addAttribute("dto", shippingDTO);
-//	}
-//	
-//	@PostMapping("shippingUpdate")
-//	public String setUpdate(ShippingDTO shippingDTO)throws Exception{
-//		int result = shippingService.setUpdate(shippingDTO);
-//		return "redirect:./shippingList";
-//	}
-//	
-//	
-	
-	//업데이트
 	@PostMapping("shippingUpdate")
-	public ModelAndView setUpdate(ShippingDTO shippingDTO, ModelAndView mv)throws Exception{
+	public String setUpdate(ShippingDTO shippingDTO)throws Exception{
 		int result = shippingService.setUpdate(shippingDTO);
-		if(result>0) {
-			//성공시 리스트로
-			mv.setViewName("redirect:./shippingList");
-		}else {
-			mv.addObject("msg", "X 수정 실패 X");
-			mv.addObject("path", "./shippingList");
-			mv.setViewName("common/commonResult");
-		}
-		return mv;
+		return "redirect:./shippingList";
 	}
-	
 	
 	@GetMapping("shippingUpdate")
-	public ModelAndView setUpdate(ShippingDTO shippingDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public void setUpdate(ShippingDTO shippingDTO, Model model)throws Exception{
 		shippingDTO = shippingService.getSelect(shippingDTO);
-		mv.addObject("dto", shippingDTO);
-		mv.setViewName("shipping/shippingUpdate");
-		
-		return mv;
+		model.addAttribute("dto", shippingDTO);
 	}
+	
+	
+
 	
 	//삭제
 	@RequestMapping("shippingDelete")
@@ -69,11 +44,11 @@ public class ShippingController {
 		ModelAndView mv = new ModelAndView();
 		int result = shippingService.setDelete(shippingDTO);
 		
-		String message = "X 삭제 실패 X";
+		String message = "삭제에 실패하였습니다";
 		String path = "./shippingList";
 		
 		if(result>0) {
-			message="O 삭제 성공 O";
+			message="삭제 되었습니다";
 		}
 		mv.addObject("msg", message);
 		mv.addObject("path", path);
