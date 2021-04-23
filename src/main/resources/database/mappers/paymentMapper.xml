@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.karma_and_tumblbug.p1.PaymentDAO">
+<mapper namespace="com.karma_and_tumblbug.p1.payment.PaymentDAO">
 
 <select id="getList" parameterType="PaymentDTO" resultType="PaymentDTO">
 select * from payment where id=#{id}
@@ -14,8 +14,18 @@ delete from payment where num=#{num}
 </delete>
 
 <insert id="setInsert" parameterType="PaymentDTO">
-insert into payment values(payment_seq.nextval,#{id},#{division},#{bankName},#{bankAccount},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
+insert into payment values(payment_seq.nextval,#{id},#{division},#{defaultMethod},#{bankName},#{bankAccount},#{business},#{ownerName},#{ownerBirth},#{cardNumber},#{expirationDate},#{securityNumber})
 </insert>
+
+<update id="setUpdateDefault" parameterType="paymentDTO">
+update payment set
+id=#{id},division=#{division},defaultMethod='false',bankName=#{bankName},bankAccount=#{bankAccount},business=#{business},ownerName=#{ownerName},ownerBirth=#{ownerBirth},cardNumber=#{cardNumber},expirationDate=#{expirationDate},securityNumber=#{securityNumber}
+where num=#{num}
+</update>
+
+<select id="getDefault" parameterType="paymentDTO" resultType="paymentDTO">
+	select * from payment where id=#{id} and defaultMethod = #{defaultMethod}
+</select>
 
 
 </mapper>

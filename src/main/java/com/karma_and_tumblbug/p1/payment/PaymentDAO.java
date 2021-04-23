@@ -12,7 +12,7 @@ public class PaymentDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private String NAMESPACE ="com.karma_and_tumblbug.p1.PaymentDAO.";
+	private final String NAMESPACE ="com.karma_and_tumblbug.p1.payment.PaymentDAO.";
 	
 	public List<PaymentDTO> getList(PaymentDTO paymentDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList", paymentDTO);
@@ -23,5 +23,13 @@ public class PaymentDAO {
 	
 	public int setInsert(PaymentDTO paymentDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsert", paymentDTO);
+	}
+	
+	public PaymentDTO getDefault(PaymentDTO paymentDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getDefault",paymentDTO);
+	}
+	
+	public int setUpdateDefault(PaymentDTO paymentDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdateDefault", paymentDTO);
 	}
 }

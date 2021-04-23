@@ -11,9 +11,23 @@ public class PaymentDTO {
 	private String cardNumber;
 	private String expirationDate;
 	private int securityNumber;
+	private String defaultMethod;
+	private String business;
 	
 	
 	
+	public String getBusiness() {
+		return business;
+	}
+	public void setBusiness(String business) {
+		this.business = business;
+	}
+	public String getDefaultMethod() {
+		return defaultMethod;
+	}
+	public void setDefaultMethod(String defaultMethod) {
+		this.defaultMethod = defaultMethod;
+	}
 	public long getNum() {
 		return num;
 	}

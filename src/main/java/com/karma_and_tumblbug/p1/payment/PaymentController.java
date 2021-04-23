@@ -32,7 +32,7 @@ public class PaymentController {
 		MembershipDTO dto = ((MembershipDTO)session.getAttribute("membership"));
 		paymentDTO.setId(dto.getId());
 		List<PaymentDTO> array = paymentService.getList(paymentDTO);
-		mv.addObject("list", array);
+		mv.addObject("PaymentList", array);
 		mv.setViewName("payment/paymentList");
 		
 		return mv;
@@ -54,7 +54,7 @@ public class PaymentController {
 	
 	@PostMapping(value="paymentInsert")
 	public String getInsertAccount(PaymentDTO paymentDTO) throws Exception{
-
+		System.out.println(paymentDTO.getDefaultMethod());
 		System.out.println(paymentDTO.getId());
 		System.out.println(paymentDTO.getDivision());
 		System.out.println(paymentDTO.getBankName());
@@ -66,7 +66,7 @@ public class PaymentController {
 		System.out.println(paymentDTO.getSecurityNumber());
 
 		int result = paymentService.setInsert(paymentDTO);
-		return "redirect:./paymentList";
+		return "payment/temp";
 	}
 	@PostMapping(value="card")
 	public void getInsertcard(PaymentDTO paymentDTO) throws Exception{

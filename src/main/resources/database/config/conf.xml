@@ -17,6 +17,15 @@
 			type="com.karma_and_tumblbug.p1.payment.PaymentDTO"
 			alias="PaymentDTO" />
 		<typeAlias
+			type="com.karma_and_tumblbug.p1.project.ProjectDTO"
+			alias="ProjectDTO" />
+		<typeAlias
+			type="com.karma_and_tumblbug.p1.project.MediaDTO"
+			alias="MediaDTO" />
+		<typeAlias
+			type="com.karma_and_tumblbug.p1.project.GiftDTO"
+			alias="GiftDTO" />
+		<typeAlias
 			type="com.karma_and_tumblbug.p1.sponsor.SponsorDTO"
 			alias="SponsorDTO" />
 		<typeAlias

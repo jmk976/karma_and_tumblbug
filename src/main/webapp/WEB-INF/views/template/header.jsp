@@ -24,8 +24,9 @@
         profile
       </a>
       <div class="dropdown-menu">
-		<a class="dropdown-item" href="${pageContext.request.contextPath}/membership/memberPage">MyPage</a>
+		<a class="dropdown-item" href="${pageContext.request.contextPath}/membership/memberPage">My Page</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/payment/paymentList">Payment</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/project/myProject">My Project</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
          <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
       </div>
@@ -37,9 +38,19 @@
     <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorCheck">Sponsor</a>
     </li>
-<%--         <li class="nav-item">
+      <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
-    </li> --%>
+
+    </li> 
+
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectList">Project</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id="${membership.id}">ProjectUpload</a>
+    </li>
+
     
 
     <!-- Dropdown -->

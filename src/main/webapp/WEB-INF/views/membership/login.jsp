@@ -38,8 +38,8 @@ height:15px;
 					class="form-control" id="pw" name="pw" placeholder="비밀번호">
 			</div>
 			<p id="state"></p>
-			<a type="button" class="btn btn-success btn-block" id="btn">LOGIN</a>
 	</form>
+			<button type="button" class="btn btn-success btn-block" id="btn">LOGIN</button>
 	</div>
 	
 	<script type="text/javascript" src="../resources/jquery/membershipLogin.js"></script>

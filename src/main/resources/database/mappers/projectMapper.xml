@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.karma_and_tumblbug.p1.project.ProjectDAO">
+
+	<select id="getProjectList" resultType="ProjectDTO">
+		select * from Project
+	</select>
+
+	<select id="getProject" parameterType="ProjectDTO"
+		resultType="ProjectDTO">
+		select * from project where num=#{num}
+	</select>
+
+	<select id="getProjectMedia" parameterType="ProjectDTO"
+		resultType="MediaDTO">
+		select * from project_media where num=#{num}
+	</select>
+	<select id="getProjectGift" parameterType="ProjectDTO"
+		resultType="GiftDTO">
+		select * from project_gift where num=#{num}
+	</select>
+	<select id="getProjectNum" resultType="java.lang.Long">
+		select project_seq.nextval
+		from dual
+	</select>
+	<insert id="setInsertProject" parameterType="ProjectDTO">
+		insert into project
+		(num, id, title, category,makerName,gift_id,media_id,search_id)
+		values(#{num},#{id},#{title},#{category},#{makerName},pGift_seq.nextval,pMedia_seq.nextval,pSearch_seq.nextval)
+	</insert>
+	<select id="getMyProject" parameterType="MembershipDTO"
+		resultType="ProjectDTO">
+		select * from project where id=#{id} order by num desc
+	</select>
+
+	<update id="setUpdateProject" parameterType="ProjectDTO">
+		update project set
+		state=#{state},
+		id=#{id},
+		title=#{title},
+		summary=#{summary},
+		category=#{category},
+		urlAddress=#{urlAddress},
+		makerName=#{makerName},
+		makerSummary=#{makerSummary},
+		makerLocation=#{makerLocation},
+		targetAmount=#{targetAmount},
+		openDate=#{openDate},
+		closeDate=#{closeDate},
+		refund=#{refund},
+		inform=#{inform},
+		certificate=#{certificate},
+		projectStory=#{projectStory},
+		email=#{email},
+		phone=#{phone},
+		bankAccount=#{bankAccount},
+		taxReceipt=#{taxReceipt},
+		gift_id=#{gift_id},
+		media_id=#{media_id},
+		search_id=#{search_id}
+		where num=#{num}
+	</update>
+
+</mapper>

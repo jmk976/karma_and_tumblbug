@@ -16,10 +16,7 @@ $("#joinCheck").click(function(){
  */
 
 
-$("#test").click(function(){
-	alert($("#address2").val());
-	
-})
+
 
 $(document).ready(function(){
 	let birth=$("#birth").attr("title");
