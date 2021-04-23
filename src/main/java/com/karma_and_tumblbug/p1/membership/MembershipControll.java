@@ -48,7 +48,7 @@ public class MembershipControll {
 			if(session.getAttribute("state")==null) {
 				path="redirect:../";				
 			}else {
-				path="redirect:../project/projectInsert";
+				path="redirect:../project/projectInsertInit";
 			}
 		}
 		mv.setViewName(path);

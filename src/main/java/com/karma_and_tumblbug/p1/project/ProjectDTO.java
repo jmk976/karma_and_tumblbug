@@ -9,7 +9,7 @@ public class ProjectDTO {
 	private String category;
 	private String urlAddress;
 	private String makerName;
-	private String makersummary;
+	private String makerSummary;
 	private String makerLocation;
 	private long targetAmount;
 	private String openDate;
@@ -21,10 +21,44 @@ public class ProjectDTO {
 	private String email;
 	private String phone;
 	private String bankAccount;
-	private String taxRecript;
+	private String taxReceipt;
+	private long gift_id;
+	private long media_id;
+	private long search_id;
+	private String state;
 	
 	
 	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getTaxReceipt() {
+		return taxReceipt;
+	}
+	public void setTaxReceipt(String taxReceipt) {
+		this.taxReceipt = taxReceipt;
+	}
+	public long getGift_id() {
+		return gift_id;
+	}
+	public void setGift_id(long gift_id) {
+		this.gift_id = gift_id;
+	}
+	public long getMedia_id() {
+		return media_id;
+	}
+	public void setMedia_id(long media_id) {
+		this.media_id = media_id;
+	}
+	public long getSearch_id() {
+		return search_id;
+	}
+	public void setSearch_id(long search_id) {
+		this.search_id = search_id;
+	}
 	public long getNum() {
 		return num;
 	}
@@ -67,11 +101,12 @@ public class ProjectDTO {
 	public void setMakerName(String makerName) {
 		this.makerName = makerName;
 	}
-	public String getMakersummary() {
-		return makersummary;
+	
+	public String getMakerSummary() {
+		return makerSummary;
 	}
-	public void setMakersummary(String makersummary) {
-		this.makersummary = makersummary;
+	public void setMakerSummary(String makerSummary) {
+		this.makerSummary = makerSummary;
 	}
 	public String getMakerLocation() {
 		return makerLocation;
@@ -139,12 +174,7 @@ public class ProjectDTO {
 	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
 	}
-	public String getTaxRecript() {
-		return taxRecript;
-	}
-	public void setTaxRecript(String taxRecript) {
-		this.taxRecript = taxRecript;
-	}
+
 	
 	
 	
