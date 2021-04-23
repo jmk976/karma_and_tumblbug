@@ -63,5 +63,9 @@
 		search_id=#{search_id}
 		where num=#{num}
 	</update>
+	
+	<delete id="setDeleteProject" parameterType="ProjectDTO">
+		delete from project where num=#{num}
+	</delete>
 
 </mapper>

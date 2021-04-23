@@ -19,12 +19,13 @@ color: black;
 <h1>Project List</h1>
 <div class="input-group">
 <c:forEach items="${projectList}" var="project">
+<c:if test="${project.state eq 'approval'}">
 
 <div class="card" style="width: 18rem; margin: 1rem;">
   <img src="../resources/images/project/sample/c5.gif" class="card-img-top" alt="kermit">
   <div class="card-body">
     <h5 class="card-title">${project.title}</h5>
-    <p class="card-text">${project.summary}</p>
+    <p class="card-text">${project.state}</p>
     <div class="input-group">
     <a class="card-text">${project.category}</a>
     <p class="card-text">&nbsp | &nbsp</p>
@@ -36,6 +37,7 @@ color: black;
 </div>
 
 
+</c:if>
 </c:forEach>
 </div>
 

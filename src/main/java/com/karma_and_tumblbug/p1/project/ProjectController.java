@@ -74,8 +74,13 @@ public class ProjectController {
 	
 	@PostMapping(value="projectUpdate")
 	public String setUpdateProject(ProjectDTO projectDTO) throws Exception{
-		System.out.println("controller");
 		int result = projectService.setUpdateProject(projectDTO);
-		return "project/projectList";
+		return "redirect:./myProject";
+	}
+	
+	@GetMapping(value="projectDelete")
+	public String setDeleteProject(ProjectDTO projectDTO) throws Exception{
+		projectService.setDeleteProject(projectDTO);
+		return "redirect:./myProject";
 	}
 }

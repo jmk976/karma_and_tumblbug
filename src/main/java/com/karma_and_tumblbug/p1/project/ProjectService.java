@@ -42,4 +42,8 @@ public class ProjectService {
 	public int setUpdateProject(ProjectDTO projectDTO) throws Exception{
 		return projectDAO.setUpdateProject(projectDTO);
 	}
+	
+	public int setDeleteProject(ProjectDTO projectDTO) throws Exception{
+		return projectDAO.setDeleteProject(projectDTO);
+	}
 }

@@ -20,7 +20,8 @@
 				<div class="card-body">
 					<h4 class="card-title">${mProject.title}</h4>
 					<p class="card-text">${mProject.summary}</p>
-					<a href="./projectInsert?num=${mProject.num}">${mProject.num}</a>
+					<a href="./projectInsert?num=${mProject.num}" id="update" value="${mProject.num}">수정</a>
+					<a href="./projectDelete?num=${mProject.num}">삭제</a>
 				</div>
 			</div>
 		</c:forEach>
@@ -28,5 +29,8 @@
 		
 		
 	</div>
+	
+	
+	<script type="text/javascript" src="../resources/jquery/projectMyProject.js"></script>
 </body>
 </html>

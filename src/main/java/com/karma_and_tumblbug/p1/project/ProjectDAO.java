@@ -40,4 +40,8 @@ public class ProjectDAO {
 		return sqlSession.update(NAMESPACE+"setUpdateProject", projectDTO);
 	}
 	
+	public int setDeleteProject(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteProject", projectDTO);
+	}
+	
 }

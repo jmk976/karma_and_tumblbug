@@ -39,7 +39,7 @@
 			</ul>
 		</div>
 		<!-- Tab panes -->
-		<form action="projectUpdate" method="post" id="frm">
+		<form action="./projectUpdate" method="post" id="frm">
 
 
 			<div class="tab-content">
@@ -47,65 +47,67 @@
 					<br>
 					<h3>프로젝트 개요</h3>
 					<input type="hidden" name="state" value="temporary"> <input
-						type="hidden" name="id" value="${memberhsip.id}"> <input
+						type="hidden" name="id" value="${projectDTO.id}"> <input
 						type="hidden" name="num" value="${projectDTO.num}">
 					<div class="form-group">
-						<label>프로젝트 제목</label> <input type="text"
-							class="form-control" id="title" name="title"
-							value="${projectDTO.title}">
+						<label>프로젝트 제목</label> <input type="text" class="form-control"
+							id="title" name="title" value="${projectDTO.title}">
+						<p id="titleCheckResult"></p>
+					</div>
+
+					<div class="form-group">
+						<label>프로젝트 대표 이미지</label> <input type="text" class="form-control"
+							id="projectImg" name="projectImg">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>프로젝트 대표 이미지</label> <input type="text"
-							class="form-control" id="title" name="title">
+						<label>프로젝트 요약</label> <input type="text" class="form-control"
+							id="summary" name="summary" value="${projectDTO.summary}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>프로젝트 요약</label> <input type="text"
-							class="form-control" id="summary" name="summary"
-							value="${projectDTO.summary}">
+						<label for="title">프로젝트 카테고리</label> <select class="form-control"
+							id="category" name="category">
+							<option>default</option>
+							<option>a</option>
+							<option>b</option>
+							<option>c</option>
+							<option>d</option>
+							<option>e</option>
+						</select>
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>프로젝트 카테고리</label> <input type="text"
-							class="form-control" id="category" name="category"
-							value="${projectDTO.category}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<div class="form-group">
-						<label>프로젝트 페이지 주소</label> <input type="text"
-							class="form-control" id="urlAddress" name="urlAddress"
+						<label>프로젝트 페이지 주소</label> <input type="text" class="form-control"
+							id="urlAddress" name="urlAddress"
 							value="${projectDTO.urlAddress}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>검색용 태그</label> <input type="text"
-							class="form-control" id="search_id" name="search_id"
-							value="${projectDTO.title}">
+						<label>검색용 태그</label> <input type="text" class="form-control"
+							id="search_id" name="search_id" value="${projectDTO.search_id}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<h3>창작자 정보</h3>
 					<div class="form-group">
-						<label>프로필 이미지</label> <input type="text"
-							class="form-control" id="title" name="title"
-							value="${projectDTO.title}">
+						<label>프로필 이미지</label> <input type="text" class="form-control"
+							id="profileImg" name="profileImg" value="${projectDTO.media_id}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>창작자 이름</label> <input type="text"
-							class="form-control" id="makerName" name="makerName"
-							value="${projectDTO.makerName}">
+						<label>창작자 이름</label> <input type="text" class="form-control"
+							id="makerName" name="makerName" value="${projectDTO.makerName}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>창작자 소개</label> <input type="text"
-							class="form-control" id="makerSummary" name="makerSummary"
+						<label>창작자 소개</label> <input type="text" class="form-control"
+							id="makerSummary" name="makerSummary"
 							value="${projectDTO.makerSummary}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>장작자 활동 지역</label> <input type="text"
-							class="form-control" id="makerLocation" name="makerLocation"
+						<label>장작자 활동 지역</label> <input type="text" class="form-control"
+							id="makerLocation" name="makerLocation"
 							value="${projectDTO.makerLocation}">
 						<p id="titleCheckResult"></p>
 					</div>
@@ -141,7 +143,8 @@
 					<h3>선물 구성</h3>
 					<div class="form-group">
 						<label for="title">선물 구성</label> <input type="text"
-							class="form-control" id="gift_id" name="gift_id">
+							class="form-control" id="gift_id" name="gift_id"
+							value="${projectDTO.gift_id }">
 						<p id="titleCheckResult"></p>
 					</div>
 					<h3>펀딩 안내</h3>
@@ -166,14 +169,13 @@
 				</div>
 
 
-
 				<div id="menu2" class="container tab-pane fade">
 					<br>
 					<h3>프로젝트 소개 영상</h3>
 					<div class="form-group">
 						<label for="title">프로젝트 소개 영상</label> <input type="text"
-							class="form-control" id="" name="title"
-							value="${projectDTO.title}">
+							class="form-control" id="video" name="video"
+							value="${projectDTO.media_id}">
 						<p id="titleCheckResult"></p>
 					</div>
 					<h3>프로젝트 스토리</h3>

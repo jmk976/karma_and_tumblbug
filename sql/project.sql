@@ -239,7 +239,7 @@ search_id number
 
 
 
-
+create sequence project_seq;
 create sequence pGift_seq;
 create sequence pMedia_seq;
 create sequence pSearch_seq;
@@ -262,7 +262,6 @@ select * from project;
 
 
 drop table project;
-create sequence project_seq;
 
 insert into project
 values(
@@ -384,5 +383,8 @@ select project_seq.nextval from dual;
 select * from project  where id='id1' order by num desc
 
 select * from tab;
+
+select state from project;
+
 
 commit work;
