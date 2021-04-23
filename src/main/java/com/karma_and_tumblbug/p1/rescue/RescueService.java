@@ -24,7 +24,18 @@ public class RescueService {
 	@Autowired
 	private RescueDAO rescueDAO;
 	
+	
+	
 	public List<RescueDTO> getList(RescueDTO rescueDTO) throws Exception {
+		
+		// -------startRow, lastRow--------
+		rescueDTO.makeRow();
+	
+		//-------------------------------
+		
+		//-----------페이징계산  ---------
+		long totalCount= rescueDAO.getTotalCount(rescueDTO);
+		rescueDTO.makeNum(totalCount);
 		return rescueDAO.getList(rescueDTO);
 	}
 	
@@ -37,7 +48,14 @@ public class RescueService {
 	public int setDelete(RescueDTO rescueDTO) throws Exception {
 		return rescueDAO.setDelete(rescueDTO);
 	}
-
+	
+	public RescueFileDTO getSelectFile(RescueDTO rescueDTO) throws Exception{
+		return rescueDAO.getSelectFile(rescueDTO); 
+		
+	}
+    
+	
+	
 	
 	public RescueDTO getSelect(RescueDTO rescueDTO) throws Exception{
 	    rescueDTO = rescueDAO.getSelect(rescueDTO);

@@ -18,7 +18,10 @@ public class RescueDAO {
 	
 	private final String NAMESPACE = "com.karma_and_tumblbug.p1.rescue.RescueDAO.";
 	
-    public List<RescueDTO> getList(RescueDTO rescueDTO) throws Exception {
+    public Long getTotalCount(RescueDTO rescueDTO)throws Exception{
+       return sqlSession.selectOne(NAMESPACE+"getTotalCount", rescueDTO);
+    }
+	public List<RescueDTO> getList(RescueDTO rescueDTO) throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE+"getList", rescueDTO);
 	}

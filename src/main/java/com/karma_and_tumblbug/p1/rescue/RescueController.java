@@ -29,9 +29,21 @@ public class RescueController {
 	private RescueService rescueService;
 	
 	@GetMapping("rescueGallery")
-	public void rescueGallery() {
+	public ModelAndView rescueGallery(RescueDTO rescueDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
+		
+		List<RescueDTO> list = rescueService.getList(rescueDTO);
+			
+		
+		
+		
+		mv.addObject("list", list);
+		mv.addObject("pager", rescueDTO);
+		mv.setViewName("rescue/rescueGallery");
+		return mv;
 	}
+	
 	
 	@GetMapping("rescueList")
 	public ModelAndView getList(RescueDTO rescueDTO)throws Exception{

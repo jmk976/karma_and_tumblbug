@@ -111,7 +111,7 @@ function categoryChange2(e) {
  	
  <div class="container">
      
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     <c:if test="${pager.pre}">
     <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
     </c:if>
@@ -125,9 +125,9 @@ function categoryChange2(e) {
     </c:if> 
   </ul>
   
+  
+  
   <div class="input-group mt-3 mb-3">
-  
-  
  
   
   <form id="frm" action="./rescueList" class="form-inline">

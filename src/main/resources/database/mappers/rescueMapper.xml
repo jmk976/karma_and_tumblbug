@@ -18,7 +18,7 @@
 		delete rescue where sn=#{sn}
 	</delete>
 
-	<select id="getSelect" parameterType="RescueDTO" resultType="RescueDTO">
+	<select id="getSelect" parameterType="RescueDTO" resultType="RescueDTO" resultMap="getSelectResult">
    		 select R.*, RF.*
 			from rescue R left join rescueFile RF
 			on R.sn = RF.sn
@@ -61,9 +61,50 @@
 	</select>
 	
       
- <select id="getList"  parameterType="RescueDTO" resultType="RescueDTO">
-       select * from rescue 
-       
+ <select id="getList"  parameterType="RescueDTO" resultType="RescueDTO" resultMap="getSelectResult">
+select rownum, R.status, R.sn, R.zoneSn, R.resDate, R.province, R.city, R.location, R.species, R.kind, R.sex, R.age, R.color, R.desex, R.character, R.weight, R.health, R.feature, R.adoptDate, R.returnDate, RF.num, RF.fileName, RF.originalName
+      from 
+				(
+                select status, sn, zoneSn, resDate, province, city, location, species, kind, sex, age, color, desex, character, weight, health, feature,adoptDate,returnDate
+          from rescue 
+            <where>
+       		<if test="status != null">
+        	   status like '%'||#{status}||'%'
+        	</if>
+        	<if test="sn != null">
+        	   AND sn like '%'||#{sn}||'%'
+        	</if>
+        	<if test="zoneSn != null">
+        	   AND zoneSn like '%'||#{zoneSn}||'%'
+        	</if>
+        	<if test="species != null">
+        	   AND species like '%'||#{species}||'%'
+        	</if>
+        	<if test="kind != null">
+        	   AND kind like '%'||#{kind}||'%'
+        	</if>
+        	<if test="province != null">
+        	   AND province like '%'||#{province}||'%'
+        	</if>
+        	<if test="city != null">
+        	   AND city like '%'||#{city}||'%'
+        	</if>
+        	<if test="feature != null">
+        	   AND feature like '%'||#{feature}||'%'
+        	</if>
+         
+       </where>
+                )R left join rescueFile RF
+			on R.sn = RF.sn 
+            where rownum between #{startRow} and #{lastRow}
+   
+
+
+	</select> 
+	
+	
+	<select id="getTotalCount" resultType="Long" parameterType="RescueDTO">
+	  select count(sn) from rescue 
        <where>
        		<if test="status != null">
         	   status like '%'||#{status}||'%'
@@ -89,12 +130,10 @@
         	<if test="feature != null">
         	   AND feature like '%'||#{feature}||'%'
         	</if>
-      
-       
+           
        </where>
-       
-
-	</select> 
+	
+	</select>
 	
 			
 

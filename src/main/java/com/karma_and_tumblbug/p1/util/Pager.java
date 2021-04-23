@@ -203,18 +203,6 @@ public class Pager {
 		this.search = search;
 	}
 	
-	//-------------검색 배열 맵
-	HashMap<String, String> map = new HashMap<String, String>();
-
-	public HashMap<String, String> getMap() {
-		return map;
-	}
-
-
-	public void setMap(HashMap<String, String> map) {
-		
-		this.map = map;
-	}
 	
 	
 

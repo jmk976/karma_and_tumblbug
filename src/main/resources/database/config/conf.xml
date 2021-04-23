@@ -27,6 +27,9 @@
 			alias="RescueFileDTO" />
 		<typeAlias type="com.karma_and_tumblbug.p1.util.Pager"
 			alias="Pager" />
+			
+		<typeAlias type="java.lang.Long" alias="Long"/>
+		
 
 
 	</typeAliases>
