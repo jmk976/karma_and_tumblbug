@@ -2,7 +2,7 @@
  * 
  */
 
-openPopup = function() {
+insertPopup = function() {
     var _width = '650';
     var _height = '600';
     // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
@@ -13,7 +13,7 @@ openPopup = function() {
  
 }
 
-$("#insert").click(openPopup);
+$("#insert").click(insertPopup);
 
 
 

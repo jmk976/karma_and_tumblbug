@@ -7,7 +7,9 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>Insert title here</title>
 <style type="text/css">
-.container{margin-top: 25px;}
+.container {
+	margin-top: 25px;
+}
 </style>
 
 
@@ -15,11 +17,11 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 
-	<div class="container" >		
+	<div class="container">
 		<h5>등록된 배송지</h5>
 		<a href="" id="insert">+ 배송지 추가</a>
-		
-		
+
+
 		<c:forEach items="${list}" var="dto">
 			<div class="card w-75">
 				<div class="card-body">
@@ -35,7 +37,8 @@
 	</div>
 
 
+	<script type="text/javascript" src="../resources/jquery/shippingList.js"></script>
 
-<script type="text/javascript" src="../resources/jquery/shippingList.js"></script>
+
 </body>
 </html>

@@ -39,14 +39,9 @@
 			</div>
 
 		<!-- 	<button type="submit" class="btn btn-primary">Submit</button> -->
-			<input type="button" id="btn" value="ADD" class="btn btn-primary">
+			<input type="submit" id="btn" value="ADD" class="btn btn-primary">
 		</form>
 
-	
-
-
-
-	
 
 </body>
 </html>
