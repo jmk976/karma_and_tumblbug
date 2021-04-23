@@ -12,13 +12,13 @@ ul{
    padding-left:0px;
    }
  img {
-  width: 560px;
-  height: 420px;
+  width: 560;
+  height: 420;
   object-fit: cover;
 }
    
-   
 </style>
+
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
@@ -28,7 +28,7 @@ ul{
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4">구조동물공고
+  <h1 class="my-4">구조동물공고1
     <small></small>
   </h1>
 
@@ -215,7 +215,7 @@ ul{
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <br>
-                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                            <button type="button"  style="width:100%;" class="btn btn-danger wrn-btn">Search</button>
                         </div>
                     </div>
                 </div>

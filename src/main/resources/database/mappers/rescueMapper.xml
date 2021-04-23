@@ -97,9 +97,7 @@ select rownum, R.status, R.sn, R.zoneSn, R.resDate, R.province, R.city, R.locati
                 )R left join rescueFile RF
 			on R.sn = RF.sn 
             where rownum between #{startRow} and #{lastRow}
-   
-
-
+  
 	</select> 
 	
 	
