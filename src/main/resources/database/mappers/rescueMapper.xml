@@ -62,7 +62,8 @@
 	
       
  <select id="getList"  parameterType="RescueDTO" resultType="RescueDTO" resultMap="getSelectResult">
-select rownum, R.status, R.sn, R.zoneSn, R.resDate, R.province, R.city, R.location, R.species, R.kind, R.sex, R.age, R.color, R.desex, R.character, R.weight, R.health, R.feature, R.adoptDate, R.returnDate, RF.num, RF.fileName, RF.originalName
+select * from 
+(select rownum N, R.status, R.sn, R.zoneSn, R.resDate, R.province, R.city, R.location, R.species, R.kind, R.sex, R.age, R.color, R.desex, R.character, R.weight, R.health, R.feature, R.adoptDate, R.returnDate, RF.num, RF.fileName, RF.originalName
       from 
 				(
                 select status, sn, zoneSn, resDate, province, city, location, species, kind, sex, age, color, desex, character, weight, health, feature,adoptDate,returnDate
@@ -92,17 +93,18 @@ select rownum, R.status, R.sn, R.zoneSn, R.resDate, R.province, R.city, R.locati
         	<if test="feature != null">
         	   AND feature like '%'||#{feature}||'%'
         	</if>
-         
-       </where>
-                )R left join rescueFile RF
-			on R.sn = RF.sn 
-            where rownum between #{startRow} and #{lastRow}
+        	
+           </where>
+           
+               )R left join rescueFile RF
+			on R.sn = RF.sn)
+            where N between #{startRow} and #{lastRow} 
   
 	</select> 
 	
 	
 	<select id="getTotalCount" resultType="Long" parameterType="RescueDTO">
-	  select count(sn) from rescue 
+	  select count(status) from rescue 
        <where>
        		<if test="status != null">
         	   status like '%'||#{status}||'%'
