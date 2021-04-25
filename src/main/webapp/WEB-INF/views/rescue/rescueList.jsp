@@ -72,145 +72,101 @@
 	 </c:if>
  </c:catch> --%>
  
- 	
- <div class="container">
-     
-  <ul class="pagination justify-content-center">
+  <!-- Pagination -->
+   <ul class="pagination justify-content-center">
     <c:if test="${pager.pre}">
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+    	<li class="page-item">
+    	<a class="page-link p" href="#" title="${pager.startNum-1}">
+    	 <span aria-hidden="true">&laquo;</span>
+    	<span class="sr-only">Previous</span></a></li>
     </c:if>
     
     <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"> 
-    <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
+    	<li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
     </c:forEach>
     
     <c:if test="${pager.next}">    
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+   	 	<li class="page-item">
+   	 	<a class="page-link p" href="#" title="${pager.lastNum+1}">
+   	 	<span aria-hidden="true">&raquo;</span>
+   	 	<span class="sr-only">Next</span>
+   	 	</a></li>
     </c:if> 
   </ul>
-  
-  
-  
-
- 
-  
-  <form id="frm" action="./rescueList" class="form-inline">
-    <div class="input-group mt-3 mb-3">
-		<input type="hidden" name="curPage" value="1" id="curPage">
-  <div class="form-group">
-      
-    <div class="row">
-     
-	  	  <div class="col">
-	  	         
-	  	  	       <select onchange="change_serch(this.value);" name="species" id="species" class="custom-select">
-					 <option value="0" disabled selected hidden> 축종 </option>
-					    <option value="개">개</option>
-					    <option value="고양이">고양이</option>
-					    <option value="기타">기타</option>
-					</select>
-		   </div>
-		  <div class="col">
-					<select id="kind" name="kind" class="custom-select">
-					 <option value="0" disabled selected hidden> 선택 </option>
-					</select>
-	  	  </div> 
-	  	 
-	  	  
-    </div>
-    </div>
-  	
-		 <div class="form-group">
- 
-    <div class="row">
-     
-	  	  <div class="col">
-	  	         
-	  	  	       <select onchange="changeCity(this.value);" name="province" id="province" class="custom-select">
-					 <option value="0" disabled selected hidden> 지역구를 선택해주세요 </option>
-					    <option value="서울특별시">서울특별시</option>
-					    <option value="경기도">경기도</option>
-					    <option value="인천광역시">인천광역시</option>
-					</select>
-		   </div>
-		  <div class="col">
-					<select id="city" name="city" class="custom-select">
-					   <option value="0" disabled selected hidden> 전체 </option>
-					</select>
-	  	  </div> 
-	  	 
-	  	 
-    </div>
-    </div>
-  	
-   <div class="row">
-   <div class="col">
-   status:
-    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="status" name="status">
-     </div>
-     <div class="col">
-    sn:
-    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="sn" name="sn">
-     </div>
-     <div class="col">
-    zoneSn:
-    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="zoneSn"  name="zoneSn">
-     </div>
-     <div class="col">
-    feature: 
-    <input type="text" class="form-control-sm mb-2 mr-sm-2" id="feature"  name="feature">
-     </div> 
-    <button type="submit" id="search" class="btn btn-primary mb-2">Submit</button>
-    </div>
-   </div>
- </form> 
-
- 
-
- 
-  </div>
-
-
 
 </div>
+<!-- /.container -->
+<section class="search-sec">
+    <div class="container">
+        <form id="frm" action="./rescueGallery"  novalidate="novalidate">
+        	 <div class="col">
+             게시 진행사항:
+            <input type="text" class="form-control-sm mb-2 mr-sm-2" id="status" name="status">
+            </div>
+        		<input type="hidden" name="curPage" value="1" id="curPage">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" onchange="change_serch(this.value);" name="species" id="species">
+                                <option value="0" disabled selected hidden> 축종 </option>
+							    <option value="개">개</option>
+							    <option value="고양이">고양이</option>
+							    <option value="기타">기타</option>
+                            </select> 
+                        </div>
+                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" id="kind" name="kind">
+                      		    <option value="0" disabled selected hidden> 전체 </option>
+                            </select>
+                        </div>
+                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" onchange="changeCity(this.value);" name="province" id="province">
+                                <option value="0" disabled selected hidden> 지역구를 선택해주세요 </option>
+							    <option value="서울특별시">서울특별시</option>
+							    <option value="경기도">경기도</option>
+							    <option value="인천광역시">인천광역시</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                             <select class="form-control search-slt" id="city" name="city">
+                                  <option value="0" disabled selected hidden> 전체 </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                         
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            시리얼 넘버:
+                            <input type="text" id="sn" name="sn" class="form-control search-slt" >
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                             지역 시러얼 넘버:
+                            <input type="text" class="form-control search-slt" id="zoneSn"  name="zoneSn">
+                        </div>
+                        
+                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                              특징:
+                             <input type="text" class="form-control search-slt" id="feature"  name="feature">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <br>
+                            <button type="submit"  style="width:100%;" class="btn btn-danger wrn-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
 
- <script type="text/javascript">
-
- let kind='${pager.kind}';
-	  $(".sel").each(function(){
-		 let t = $(this).text(); 
-		 if(t==kind) {
-			 $(this).prop("selected", true);
-		 }
- }); 
-  
-  $(".p").click(function(){
-	  let curPage = $(this).attr("title");
-	  $("#curPage").val(curPage);
-	  let search = '${pager.search}';
-	 
-	  $("#frm").submit();
-  });
-	/*   $("#curPage").val(curPage);
-	  $("#kind").val(kind);
-	  $("#search").val(search);
-	  $("#frm").submit(); */
-	 //location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
-	  
-/* $("#search").click(function(){
-	
-	
-		  $("#frm").submit();
-		  
-		  
-});
-
-   */
-  
-  
- </script>
-   
- <script type="text/javascript">
+<script type="text/javascript">
 var cnt = new Array();
 cnt[0] = new Array('전체');
 cnt["서울특별시"] = new Array("전체","강남구","강동구","강북구","강서구","광진구","구로구","금천구","노원구","도봉구","동대문구","서대문구","서초구","성동구","성북구","송파구","영등포구","은평구","종로구","중구","중랑구");
@@ -219,18 +175,12 @@ cnt["인천광역시"] = new Array("전체","계양구","남구","남동구","�
 
 function changeCity(add) {
 	sel = document.getElementById('city');
-	for (i=sel.length; i>=0; i--){
-		sel.options[i] = null
-		}
-	for (i=0; i < cnt[add].length;i++){ 
+	
+	for (i=1; i < cnt[add].length;i++){ 
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
 //    document.form.test2.options[i] = new Option(num[i],vnum[i]);
 
 	} 
-	 
-
-
-	
  }
 
 var cntt = new Array(); 
@@ -241,20 +191,39 @@ cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아�
 
 function change_serch(ku) { 
 	sel = document.getElementById('kind');
-	for (i=sel.length-1; i>=0; i--){ 
-		sel.options[i] = null 
-		} 
-	for (i=0; i < cntt[ku].length;i++){ 
+	
+	for (i=1; i < cntt[ku].length;i++){ 
 		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
  } 
 </script>
+  
 
 <script type="text/javascript">
-$("select option[value*='전체']").prop('disabled',true);
-</script>
+
+
+let kind='${pager.kind}';
+$(".sel").each(function(){
+	 let t = $(this).text(); 
+	 if(t==kind) {
+		 $(this).prop("selected", true);
+	 }
+}); 
+
+  $(".p").click(function(){
+	  let curPage = $(this).attr("title");
+	  $("#curPage").val(curPage);
+	  let search = '${pager.search}';
+	 
+	  $("#frm").submit();
+  });
+	
   
+ </script>
   
+ 
+ 	
+ 
   
  
 

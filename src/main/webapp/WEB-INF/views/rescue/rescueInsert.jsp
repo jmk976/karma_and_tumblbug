@@ -67,6 +67,7 @@
 		   </div>
 		   <div class="col">
 					<select id="city" name="city" class="custom-select">
+					   <option value="0" disabled selected hidden> 전체 </option>
 					</select>
 	  	   </div> 
 	  	 
@@ -89,6 +90,7 @@
 		   </div>
 		  <div class="col">
 					<select id="kind" name="kind" class="custom-select">
+					  <option value="0" disabled selected hidden> 전체 </option> 
 					</select>
 	  	  </div> 
     </div>
@@ -182,10 +184,8 @@ cnt["인천광역시"] = new Array("전체","계양구","남구","남동구","�
 
 function changeCity(add) {
 	sel = document.getElementById('city');
-	for (i=sel.length; i>=0; i--){
-		sel.options[i] = null
-		}
-	for (i=0; i < cnt[add].length;i++){ 
+	
+	for (i=1; i < cnt[add].length;i++){ 
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
 //    document.form.test2.options[i] = new Option(num[i],vnum[i]);
 
@@ -202,10 +202,8 @@ cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아�
 
 function change_serch(ku) { 
 	sel = document.getElementById('kind');
-	for (i=sel.length-1; i>=0; i--){ 
-		sel.options[i] = null 
-		} 
-	for (i=0; i < cntt[ku].length;i++){ 
+	
+	for (i=1; i < cntt[ku].length;i++){ 
 		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
  } 

@@ -28,9 +28,18 @@ ul{
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4">구조동물공고1
-    <small></small>
-  </h1>
+  <c:if test="${pager.status =='구조'}">
+     <h1 class="my-4">구조동물공고</h1>
+  </c:if>
+  <c:if test="${pager.status =='가족'}">
+     <h1 class="my-4">가족의 품으로</h1>
+  </c:if>
+  <c:if test="${pager.status =='입양'}">
+     <h1 class="my-4">입양됐어요</h1>
+  </c:if>
+  
+   
+  
 
   <div class="row">
    <c:forEach items="${list}" var="dto"> 
@@ -50,6 +59,19 @@ ul{
           			</i>
           		</li>
           		
+          		<c:if test="${pager.status =='입양'}">
+          			<li class="half">
+          				<strong>입양일</strong> ${dto.adoptDate} 
+          			</li>
+          		</c:if>
+          		<c:if test="${pager.status =='가족'}">
+          			<li class="half">
+          				<strong>반환일</strong> ${dto.returnDate} 
+          			</li>
+          		</c:if>
+          		
+          		
+          		
           		<li class="full">
           			<strong>구조장소</strong>
           		</li>
@@ -58,23 +80,20 @@ ul{
           		</li>
           		
           		<li class="half">
-          			<Strong>축종</Strong>
-          		     ${dto.species} / ${dto.kind}
+          			<Strong>축종</Strong> ${dto.species} / ${dto.kind}
           		</li>
           		<li class="half">
-          			<Strong>성별</Strong>
-          		     ${dto.sex}
+          			<Strong>성별</Strong>  ${dto.sex}
           		</li>
           		
           		<li class="half">
-          			<Strong>연령</Strong>
-          		     ${dto.age}
+          			<Strong>연령</Strong>  ${dto.age}
           		</li>
           		<li class="half">
-          			<Strong>모색</Strong>
-          		     ${dto.color}
+          			<Strong>모색</Strong>  ${dto.color}
           		</li>
           		
+          		<c:if test="${pager.status =='구조'}">
           		<li class="half">
           			<Strong>중성화수술</Strong>
           		     ${dto.desex}
@@ -101,9 +120,12 @@ ul{
           			   ${dto.feature}
           			</span>
           		</li>
+          		</c:if>
           	</ul>
          </p>
+         <c:if test="${pager.status =='구조'}">
          <button type="button" onclick="ani_request('0000054699')">입양신청</button>
+         </c:if>
       </div>
     </div>
     </form>
@@ -158,7 +180,7 @@ ul{
                         </div>
                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="kind" name="kind">
-                      
+                      		    <option value="0" disabled selected hidden> 전체 </option>
                             </select>
                         </div>
                           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -171,7 +193,7 @@ ul{
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                              <select class="form-control search-slt" id="city" name="city">
-                                
+                                  <option value="0" disabled selected hidden> 전체 </option>
                             </select>
                         </div>
                     </div>
@@ -181,20 +203,20 @@ ul{
              <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                         
+                         <input type="hidden" name="status" value="${pager.status}">
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            sn:
-                            <input type="text" id="sn" name="sn" class="form-control search-slt" >
+                            시리얼 넘버:
+                            <input type="text" id="sn" name="sn" value="${pager.sn}" class="form-control search-slt" >
                         </div>
                         
                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                              zoneSn:
-                            <input type="text" class="form-control search-slt" id="zoneSn"  name="zoneSn">
+                             지역 시러얼 넘버:
+                            <input type="text" class="form-control search-slt" value="${pager.zoneSn}" id="zoneSn"  name="zoneSn">
                         </div>
                         
                           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                               feature:
-                             <input type="text" class="form-control search-slt" id="feature"  name="feature">
+                              특징:
+                             <input type="text" class="form-control search-slt" value="${pager.feature}"id="feature"  name="feature">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <br>
@@ -216,10 +238,8 @@ cnt["인천광역시"] = new Array("전체","계양구","남구","남동구","�
 
 function changeCity(add) {
 	sel = document.getElementById('city');
-	for (i=sel.length; i>=0; i--){
-		sel.options[i] = null
-		}
-	for (i=0; i < cnt[add].length;i++){ 
+	
+	for (i=1; i < cnt[add].length;i++){ 
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
 //    document.form.test2.options[i] = new Option(num[i],vnum[i]);
 
@@ -234,10 +254,8 @@ cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아�
 
 function change_serch(ku) { 
 	sel = document.getElementById('kind');
-	for (i=sel.length-1; i>=0; i--){ 
-		sel.options[i] = null 
-		} 
-	for (i=0; i < cntt[ku].length;i++){ 
+	
+	for (i=1; i < cntt[ku].length;i++){ 
 		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
  } 
