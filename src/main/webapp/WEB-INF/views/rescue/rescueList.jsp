@@ -98,10 +98,15 @@
 <!-- /.container -->
 <section class="search-sec">
     <div class="container">
-        <form id="frm" action="./rescueGallery"  novalidate="novalidate">
+        <form id="frm" action="./rescueList"  novalidate="novalidate">
         	 <div class="col">
              게시 진행사항:
-            <input type="text" class="form-control-sm mb-2 mr-sm-2" id="status" name="status">
+            <select name="status" id="status" class="custom-select myCheck">
+						    <option value="구조">구조</option>
+						    <option value="가족">가족</option>
+						    <option value="입양">입양</option>
+						    <option value="보류">보류</option>
+						 </select>
             </div>
         		<input type="hidden" name="curPage" value="1" id="curPage">
             <div class="row">

@@ -27,7 +27,7 @@ public class RescueDAO {
 	}
 	
 	public int setUpdate(RescueDTO rescueDTO) throws Exception {
-				return sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
+			return sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
 	}
 	
 	public int setDelete(RescueDTO rescueDTO) throws Exception {

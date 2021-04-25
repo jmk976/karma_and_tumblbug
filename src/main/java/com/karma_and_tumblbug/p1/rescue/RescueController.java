@@ -64,16 +64,7 @@ public class RescueController {
 	
 	
 	
-	@GetMapping("rescueUpdate")
-	public void setUpdate() throws Exception{
-		
-	}
 	
-	@PostMapping("rescueUpdate")
-	public String setUpdate(RescueDTO rescueDTO) throws Exception{
-		int result = rescueService.setUpdate(rescueDTO);
-		return "redirect:../";
-	}
 	
 	@GetMapping("rescueDelete")
 	public ModelAndView setDelete(RescueDTO rescueDTO) throws Exception{
@@ -134,7 +125,35 @@ public class RescueController {
 		return "common/commonResult";
 		
 	}
-
+	
+	@GetMapping("rescueUpdate")
+	public ModelAndView setUpdate(RescueDTO rescueDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		rescueDTO = rescueService.getSelect(rescueDTO);
+		
+		mv.addObject("dto", rescueDTO);
+		mv.setViewName("rescue/rescueUpdate");
+		return mv;
+		
+	}
+	
+	@PostMapping("rescueUpdate")
+	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception{
+		int result = rescueService.setUpdate(rescueDTO, avatar, session);
+		String message="등록 실패";
+		String path="./rescueInsert";
+		if(result>0) {
+			message="등록 성공";
+		    path="./rescueInsert";
+		    
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path",path);
+		return "common/commonResult";
+	
+	}
+	
+	
 	
 
 }

@@ -26,6 +26,8 @@ public class RescueService {
 	
 	
 	
+	
+	
 	public List<RescueDTO> getList(RescueDTO rescueDTO) throws Exception {
 		
 		// -------startRow, lastRow--------
@@ -40,9 +42,7 @@ public class RescueService {
 	}
 	
 	
-	public int setUpdate(RescueDTO rescueDTO) throws Exception {
-		return rescueDAO.setUpdate(rescueDTO);
-	}
+	
 
 
 	public int setDelete(RescueDTO rescueDTO) throws Exception {
@@ -82,6 +82,24 @@ public class RescueService {
    
     	
     }
+    
+    public int setUpdate(RescueDTO rescueDTO,MultipartFile avatar, HttpSession session) throws Exception {
+        String fileName = fileManager.save("rescue", avatar, session);
+        
+        RescueFileDTO rescueFileDTO = new RescueFileDTO();
+        rescueFileDTO.setSn(rescueDTO.getSn());
+        rescueFileDTO.setOriginalName(avatar.getOriginalFilename());
+        rescueFileDTO.setFileName(fileName);
+		
+        
+        int result = rescueDAO.setInsert(rescueDTO);
+		 result = rescueDAO.setFileInsert(rescueFileDTO);
+		 
+		 
+		 
+		return result;
+  
+	}
 
 
 }
