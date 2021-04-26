@@ -182,22 +182,13 @@ let province ="${dto.province}"
 
 $("#province").val(province).prop("selected", true); //값이 1인 option 선택
 
-let city ="${dto.city}"
-
-console.log(city)
-
-$("#city").val(city).prop("selected", true);
 
 let species="${dto.species}"
 
 $("#species").val(species).prop("selected", true);
 
-let kind="${dto.kind}"
-
-$("#kind").val(kind).prop("selected", true);
-
-console.log(kind)
-
+let city ="${dto.city}"
+	console.log(city)
 
 var cnt = new Array();
 cnt[0] = new Array('전체');
@@ -212,11 +203,23 @@ function changeCity(add) {
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
 //    document.form.test2.options[i] = new Option(num[i],vnum[i]);
 
+		if( '${dto.city}' == sel.options[i].value){
+			$("sel.options:eq("+i+")").attr("selected","selected");	
+		}
 	} 
+	
+
+
+/* 	for(var cnt = 0 ; cnt < sel.options.length; cnt++ )
+	{
+	  if( city == sel.options[cnt].value)
+	    sel.options[cnt].selected = true;
+	}
+ */
+
+
  }
-</script>
- 
-<script type="text/javascript" > 
+
 var cntt = new Array(); 
 cntt[0] = new Array('전체');
 cntt["개"] = new Array("선택","Mix","그레이하운드","그레이트피레니즈","닥스훈트","도베르만","리트리버","롯트와일러","말티즈","미니핀","바셋하운드","비글","보스턴테리어","복서","세타","세인트버나드","시베리안허스키","시츄","샤모예드","샤페이","슈나우저","스피츠","알래스칸말라뮤트","요크셔테리어","웰시코기","진도","제페니즈친","차우차우","치와와","코카스파니엘","콜리","퍼그","포메라니안","포인터","폭스테리어","푸들","페키니즈","보더콜리","기타","프렌치불독","시바견","비숑프리제","불테리어","잭러셀테리어"); 
@@ -229,6 +232,12 @@ function change_serch(ku) {
 	for (i=1; i < cntt[ku].length;i++){ 
 		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
+	
+	let kind="${dto.kind}"
+
+		$("#kind").val(kind).prop("selected", true);
+
+		console.log(kind)
  } 
 </script>
 

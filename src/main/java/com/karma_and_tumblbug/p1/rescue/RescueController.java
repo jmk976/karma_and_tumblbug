@@ -129,7 +129,7 @@ public class RescueController {
 	@GetMapping("rescueUpdate")
 	public ModelAndView setUpdate(RescueDTO rescueDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		rescueDTO = rescueService.getSelect(rescueDTO);
+    	rescueDTO = rescueService.getSelect(rescueDTO);
 		
 		mv.addObject("dto", rescueDTO);
 		mv.setViewName("rescue/rescueUpdate");
