@@ -160,13 +160,14 @@
     
     <div class="form-group">
    		 <label for="file">file</label>
-    	 <input type="file" class="form-control etc" value="${dto.avatar}" id="avatar" name="avatar" >
+    	 <input type="file" class="form-control etc" value="${dto.rescueFileDTO.originalName}" id="avatar" name="avatar" >
+    	 <span></span>
   	</div> 
   
    
 
    <input type="button" id="btn" value="입력" class="btn btn-primary">
-  <a href="./rescueInsert"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
+  <a href="./rescueList"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
 </form>
 
 
@@ -176,6 +177,28 @@
 </div>
 
 <script type="text/javascript">
+
+let province ="${dto.province}"
+
+$("#province").val(province).prop("selected", true); //값이 1인 option 선택
+
+let city ="${dto.city}"
+
+console.log(city)
+
+$("#city").val(city).prop("selected", true);
+
+let species="${dto.species}"
+
+$("#species").val(species).prop("selected", true);
+
+let kind="${dto.kind}"
+
+$("#kind").val(kind).prop("selected", true);
+
+console.log(kind)
+
+
 var cnt = new Array();
 cnt[0] = new Array('전체');
 cnt["서울특별시"] = new Array("전체","강남구","강동구","강북구","강서구","광진구","구로구","금천구","노원구","도봉구","동대문구","서대문구","서초구","성동구","성북구","송파구","영등포구","은평구","종로구","중구","중랑구");
@@ -192,7 +215,7 @@ function changeCity(add) {
 	} 
  }
 </script>
- <script type="text/javascript" src="../resources/jquery/rescueInsert.js"></script>
+ 
 <script type="text/javascript" > 
 var cntt = new Array(); 
 cntt[0] = new Array('전체');
@@ -208,6 +231,42 @@ function change_serch(ku) {
 	} 
  } 
 </script>
+
+<script type="text/javascript">
+$("#btn").click(function(){
+	
+			
+			let r = $("#returnDate").val();
+	        let a = $("#adoptDate").val();
+			let result =false;
+			let result2=false;
+			
+			if(typeof r == "undefined" || r == "" || r == null){
+				
+				$("#returnDate").val("2000-01-01");
+				result = true
+				}else{
+				result = true
+					}
+
+		   if(typeof a == "undefined" || a == "" || a == null){
+				
+				$("#adoptDate").val("2000-01-01");
+				result2 = true
+				}else{
+				result2 = true
+					}
+				
+
+		  if(result==true & result2==true){
+			$("#frm").submit()
+		}			
+	
+	        
+		  
+	});
+</script>
+
   
 </body>
 </html>

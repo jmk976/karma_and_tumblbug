@@ -141,10 +141,10 @@ public class RescueController {
 	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception{
 		int result = rescueService.setUpdate(rescueDTO, avatar, session);
 		String message="등록 실패";
-		String path="./rescueInsert";
+		String path="./rescueUpdate";
 		if(result>0) {
 			message="등록 성공";
-		    path="./rescueInsert";
+		    path="./rescueList";
 		    
 		}
 		model.addAttribute("msg", message);

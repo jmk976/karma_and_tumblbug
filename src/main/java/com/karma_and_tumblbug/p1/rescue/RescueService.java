@@ -92,7 +92,7 @@ public class RescueService {
         rescueFileDTO.setFileName(fileName);
 		
         
-        int result = rescueDAO.setInsert(rescueDTO);
+        int result = rescueDAO.setUpdate(rescueDTO);
 		 result = rescueDAO.setFileInsert(rescueFileDTO);
 		 
 		 

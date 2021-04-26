@@ -102,6 +102,7 @@
         	 <div class="col">
              게시 진행사항:
             <select name="status" id="status" class="custom-select myCheck">
+                            <option disabled selected hidden>선택</option> 
 						    <option value="구조">구조</option>
 						    <option value="가족">가족</option>
 						    <option value="입양">입양</option>
