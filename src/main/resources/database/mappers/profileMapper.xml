@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.karma_and_tumblbug.p1.profile.ProfileDAO">
+	<select id="getProfile" parameterType="ProfileDTO" resultType="ProfileDTO">
+		select * from profile where id=#{id}
+	</select>
+	
+	<update id="updateProfile" parameterType="ProfileDTO">
+		update profile set
+		nickname=#{nickname}, urlname={urlname}, intro={intro}, web={web}, privacy={privacy}, 
+		email={email}, message={message}, pjUpdate={pjUpdate}, news={news}
+		where id={id}
+	</update>
+</mapper>

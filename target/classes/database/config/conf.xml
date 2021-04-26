@@ -36,6 +36,11 @@
 			alias="RescueFileDTO" />
 		<typeAlias type="com.karma_and_tumblbug.p1.util.Pager"
 			alias="Pager" />
+		<typeAlias type="com.karma_and_tumblbug.p1.profile.ProfileDTO"
+			alias="ProfileDTO" />
+		<typeAlias type="com.karma_and_tumblbug.p1.profile.ProfilePicDTO"
+			alias="ProfilePicDTO" />	
+			
 			
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		

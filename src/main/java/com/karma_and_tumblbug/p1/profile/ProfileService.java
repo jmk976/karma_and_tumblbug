@@ -14,17 +14,11 @@ public class ProfileService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public int setUpdate(ProfileDTO profileDTO)throws Exception{
-		return profileDAO.setUpdate(profileDTO);
+	public ProfileDTO getProfile(ProfileDTO profileDTO)throws Exception{
+		return profileDAO.getProfile(profileDTO);
 	}
 	
-	public int setInsert(ProfileDTO profileDTO)throws Exception{
-		return profileDAO.setInsert(profileDTO);
+	public int updateProfile(ProfileDTO profileDTO)throws Exception{
+		return profileDAO.updateProfile(profileDTO);
 	}
-	
-	public int setFileInsert(ProfilePicDTO picDTO)throws Exception{
-		return profileDAO.setFileInsert(picDTO);
-	}
-	
-
 }

@@ -18,12 +18,27 @@
 					value="${dto.nickname}" readonly="readonly">
 			</div>
 			<div class="form-group">
+				<label for="urlname">사용자 이름(URL)</label> <input type="text"
+					class="form-control" id="urlname" name="urlname"
+					value="${dto.urlname}" readonly="readonly">
+			</div>
+			<div class="form-group">
 				<label for="intro">소개</label> <input type="text"
 					class="form-control" id="intro" name="intro"
 					value="${dto.intro}" readonly="readonly">
 			</div>
-			<h5>밀어준 프로젝트</h5>
-			<h5>사진</h5>
+			<div class="form-group">
+				<label for="web">웹사이트</label> <input type="text"
+					class="form-control" id="web" name="web" value="${dto.web}"
+					readonly="readonly">
+			</div>
+			<div class="form-group">
+				<label for="privacy">프라이버시</label> <input type="text"
+					class="form-control" id="privacy" name="privacy"
+					value="${dto.privacy}" readonly="readonly">
+			</div>
+
+			<a href="./updateProfile" type="button" class="btn btn-outline-primary">수정</a>
 		</div>
 </body>
 </html>
