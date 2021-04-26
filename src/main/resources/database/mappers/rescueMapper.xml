@@ -98,7 +98,7 @@ select * from
           
                )R left join rescueFile RF
 			on R.sn = RF.sn)
-            where N between #{startRow} and #{lastRow} 
+            where N between #{startRow} and #{lastRow} order by sn desc
   
 	</select> 
 	
