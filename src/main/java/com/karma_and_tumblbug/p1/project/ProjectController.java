@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
@@ -20,6 +21,31 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
+	
+	
+	@PostMapping(value="summerFileDelete")
+	public ModelAndView setSummerFileDelete(ProjectDTO projectDTO,String fileName,HttpSession session) throws Exception{
+		ModelAndView mv  = new ModelAndView();
+		boolean result = projectService.setSummerFileDelete(projectDTO,fileName, session);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	
+	@PostMapping(value="summerFileUpload")
+	public ModelAndView setSummerFileUpload(ProjectDTO projectDTO,MultipartFile file,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("summerfileUpload");
+		System.out.println(file.getOriginalFilename());
+		String fileName = projectService.setSummerFileUpload(projectDTO, file, session);
+		fileName="../resources/images/project/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
 	@GetMapping(value="projectList")
 	public ModelAndView getProjectList()throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -73,8 +99,11 @@ public class ProjectController {
 	}
 	
 	@PostMapping(value="projectUpdate")
-	public String setUpdateProject(ProjectDTO projectDTO) throws Exception{
-		int result = projectService.setUpdateProject(projectDTO);
+	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile[] files,HttpSession session) throws Exception{
+		for(int i=0;i<files.length;i++) {
+			System.out.println(files[i].getOriginalFilename());
+		}
+		int result = projectService.setUpdateProject(projectDTO,session,files);
 		return "redirect:./myProject";
 	}
 	

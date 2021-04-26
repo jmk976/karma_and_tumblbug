@@ -6,31 +6,66 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+.b {
+	color: blue;
+}
+
+.r {
+	color: red;
+}
+
+img {
+	width: 200px;
+}
+
+div {
+	padding: 10px;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-	
-	
-	
+
+
+
 		<h1>My Project</h1>
 		<c:forEach items="${myProjects}" var="mProject">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">${mProject.title}</h4>
-					<p class="card-text">${mProject.summary}</p>
-					<a href="./projectInsert?num=${mProject.num}" id="update" value="${mProject.num}">수정</a>
-					<a href="./projectDelete?num=${mProject.num}">삭제</a>
+					<div class="input-group">
+						<img alt="${member.memberFileDTO.origineName}"
+							src="../resources/images/project/sample/c5.gif">
+						<div>
+							<div class="input-group">
+								<h4 class="card-title">${mProject.title}&nbsp
+									|&nbsp&nbsp&nbsp&nbsp</h4>
+								<p class="card-text r" id="state">${mProject.state}</p>
+							</div>
+							<div>
+								<p class="card-text" id="state">${mProject.summary}</p>
+							</div>
+						</div>
+
+					</div>
+					<a type="button" class="btn btn-outline-primary"
+						href="./projectInsert?num=${mProject.num}" id="update"
+						value="${mProject.num}">수정</a> <a type="button"
+						class="btn btn-outline-primary"
+						href="./projectDelete?num=${mProject.num}">삭제</a>
+
 				</div>
 			</div>
 		</c:forEach>
-		
-		
-		
+
+
+
 	</div>
-	
-	
-	<script type="text/javascript" src="../resources/jquery/projectMyProject.js"></script>
+
+
+	<script type="text/javascript"
+		src="../resources/jquery/projectMyProject.js"></script>
 </body>
 </html>

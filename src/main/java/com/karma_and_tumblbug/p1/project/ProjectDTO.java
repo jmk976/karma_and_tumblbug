@@ -1,5 +1,7 @@
 package com.karma_and_tumblbug.p1.project;
 
+import java.util.List;
+
 public class ProjectDTO {
 	
 	private long num;
@@ -27,8 +29,19 @@ public class ProjectDTO {
 	private long search_id;
 	private String state;
 	
+	private List<MediaDTO> mediaFiles;
 	
 	
+	
+	
+	
+	
+	public List<MediaDTO> getMediaFiles() {
+		return mediaFiles;
+	}
+	public void setMediaFiles(List<MediaDTO> mediaFiles) {
+		this.mediaFiles = mediaFiles;
+	}
 	public String getState() {
 		return state;
 	}

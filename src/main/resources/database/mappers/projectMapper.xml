@@ -67,5 +67,11 @@
 	<delete id="setDeleteProject" parameterType="ProjectDTO">
 		delete from project where num=#{num}
 	</delete>
+	
+	
+	
+	<insert id="setFileInsert" parameterType="MediaDTO">
+		insert into project_media values(#{num},project_seq.nextval,'del_column',#{fileName},#{origineName})
+	</insert>
 
 </mapper>

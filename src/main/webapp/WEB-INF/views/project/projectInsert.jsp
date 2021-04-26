@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 
 <title>PROJECT UPLOAD</title>
@@ -39,7 +44,8 @@
 			</ul>
 		</div>
 		<!-- Tab panes -->
-		<form action="./projectUpdate" method="post" id="frm">
+		<form action="./projectUpdate" method="post" id="frm"
+			enctype="multipart/form-data">
 
 
 			<div class="tab-content">
@@ -56,13 +62,19 @@
 					</div>
 
 					<div class="form-group">
-						<label>프로젝트 대표 이미지</label> <input type="text" class="form-control"
-							id="projectImg" name="projectImg">
+						<label>프로젝트 대표 이미지</label>
+						<div class="custom-file">
+								<input type="file" id="inputGroupFile04"
+									class="form-control-file border" name="files">
+							</div>
 						<p id="titleCheckResult"></p>
+
+
 					</div>
 					<div class="form-group">
-						<label>프로젝트 요약</label> <input type="text" class="form-control"
-							id="summary" name="summary" value="${projectDTO.summary}">
+						<label>프로젝트 요약</label> <br>
+						<textarea style="resize: none;" class="form-control" rows="5"
+							id="summary" name="summary">${projectDTO.summary}</textarea>
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
@@ -100,9 +112,10 @@
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>창작자 소개</label> <input type="text" class="form-control"
-							id="makerSummary" name="makerSummary"
-							value="${projectDTO.makerSummary}">
+						<label>창작자 소개</label> <br>
+						<textarea name="makerSummary" style="resize: none;" id="contents"
+							class="myCheck">${projectDTO.makerSummary}</textarea>
+
 						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
@@ -170,62 +183,63 @@
 
 
 				<div id="menu2" class="container tab-pane fade">
-					<br>
-					<h3>프로젝트 소개 영상</h3>
-					<div class="form-group">
-						<label for="title">프로젝트 소개 영상</label> <input type="text"
-							class="form-control" id="video" name="video"
-							value="${projectDTO.media_id}">
-						<p id="titleCheckResult"></p>
+					<br> <label>프로젝트 소개 영상</label>
+					<div class="input-group">
+							<div class="custom-file">
+								<input type="file" id="inputGroupFile04"
+									class="form-control-file border" name="files">
+							</div>
+						
+						</div>
+						<h3>프로젝트 스토리</h3>
+						<div class="form-group">
+							<label for="title">프로젝트 스토리</label> <br>
+							<textarea name="projectStory" style="resize: none;"
+								id="projectStory" class="myCheck">${projectDTO.projectStory}</textarea>
+
+							<p id="titleCheckResult"></p>
+						</div>
 					</div>
-					<h3>프로젝트 스토리</h3>
-					<div class="form-group">
-						<label for="title">프로젝트 스토리</label> <input type="text"
-							class="form-control" id="projectStory" name="projectStory"
-							value="${projectDTO.projectStory}">
-						<p id="titleCheckResult"></p>
+
+
+					<div id="menu3" class="container tab-pane fade">
+						<br>
+						<h3>이메일 인증</h3>
+						<div class="form-group">
+							<label for="title">이메일 주소</label> <input type="text"
+								class="form-control" id="email" name="email"
+								value="${projectDTO.email}">
+							<p id="titleCheckResult"></p>
+						</div>
+						<h3>본인 인증</h3>
+						<div class="form-group">
+							<label for="title">휴대폰 번호</label> <input type="text"
+								class="form-control" id="phone" name="phone"
+								value="${project.phone}">
+							<p id="titleCheckResult"></p>
+						</div>
+						<h3>입금 계좌</h3>
+						<div class="form-group">
+							<label for="title">입금 계좌</label> <input type="text"
+								class="form-control" id="bankAccount" name="bankAccount"
+								value="${projectDTO.bankAccount}">
+							<p id="titleCheckResult"></p>
+						</div>
+						<h3>세금 계산서 발행</h3>
+						<div class="form-group">
+							<label for="title">세금 계산서</label> <input type="text"
+								class="form-control" id="taxReceipt" name="taxReceipt"
+								value="${projectDTO.taxReceipt}">
+							<p id="titleCheckResult"></p>
+						</div>
+
 					</div>
 				</div>
-
-
-				<div id="menu3" class="container tab-pane fade">
-					<br>
-					<h3>이메일 인증</h3>
-					<div class="form-group">
-						<label for="title">이메일 주소</label> <input type="text"
-							class="form-control" id="email" name="email"
-							value="${projectDTO.email}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<h3>본인 인증</h3>
-					<div class="form-group">
-						<label for="title">휴대폰 번호</label> <input type="text"
-							class="form-control" id="phone" name="phone"
-							value="${project.phone}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<h3>입금 계좌</h3>
-					<div class="form-group">
-						<label for="title">입금 계좌</label> <input type="text"
-							class="form-control" id="bankAccount" name="bankAccount"
-							value="${projectDTO.bankAccount}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<h3>세금 계산서 발행</h3>
-					<div class="form-group">
-						<label for="title">세금 계산서</label> <input type="text"
-							class="form-control" id="taxReceipt" name="taxReceipt"
-							value="${projectDTO.taxReceipt}">
-						<p id="titleCheckResult"></p>
-					</div>
-
-				</div>
-			</div>
-
 		</form>
 	</div>
 
 	<script type="text/javascript"
 		src="../resources/jquery/projectInsert.js"></script>
+	<script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
 </body>
 </html>

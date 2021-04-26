@@ -44,4 +44,8 @@ public class ProjectDAO {
 		return sqlSession.delete(NAMESPACE+"setDeleteProject", projectDTO);
 	}
 	
+	public int setFileInsert(MediaDTO mediaDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert",mediaDTO);
+	}
+	
 }

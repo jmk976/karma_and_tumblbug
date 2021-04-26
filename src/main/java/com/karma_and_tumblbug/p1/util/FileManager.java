@@ -49,6 +49,42 @@ public class FileManager {
 			  return fileName;
 		}
 	
+	
+	public String saveProject(String name, MultipartFile multipartFile, HttpSession session) throws Exception{
+		//1. 경로 설정
+		String path = session.getServletContext().getRealPath("resources/images/"+name);
+		System.out.println(path);
+		
+				File file = new File(path);
+				
+				
+				if(!file.exists()) {
+					file.mkdirs();
+				}
+				System.out.println(file.exists());
+				
+		//2. 저장할 파일 - 중복되지 않는 파일명을 만들기 위해
+			  String fileName="";
+			  
+//        a.시간
+//			  Calendar ca = Calendar.getInstance();
+//			  long time = ca.getTimeInMillis();
+//			  fileName=time +"_" +multipartFile.getOriginalFilename();
+			  
+//       b. API
+			  fileName = UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+			  
+			  //3. HDD에 저장
+			  file = new File(file, fileName);
+			  
+//      a.FileCopyUtils  (원하는 경로, 파일명)
+//		  FileCopyUtils.copy(multipartFile.getBytes(), file);
+
+//      b. MultipartFile  ( 업로드한 파일의 모든 정보)
+			  multipartFile.transferTo(file);
+
+			  return fileName;
+		}
 
 		public void saveUseTransfer(MultipartFile multipartFile, File file)throws Exception{
 			multipartFile.transferTo(file);
@@ -85,6 +121,18 @@ public class FileManager {
 
 			return file;
 
+		}
+
+		
+		public boolean Delete(String name,String fileName, HttpSession session) throws Exception{
+			//1. 경로 설정
+			String path = session.getServletContext().getRealPath("resources/upload/"+name);
+			File file = new File(path, fileName);
+			boolean check = false;
+			if(file.exists()) {
+				check = file.delete();
+			}
+			return check;
 		}
 
 	}
