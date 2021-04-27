@@ -58,7 +58,7 @@
      
 	  	   <div class="col">
 	  	         
-	  	  	       <select onchange="changeCity(this.value);" value="${dto.province}" name="province" id="province" class="custom-select">
+	  	  	       <select onchange="changeCity(this.value);" name="province" id="province" class="custom-select">
 					 <option value="0" disabled selected hidden> 지역구를 선택해주세요 </option>
 					    <option value="서울특별시">서울특별시</option>
 					    <option value="경기도">경기도</option>
@@ -66,7 +66,7 @@
 					</select>
 		   </div>
 		   <div class="col">
-					<select id="city" name="city" value="${dto.city}" class="custom-select">
+					<select id="city" name="city" class="custom-select">
 					   <option value="0" disabled selected hidden> 전체 </option>
 					</select>
 	  	   </div> 
@@ -81,7 +81,7 @@
     <div class="row">
     		<div class="col">
 	  	         
-	  	  	       <select onchange="change_serch(this.value);" value="${dto.species}"name="species" id="species" class="custom-select">
+	  	  	       <select onchange="change_serch(this.value);" name="species" id="species" class="custom-select">
 					 <option value="0" disabled selected hidden> 축종 </option>
 					    <option value="개">개</option>
 					    <option value="고양이">고양이</option>
@@ -89,7 +89,7 @@
 					</select>
 		   </div>
 		  <div class="col">
-					<select id="kind" name="kind" value="${dto.kind}" class="custom-select">
+					<select id="kind" name="kind"  class="custom-select">
 					  <option value="0" disabled selected hidden> 전체 </option> 
 					</select>
 	  	  </div> 
@@ -178,17 +178,7 @@
 
 <script type="text/javascript">
 
-let province ="${dto.province}"
 
-$("#province").val(province).prop("selected", true); //값이 1인 option 선택
-
-
-let species="${dto.species}"
-
-$("#species").val(species).prop("selected", true);
-
-let city ="${dto.city}"
-	console.log(city)
 
 var cnt = new Array();
 cnt[0] = new Array('전체');
@@ -196,29 +186,36 @@ cnt["서울특별시"] = new Array("전체","강남구","강동구","강북구",
 cnt["경기도"] = new Array("전체","고양시","과천시","광명시","구리시","군포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안양시","오산시","의왕시","의정부시","평택시","하남시","가평군","광주시","김포시","안성시","양주시","양평군","여주군","연천군","용인시","이천군","파주시","포천시","화성시");
 cnt["인천광역시"] = new Array("전체","계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군");
 
-function changeCity(add) {
-	sel = document.getElementById('city');
+let province ="${dto.province}"
+	$("#province").val(province).prop("selected", true); 
+
+let city ="${dto.city}"
 	
-	for (i=1; i < cnt[add].length;i++){ 
-		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
-//    document.form.test2.options[i] = new Option(num[i],vnum[i]);
+let sel = document.getElementById('city');
 
-		if( '${dto.city}' == sel.options[i].value){
-			$("sel.options:eq("+i+")").attr("selected","selected");	
-		}
-	} 
-	
+for (i=1; i < cnt[province].length;i++){ 
+	sel.options[i] = new Option(cnt[province][i], cnt[province][i]);
 
+	if( city == sel.options[i].value){
+	    sel.options[i].selected = true;
 
-/* 	for(var cnt = 0 ; cnt < sel.options.length; cnt++ )
-	{
-	  if( city == sel.options[cnt].value)
-	    sel.options[cnt].selected = true;
 	}
- */
+}
 
 
- }
+function changeCity(add) {
+sel = document.getElementById('city');
+
+for (i=1; i < cnt[add].length;i++){ 
+	sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
+
+	}
+}
+
+
+
+
+
 
 var cntt = new Array(); 
 cntt[0] = new Array('전체');
@@ -226,19 +223,32 @@ cntt["개"] = new Array("선택","Mix","그레이하운드","그레이트피레�
 cntt["고양이"] = new Array("선택","코리안숏헤어","샴","페르시안","러시안블루","터키시앙고라","배회고양이","기타"); 
 cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아나","고슴도치","카멜레온","도마뱀","거북이","뱀","가고일 게코","사바나모니터","기타"); 
 
+let species="${dto.species}"
+	$("#species").val(species).prop("selected", true);
+	
+let kind="${dto.kind}"
+
+let sel2 = document.getElementById('kind');
+
+for (i=1; i < cntt[species].length;i++){ 
+	sel2.options[i] = new Option(cntt[species][i], cntt[species][i]); 
+	
+	if( kind == sel2.options[i].value){
+	    sel2.options[i].selected = true;
+
+	}
+} 
+
 function change_serch(ku) { 
-	sel = document.getElementById('kind');
+	sel2 = document.getElementById('kind');
 	
 	for (i=1; i < cntt[ku].length;i++){ 
-		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
+		sel2.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
 	
-	let kind="${dto.kind}"
-
-		$("#kind").val(kind).prop("selected", true);
-
-		console.log(kind)
+	
  } 
+ 
 </script>
 
 <script type="text/javascript">

@@ -59,8 +59,8 @@ public class RescueService {
 	
 	public RescueDTO getSelect(RescueDTO rescueDTO) throws Exception{
 	    rescueDTO = rescueDAO.getSelect(rescueDTO);
-		RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO); 
-		rescueDTO.setRescueFileDTO(rescueFileDTO);
+//		RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO); 
+//		rescueDTO.setRescueFileDTO(rescueFileDTO);
 		return rescueDTO;
 	}
 	
@@ -84,16 +84,32 @@ public class RescueService {
     }
     
     public int setUpdate(RescueDTO rescueDTO,MultipartFile avatar, HttpSession session) throws Exception {
-        String fileName = fileManager.save("rescue", avatar, session);
+    	System.out.println("rescueService의 setupdate안 sn:"+ rescueDTO.getSn());
+    	
+    	if(rescueDTO.getRescueFileDTO()!=null) {
+    		String fileName = fileManager.save("rescue", avatar, session);
+            
+            RescueFileDTO rescueFileDTO = new RescueFileDTO();
+            rescueFileDTO.setSn(rescueDTO.getSn());
+            rescueFileDTO.setOriginalName(avatar.getOriginalFilename());
+            rescueFileDTO.setFileName(fileName);
+            
+            int result = rescueDAO.setFileUpdate(rescueFileDTO);
+            
+            System.out.println("setFileUpdate:" + result);
+    	} else {
+    		 RescueFileDTO rescueFileDTO = new RescueFileDTO();
+             rescueFileDTO.setSn(rescueDTO.getSn());
+             int result = rescueDAO.setFileUpdate(rescueFileDTO);
+             System.out.println("setFileUpdate:" + result);
+    	}
         
-        RescueFileDTO rescueFileDTO = new RescueFileDTO();
-        rescueFileDTO.setSn(rescueDTO.getSn());
-        rescueFileDTO.setOriginalName(avatar.getOriginalFilename());
-        rescueFileDTO.setFileName(fileName);
 		
         
         int result = rescueDAO.setUpdate(rescueDTO);
-		 result = rescueDAO.setFileInsert(rescueFileDTO);
+    	System.out.println("rescueService의 setupdate안 DAO 다녀온후..:"+ rescueDTO.getSn());
+
+        System.out.println("setUpdate:" + result);
 		 
 		 
 		 

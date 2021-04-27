@@ -12,6 +12,11 @@
 		feature=#{feature}, adoptDate=#{adoptDate},returnDate=#{returnDate} 
 		where sn=#{sn}
 	</update>
+	
+	<update id="setFileUpdate" parameterType="RescueFileDTO">
+	 	update RescueFile set num=#{num}, sn=#{sn}, fileName=#{fileName}, originalName=#{originalName} 
+	 	where sn=#{sn}
+	</update>
 
 
 	<delete id="setDelete" parameterType="RescueDTO">
