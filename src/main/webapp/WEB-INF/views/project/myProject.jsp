@@ -37,9 +37,10 @@ div {
 				<div class="card-body">
 					<div class="input-group">
 						<div id="test" title="${mProject.mediaFiles}">
+						
 							<c:forEach items="${mProject.mediaFiles}" var="media">
-							<c:if test="${media.division eq 'photo'}">
-								<img src="../resources/images/project/f/${media.fileName}">
+							<c:if test="${media.division eq 'photo' }">
+								<img src="../resources/images/project/f/${mProject.num}/${media.fileName}">
 							</c:if>
 
 							</c:forEach>

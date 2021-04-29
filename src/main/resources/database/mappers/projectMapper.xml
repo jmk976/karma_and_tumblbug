@@ -86,5 +86,6 @@
 	<select id="getFileName" parameterType="MediaDTO" resultType="MediaDTO">
 		select * from project_media where fileNum=#{fileNum}
 	</select>
+	
 
 </mapper>

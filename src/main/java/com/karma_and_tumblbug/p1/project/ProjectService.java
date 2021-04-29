@@ -79,10 +79,11 @@ public class ProjectService {
 		return projectDTO;
 	}
 
-	public int setUpdateProject(ProjectDTO projectDTO,HttpSession session,MultipartFile[] files) throws Exception{
-		for(MultipartFile mf : files) {
+	public int setUpdateProject(ProjectDTO projectDTO,HttpSession session,MultipartFile files) throws Exception{
+			
+			System.out.println("OrigineName"+files.getOriginalFilename());
 			MediaDTO mediaDTO = new MediaDTO();
-			String fileName = fileManager.saveProject("project/f", mf, session);
+			String fileName = fileManager.saveProject("project/f/"+projectDTO.getNum(), files, session);
 			System.out.println("pDto.mId"+projectDTO.getMedia_id());
 			mediaDTO.setMedia_id(projectDTO.getMedia_id());
 			System.out.println("mDto.mID"+mediaDTO.getMedia_id());
@@ -98,9 +99,8 @@ public class ProjectService {
 			}
 			
 			mediaDTO.setFileName(fileName);
-			mediaDTO.setOrigineName(mf.getOriginalFilename());
+			mediaDTO.setOrigineName(files.getOriginalFilename());
 			projectDAO.setFileInsert(mediaDTO);
-		}
 		System.out.println("update done");
 		return projectDAO.setUpdateProject(projectDTO);
 	}
@@ -110,16 +110,30 @@ public class ProjectService {
 	}
 	
 	
-	public int setFileDelete(MediaDTO mediaDTO,HttpSession session) throws Exception{
+	public int setFileDelete(ProjectDTO projectDTO, MediaDTO mediaDTO,HttpSession session) throws Exception{
+		System.out.println("SERVICE PROJECT_NUM:"+projectDTO.getNum());
 		mediaDTO = projectDAO.getFileName(mediaDTO);
 		int result = projectDAO.setFileDelete(mediaDTO);
 		if(result>0) {
-			fileManager.Delete("project", mediaDTO.getFileName(), session);			
+			fileManager.Delete("project/f/"+projectDTO.getNum(), mediaDTO.getFileName(), session);			
 		}
 		
 		return result;
 	}
 	
+	public List<ProjectDTO> getAdminProjectCheck(ProjectDTO projectDTO)throws Exception{
+		List<ProjectDTO> array = projectDAO.getProjectList();
+		for(int i=0;i<array.size();i++) {
+			ProjectDTO dto = new ProjectDTO();
+			dto.setMedia_id(array.get(i).getMedia_id());
+			List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+			array.get(i).setMediaFiles(mDtos);
+		}
+		return array;
+	}
 	
+	public int setStateUpdate(ProjectDTO projectDTO) throws Exception{
+		return projectDAO.setUpdateProject(projectDTO);
+	}
 	
 }

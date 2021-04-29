@@ -99,7 +99,7 @@ public class ProjectController {
 	}
 	
 	@PostMapping(value="projectUpdate")
-	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile[] files,HttpSession session) throws Exception{
+	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile files,HttpSession session) throws Exception{
 		int result = projectService.setUpdateProject(projectDTO,session,files);
 		return "redirect:./myProject";
 	}
@@ -111,9 +111,9 @@ public class ProjectController {
 	}
 	
 	@GetMapping(value="fileDelete")
-	public ModelAndView setFileDelete(MediaDTO mediaDTO,HttpSession session) throws Exception{
+	public ModelAndView setFileDelete(ProjectDTO projectDTO,MediaDTO mediaDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = projectService.setFileDelete(mediaDTO,session);
+		int result = projectService.setFileDelete(projectDTO,mediaDTO,session);
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
 		return mv;
@@ -126,5 +126,23 @@ public class ProjectController {
 		mv.addObject("selectDTO", projectDTO);
 		mv.setViewName("project/projectSelect");
 		return mv;
+	}
+	@GetMapping(value="adminProjectCheck")
+	public ModelAndView adminProjectCheck(ProjectDTO projectDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<ProjectDTO> array = projectService.getAdminProjectCheck(projectDTO);
+		mv.addObject("adminProject", array);
+		mv.setViewName("project/adminProjectCheck");
+		return mv;
+	}
+	
+	@GetMapping(value="projectAdminUpdate")
+	public String projectAdminUpdate(ProjectDTO projectDTO) throws Exception{
+		String state = projectDTO.getState();
+		state = state.replace("'", "");
+		projectDTO = projectService.getProject(projectDTO);
+		projectDTO.setState(state);
+		int result = projectService.setStateUpdate(projectDTO);
+		return "redirect:./adminProjectCheck";
 	}
 }

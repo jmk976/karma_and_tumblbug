@@ -21,13 +21,13 @@
 				<div class="input-group">
 					<c:forEach items="${selectDTO.mediaFiles}" var="media">
 						<c:if test="${media.division eq 'photo'}">
-							<img src="../resources/images/project/${media.fileName}">
+							<img src="../resources/images/project/f/${selectDTO.num}/${media.fileName}">
 						</c:if>
 					</c:forEach>
 					<div>
-						<p>${selectDTO.targetAmount}</p>
-						<p>${selectDTO.openDate}</p>
-						<p>${selectDTO.closeDate}</p>
+						<p> 목표 금액 : ${selectDTO.targetAmount}</p>
+						<p> 개시 일시 : ${selectDTO.openDate}</p>
+						<p> 종료 일시 : ${selectDTO.closeDate}</p>
 					</div>
 				</div>
 			</div>

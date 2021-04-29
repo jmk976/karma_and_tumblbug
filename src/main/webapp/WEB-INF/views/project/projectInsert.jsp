@@ -57,7 +57,7 @@ display:none;
 					<h3>프로젝트 개요</h3>
 					<input type="hidden" id="state" name="state" value=""> <input
 						type="hidden" name="id" value="${projectDTO.id}"> <input
-						type="hidden" name="num" value="${projectDTO.num}"> <input
+						type="hidden" id="projectNum" name="num" value="${projectDTO.num}"> <input
 						type="hidden" name="media_id" value="${projectDTO.media_id}">
 					<div class="form-group">
 						<label>프로젝트 제목</label> <input type="text" class="form-control"
@@ -70,7 +70,7 @@ display:none;
 						<div >
 							<c:forEach items="${projectDTO.mediaFiles}" var="media">
 								<c:if test="${media.division eq 'photo'}">
-									<img id="nullCheck" src="../resources/images/project/${media.fileName}">
+									<img id="nullCheck" src="../resources/images/project/f/${projectDTO.num}/${media.fileName}">
 									<button type="button"
 										class="btn btn-outline-secondary btn-block fileDelete"
 										id="fileNum"
@@ -226,9 +226,9 @@ display:none;
 	<div id="sample">
 		<div class="custom-file">
 			<input type="file" id="inputGroupFile04" id="thumbNail"
-				class="form-control-file border" name="files"
-				value="../resources/images/project/${media.fileName}">
+				class="form-control-file border" name="files">
 		</div>
+		<p>jpeg, png파일만 가능합니다.</p>
 		<p id="titleCheckResult">jpeg, png파일만 가능합니다.</p>
 
 	</div>

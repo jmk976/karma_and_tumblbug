@@ -29,6 +29,9 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/myProject">My Project</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
          <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
+         <c:if test="${membership.id eq 'admin'}">
+          <a class="nav-link" href="${pageContext.request.contextPath}/project/adminProjectCheck">ProjectCheck</a>
+         </c:if>
       </div>
     </li>
         <li class="nav-item">
