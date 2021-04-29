@@ -23,14 +23,15 @@ public class ProjectService {
 
 	public String setSummerFileUpload(ProjectDTO projectDTO, MultipartFile file,HttpSession session) throws Exception{
 
-		String fileName = fileManager.saveProject("project", file, session);
+		String fileName = fileManager.saveProject("project/s", file, session);
+		System.out.println(fileName);
 		return fileName;
 
 	}
 
 
 	public boolean setSummerFileDelete(ProjectDTO projectDTO, String fileName,HttpSession session) throws Exception{
-		boolean result = fileManager.Delete("project", fileName, session);
+		boolean result = fileManager.Delete("project/s", fileName, session);
 		return result;
 	}
 
@@ -81,7 +82,7 @@ public class ProjectService {
 	public int setUpdateProject(ProjectDTO projectDTO,HttpSession session,MultipartFile[] files) throws Exception{
 		for(MultipartFile mf : files) {
 			MediaDTO mediaDTO = new MediaDTO();
-			String fileName = fileManager.saveProject("project", mf, session);
+			String fileName = fileManager.saveProject("project/f", mf, session);
 			System.out.println("pDto.mId"+projectDTO.getMedia_id());
 			mediaDTO.setMedia_id(projectDTO.getMedia_id());
 			System.out.println("mDto.mID"+mediaDTO.getMedia_id());

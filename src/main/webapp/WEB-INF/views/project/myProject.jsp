@@ -39,7 +39,7 @@ div {
 						<div id="test" title="${mProject.mediaFiles}">
 							<c:forEach items="${mProject.mediaFiles}" var="media">
 							<c:if test="${media.division eq 'photo'}">
-								<img src="../resources/images/project/${media.fileName}">
+								<img src="../resources/images/project/f/${media.fileName}">
 							</c:if>
 
 							</c:forEach>

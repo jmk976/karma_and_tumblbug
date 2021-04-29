@@ -39,7 +39,7 @@ public class ProjectController {
 		System.out.println("summerfileUpload");
 		System.out.println(file.getOriginalFilename());
 		String fileName = projectService.setSummerFileUpload(projectDTO, file, session);
-		fileName="../resources/images/project/"+fileName;
+		fileName="../resources/images/project/s/"+fileName;
 		mv.addObject("result", fileName);
 		mv.setViewName("common/ajaxResult");
 		

@@ -44,6 +44,7 @@ function uploadFile(files){
 		contentType:false,
 		success: function(result){
 			fileName=result.trim();
+			console.log(fileName);
 			$("#"+id).summernote('insertImage',fileName);
 		}
 	});
