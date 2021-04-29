@@ -101,10 +101,10 @@ public class RescueService {
    
     	
     }
-    public int setFileDelete(RescueDTO rescueDTO)throws Exception{
+    public int setFileDelete(RescueFileDTO rescueFileDTO)throws Exception{
 		//fileName을 print
     	//1. 조회
-    	RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO);
+    	rescueFileDTO = rescueDAO.getFileSelect(rescueFileDTO);
     	//2. table 삭제
     	int result = rescueDAO.setFileDelete(rescueFileDTO);
         //3. HDD 삭제
@@ -122,25 +122,25 @@ public class RescueService {
     	 if(avatar.getOriginalFilename() != null && avatar.getOriginalFilename() != "") {
     		 // 기존 파일을 삭제
 
-//    		//1. 조회
-//    	    	RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO);
-//    	    	//2. table 삭제
-//    	    	int result = rescueDAO.setFileDelete(rescueFileDTO);
-//    	        //3. HDD 삭제
-//    	    			if(result > 0) {
-//    	    				fileManager.delete("rescue", rescueFileDTO.getFileName(), session);
-//    	    			}
+    		//1. 조회
+    	    RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO);
+    	    //2. table 삭제
+    	    	int result = rescueDAO.setFileDelete(rescueFileDTO);
+    	     //3. HDD 삭제
+    	    			if(result > 0) {
+    	    				fileManager.delete("rescue", rescueFileDTO.getFileName(), session);
+    	    			}
     	  // 새로 첨부한 파일을 등록
     	    			
     	    			System.out.println(avatar.isEmpty());
     	String fileName = fileManager.save("rescue", avatar, session);
      	
-        RescueFileDTO rescueFileDTO = new RescueFileDTO();
-        rescueFileDTO.setSn(rescueDTO.getSn());
-        rescueFileDTO.setOriginalName(avatar.getOriginalFilename());
-        rescueFileDTO.setFileName(fileName);
+        RescueFileDTO FileDTO = new RescueFileDTO();
+        FileDTO.setSn(rescueDTO.getSn());
+        FileDTO.setOriginalName(avatar.getOriginalFilename());
+        FileDTO.setFileName(fileName);
 
-   	    rescueDAO.setFileUpdate(rescueFileDTO);
+   	    rescueDAO.setFileInsert(FileDTO);
     	 } else {
     		 // 새로운 파일이 등록되지 않았다면
    		  // 기존 이미지를 그대로 사용

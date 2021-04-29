@@ -171,7 +171,11 @@
     	 <span>${dto.rescueFileDTO.originalName}</span>
     	 <span class="fileDelete" title="${dto.rescueFileDTO.num}"> X </span>
     	 </div>
-    	 
+<%-- 
+		<input type="hidden" name="num" value="${dto.rescueFileDTO.num}">
+	 <a href="./fileDelete?num=${dto.rescueFileDTO.num}"><input type="button"value="삭제" class="btn btn-danger"></a>
+	
+    	  --%>
   	</div> 
   	
   	<%-- <div id="files" title="${dto.rescueFileDTO.size()}"></div>

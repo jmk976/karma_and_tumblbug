@@ -130,9 +130,9 @@ public class RescueController {
 	}
 	
 	@GetMapping("fileDelete")
-	public ModelAndView setFileDelete(RescueDTO rescueDTO)throws Exception{
+	public ModelAndView setFileDelete(RescueFileDTO rescueFileDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = rescueService.setFileDelete(rescueDTO);
+		int result = rescueService.setFileDelete(rescueFileDTO);
 		
 		System.out.println("setFileDelete 결과"+result);
 		mv.addObject("result", result);

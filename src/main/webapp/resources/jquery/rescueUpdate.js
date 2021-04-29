@@ -7,8 +7,10 @@ $(".fileDelete").click(function(){
 
 	if(check){
 	//fileNum
-	let fileNum = $(this).attr("title");
+	let num = $(this).attr("title");
 	let obj = $(this);
+	
+	alert(num);
 	//FileDelete
 	$.ajax({
 		url:"./fileDelete",
@@ -28,6 +30,22 @@ $(".fileDelete").click(function(){
 	});
 	}
 	
+});
+
+
+const del = document.getElementById("del");
+const frm = document.getElementById("frmDelete");
+
+del.addEventListener("click",function(){
+let result = confirm("delete??");
+
+if(result){
+	frm.setAttribute("method","post");
+	frm.submit();
+}else{
+	
+}
+
 });
 
 
