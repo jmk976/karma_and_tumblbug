@@ -160,9 +160,36 @@
     
     <div class="form-group">
    		 <label for="file">file</label>
-    	 <input type="file" class="form-control etc" value="${dto.rescueFileDTO.originalName}" id="avatar" name="avatar" >
-    	 <span></span>
+    	 <input type="file" class="form-control etc" value="${dto.rescueFileDTO}" id="avatar" name="avatar" >
+    	
+    	
+    	 <input type="hidden" name="rescueFileDTO.fileName" value="${dto.rescueFileDTO.fileName}" />
+    	 <input type="hidden" name="rescueFileDTO.originalName" value="${dto.rescueFileDTO.originalName}" />
+    	 <input type="hidden" name="rescueFileDTO.num" value="${dto.rescueFileDTO.num}" />
+    	 		
+    	 <div>
+    	 <span>${dto.rescueFileDTO.originalName}</span>
+    	 <span class="fileDelete" title="${dto.rescueFileDTO.num}"> X </span>
+    	 </div>
+    	 
   	</div> 
+  	
+  	<%-- <div id="files" title="${dto.rescueFileDTO.size()}"></div>
+						<div class="inputArea">
+							 <label for="gdsImg">이미지</label>
+							 <input type="file" id="avatar" name="avatar" />
+							 <div class="select_img">
+							  <img src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}" />
+							  <input type="hidden" name="gdsImg" value="${goods.gdsImg}" />
+						
+							 </div>
+							 
+							 
+							 <%=request.getRealPath("/") %>
+							</div>
+							
+ --%>
+ 
   
    
 
@@ -174,8 +201,21 @@
 
  
 
-</div>
 
+</div>
+<script>
+							  $("#avatar").change(function(){
+							   if(this.files && this.files[0]) {
+							    var reader = new FileReader;
+							    reader.onload = function(data) {
+							     $(".select_img img").attr("src", data.target.result).width(500);        
+							    }
+							    reader.readAsDataURL(this.files[0]);
+							   }
+							  });
+							 </script>
+							 
+							 
 <script type="text/javascript">
 
 
@@ -286,6 +326,6 @@ $("#btn").click(function(){
 	});
 </script>
 
-  
+ <script type="text/javascript" src="../resources/jquery/rescueUpdate.js"></script>
 </body>
 </html>

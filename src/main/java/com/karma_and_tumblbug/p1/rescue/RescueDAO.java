@@ -32,6 +32,13 @@ public class RescueDAO {
 		System.out.println("rescueDAO의 setupdate의 sql 후 :"+ rescueDTO.getSn());
 		return result;
 	}
+	public RescueFileDTO getFileSelect(RescueFileDTO rescueFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileSelect", rescueFileDTO);
+	}
+	
+	public int setFileDelete(RescueFileDTO rescueFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", rescueFileDTO);
+	}
 	
 	public int setFileUpdate(RescueFileDTO rescueFileDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"setFileUpdate", rescueFileDTO);

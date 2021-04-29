@@ -13,8 +13,12 @@
 		where sn=#{sn}
 	</update>
 	
+	<delete id="setFileDelete" parameterType="RescueFileDTO">
+		delete rescueFile where num=#{num}
+	</delete>
+	
 	<update id="setFileUpdate" parameterType="RescueFileDTO">
-	 	update RescueFile set num=#{num}, sn=#{sn}, fileName=#{fileName}, originalName=#{originalName} 
+	 	update RescueFile set num = FN_SEQ.nextval, sn=#{sn}, fileName=#{fileName}, originalName=#{originalName} 
 	 	where sn=#{sn}
 	</update>
 
@@ -63,6 +67,10 @@
  	
  	<select id="getSelectFile" resultType="RescueFileDTO" parameterType="RescueDTO">
 		select * from rescueFile where sn=#{sn}
+	</select>
+	
+	<select id="getFileSelect" parameterType="RescueFileDTO" resultType="RescueFileDTO">
+		select * from rescueFile where num=#{num}
 	</select>
 	
       

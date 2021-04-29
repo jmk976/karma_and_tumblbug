@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+<c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+
+
 
 .container table {
     table-layout: fixed;
@@ -57,36 +60,74 @@ td {
  margin: 15px;
 }
 </style>
-<c:import url="../template/bootStrap.jsp"></c:import>
-
-
 </head>
 
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-          
 <div class="container">
-  <br>
-   <h2>입양 신청 4</h2>
-            <form id="frm" class="form-horizontal" action="./adoptInsert" method="post">
-                
+            <form class="form-horizontal" role="form"  class="form-horizontal">
+                <h2>입양 신청</h2>
+                 <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
+                   <colgroup>
+				<col width="25%">
+				<col width="75%">
+					</colgroup>
+				<tbody>
+				<tr>
+					<th scope="row"><span>진행 사항</span></th>
+					<td>
+						<select  name="pass" id="pass" class="custom-select col-sm-6 form-control">
+							    <option value="P">서류통과</option>
+							    <option value="F">1차 전화상담 통과</option>
+							    <option value="S">2차 방문상담 통과</option>
+							    <option value="C">입양완료</option>
+							    <option value="N">부적합</option>
+							    <option value="H" selected>보류</option>
+						</select>
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<th scope="row"><span>1차 전화상담</span></th>
+					<td>
+                        <input type="date" value="${dto.callCheck}" id="callCheck" name="callCheck"  class="col-sm-6" autofocus>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><span>2차 방문상담</span></th>
+					<td>
+                        <input type="date" value="${dto.visitCheck}" id="visitCheck" name="visitCheck" class="col-sm-6" >
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><span>입양날짜</span></th>
+					<td>
+                        <input type="date" value="${dto.adoptDate}" id="adoptDate" name="adoptDate" class="col-sm-6">
+					</td>
+				</tr>
+				
+				</tbody>
+				</table>
+				
              <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
                    <colgroup>
 				<col width="25%">
 				<col width="75%">
 					</colgroup>
 				<tbody>
-				
+				<tr>
+					<th scope="row"><span>아이디</span></th>
+					<td>
+						<input type="text" readonly="readonly" value="${dto.id}" id="id" name="id" class="col-sm-6" autofocus>
+						
+					</td>
+				</tr>
 				<tr>
 					<th scope="row"><span>성명</span></th>
 					<td>
-					    <input type="hidden" name="callCheck" value="2000-01-01">
-					    <input type="hidden" name="visitCheck" value="2000-01-01">
-					    <input type="hidden" name="adoptDate" value="2000-01-01">
-					    <input type="hidden" name="pass" value="H">
-				    	<input type="hidden" name="id" value="${membership.id}">
-						<input type="text" value="${membership.name}" id="name" name="name" class="col-sm-6" autofocus>
+						<input type="text" readonly="readonly" value="${dto.membershipDTO.name}" id="name" name="name" class="col-sm-6" autofocus>
 						
 					</td>
 				</tr>
@@ -95,20 +136,20 @@ td {
 				<tr>
 					<th scope="row"><span>생년월일</span></th>
 					<td>
-                        <input type="date" value="${membership.birth}" id="birth" name="birth"  class="col-sm-6" autofocus>
+                        <input type="text" readonly="readonly" value="${dto.membershipDTO.birth}" id="birth" name="birth"  class="col-sm-6" autofocus>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>휴대폰번호</span></th>
 					<td>
-                        <input type="text" value="${membership.phone}" id="phone" name="phone" class="col-sm-6" >
+                        <input type="text" readonly="readonly" value="${dto.membershipDTO.phone}" id="phone" name="phone" class="col-sm-6" >
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>주소</span></th>
 					<td>
-                        <input type="text" value="${membership.address}" id="address" name="address" class="col-sm-12">
-					</td>
+                  <input type="text" readonly="readonly" value="${dto.membershipDTO.address}" id="address" name="address" class="col-sm-12">
+				</td>
 				</tr>
 				
 				</tbody>
@@ -148,7 +189,7 @@ td {
 				<tr>
 					<th scope="row"><span>시리얼(관리) 번호</span></th>
 					<td>
-						<input value="${dto.sn}" type="text" id="sn" name="sn" class="col-sm-6" autofocus>
+						<input value="${dto.sn}" readonly="readonly" type="text" id="sn" name="sn" class="col-sm-6" autofocus>
 				         <small class="help-block">(예: 120318-001, 서울-송파-2012-00072) </small>
 						
 					</td>
@@ -156,7 +197,7 @@ td {
 				<tr>
 					<th scope="row"><span>입양하려는 이유</span></th>
 					<td>
-					    <textarea rows="2" id="reason" name="reason" cols="60"></textarea>
+					    <textarea readonly="readonly" rows="2" id="reason" name="reason" cols="60">${dto.reason}</textarea>
 						
 					</td>
 				</tr>
@@ -214,14 +255,14 @@ td {
 				<tr>
 					<th scope="row"><span>과거에 입양했던 반려동물의 종류와 수량은?</span></th>
 					<td>
-					    <textarea rows="2" id="pastTypeQ" name="pastTypeQ" cols="60"></textarea>
+					    <textarea rows="2" id="pastTypeQ" name="pastTypeQ" cols="60">${dto.pastTypeQ}</textarea>
 						
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>과거에 입양했던 반려동물은 현재 어떻게 되었습니까?</span></th>
 					<td>
-					    <textarea rows="2" id="pastNow" name="pastNow" cols="60"></textarea>
+					    <textarea rows="2" id="pastNow" name="pastNow" cols="60">${dto.pastNow}</textarea>
 						
 					</td>
 				</tr>
@@ -264,27 +305,27 @@ td {
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="solo" name="housingType" value="단독주택">  단독주택
+                                    <input type="radio" id="yesRadio" name="housingType" value="단독주택">  단독주택
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="multi" name="housingType" value="다세대주택">  다세대주택
+                                    <input type="radio" id="noRadio" name="housingType" value="다세대주택">  다세대주택
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="house" name="housingType" value="전원주택">  전원주택
+                                    <input type="radio" id="noRadio" name="housingType" value="전원주택">  전원주택
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="apartment" name="housingType" value="아파트">  아파트
+                                    <input type="radio" id="noRadio" name="housingType" value="아파트">  아파트
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="etc" name="housingType" value="기타">  기타
+                                    <input type="radio" id="noRadio" name="housingType" value="기타">  기타
                                 </label>
                             </div>
                         </div>
@@ -295,14 +336,14 @@ td {
 				<tr>
 					<th scope="row"><span>이사, 또는 해외로 이주 시 입양한 반려동물을 어떻게 하시겠습니까?</span></th>
 					<td>
-					    <textarea rows="2" id="afterMoving" name="afterMoving" cols="60"></textarea>
+					    <textarea rows="2" id="afterMoving" name="afterMoving" cols="60">${dto.afterMoving}</textarea>
 						
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>미혼의 경우, 앞으로 결혼, 임신, 출산 등을 하실 경우 입양한 반려동물을 어떻게 하시겠습니까?</span></th>
 					<td>
-						<textarea rows="2" id="afterWedding" name="afterWedding" cols="60"></textarea>						
+						<textarea rows="2" id="afterWedding" name="afterWedding" cols="60">${dto.afterWedding}</textarea>						
 					</td>
 				</tr>
 				<tr>
@@ -312,7 +353,7 @@ td {
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="yesRadio" name="desexAgree" value="Y">  동의
+                                    <input type="radio" id="yesRadio" name="desexAgree"value="Y">  동의
                                 </label>
                             </div>
                             <div class="col-sm-4">
@@ -329,13 +370,13 @@ td {
 				</tbody>
 				</table>
 				<div style="margin:0 auto;">
-				<input type="submit" id="btn" value="입력" class="btn btn-secondary">
+				<input type="button" id="btn" value="입력" class="btn btn-secondary">
             <a href="./adoptInsert"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
 		</form>
-	</div>
+
 				
-  <div class="container card bg-light text-dark">
+  <div class="card bg-light text-dark">
     <div class="card-body">
     <strong>입양절차 안내</strong>
     <br>
@@ -347,11 +388,13 @@ td {
     <U>오후 4시(일요일 및 공휴일 제외)까지 방문</U>해 주셔야 합니다.
     </div>
   </div>
+  	</div>
                 
-<script type="text/javascript">   
+<script type="text/javascript">  
+$("input:radio[name="desexAgree"]:input[ value = "Y" ].prop("checked", true);
 
-var houseValue = $('input[name="housingType"]:checked').val();
-console.log(houseValue);
+$("input:radio[name="housingType"]:input[ value = "아파트" ].prop("checked", true);
+console.log();
 
     var cntt = new Array(); 
 cntt[0] = new Array('전체');

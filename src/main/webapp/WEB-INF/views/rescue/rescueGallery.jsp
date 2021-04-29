@@ -4,18 +4,161 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: left;
+  font-family: arial;
+  font-size: 15px;
+    background-color: #f1f1f1;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
 ul{
    list-style:none;
    padding-left:0px;
+    margin: 0;
+  padding: 0;
    }
+
  img {
   width: 560;
   height: 420;
   object-fit: cover;
 }
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.row{
+ display: table;
+ margin: 0 -5px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.col-lg-4{
+float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
    
 </style>
 
@@ -44,18 +187,26 @@ ul{
   <div class="row">
    <c:forEach items="${list}" var="dto"> 
     <div class="col-lg-4 col-sm-6 mb-4">
-     <form name="animal54567" action="" method="post" enctype="multipart/form-data">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" alt="" src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}">
-        </a>
+     
+      <div class="card">
+       <img class="card-img-top" id="myImg" alt="" style="width:100%" src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}">
+       
+		       <!-- The Modal -->
+		<div id="myModal" class="modal">
+		  <span class="close">&times;</span>
+		  <img class="modal-content" id="img01" >
+		  <div id="caption">크게보기</div>
+		</div>
+		
         <div class="card-body">
           <p class="card-text">
           	<ul>
           		<li class="full">
           			<strong>구조일</strong>
           			<i>
-          			${dto.resDate} (SN: ${dto.sn} 
-          			<span class="red"> ${dto.zoneSn} </span>)
+          			${dto.resDate}
+          			( <span style="color:blue;"> SN: ${dto.sn} </span>
+          			<span style="color:red;"> ${dto.zoneSn} </span>)
           			</i>
           		</li>
           		
@@ -82,13 +233,17 @@ ul{
           		<li class="half">
           			<Strong>축종</Strong> ${dto.species} / ${dto.kind}
           		</li>
-          		<li class="half">
+				 <li class="half">
           			<Strong>성별</Strong>  ${dto.sex}
           		</li>
+
+          		
+          		
           		
           		<li class="half">
           			<Strong>연령</Strong>  ${dto.age}
           		</li>
+          		
           		<li class="half">
           			<Strong>모색</Strong>  ${dto.color}
           		</li>
@@ -120,15 +275,18 @@ ul{
           			   ${dto.feature}
           			</span>
           		</li>
+          		
           		</c:if>
           	</ul>
          </p>
-         <c:if test="${pager.status =='구조'}">
-         <button type="button" onclick="ani_request('0000054699')">입양신청</button>
-         </c:if>
+        
       </div>
+      <c:if test="${pager.status =='구조'}">
+         <a href="../adopt/adoptInsert?sn=${dto.sn}&species=${dto.species}&kind=${dto.kind}"><button>입양신청</button></a>
+      </c:if>
     </div>
-    </form>
+    
+
   </div>
   </c:forEach>
  </div>
@@ -230,6 +388,7 @@ ul{
 </section>
 
 <script type="text/javascript">
+
 var cnt = new Array();
 cnt[0] = new Array('전체');
 cnt["서울특별시"] = new Array("전체","강남구","강동구","강북구","강서구","광진구","구로구","금천구","노원구","도봉구","동대문구","서대문구","서초구","성동구","성북구","송파구","영등포구","은평구","종로구","중구","중랑구");
@@ -259,6 +418,12 @@ function change_serch(ku) {
 		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
  } 
+ 
+ 
+	
+}
+
+ 
 </script>
   
 
@@ -284,5 +449,28 @@ $(".sel").each(function(){
   
   </script>
   
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+
 </body>
 </html>

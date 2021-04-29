@@ -161,7 +161,9 @@
     <div class="form-group">
    		 <label for="file">file</label>
     	 <input type="file" class="form-control etc" id="avatar" name="avatar" >
+    	  <div class="select_img"><img src="" /></div>
   	</div> 
+  <%=request.getRealPath("/") %>
   
    
 
@@ -172,7 +174,17 @@
 
 
  
-
+<script>
+  $("#avatar").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
 </div>
 
 <script type="text/javascript">

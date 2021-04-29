@@ -50,6 +50,10 @@
     <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id="${membership.id}">ProjectUpload</a>
     </li>
+    
+     <li class="nav-item">
+      <a class="nav-link" href="${pageContext.request.contextPath}/adopt/adoptInsert">Adopt</a>
+    </li>
 
     
 

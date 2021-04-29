@@ -1,1 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.karma_and_tumblbug.p1.adopt.AdoptDAO">
+
+	<insert id="setInsert" parameterType="AdoptDTO">
+		insert into adopt values (adopt_seq.nextval, #{id}, #{sn}, #{species}, #{kind}, #{reason}, 
+		#{famAgree}, #{adoptEx}, #{pastTypeQ}, #{pastNow}, #{haveAnimal}, #{housingType}, #{afterMoving}, 
+		#{afterWedding}, #{desexAgree}, #{pass}, #{callCheck}, #{visitCheck}, #{adoptDate})
+
+	</insert>
+
+	<select id="getSelect" parameterType="AdoptDTO" resultType="AdoptDTO" resultMap="getSelectResult">
+	  	 select A.*, M.name, M.birth, M.phone, M.address
+	  	 	from adopt A left join membership M
+				on A.id = M.id
+					where A.adoptNum = ${adoptNum}
+	</select>
+
+	<resultMap type="AdoptDTO" id="getSelectResult">
+		<id property="adoptNum" column="adoptNum" />
+		<result property="id" column="id"/>
+		<result property="sn" column="sn"/>
+	    <result property="species" column="species"/>
+		<result property="kind" column="kind"/>
+		<result property="reason" column="reason"/>
+		<result property="famAgree" column="famAgree"/>
+		<result property="adoptEx" column="adoptEx"/>
+	    <result property="pastTypeQ" column="pastTypeQ"/>
+		<result property="pastNow" column="pastNow"/>
+		<result property="haveAnimal" column="haveAnimal"/>
+		<result property="housingType" column="housingType"/>
+		<result property="afterMoving" column="afterMoving"/>
+	    <result property="afterWedding" column="afterWedding"/>
+		<result property="desexAgree" column="desexAgree"/>
+		<result property="pass" column="pass"/>
+		<result property="callCheck" column="callCheck"/>
+		<result property="visitCheck" column="visitCheck"/>
+	    <result property="adoptDate" column="adoptDate"/>
+	    
+		<association property="membershipDTO" javaType="MembershipDTO" resultMap="membershipResult">
+			
+		</association>
+		
+	</resultMap> 
+	
+	<resultMap type="MembershipDTO" id="membershipResult">
+	       <id property="id" column="id"/>
+			<result property="name" column="name"/>
+			<result property="birth" column="birth"/>
+			<result property="phone" column="phone"/>
+			<result property="address" column="address"/>
+	</resultMap>
+	
+	
+
+
+
+
+</mapper>
