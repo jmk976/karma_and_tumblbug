@@ -100,9 +100,6 @@ public class ProjectController {
 	
 	@PostMapping(value="projectUpdate")
 	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile[] files,HttpSession session) throws Exception{
-		for(int i=0;i<files.length;i++) {
-			System.out.println(files[i].getOriginalFilename());
-		}
 		int result = projectService.setUpdateProject(projectDTO,session,files);
 		return "redirect:./myProject";
 	}
@@ -111,5 +108,23 @@ public class ProjectController {
 	public String setDeleteProject(ProjectDTO projectDTO) throws Exception{
 		projectService.setDeleteProject(projectDTO);
 		return "redirect:./myProject";
+	}
+	
+	@GetMapping(value="fileDelete")
+	public ModelAndView setFileDelete(MediaDTO mediaDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = projectService.setFileDelete(mediaDTO,session);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping(value="projectSelect")
+	public ModelAndView projectSelect(ProjectDTO projectDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		projectDTO = projectService.getProject(projectDTO);
+		mv.addObject("selectDTO", projectDTO);
+		mv.setViewName("project/projectSelect");
+		return mv;
 	}
 }

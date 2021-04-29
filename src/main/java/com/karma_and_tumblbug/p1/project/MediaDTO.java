@@ -1,17 +1,19 @@
 package com.karma_and_tumblbug.p1.project;
 
 public class MediaDTO {
-
-	private long num;
+	private long media_id;
 	private long fileNum;
 	private String division;
 	private String fileName;
 	private String origineName;
-	public long getNum() {
-		return num;
+	
+	
+	
+	public long getMedia_id() {
+		return media_id;
 	}
-	public void setNum(long num) {
-		this.num = num;
+	public void setMedia_id(long media_id) {
+		this.media_id = media_id;
 	}
 	public long getFileNum() {
 		return fileNum;

@@ -35,7 +35,14 @@ public class ProjectService {
 	}
 
 	public List<ProjectDTO> getProjectList()throws Exception{
-		return projectDAO.getProjectList();
+		List<ProjectDTO> array = projectDAO.getProjectList();
+		for(int i=0;i<array.size();i++) {
+			ProjectDTO dto = new ProjectDTO();
+			dto.setMedia_id(array.get(i).getMedia_id());
+			List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+			array.get(i).setMediaFiles(mDtos);
+		}
+		return array;
 	}
 	public ProjectDTO setInsertProject(ProjectDTO projectDTO,HttpSession session)throws Exception{
 		Long projectNum = projectDAO.getProjectNum();
@@ -51,26 +58,67 @@ public class ProjectService {
 		return projectDTO;
 	}
 	public List<ProjectDTO> getMyProject(MembershipDTO memberhsipDTO) throws Exception{
-		return projectDAO.getMyProject(memberhsipDTO);
+		
+		List<ProjectDTO> array = projectDAO.getMyProject(memberhsipDTO);
+		for(int i=0;i<array.size();i++) {
+			ProjectDTO dto = new ProjectDTO();
+			dto.setMedia_id(array.get(i).getMedia_id());
+			List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+			array.get(i).setMediaFiles(mDtos);
+		}
+		return array;
 	}
 
 	public ProjectDTO getProject(ProjectDTO projectDTO) throws Exception{
-		return projectDAO.getProject(projectDTO);
+		ProjectDTO dto = new ProjectDTO();
+		projectDTO = projectDAO.getProject(projectDTO);
+		dto.setMedia_id(projectDTO.getMedia_id());
+		List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+		projectDTO.setMediaFiles(mDtos);
+		return projectDTO;
 	}
 
 	public int setUpdateProject(ProjectDTO projectDTO,HttpSession session,MultipartFile[] files) throws Exception{
 		for(MultipartFile mf : files) {
 			MediaDTO mediaDTO = new MediaDTO();
-			String fileName = fileManager.save("notice", mf, session);
-			mediaDTO.setNum(projectDTO.getNum());
+			String fileName = fileManager.saveProject("project", mf, session);
+			System.out.println("pDto.mId"+projectDTO.getMedia_id());
+			mediaDTO.setMedia_id(projectDTO.getMedia_id());
+			System.out.println("mDto.mID"+mediaDTO.getMedia_id());
+			String format = fileName.substring(fileName.indexOf(".")+1);
+			System.out.println(format);
+			
+			if(format.equals("jpg") || format.equals("png") || format.equals("jpeg")) {
+				mediaDTO.setDivision("photo");
+			} else if(format.equals("avi") || format.equals("mp4")|| format.equals("MOV")) {
+				mediaDTO.setDivision("video");
+			} else {
+				mediaDTO.setDivision("can not");
+			}
+			
 			mediaDTO.setFileName(fileName);
 			mediaDTO.setOrigineName(mf.getOriginalFilename());
 			projectDAO.setFileInsert(mediaDTO);
 		}
+		System.out.println("update done");
 		return projectDAO.setUpdateProject(projectDTO);
 	}
 
 	public int setDeleteProject(ProjectDTO projectDTO) throws Exception{
 		return projectDAO.setDeleteProject(projectDTO);
 	}
+	
+	
+	public int setFileDelete(MediaDTO mediaDTO,HttpSession session) throws Exception{
+		mediaDTO = projectDAO.getFileName(mediaDTO);
+		int result = projectDAO.setFileDelete(mediaDTO);
+		if(result>0) {
+			fileManager.Delete("project", mediaDTO.getFileName(), session);			
+		}
+		
+		return result;
+	}
+	
+	
+	
 }

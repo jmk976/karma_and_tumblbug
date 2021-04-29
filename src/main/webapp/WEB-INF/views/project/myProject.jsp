@@ -36,8 +36,14 @@ div {
 			<div class="card">
 				<div class="card-body">
 					<div class="input-group">
-						<img alt="${member.memberFileDTO.origineName}"
-							src="../resources/images/project/sample/c5.gif">
+						<div id="test" title="${mProject.mediaFiles}">
+							<c:forEach items="${mProject.mediaFiles}" var="media">
+							<c:if test="${media.division eq 'photo'}">
+								<img src="../resources/images/project/${media.fileName}">
+							</c:if>
+
+							</c:forEach>
+						</div>
 						<div>
 							<div class="input-group">
 								<h4 class="card-title">${mProject.title}&nbsp

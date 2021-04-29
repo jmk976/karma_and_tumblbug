@@ -16,15 +16,11 @@ public class ProjectDTO {
 	private long targetAmount;
 	private String openDate;
 	private String closeDate;
-	private String refund;
-	private String inform;
-	private String certificate;
 	private String projectStory;
 	private String email;
 	private String phone;
 	private String bankAccount;
 	private String taxReceipt;
-	private long gift_id;
 	private long media_id;
 	private long search_id;
 	private String state;
@@ -53,12 +49,6 @@ public class ProjectDTO {
 	}
 	public void setTaxReceipt(String taxReceipt) {
 		this.taxReceipt = taxReceipt;
-	}
-	public long getGift_id() {
-		return gift_id;
-	}
-	public void setGift_id(long gift_id) {
-		this.gift_id = gift_id;
 	}
 	public long getMedia_id() {
 		return media_id;
@@ -144,24 +134,6 @@ public class ProjectDTO {
 	}
 	public void setCloseDate(String closeDate) {
 		this.closeDate = closeDate;
-	}
-	public String getRefund() {
-		return refund;
-	}
-	public void setRefund(String refund) {
-		this.refund = refund;
-	}
-	public String getInform() {
-		return inform;
-	}
-	public void setInform(String inform) {
-		this.inform = inform;
-	}
-	public String getCertificate() {
-		return certificate;
-	}
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
 	}
 	public String getProjectStory() {
 		return projectStory;

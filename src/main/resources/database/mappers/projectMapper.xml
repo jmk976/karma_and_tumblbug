@@ -28,8 +28,8 @@
 	</select>
 	<insert id="setInsertProject" parameterType="ProjectDTO">
 		insert into project
-		(num, id, title, category,makerName,gift_id,media_id,search_id)
-		values(#{num},#{id},#{title},#{category},#{makerName},pGift_seq.nextval,pMedia_seq.nextval,pSearch_seq.nextval)
+		(num, id, title, category,makerName,media_id,search_id)
+		values(#{num},#{id},#{title},#{category},#{makerName},pMedia_seq.nextval,pSearch_seq.nextval)
 	</insert>
 	<select id="getMyProject" parameterType="MembershipDTO"
 		resultType="ProjectDTO">
@@ -50,15 +50,11 @@
 		targetAmount=#{targetAmount},
 		openDate=#{openDate},
 		closeDate=#{closeDate},
-		refund=#{refund},
-		inform=#{inform},
-		certificate=#{certificate},
 		projectStory=#{projectStory},
 		email=#{email},
 		phone=#{phone},
 		bankAccount=#{bankAccount},
 		taxReceipt=#{taxReceipt},
-		gift_id=#{gift_id},
 		media_id=#{media_id},
 		search_id=#{search_id}
 		where num=#{num}
@@ -71,7 +67,24 @@
 	
 	
 	<insert id="setFileInsert" parameterType="MediaDTO">
-		insert into project_media values(#{num},project_seq.nextval,'del_column',#{fileName},#{origineName})
+		insert into project_media
+		(media_id,filenum,division,filename,originename)
+		values(#{media_id},project_seq.nextval,#{division},#{fileName},#{origineName})
 	</insert>
+	
+	
+	<select id="getMyMedia" parameterType="ProjectDTO" resultType="MediaDTO">
+		select * from project_media
+		where media_id=#{media_id}
+	</select>
+	
+	
+	<delete id="setFileDelete" parameterType="MediaDTO">
+		delete project_media where fileNum=#{fileNum}
+	</delete>
+	
+	<select id="getFileName" parameterType="MediaDTO" resultType="MediaDTO">
+		select * from project_media where fileNum=#{fileNum}
+	</select>
 
 </mapper>

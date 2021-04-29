@@ -48,4 +48,20 @@ public class ProjectDAO {
 		return sqlSession.insert(NAMESPACE+"setFileInsert",mediaDTO);
 	}
 	
+	public List<MediaDTO> getMyMedia(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMyMedia", projectDTO);
+	}
+	
+	
+	public int setFileDelete(MediaDTO mediaDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", mediaDTO);
+	}
+	
+	public MediaDTO getFileName(MediaDTO mediaDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileName",mediaDTO);
+	}
+	
+
+	
+	
 }
