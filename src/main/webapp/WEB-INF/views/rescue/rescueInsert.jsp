@@ -43,12 +43,12 @@
 	     
 		  	  <div class="col">
 		  	  		<label for="sn" class="mr-sm-2">시리얼 넘버</label>
-	  		        <input type="text" value=" " class="form-control mb-2 mr-sm-2"  name="sn" id="sn">
+	  		        <input type="text"  class="form-control mb-2 mr-sm-2 myCheck"  name="sn" id="sn">
 		  	  </div>
 		
 		  	  <div class="col">
 		  	    	<label for="zoneSn" class="mr-sm-2">지역 시리얼 넘버</label>
-	  		        <input type="text"  value=" " class="form-control mb-2 mr-sm-2" name="zoneSn" id="zoneSn">
+	  		        <input type="text"   class="form-control mb-2 mr-sm-2" name="zoneSn" id="zoneSn">
 		  	  </div>
 	    </div>
 	    
@@ -58,7 +58,7 @@
      
 	  	   <div class="col">
 	  	         
-	  	  	       <select onchange="changeCity(this.value);" name="province" id="province" class="custom-select">
+	  	  	       <select onchange="changeCity(this.value);" name="province" id="province" class="custom-select myCheck">
 					 <option value="0" disabled selected hidden> 지역구를 선택해주세요 </option>
 					    <option value="서울특별시">서울특별시</option>
 					    <option value="경기도">경기도</option>
@@ -66,7 +66,7 @@
 					</select>
 		   </div>
 		   <div class="col">
-					<select id="city" name="city" class="custom-select">
+					<select id="city" name="city" class="custom-select myCheck">
 					   <option value="0" disabled selected hidden> 전체 </option>
 					</select>
 	  	   </div> 
@@ -81,7 +81,7 @@
     <div class="row">
     		<div class="col">
 	  	         
-	  	  	       <select onchange="change_serch(this.value);" name="species" id="species" class="custom-select">
+	  	  	       <select onchange="change_serch(this.value);" name="species" id="species" class="custom-select myCheck">
 					 <option value="0" disabled selected hidden> 축종 </option>
 					    <option value="개">개</option>
 					    <option value="고양이">고양이</option>
@@ -89,7 +89,7 @@
 					</select>
 		   </div>
 		  <div class="col">
-					<select id="kind" name="kind" class="custom-select">
+					<select id="kind" name="kind" class="custom-select myCheck">
 					  <option value="0" disabled selected hidden> 전체 </option> 
 					</select>
 	  	  </div> 
@@ -98,12 +98,12 @@
    <div class="row">
 	  	  <div class="col">
     		<label for="sex">성별</label>
-    		<input type="text" class="form-control etc myCheck" id="sex" name="sex" >
+    		<input type="text" class="form-control" id="sex" name="sex" >
    		 </div>
   
 	  	  <div class="col">
    			 <label for="age">연령</label>
-    		<input type="text" class="form-control etc myCheck" id="age" name="age" >
+    		<input type="text" class="form-control etc" id="age" name="age" >
     	</div>
    </div>
     

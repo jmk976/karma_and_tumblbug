@@ -163,17 +163,13 @@
     	 <input type="file" class="form-control etc" value="${dto.rescueFileDTO}" id="avatar" name="avatar" >
     	 <div class="select_img"><img src="" /></div>
   	
-    	<%-- 
-        <input type="hidden" name="rescueFileDTO.fileName" value="${dto.rescueFileDTO.fileName}" />
-    	 <input type="hidden" name="rescueFileDTO.originalName" value="${dto.rescueFileDTO.originalName}" />
-    	 <input type="hidden" name="rescueFileDTO.num" value="${dto.rescueFileDTO.num}" />
-    	 		 --%>
+    	<c:if test="${dto.rescueFileDTO.originalName != null}">
     	 <div>
     	 <span>${dto.rescueFileDTO.originalName}</span>
     	 <span class="fileDelete" title="${dto.rescueFileDTO.num}">  <img src="../resources/images/delete-icon.png"/> </span>
     	 <br> <small><%=request.getRealPath("/") %></small>
     	 </div> 
-    	 
+    	 </c:if>
  
   	</div> 
   	
