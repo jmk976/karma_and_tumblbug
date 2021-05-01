@@ -161,21 +161,20 @@
     <div class="form-group">
    		 <label for="file">file</label>
     	 <input type="file" class="form-control etc" value="${dto.rescueFileDTO}" id="avatar" name="avatar" >
-    	
-    	
-    	 <input type="hidden" name="rescueFileDTO.fileName" value="${dto.rescueFileDTO.fileName}" />
+    	 <div class="select_img"><img src="" /></div>
+  	
+    	<%-- 
+        <input type="hidden" name="rescueFileDTO.fileName" value="${dto.rescueFileDTO.fileName}" />
     	 <input type="hidden" name="rescueFileDTO.originalName" value="${dto.rescueFileDTO.originalName}" />
     	 <input type="hidden" name="rescueFileDTO.num" value="${dto.rescueFileDTO.num}" />
-    	 		
+    	 		 --%>
     	 <div>
     	 <span>${dto.rescueFileDTO.originalName}</span>
-    	 <span class="fileDelete" title="${dto.rescueFileDTO.num}"> X </span>
-    	 </div>
-<%-- 
-		<input type="hidden" name="num" value="${dto.rescueFileDTO.num}">
-	 <a href="./fileDelete?num=${dto.rescueFileDTO.num}"><input type="button"value="삭제" class="btn btn-danger"></a>
-	
-    	  --%>
+    	 <span class="fileDelete" title="${dto.rescueFileDTO.num}">  <img src="../resources/images/delete-icon.png"/> </span>
+    	 <br> <small><%=request.getRealPath("/") %></small>
+    	 </div> 
+    	 
+ 
   	</div> 
   	
   	<%-- <div id="files" title="${dto.rescueFileDTO.size()}"></div>
@@ -189,7 +188,7 @@
 							 </div>
 							 
 							 
-							 <%=request.getRealPath("/") %>
+							
 							</div>
 							
  --%>
@@ -208,16 +207,17 @@
 
 </div>
 <script>
-							  $("#avatar").change(function(){
-							   if(this.files && this.files[0]) {
-							    var reader = new FileReader;
-							    reader.onload = function(data) {
-							     $(".select_img img").attr("src", data.target.result).width(500);        
-							    }
-							    reader.readAsDataURL(this.files[0]);
-							   }
-							  });
-							 </script>
+//첨부파일 선택하면 사진 아래 나오게 하기
+$("#avatar").change(function(){
+ if(this.files && this.files[0]) {
+  var reader = new FileReader;
+ reader.onload = function(data) {
+ $(".select_img img").attr("src", data.target.result).width(500);        
+ }
+reader.readAsDataURL(this.files[0]);
+ }
+});				  
+</script>
 							 
 							 
 <script type="text/javascript">
@@ -293,42 +293,42 @@ function change_serch(ku) {
 	
  } 
  
-</script>
-
-<script type="text/javascript">
 $("#btn").click(function(){
 	
-			
-			let r = $("#returnDate").val();
-	        let a = $("#adoptDate").val();
-			let result =false;
-			let result2=false;
-			
-			if(typeof r == "undefined" || r == "" || r == null){
-				
-				$("#returnDate").val("2000-01-01");
-				result = true
-				}else{
-				result = true
-					}
-
-		   if(typeof a == "undefined" || a == "" || a == null){
-				
-				$("#adoptDate").val("2000-01-01");
-				result2 = true
-				}else{
-				result2 = true
-					}
-				
-
-		  if(result==true & result2==true){
-			$("#frm").submit()
-		}			
 	
-	        
-		  
-	});
+	let r = $("#returnDate").val();
+    let a = $("#adoptDate").val();
+	let result =false;
+	let result2=false;
+	
+	if(typeof r == "undefined" || r == "" || r == null){
+		
+		$("#returnDate").val("2000-01-01");
+		result = true
+		}else{
+		result = true
+			}
+
+   if(typeof a == "undefined" || a == "" || a == null){
+		
+		$("#adoptDate").val("2000-01-01");
+		result2 = true
+		}else{
+		result2 = true
+			}
+		
+
+  if(result==true & result2==true){
+	$("#frm").submit()
+}			
+
+    
+  
+});
+ 
 </script>
+
+
 
  <script type="text/javascript" src="../resources/jquery/rescueUpdate.js"></script>
 </body>

@@ -8,9 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width: 360px;
+  max-width: none !important;
+  height: 750px;
+  max-height: none !important;
   margin: auto;
   text-align: left;
   font-family: arial;
@@ -189,8 +194,14 @@ float: left;
     <div class="col-lg-4 col-sm-6 mb-4">
      
       <div class="card">
+      
+      <c:if test="${dto.rescueFileDTO.originalName == null}">
+      <img class="card-img-top" id="myImg" alt="" style="width:100%" src="https://via.placeholder.com/560x420?text=Save+Animal">
+      
+      </c:if>
+      <c:if test="${dto.rescueFileDTO.originalName != null}">
        <img class="card-img-top" id="myImg" alt="" style="width:100%" src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}">
-       
+       </c:if>
 		       <!-- The Modal -->
 		<div id="myModal" class="modal">
 		  <span class="close">&times;</span>
@@ -231,40 +242,49 @@ float: left;
           		</li>
           		
           		<li class="half">
+          		   <div class="row">
+          		    <div class="col">
           			<Strong>축종</Strong> ${dto.species} / ${dto.kind}
-          		</li>
-				 <li class="half">
+          		     </div>
+          		     <div class="col">
           			<Strong>성별</Strong>  ${dto.sex}
+          			</div>
+          			</div>
           		</li>
-
-          		
-          		
           		
           		<li class="half">
+          	      <div class="row">
+          		    <div class="col">
           			<Strong>연령</Strong>  ${dto.age}
-          		</li>
-          		
-          		<li class="half">
+          		     </div>
+          		     <div class="col">
           			<Strong>모색</Strong>  ${dto.color}
+          			</div>
+          		  </div>
           		</li>
           		
           		<c:if test="${pager.status =='구조'}">
           		<li class="half">
-          			<Strong>중성화수술</Strong>
-          		     ${dto.desex}
-          		</li>
-          		<li class="half">
-          			<Strong>성격 </Strong>
-          		     ${dto.character}
+          		  <div class="row">
+          		    <div class="col">
+          			<Strong>중성화수술</Strong> ${dto.desex}
+          		     </div>
+          		     <div class="col">
+          			<Strong>성격 </Strong> ${dto.character}
+          			</div>
+          		</div>
           		</li>
           		
           		<li class="half">
-          			<Strong>체중 </Strong>
-          		     ${dto.weight}
-          		</li>
-          		<li class="half">
-          			<Strong>건강상태 </Strong>
-          		     ${dto.health}
+          		<div class="row">
+          		    <div class="col">
+          			<Strong>체중 </Strong> ${dto.weight}
+          		     </div>
+          		     <div class="col">
+          			<Strong>건강상태 </Strong>  ${dto.health}
+          			</div>
+          		</div>
+          			
           		</li>
           		
           		<li class="full">
@@ -282,7 +302,7 @@ float: left;
         
       </div>
       <c:if test="${pager.status =='구조'}">
-         <a href="../adopt/adoptInsert?sn=${dto.sn}&species=${dto.species}&kind=${dto.kind}"><button>입양신청</button></a>
+         <a href="../adopt/adoptInsert?sn=${dto.sn}&species=${dto.species}&kind=${dto.kind}"><button class="confirm">입양신청</button></a>
       </c:if>
     </div>
     
@@ -386,6 +406,12 @@ float: left;
         </form>
     </div>
 </section>
+
+<script type="text/javascript">
+$(".confirm").click(function(){ 
+	 confirm("선택하신 구조동물을 입양 신청하시겠습니까?");
+});
+</script>
 
 <script type="text/javascript">
 

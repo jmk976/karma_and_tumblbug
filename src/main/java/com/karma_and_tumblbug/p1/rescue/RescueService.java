@@ -41,7 +41,7 @@ public class RescueService {
 		//-------------------------------
 		
 		//-----------페이징계산  ---------
-		long totalCount= rescueDAO.getTotalCount(rescueDTO);
+		Long totalCount= rescueDAO.getTotalCount(rescueDTO);
 		rescueDTO.makeNum(totalCount);
 		return rescueDAO.getList(rescueDTO);
 	}
@@ -118,18 +118,23 @@ public class RescueService {
     
     public int setUpdate(RescueDTO rescueDTO,MultipartFile avatar ) throws Exception {
     	System.out.println("rescueDTO.getRescueFileDTO():"+rescueDTO.getRescueFileDTO());
+
     	// 새로운 파일이 등록되었는지 확인
     	 if(avatar.getOriginalFilename() != null && avatar.getOriginalFilename() != "") {
     		 // 기존 파일을 삭제
 
     		//1. 조회
     	    RescueFileDTO rescueFileDTO = rescueDAO.getSelectFile(rescueDTO);
+    	    
+    	    if(rescueFileDTO != null) {
     	    //2. table 삭제
     	    	int result = rescueDAO.setFileDelete(rescueFileDTO);
     	     //3. HDD 삭제
     	    			if(result > 0) {
     	    				fileManager.delete("rescue", rescueFileDTO.getFileName(), session);
     	    			}
+    	    			
+    	    }
     	  // 새로 첨부한 파일을 등록
     	    			
     	    			System.out.println(avatar.isEmpty());

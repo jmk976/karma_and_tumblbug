@@ -43,7 +43,7 @@
 	     
 		  	  <div class="col">
 		  	  		<label for="sn" class="mr-sm-2">시리얼 넘버</label>
-	  		        <input type="text" value=" " class="form-control mb-2 mr-sm-2" name="sn" id="sn">
+	  		        <input type="text" value=" " class="form-control mb-2 mr-sm-2"  name="sn" id="sn">
 		  	  </div>
 		
 		  	  <div class="col">
@@ -163,7 +163,11 @@
     	 <input type="file" class="form-control etc" id="avatar" name="avatar" >
     	  <div class="select_img"><img src="" /></div>
   	</div> 
-  <%=request.getRealPath("/") %>
+     <div>
+    	 <span>${dto.rescueFileDTO.originalName}</span>
+    	 <span class="fileDelete" title="${dto.rescueFileDTO.num}">  <img src="../resources/images/delete-icon.png"/></span>
+    	 <br> <small><%=request.getRealPath("/") %></small>
+     </div> 
   
    
 
@@ -175,6 +179,7 @@
 
  
 <script>
+//첨부파일 선택하면 사진 아래 나오게 하기
   $("#avatar").change(function(){
    if(this.files && this.files[0]) {
     var reader = new FileReader;
@@ -220,6 +225,7 @@ function change_serch(ku) {
 	} 
  } 
 </script>
+   <script type="text/javascript" src="../resources/jquery/rescueUpdate.js"></script>
   
 </body>
 

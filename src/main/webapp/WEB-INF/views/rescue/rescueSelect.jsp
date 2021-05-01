@@ -137,13 +137,14 @@
   
 	<img alt="" src="../resources/upload/rescue/${rescue.rescueFileDTO.fileName}">
 
-
+<br>
+<br>
 
  <a href="./rescueList"><input type="button"value="리스트" class="btn btn-primary"></a>
  <a href="./rescueUpdate?sn=${rescue.sn}"><input type="button"value="수정" class="btn btn-warning"></a>
  <a href="./rescueDelete?sn=${rescue.sn}"><input type="button"value="삭제" class="btn btn-danger"></a>
 
-	
+
 	
  
 </form>

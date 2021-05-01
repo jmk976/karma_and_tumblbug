@@ -84,7 +84,8 @@ td {
 					    <input type="hidden" name="callCheck" value="2000-01-01">
 					    <input type="hidden" name="visitCheck" value="2000-01-01">
 					    <input type="hidden" name="adoptDate" value="2000-01-01">
-					    <input type="hidden" name="pass" value="H">
+					  <!--   <input type="hidden" name="applyDate"> -->
+					    <input type="hidden" name="pass" value="보류">
 				    	<input type="hidden" name="id" value="${membership.id}">
 						<input type="text" value="${membership.name}" id="name" name="name" class="col-sm-6" autofocus>
 						
@@ -350,8 +351,7 @@ td {
                 
 <script type="text/javascript">   
 
-var houseValue = $('input[name="housingType"]:checked').val();
-console.log(houseValue);
+
 
     var cntt = new Array(); 
 cntt[0] = new Array('전체');

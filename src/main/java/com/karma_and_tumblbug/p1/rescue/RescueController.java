@@ -155,7 +155,7 @@ public class RescueController {
 	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception{
 		
 		
-		// 새로운 파일이 등록되었는지 확인
+	
 		
 		System.out.println(avatar.getName());
 		 System.out.println(avatar.getSize());
@@ -163,7 +163,7 @@ public class RescueController {
 		System.out.println(avatar.isEmpty());
 		System.out.println(rescueDTO.getCity());
 		System.out.println(rescueDTO.getSn());
-//		  // 기존 파일을 삭제
+
 		
 	
 

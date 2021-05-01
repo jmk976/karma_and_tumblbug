@@ -33,27 +33,6 @@ $(".fileDelete").click(function(){
 });
 
 
-const del = document.getElementById("del");
-const frm = document.getElementById("frmDelete");
-
-del.addEventListener("click",function(){
-let result = confirm("delete??");
-
-if(result){
-	frm.setAttribute("method","post");
-	frm.submit();
-}else{
-	
-}
-
-});
 
 
 
-//이벤트 전달(위임)
-
-$("#files").on("click", ".delete",function(){
-	$(this).parent().remove();
-	
-	count--;
-});

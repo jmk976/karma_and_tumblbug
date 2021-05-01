@@ -1,6 +1,7 @@
 package com.karma_and_tumblbug.p1.adopt;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.rescue.RescueDTO;
+import com.karma_and_tumblbug.p1.sponsor.SponsorDTO;
+import com.karma_and_tumblbug.p1.util.Pager;
 
 @Controller
 @RequestMapping("/adopt/**")
@@ -22,17 +25,74 @@ public class AdoptController {
 	@Autowired
 	private AdoptService adoptService;
 	
-	@GetMapping("adoptInsert")
-	public void setInsert(AdoptDTO adoptDTO, HttpSession session)throws Exception{
-	  ModelAndView mv = new ModelAndView();
-	 
-	  RescueDTO rescueDTO = new RescueDTO();
-	  System.out.println("sn:"+rescueDTO.getSn());
-	
-	  
-	  mv.addObject("dto", rescueDTO);
 
-	  
+	@GetMapping("adoptUpdate")
+	public ModelAndView setUpdate(AdoptDTO adoptDTO) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		
+
+		int result = adoptService.setUpdate(adoptDTO);
+		String message="업데이트 실패";
+		String path = "./";
+		
+		if(result>0) {
+			message="업데이트 성공";
+			path = "./adoptList";
+		}
+		
+		mv.addObject("msg",message);
+		mv.addObject("path",path);
+		
+		mv.setViewName("common/commonResult");
+		
+		return mv;
+	}
+	
+	@GetMapping("adoptDelete")
+	public ModelAndView setDelete(AdoptDTO adoptDTO) throws Exception{
+		ModelAndView mv= new ModelAndView();
+
+		int result = adoptService.setDelete(adoptDTO);
+		String message="삭제 실패";
+		String path = "./";
+		
+		if(result>0) {
+			message="삭제 성공";
+			path = "./adoptList";
+			
+		}
+		
+		mv.addObject("msg",message);
+		mv.addObject("path",path);
+		
+		mv.setViewName("common/commonResult");
+		
+		return mv;
+	}
+	
+	
+	@GetMapping("adoptList")
+	public ModelAndView getList(Pager pager) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		System.out.println(pager.getCurPage());
+		
+		System.out.println("Service 호출전: "+pager.getTotalPage());
+		List<AdoptDTO> ar = adoptService.getList(pager);
+		System.out.println("Service 호출: "+pager.getTotalPage());
+		
+		modelAndView.addObject("list", ar);
+		modelAndView.setViewName("adopt/adoptList");
+		modelAndView.addObject("pager",pager);
+		return modelAndView;
+	}
+	
+	@GetMapping("adoptInsert")
+	public ModelAndView setInsert(AdoptDTO adoptDTO, HttpSession session)throws Exception{
+	  ModelAndView mv = new ModelAndView();
+	
+	  mv.addObject("dto", adoptDTO);
+
+	  return mv;
 	}
 	
 	@PostMapping("adoptInsert")
@@ -62,6 +122,21 @@ public class AdoptController {
 		
 		model.addAttribute("dto", adoptDTO);
 		return "adopt/adoptSelect";
+	}
+	
+	@GetMapping("adoptCheck")
+	public void adoptCheck() throws Exception{
+	}
+	
+	@GetMapping("adoptUser")
+	public void adoptUser()throws Exception{
+	}
+	
+	@GetMapping("adoptPass")
+	public String adoptPass(AdoptDTO adoptDTO, Model model)throws Exception{
+		adoptDTO= adoptService.getSelect(adoptDTO);
+		model.addAttribute("dto", adoptDTO);
+		return "adopt/adoptPass";
 	}
 
 }

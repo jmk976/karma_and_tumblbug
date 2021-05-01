@@ -66,9 +66,9 @@ td {
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-            <form class="form-horizontal" role="form"  class="form-horizontal">
+            <form class="form-horizontal" role="form" method="post" action="./adoptUpdate" class="form-horizontal">
                 <input type="hidden" name="adoptNum" value="${dto.adoptNum}">
-                <h2>입양 신청</h2>
+                <h2>입양 신청 업데이트 페이지</h2>
                  <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
                    <colgroup>
 				<col width="25%">
@@ -79,17 +79,9 @@ td {
 					<th scope="row"><span>진행 사항</span></th>
 					<td>
 			
-                  <input type="hidden" name="species" value="${dto.species}">
-                  <input type="hidden" name="kind" value="${dto.kind}">
-                  <input type="hidden" name="famAgree" value="${dto.famAgree}">
-                  <input type="hidden" name="adoptEx" value="${dto.adoptEx}">
-                  <input type="hidden" name="haveAnimal" value="${dto.haveAnimal}">
-                  <input type="hidden" name="housingType" value="${dto.housingType}">
-                  <input type="hidden" name="desexAgree" value="${dto.desexAgree}">
-                
                   
-                  
-						<select disabled name="pass" id="pass" class="custom-select col-sm-6 form-control">
+              
+						<select  name="pass" id="pass" class="custom-select col-sm-6 form-control">
 							    <option value="자격통과">자격통과</option>
 							    <option value="전화통과">1차 전화상담 통과</option>
 							    <option value="방문통과">2차 방문상담 통과</option>
@@ -103,25 +95,25 @@ td {
 				<tr>
 					<th scope="row"><span>입양신청날짜</span></th>
 					<td>
-                        <input type="date" readonly="readonly" "${dto.applyDate}" id="applyDate" name="applyDate"  class="col-sm-6" autofocus>
+                        <input type="date" value="${dto.applyDate}" id="applyDate" name="applyDate"  class="col-sm-6" autofocus>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>1차 전화상담</span></th>
 					<td>
-                        <input type="date" readonly="readonly" value="${dto.callCheck}" id="callCheck" name="callCheck"  class="col-sm-6" autofocus>
+                        <input type="date"  value="${dto.callCheck}" id="callCheck" name="callCheck"  class="col-sm-6" autofocus>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>2차 방문상담</span></th>
 					<td>
-                        <input type="date" readonly="readonly" value="${dto.visitCheck}" id="visitCheck" name="visitCheck" class="col-sm-6" >
+                        <input type="date"  value="${dto.visitCheck}" id="visitCheck" name="visitCheck" class="col-sm-6" >
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>최종입양날짜</span></th>
 					<td>
-                        <input type="date" readonly="readonly" value="${dto.adoptDate}" id="adoptDate" name="adoptDate" class="col-sm-6">
+                        <input type="date" value="${dto.adoptDate}" id="adoptDate" name="adoptDate" class="col-sm-6">
 					</td>
 				</tr>
 				
@@ -187,7 +179,7 @@ td {
 						<div class="row">
 		    		        <div class="col">
 			  	         
-			  	  	       	<select disabled onchange="change_serch(this.value);" name="species" id="species" class="custom-select">
+			  	  	       	<select onchange="change_serch(this.value);" name="species" id="species" class="custom-select">
 							 <option value="0" disabled selected hidden> 축종 </option>
 							    <option value="개">개</option>
 							    <option value="고양이">고양이</option>
@@ -195,7 +187,7 @@ td {
 							</select>
 				           </div>
 					 		 <div class="col">
-								<select  disabled id="kind" name="kind"  class="custom-select">
+								<select  id="kind" name="kind"  class="custom-select">
 								  <option value="0" disabled selected hidden> 전체 </option> 
 							  </select>
 	  	  					</div> 
@@ -206,7 +198,7 @@ td {
 				<tr>
 					<th scope="row"><span>시리얼(관리) 번호</span></th>
 					<td>
-						<input value="${dto.sn}" readonly="readonly" type="text" id="sn" name="sn" class="col-sm-6" autofocus>
+						<input value="${dto.sn}"  type="text" id="sn" name="sn" class="col-sm-6" autofocus>
 				         <small class="help-block">(예: 120318-001, 서울-송파-2012-00072) </small>
 						
 					</td>
@@ -387,9 +379,9 @@ td {
 				</tbody>
 				</table>
 				<div style="margin:0 auto;">
-				<a href="./adoptUpdate?adoptNum=${dto.adoptNum}"><input type="button" id="btn" value="수정" class="btn btn-secondary">
+			        <input type="submit" id="btn" value="수정" class="btn btn-secondary">
 			<a href="./adoptDelete?adoptNum=${dto.adoptNum}"><input type="button" id="btn" value="삭제" class="btn btn-secondary"></a>
-            <a href="./adoptInsert"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
+            <a href="../"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
 		</form>
 
@@ -452,6 +444,11 @@ $('doucument').ready(function(){
 
 
 
+/* $("input:radio[name="desexAgree"]:input[ value = "Y" ].prop("checked", true);
+
+$("input:radio[name="housingType"]:input[ value = "아파트" ].prop("checked", true);
+console.log();
+ */
     var cntt = new Array(); 
 cntt[0] = new Array('전체');
 cntt["개"] = new Array("선택","Mix","그레이하운드","그레이트피레니즈","닥스훈트","도베르만","리트리버","롯트와일러","말티즈","미니핀","바셋하운드","비글","보스턴테리어","복서","세타","세인트버나드","시베리안허스키","시츄","샤모예드","샤페이","슈나우저","스피츠","알래스칸말라뮤트","요크셔테리어","웰시코기","진도","제페니즈친","차우차우","치와와","코카스파니엘","콜리","퍼그","포메라니안","포인터","폭스테리어","푸들","페키니즈","보더콜리","기타","프렌치불독","시바견","비숑프리제","불테리어","잭러셀테리어"); 

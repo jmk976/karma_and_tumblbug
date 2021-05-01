@@ -5,10 +5,72 @@
     
 <mapper namespace="com.karma_and_tumblbug.p1.adopt.AdoptDAO">
 
+   <update id="setUpdate" parameterType="AdoptDTO">
+     update adopt set adoptNum=#{adoptNum}, id=#{id}, sn=#{sn}, species=#{species}, kind=#{kind}, reason=#{reason}, 
+		famAgree=#{famAgree}, adoptEx=#{adoptEx}, pastTypeQ=#{pastTypeQ}, pastNow=#{pastNow}, haveAnimal=#{haveAnimal}, 
+		housingType=#{housingType}, afterMoving=#{afterMoving}, afterWedding=#{afterWedding}, desexAgree=#{desexAgree}, 
+		pass=#{pass}, applyDate=#{applyDate}, callCheck=#{callCheck}, visitCheck=#{visitCheck}, adoptDate=#{adoptDate}
+     where adoptNum=#{adoptNum}
+   
+   </update>
+
+
+   <delete id="setDelete" parameterType="AdoptDTO">
+		delete adopt where adoptNum = #{adoptNum}
+	</delete>
+
+   <select id="getTotalCount" parameterType="Pager" resultType="Long">
+   		select count(adoptNum)from adopt 
+				 where
+				  <choose>
+				  	<when test="kind=='ID'">
+				  	 id
+				  	</when>
+				  	<when test="kind=='SN'">
+				  	 sn
+				  	</when>
+				  	<when test="kind=='PASS'">
+				  	 pass
+				  	</when>
+				  	
+				  	<otherwise>
+				  	  adoptNum
+				  	</otherwise>
+				  </choose> 
+				   like '%'||#{search}||'%'
+				
+   </select>
+
+	<select id="getList" parameterType="Pager" resultType="AdoptDTO">
+		select * from 
+			(select rownum R, N.* from
+				(select * from adopt 
+				 where
+				  <choose>
+				  	<when test="kind=='ID'">
+				  	 id
+				  	</when>
+				  	<when test="kind=='SN'">
+				  	 sn
+				  	</when>
+				  	<when test="kind=='PASS'">
+				  	 pass
+				  	</when>
+				  	
+				  	<otherwise>
+				  	  adoptNum
+				  	</otherwise>
+	  	
+				  </choose>
+				  like '%'||#{search}||'%') N)
+				  where R between #{startRow} and #{lastRow}
+	
+	</select>
+
 	<insert id="setInsert" parameterType="AdoptDTO">
 		insert into adopt values (adopt_seq.nextval, #{id}, #{sn}, #{species}, #{kind}, #{reason}, 
 		#{famAgree}, #{adoptEx}, #{pastTypeQ}, #{pastNow}, #{haveAnimal}, #{housingType}, #{afterMoving}, 
-		#{afterWedding}, #{desexAgree}, #{pass}, #{callCheck}, #{visitCheck}, #{adoptDate})
+		#{afterWedding}, #{desexAgree}, #{pass}, sysdate, #{callCheck}, #{visitCheck}, #{adoptDate})
 
 	</insert>
 
@@ -36,6 +98,7 @@
 	    <result property="afterWedding" column="afterWedding"/>
 		<result property="desexAgree" column="desexAgree"/>
 		<result property="pass" column="pass"/>
+	    <result property="applyDate" column="applyDate"/>
 		<result property="callCheck" column="callCheck"/>
 		<result property="visitCheck" column="visitCheck"/>
 	    <result property="adoptDate" column="adoptDate"/>

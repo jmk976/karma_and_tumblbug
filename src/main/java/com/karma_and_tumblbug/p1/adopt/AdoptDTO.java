@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
 
-public class AdoptDTO {
+public class AdoptDTO{
 	
 	private MembershipDTO membershipDTO;
 	
@@ -30,6 +30,7 @@ public class AdoptDTO {
 	private String afterWedding;
 	private String desexAgree;
 	private String pass;
+	private Date applyDate;
 	private Date callCheck;
 	private Date visitCheck;
 	private Date adoptDate;
@@ -128,6 +129,12 @@ public class AdoptDTO {
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	public Date getApplyDate() {
+		return applyDate;
+	}
+	public void setApplyDate(Date applyDate) {
+		this.applyDate = applyDate;
 	}
 	public Date getCallCheck() {
 		return callCheck;
