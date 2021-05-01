@@ -23,8 +23,14 @@
 			type="com.karma_and_tumblbug.p1.project.MediaDTO"
 			alias="MediaDTO" />
 		<typeAlias
+			type="com.karma_and_tumblbug.p1.project.SearchDTO"
+			alias="SearchDTO" />
+		<typeAlias
 			type="com.karma_and_tumblbug.p1.project.GiftDTO"
 			alias="GiftDTO" />
+		<typeAlias
+			type="com.karma_and_tumblbug.p1.board.BoardDTO"
+			alias="BoardDTO" />
 		<typeAlias
 			type="com.karma_and_tumblbug.p1.sponsor.SponsorDTO"
 			alias="SponsorDTO" />

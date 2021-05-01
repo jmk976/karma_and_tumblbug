@@ -12,8 +12,12 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <style type="text/css">
-#sample{
-display:none;
+#sample {
+	display: none;
+}
+
+#searchSample {
+	display: none;
 }
 </style>
 
@@ -40,10 +44,17 @@ display:none;
 					href="#menu3">계좌 설정</a></li>
 				<li>
 					<div class="btn-group">
-						<button type="button" class="btn btn-outline-secondary" id="tempSave">임시저장</button>
+						<button type="button" class="btn btn-outline-secondary"
+							id="tempSave">임시저장</button>
 						<button type="button" class="btn btn-outline-primary" id="submit">제출</button>
 					</div>
 				</li>
+				<li><a type="button" class="btn btn-outline-primary"
+					id="finalCheck">finalCheck</a></li>
+				<li><a type="button" class="btn btn-outline-primary"
+					id="valCheck">console</a></li>
+				<li><a type="button" class="btn btn-outline-primary"
+					id="summerCheck">summer</a></li>
 			</ul>
 		</div>
 		<!-- Tab panes -->
@@ -57,30 +68,31 @@ display:none;
 					<h3>프로젝트 개요</h3>
 					<input type="hidden" id="state" name="state" value=""> <input
 						type="hidden" name="id" value="${projectDTO.id}"> <input
-						type="hidden" id="projectNum" name="num" value="${projectDTO.num}"> <input
-						type="hidden" name="media_id" value="${projectDTO.media_id}">
+						type="hidden" id="projectNum" name="num" value="${projectDTO.num}">
+					<input type="hidden" id="search_id" name="search_id"
+						value="${projectDTO.search_id}"> <input type="hidden"
+						name="media_id" value="${projectDTO.media_id}">
 					<div class="form-group">
 						<label>프로젝트 제목</label> <input type="text" class="form-control"
 							id="title" name="title" value="${projectDTO.title}">
-						<p id="titleCheckResult"></p>
 					</div>
 
 					<div class="form-group">
 						<label>프로젝트 대표 이미지</label>
-						<div >
+						<div>
 							<c:forEach items="${projectDTO.mediaFiles}" var="media">
 								<c:if test="${media.division eq 'photo'}">
-									<img id="nullCheck" src="../resources/images/project/f/${projectDTO.num}/${media.fileName}">
+									<img id="nullCheck"
+										src="../resources/images/project/f/${projectDTO.num}/${media.fileName}">
 									<button type="button"
 										class="btn btn-outline-secondary btn-block fileDelete"
-										id="fileNum"
-										title="${media.fileNum}">대표이미지 교체</button>
+										id="fileNum" title="${media.fileNum}">대표이미지 교체</button>
 								</c:if>
 							</c:forEach>
 						</div>
-						<div id="upload">
-						</div>
-						<input type="button" value="add" class="btn btn-outline-danger" id="add" style="display:none;">
+						<div id="upload" title="0"></div>
+						<input type="button" value="대표 이미지 추가"
+							class="btn btn-outline-danger" id="add" style="display: none;">
 
 
 					</div>
@@ -88,7 +100,6 @@ display:none;
 						<label>프로젝트 요약</label> <br>
 						<textarea style="resize: none;" class="form-control" rows="5"
 							id="summary" name="summary">${projectDTO.summary}</textarea>
-						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
 						<label for="title">프로젝트 카테고리</label> <select class="form-control"
@@ -100,38 +111,39 @@ display:none;
 							<option>d</option>
 							<option>e</option>
 						</select>
-						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
-						<label>프로젝트 페이지 주소</label> <input type="text" class="form-control"
-							id="urlAddress" name="urlAddress"
-							value="${projectDTO.urlAddress}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<div class="form-group">
-						<label>검색용 태그</label> <input type="text" class="form-control"
-							id="search_id" name="search_id" value="${projectDTO.search_id}">
-						<p id="titleCheckResult"></p>
+						<label>검색용 태그</label>
+						<div>
+						<input type="button" value="add" class="btn btn-outline-danger"
+							id="addSearch">
+						</div>
+						<div>
+						<c:forEach items="${projectDTO.searchList}" var="search">
+						<span>
+						<span>${search.searchTag}</span><span class="tagDelete"
+					title="${search.searchNum}" style="color:red;">X&nbsp&nbsp</span>
+						</span>
+						</c:forEach>
+						</div>
+						<div id="addSearchTag" title="${projectDTO.searchList.size()}"></div>
 					</div>
 					<h3>창작자 정보</h3>
 
 					<div class="form-group">
 						<label>창작자 이름</label> <input type="text" class="form-control"
 							id="makerName" name="makerName" value="${projectDTO.makerName}">
-						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
 						<label>창작자 소개</label> <br>
-						<textarea name="makerSummary" style="resize: none;" id="contents"
-							class="myCheck">${projectDTO.makerSummary}</textarea>
+						<textarea name="makerSummary" style="resize: none;"
+							id="makerSummary" class="myCheck">${projectDTO.makerSummary}</textarea>
 
-						<p id="titleCheckResult"></p>
 					</div>
 					<div class="form-group">
 						<label>장작자 활동 지역</label> <input type="text" class="form-control"
 							id="makerLocation" name="makerLocation"
 							value="${projectDTO.makerLocation}">
-						<p id="titleCheckResult"></p>
 					</div>
 
 				</div>
@@ -144,79 +156,47 @@ display:none;
 					<br>
 					<h3>펀딩 목표 설정</h3>
 					<div class="form-group">
-						<label for="title">목표 금액</label> <input type="text"
+						<label for="title">목표 금액</label> <input type="number" step="10000"
 							class="form-control" id="targetAmount" name="targetAmount"
 							value="${projectDTO.targetAmount}">
-						<p id="titleCheckResult"></p>
 					</div>
 					<h3>펀딩 기간 설정</h3>
 					<div class="form-group">
-						<label>프로젝트 공개일시</label> <input type="date"
-							class="form-control" id="openDate" name="openDate"
-							value="${projectDTO.openDate}">
-						<p id="titleCheckResult"></p>
+						<label>프로젝트 공개일시</label> <input type="date" class="form-control"
+							id="openDate" name="openDate" value="${projectDTO.openDate}">
 					</div>
 					<div class="form-group">
-						<label>프로젝트 마감일</label> <input type="date"
-							class="form-control" id="closeDate" name="closeDate"
-							value="${projectDTO.closeDate}">
-						<p id="titleCheckResult"></p>
+						<label>프로젝트 마감일</label> <input type="date" class="form-control"
+							id="closeDate" name="closeDate" value="${projectDTO.closeDate}">
 					</div>
-					
+
 				</div>
 
 
 				<div id="menu2" class="container tab-pane fade">
-					<!-- 
-					<br> <label>프로젝트 소개 영상</label>
-					<div class="input-group">
-							<div class="custom-file">
-								<input type="file" id="inputGroupFile04"
-									class="form-control-file border" name="files">
-							</div>
-						
-						</div>
-						 -->
 					<h3>프로젝트 스토리</h3>
 					<div class="form-group">
 						<label for="title">프로젝트 스토리</label> <br>
 						<textarea name="projectStory" style="resize: none;"
 							id="projectStory" class="myCheck">${projectDTO.projectStory}</textarea>
 
-						<p id="titleCheckResult"></p>
 					</div>
 				</div>
 
 
 				<div id="menu3" class="container tab-pane fade">
 					<br>
-					<h3>이메일 인증</h3>
-					<div class="form-group">
-						<label for="title">이메일 주소</label> <input type="text"
-							class="form-control" id="email" name="email"
-							value="${projectDTO.email}">
-						<p id="titleCheckResult"></p>
-					</div>
 					<h3>본인 인증</h3>
 					<div class="form-group">
 						<label for="title">휴대폰 번호</label> <input type="text"
 							class="form-control" id="phone" name="phone"
-							value="${project.phone}">
-						<p id="titleCheckResult"></p>
+							value="${projectDTO.phone}">
 					</div>
 					<h3>입금 계좌</h3>
 					<div class="form-group">
 						<label for="title">입금 계좌</label> <input type="text"
 							class="form-control" id="bankAccount" name="bankAccount"
 							value="${projectDTO.bankAccount}">
-						<p id="titleCheckResult"></p>
-					</div>
-					<h3>세금 계산서 발행</h3>
-					<div class="form-group">
-						<label for="title">세금 계산서</label> <input type="text"
-							class="form-control" id="taxReceipt" name="taxReceipt"
-							value="${projectDTO.taxReceipt}">
-						<p id="titleCheckResult"></p>
 					</div>
 
 				</div>
@@ -228,9 +208,17 @@ display:none;
 			<input type="file" id="inputGroupFile04" id="thumbNail"
 				class="form-control-file border" name="files">
 		</div>
-		<p>jpeg, png파일만 가능합니다.</p>
-		<p id="titleCheckResult">jpeg, png파일만 가능합니다.</p>
+		<p>jpeg, png, jpg파일만 가능합니다.</p>
 
+	</div>
+	<div id="searchSample">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="검색어"
+				name="searchTag">
+			<div class="input-group-append del">
+				<input class="btn btn-danger" type="button" value="삭제">
+			</div>
+		</div>
 	</div>
 	<script type="text/javascript"
 		src="../resources/jquery/projectInsert.js"></script>

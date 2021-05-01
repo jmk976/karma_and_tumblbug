@@ -47,9 +47,9 @@ public class ProjectController {
 	}
 	
 	@GetMapping(value="projectList")
-	public ModelAndView getProjectList()throws Exception{
+	public ModelAndView getProjectList(ProjectDTO projectDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<ProjectDTO> array = projectService.getProjectList();
+		List<ProjectDTO> array = projectService.getProjectList(projectDTO);
 		mv.addObject("projectList",array);
 		mv.setViewName("project/projectList");
 		return mv;
@@ -99,7 +99,9 @@ public class ProjectController {
 	}
 	
 	@PostMapping(value="projectUpdate")
-	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile files,HttpSession session) throws Exception{
+	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile files,HttpSession session,String searchTag) throws Exception{
+		System.out.println(searchTag);
+		projectService.setInsertSearchTag(projectDTO, searchTag);
 		int result = projectService.setUpdateProject(projectDTO,session,files);
 		return "redirect:./myProject";
 	}
@@ -128,9 +130,9 @@ public class ProjectController {
 		return mv;
 	}
 	@GetMapping(value="adminProjectCheck")
-	public ModelAndView adminProjectCheck(ProjectDTO projectDTO) throws Exception{
+	public ModelAndView adminProjectCheck() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<ProjectDTO> array = projectService.getAdminProjectCheck(projectDTO);
+		List<ProjectDTO> array = projectService.getAdminProjectCheck();
 		mv.addObject("adminProject", array);
 		mv.setViewName("project/adminProjectCheck");
 		return mv;
@@ -144,5 +146,23 @@ public class ProjectController {
 		projectDTO.setState(state);
 		int result = projectService.setStateUpdate(projectDTO);
 		return "redirect:./adminProjectCheck";
+	}
+	@GetMapping(value="projectSelectAdmin")
+	public ModelAndView projectSelectAdmin(ProjectDTO projectDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		projectDTO = projectService.getProject(projectDTO);
+		mv.addObject("selectDTO", projectDTO);
+		mv.setViewName("project/projectSelectAdmin");
+		return mv;
+	}
+	
+	@GetMapping(value="tagDelete")
+	public ModelAndView setSearchTagDelete(SearchDTO searchDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = projectService.setSearchTagDelete(searchDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
 	}
 }

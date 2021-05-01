@@ -9,7 +9,6 @@ public class ProjectDTO {
 	private String title;
 	private String summary;
 	private String category;
-	private String urlAddress;
 	private String makerName;
 	private String makerSummary;
 	private String makerLocation;
@@ -17,21 +16,26 @@ public class ProjectDTO {
 	private String openDate;
 	private String closeDate;
 	private String projectStory;
-	private String email;
 	private String phone;
 	private String bankAccount;
-	private String taxReceipt;
 	private long media_id;
 	private long search_id;
 	private String state;
 	
 	private List<MediaDTO> mediaFiles;
+	private List<SearchDTO> searchList;
 	
 	
 	
 	
 	
 	
+	public List<SearchDTO> getSearchList() {
+		return searchList;
+	}
+	public void setSearchList(List<SearchDTO> searchList) {
+		this.searchList = searchList;
+	}
 	public List<MediaDTO> getMediaFiles() {
 		return mediaFiles;
 	}
@@ -43,12 +47,6 @@ public class ProjectDTO {
 	}
 	public void setState(String state) {
 		this.state = state;
-	}
-	public String getTaxReceipt() {
-		return taxReceipt;
-	}
-	public void setTaxReceipt(String taxReceipt) {
-		this.taxReceipt = taxReceipt;
 	}
 	public long getMedia_id() {
 		return media_id;
@@ -92,12 +90,6 @@ public class ProjectDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getUrlAddress() {
-		return urlAddress;
-	}
-	public void setUrlAddress(String urlAddress) {
-		this.urlAddress = urlAddress;
-	}
 	public String getMakerName() {
 		return makerName;
 	}
@@ -140,12 +132,6 @@ public class ProjectDTO {
 	}
 	public void setProjectStory(String projectStory) {
 		this.projectStory = projectStory;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPhone() {
 		return phone;

@@ -51,7 +51,7 @@
       <a class="nav-link" href="${pageContext.request.contextPath}/project/projectList">Project</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id="${membership.id}">ProjectUpload</a>
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id=">ProjectUpload</a>
     </li>
 
     

@@ -1,5 +1,6 @@
 package com.karma_and_tumblbug.p1.project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,14 +36,26 @@ public class ProjectService {
 		return result;
 	}
 
-	public List<ProjectDTO> getProjectList()throws Exception{
-		List<ProjectDTO> array = projectDAO.getProjectList();
-		for(int i=0;i<array.size();i++) {
-			ProjectDTO dto = new ProjectDTO();
-			dto.setMedia_id(array.get(i).getMedia_id());
-			List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
-			array.get(i).setMediaFiles(mDtos);
+	public List<ProjectDTO> getProjectList(ProjectDTO projectDTO)throws Exception{
+		List<ProjectDTO> array;
+		if(projectDTO.getCategory()==null) {
+			array = projectDAO.getProjectList();
+			for(int i=0;i<array.size();i++) {
+				ProjectDTO dto = new ProjectDTO();
+				dto.setMedia_id(array.get(i).getMedia_id());
+				List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+				array.get(i).setMediaFiles(mDtos);
+			}
+		} else {
+			array = projectDAO.getProjectList(projectDTO);
+			for(int i=0;i<array.size();i++) {
+				ProjectDTO dto = new ProjectDTO();
+				dto.setMedia_id(array.get(i).getMedia_id());
+				List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+				array.get(i).setMediaFiles(mDtos);
+			}
 		}
+		
 		return array;
 	}
 	public ProjectDTO setInsertProject(ProjectDTO projectDTO,HttpSession session)throws Exception{
@@ -75,7 +88,9 @@ public class ProjectService {
 		projectDTO = projectDAO.getProject(projectDTO);
 		dto.setMedia_id(projectDTO.getMedia_id());
 		List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
+		List<SearchDTO> sDtos = projectDAO.getSearchTagList(projectDTO);
 		projectDTO.setMediaFiles(mDtos);
+		projectDTO.setSearchList(sDtos);
 		return projectDTO;
 	}
 
@@ -121,7 +136,7 @@ public class ProjectService {
 		return result;
 	}
 	
-	public List<ProjectDTO> getAdminProjectCheck(ProjectDTO projectDTO)throws Exception{
+	public List<ProjectDTO> getAdminProjectCheck()throws Exception{
 		List<ProjectDTO> array = projectDAO.getProjectList();
 		for(int i=0;i<array.size();i++) {
 			ProjectDTO dto = new ProjectDTO();
@@ -135,5 +150,24 @@ public class ProjectService {
 	public int setStateUpdate(ProjectDTO projectDTO) throws Exception{
 		return projectDAO.setUpdateProject(projectDTO);
 	}
+	
+	public void setInsertSearchTag(ProjectDTO projectDTO,String searchTag) throws Exception{
+		if(searchTag!=null) {
+			
+			String[] array = searchTag.split(",");
+			for(int i=0;i<array.length;i++) {
+				SearchDTO searchDTO = new SearchDTO();
+				searchDTO.setSearch_id(projectDTO.getSearch_id());
+				searchDTO.setSearchTag(array[i]);
+				projectDAO.setInsertSearchTag(searchDTO);
+			}
+		}
+	}
+	
+	public int setSearchTagDelete(SearchDTO searchDTO) throws Exception{
+		return projectDAO.setSearchTagDelete(searchDTO);
+	}
+	
+	
 	
 }

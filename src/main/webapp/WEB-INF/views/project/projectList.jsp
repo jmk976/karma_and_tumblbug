@@ -22,9 +22,22 @@ img {
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 		<h1>Project List</h1>
+		<form action="./projectList" id="frm" class="form-inline">
+		<div class="input-group">
+		<select id="category" name="category">
+			<option value="default">카테고리 선택</option>
+			<option>a</option>
+			<option>b</option>
+			<option>c</option>
+			<option>d</option>
+			<option>e</option>
+		</select>
+		<a type="button" id="setCategory" class="btn btn-primary">선택 카테고리의 프로젝트만 보기</a>
+		</div>
+		</form>
 		<div class="input-group">
 			<c:forEach items="${projectList}" var="project">
-				<c:if test="${project.state eq 'submit'}">
+				<c:if test="${project.state eq 'accept'}">
 
 					<div class="card" style="width: 18rem; margin: 1rem;">
 						<div id="test" title="${project.mediaFiles}">
@@ -43,7 +56,7 @@ img {
 								<p class="card-text">${project.makerName}</p>
 							</div>
 
-							<a href="./projectSelect?num=${project.num}" class="btn btn-primary">Go somewhere</a>
+							<a href="./projectSelect?num=${project.num}" class="btn btn-primary">자세히 보기</a>
 						</div>
 					</div>
 
@@ -53,5 +66,6 @@ img {
 		</div>
 
 	</div>
+	<script type="text/javascript" src="../resources/jquery/projectList.js"></script>
 </body>
 </html>

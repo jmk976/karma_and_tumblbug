@@ -216,7 +216,6 @@ id varchar2(20) constraint project_id_fk references membership on delete cascade
 title varchar2(20) default null,
 summary clob default null,
 category varchar2(20) default null,
-urlAddress varchar2(20) default null,
 makerName varchar2(20) default null,
 makerSummary clob default null,
 makerLocation varchar2(20) default null,
@@ -224,10 +223,8 @@ targetAmount number default null,
 openDate varchar2(20) default null,
 closeDate varchar2(20) default null,
 projectStory clob default null,
-email varchar2(40) default null,
 phone varchar2(20) default null,
 bankAccount varchar2(20) default null,
-taxReceipt varchar2(20) default null,
 media_id number constraint project_pmid_uq unique,
 search_id number constraint project_psid_uq unique
 )
@@ -401,8 +398,33 @@ insert into project
 insert into project_media
 		(media_id,filenum,division,filename,originename)
 		values(37,project_seq.nextval,'mustdel','del','del')
+	
+select * from project_search;
 		
 rollback work;
+
+
+create table project_search(
+search_id number constraint ps_searchid_fk references project(search_id) on delete cascade,
+searchNum number constraint ps_searchNum_pk primary key,
+searchTag varchar2(40)
+
+)
+--------------------------------------------------
+-- 게시판
+create table board(
+tableSort number ,
+num number constraint board_num_pk primary key,
+title varchar2(200),
+writer varchar2(200),
+regDate date,
+hit number,
+contents clob
+)
+
+--시퀀스
+create sequence board_seq
+---------------------------------------------------
 
 commit work;
 

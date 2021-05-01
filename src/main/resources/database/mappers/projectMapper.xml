@@ -5,7 +5,11 @@
 
 <mapper namespace="com.karma_and_tumblbug.p1.project.ProjectDAO">
 
-	<select id="getProjectList" resultType="ProjectDTO">
+	<select id="getProjectListWithCategory" parameterType="ProjectDTO" resultType="ProjectDTO">
+		select * from Project where category=#{category}
+	</select>
+	
+	<select id="getProjectList" parameterType="ProjectDTO" resultType="ProjectDTO">
 		select * from Project
 	</select>
 
@@ -43,7 +47,6 @@
 		title=#{title},
 		summary=#{summary},
 		category=#{category},
-		urlAddress=#{urlAddress},
 		makerName=#{makerName},
 		makerSummary=#{makerSummary},
 		makerLocation=#{makerLocation},
@@ -51,10 +54,8 @@
 		openDate=#{openDate},
 		closeDate=#{closeDate},
 		projectStory=#{projectStory},
-		email=#{email},
 		phone=#{phone},
 		bankAccount=#{bankAccount},
-		taxReceipt=#{taxReceipt},
 		media_id=#{media_id},
 		search_id=#{search_id}
 		where num=#{num}
@@ -86,6 +87,15 @@
 	<select id="getFileName" parameterType="MediaDTO" resultType="MediaDTO">
 		select * from project_media where fileNum=#{fileNum}
 	</select>
+	<insert id="setInsertSearchTag" parameterType="SearchDTO">
+		insert into project_search values(#{search_id},project_seq.nextval,#{searchTag})
+	</insert>
+	<select id="getSearchTagList" parameterType="ProjectDTO" resultType="SearchDTO">
+		select * from project_search where search_id=#{search_id}
+	</select>
+	<delete id="setSearchTagDelete" parameterType="SearchDTO">
+		delete from project_search where searchNum=#{searchNum}
+	</delete>
 	
 
 </mapper>
