@@ -68,7 +68,7 @@ td {
           
 <div class="container">
   <br>
-   <h2>입양 신청 4</h2>
+   <h2>입양 신청</h2>
             <form id="frm" class="form-horizontal" action="./adoptInsert" method="post">
                 
              <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
@@ -87,7 +87,7 @@ td {
 					  <!--   <input type="hidden" name="applyDate"> -->
 					    <input type="hidden" name="pass" value="보류">
 				    	<input type="hidden" name="id" value="${membership.id}">
-						<input type="text" value="${membership.name}" id="name" name="name" class="col-sm-6" autofocus>
+						<input type="text" readonly="readonly" value="${membership.name}" id="name" name="name" class="col-sm-6" autofocus>
 						
 					</td>
 				</tr>
@@ -96,19 +96,19 @@ td {
 				<tr>
 					<th scope="row"><span>생년월일</span></th>
 					<td>
-                        <input type="date" value="${membership.birth}" id="birth" name="birth"  class="col-sm-6" autofocus>
+                        <input type="date" readonly="readonly" value="${membership.birth}" id="birth" name="birth"  class="col-sm-6" autofocus>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>휴대폰번호</span></th>
 					<td>
-                        <input type="text" value="${membership.phone}" id="phone" name="phone" class="col-sm-6" >
+                        <input type="text" readonly="readonly" value="${membership.phone}" id="phone" name="phone" class="col-sm-6" >
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><span>주소</span></th>
 					<td>
-                        <input type="text" value="${membership.address}" id="address" name="address" class="col-sm-12">
+                        <input type="text" readonly="readonly" value="${membership.address}" id="address" name="address" class="col-sm-12">
 					</td>
 				</tr>
 				

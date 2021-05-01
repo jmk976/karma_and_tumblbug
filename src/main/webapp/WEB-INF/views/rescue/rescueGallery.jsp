@@ -302,7 +302,12 @@ float: left;
         
       </div>
       <c:if test="${pager.status =='구조'}">
-         <a href="../adopt/adoptInsert?sn=${dto.sn}&species=${dto.species}&kind=${dto.kind}"><button class="confirm">입양신청</button></a>
+      	 <c:if test="${not empty membership}">
+      	     <a href="../adopt/adoptInsert?sn=${dto.sn}&species=${dto.species}&kind=${dto.kind}"><button class="confirm">입양신청</button></a>
+      	 </c:if>
+      	 <c:if test="${empty membership}">
+      	     <a><button class="ask">입양신청</button></a>
+      	 </c:if>
       </c:if>
     </div>
     
@@ -410,6 +415,12 @@ float: left;
 <script type="text/javascript">
 $(".confirm").click(function(){ 
 	 confirm("선택하신 구조동물을 입양 신청하시겠습니까?");
+
+});
+
+$(".ask").click(function(){ 
+	
+		 alert("로그인을 먼저 해주시기 바랍니다.");
 });
 </script>
 
