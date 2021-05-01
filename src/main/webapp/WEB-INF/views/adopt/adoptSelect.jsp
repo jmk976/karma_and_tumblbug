@@ -78,15 +78,7 @@ td {
 				<tr>
 					<th scope="row"><span>진행 사항</span></th>
 					<td>
-			
-                  <input type="hidden" name="species" value="${dto.species}">
-                  <input type="hidden" name="kind" value="${dto.kind}">
-                  <input type="hidden" name="famAgree" value="${dto.famAgree}">
-                  <input type="hidden" name="adoptEx" value="${dto.adoptEx}">
-                  <input type="hidden" name="haveAnimal" value="${dto.haveAnimal}">
-                  <input type="hidden" name="housingType" value="${dto.housingType}">
-                  <input type="hidden" name="desexAgree" value="${dto.desexAgree}">
-                
+			    
                   
                   
 						<select disabled name="pass" id="pass" class="custom-select col-sm-6 form-control">
@@ -95,7 +87,7 @@ td {
 							    <option value="방문통과">2차 방문상담 통과</option>
 							    <option value="입양완료">입양완료</option>
 							    <option value="부적합">부적합</option>
-							    <option value="보류" selected>보류</option>
+							    <option value="보류">보류</option>
 						</select>
 					</td>
 				</tr>
@@ -103,7 +95,7 @@ td {
 				<tr>
 					<th scope="row"><span>입양신청날짜</span></th>
 					<td>
-                        <input type="date" readonly="readonly" "${dto.applyDate}" id="applyDate" name="applyDate"  class="col-sm-6" autofocus>
+                        <input type="date" readonly="readonly" value="${dto.applyDate}" id="applyDate" name="applyDate"  class="col-sm-6" autofocus>
 					</td>
 				</tr>
 				<tr>
@@ -408,8 +400,7 @@ td {
     </div>
   	</div>
                 
-<script type="text/javascript">  
-
+<script type="text/javascript"> 
 $('input[name="famAgree"]').val(['${dto.famAgree}']);
 $('input[name="adoptEx"]').val(['${dto.adoptEx}']);
 
@@ -420,7 +411,9 @@ $('input[name="housingType"]').val(['${dto.housingType}']);
 $('input[name="desexAgree"]').val(['${dto.desexAgree}']);
 
 
-$('doucument').ready(function(){
+
+
+ $('doucument').ready(function(){
 	
 	 $("input[name=famAgree]").each(function(i) {       //testradio 버튼 전체 disable
          $(this).attr('disabled', "true");
@@ -443,20 +436,19 @@ $('doucument').ready(function(){
      });
 
 	
-	
-	
 });
 
 
 
+</script>
 
-
-
-    var cntt = new Array(); 
+<script type="text/javascript">
+var cntt = new Array(); 
 cntt[0] = new Array('전체');
 cntt["개"] = new Array("선택","Mix","그레이하운드","그레이트피레니즈","닥스훈트","도베르만","리트리버","롯트와일러","말티즈","미니핀","바셋하운드","비글","보스턴테리어","복서","세타","세인트버나드","시베리안허스키","시츄","샤모예드","샤페이","슈나우저","스피츠","알래스칸말라뮤트","요크셔테리어","웰시코기","진도","제페니즈친","차우차우","치와와","코카스파니엘","콜리","퍼그","포메라니안","포인터","폭스테리어","푸들","페키니즈","보더콜리","기타","프렌치불독","시바견","비숑프리제","불테리어","잭러셀테리어"); 
 cntt["고양이"] = new Array("선택","코리안숏헤어","샴","페르시안","러시안블루","터키시앙고라","배회고양이","기타"); 
 cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아나","고슴도치","카멜레온","도마뱀","거북이","뱀","가고일 게코","사바나모니터","기타"); 
+
 
 let species="${dto.species}"
 	$("#species").val(species).prop("selected", true);
@@ -475,7 +467,6 @@ for (i=1; i < cntt[species].length;i++){
 } 
 
 function change_serch(ku) { 
-	sel2 = document.getElementById('kind');
 	
 	for (i=1; i < cntt[ku].length;i++){ 
 		sel2.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
@@ -484,7 +475,11 @@ function change_serch(ku) {
 	
  } 
  
-</script> 
+let pass="${dto.pass}"
+	$("#pass").val(pass).prop("selected", true);
+
+</script>
+
 
 
 </body>

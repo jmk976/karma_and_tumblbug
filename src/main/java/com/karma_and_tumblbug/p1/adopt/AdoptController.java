@@ -28,10 +28,23 @@ public class AdoptController {
 
 	@GetMapping("adoptUpdate")
 	public ModelAndView setUpdate(AdoptDTO adoptDTO) throws Exception{
-		ModelAndView mv= new ModelAndView();
+		ModelAndView mv = new ModelAndView();
+		adoptDTO = adoptService.getSelect(adoptDTO);
 		
-
+		mv.addObject("dto", adoptDTO);
+		mv.setViewName("adopt/adoptUpdate");
+        
+		return mv;
+	}
+	
+	@PostMapping("adoptUpdate")
+	public ModelAndView setUpdate(AdoptDTO adoptDTO, ModelAndView mv)throws Exception{
+		System.out.println("adoptDTO.getPass():"+adoptDTO.getPass());
+		System.out.println("adoptDTO.getAdoptNum():"+adoptDTO.getAdoptNum());
 		int result = adoptService.setUpdate(adoptDTO);
+		System.out.println("입력후 adoptDTO.getPass():"+adoptDTO.getPass());
+		System.out.println("입력후 adoptDTO.getAdoptNum():"+adoptDTO.getAdoptNum());
+		
 		String message="업데이트 실패";
 		String path = "./";
 		
@@ -119,6 +132,7 @@ public class AdoptController {
 		
 		String address = adoptDTO.getMembershipDTO().getAddress();
 		System.out.println("address:"+address);
+		System.out.println(adoptDTO.getPass());
 		
 		model.addAttribute("dto", adoptDTO);
 		return "adopt/adoptSelect";

@@ -6,9 +6,7 @@
 <mapper namespace="com.karma_and_tumblbug.p1.adopt.AdoptDAO">
 
    <update id="setUpdate" parameterType="AdoptDTO">
-     update adopt set adoptNum=#{adoptNum}, id=#{id}, sn=#{sn}, species=#{species}, kind=#{kind}, reason=#{reason}, 
-		famAgree=#{famAgree}, adoptEx=#{adoptEx}, pastTypeQ=#{pastTypeQ}, pastNow=#{pastNow}, haveAnimal=#{haveAnimal}, 
-		housingType=#{housingType}, afterMoving=#{afterMoving}, afterWedding=#{afterWedding}, desexAgree=#{desexAgree}, 
+     update adopt set sn=#{sn}, species=#{species}, kind=#{kind},
 		pass=#{pass}, applyDate=#{applyDate}, callCheck=#{callCheck}, visitCheck=#{visitCheck}, adoptDate=#{adoptDate}
      where adoptNum=#{adoptNum}
    
