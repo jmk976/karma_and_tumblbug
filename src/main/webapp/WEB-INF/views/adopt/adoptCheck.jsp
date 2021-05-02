@@ -64,11 +64,7 @@ font-size: 22px;
 </div>
 	  
 	  
-	  
-	  <div style="text-align: center;">
-	<a href="./adoptInsert" class="btn btn-info"> 입양신청하기 </a>
-	</div>
-
+	 
 	
  <c:if test="${not empty membership}">
 	

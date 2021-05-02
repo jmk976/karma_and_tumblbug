@@ -61,7 +61,7 @@ public class AdoptController {
 		return mv;
 	}
 	
-	@GetMapping("adoptDelete")
+	@PostMapping("adoptDelete")
 	public ModelAndView setDelete(AdoptDTO adoptDTO) throws Exception{
 		ModelAndView mv= new ModelAndView();
 

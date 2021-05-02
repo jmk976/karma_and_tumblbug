@@ -30,14 +30,14 @@ public class RescueController {
 	private RescueService rescueService;
 	
 	@GetMapping("rescueGallery")
-	public ModelAndView rescueGallery(RescueDTO rescueDTO, HttpSession session) throws Exception {
+	public ModelAndView rescueGallery(RescueDTO rescueDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 	    rescueDTO.setPerPage(6);
         
 		List<RescueDTO> list = rescueService.getList(rescueDTO);
 			
-		session.setAttribute("dto", rescueDTO);
+
 		
 
 	    mv.addObject("list", list);

@@ -66,7 +66,7 @@ td {
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-            <form class="form-horizontal" role="form"  class="form-horizontal">
+           
                 <input type="hidden" name="adoptNum" value="${dto.adoptNum}">
                 <h2>입양 신청</h2>
                  <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
@@ -379,11 +379,17 @@ td {
 				</tbody>
 				</table>
 				<div style="margin:0 auto;">
-				<a href="./adoptUpdate?adoptNum=${dto.adoptNum}"><input type="button" id="btn" value="수정" class="btn btn-secondary">
-			<a href="./adoptDelete?adoptNum=${dto.adoptNum}"><input type="button" id="btn" value="삭제" class="btn btn-secondary"></a>
+				<c:catch>
+				<c:if test="${membership.id =='admin'}">
+				<a href="./adoptUpdate?adoptNum=${dto.adoptNum}"><input type="button" id="btn" value="수정" class="btn btn-secondary"></a>
+				</c:if>
+				</c:catch>
+			<input type="button" id="del" value="삭제" class="btn btn-secondary">
             <a href="./adoptInsert"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
-		</form>
+		<form action="./adoptDelete" id="frm" method="get">
+		<input type="hidden" name="adoptNum" value="${dto.adoptNum}">
+	</form> 
 
 				
   <div class="card bg-light text-dark">
@@ -401,6 +407,20 @@ td {
   	</div>
                 
 <script type="text/javascript"> 
+const del = document.getElementById("del");
+const frm = document.getElementById("frm");
+
+del.addEventListener("click",function(){
+let result = confirm("삭제하시겠습니까?");
+if(result){
+	frm.setAttribute("method","post");
+	frm.submit();
+}else{
+	
+}
+
+});
+
 $('input[name="famAgree"]').val(['${dto.famAgree}']);
 $('input[name="adoptEx"]').val(['${dto.adoptEx}']);
 

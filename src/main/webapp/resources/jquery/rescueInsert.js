@@ -18,6 +18,8 @@ $("#btn").click(function(){
 			let result =true;
 			let result2=false;
 			let result3=false;
+			let result4=false;
+			let result5=false;
 			
 			if(typeof r == "undefined" || r == "" || r == null){
 				
@@ -38,9 +40,17 @@ $("#btn").click(function(){
 			if(typeof z == "undefined" || z == "" || z == null){
 				
 				$("#zoneSn").val(" ");
-				result3 = true
+				result4 = true
 				}else{
-				result3 = true
+				result4 = true
+					}
+			let f= $("#feature").val();
+			if(typeof f == "undefined" || f == "" || f == null){
+				
+				$("#feature").val(" ");
+				result5 = true
+				}else{
+				result5 = true
 					}
 					
 /* 유효성검사 */
@@ -76,9 +86,11 @@ let k = $("#kind").val()
 				result = false;
 				alert("종류를 선택하시오.");
 			}
+			
+
 				
 
-		  if(result==true & result2==true & result3==true){
+		  if(result==true & result2==true & result3==true & result4==true & result5==true){
 			$("#frm").submit()
 		}else {
 		

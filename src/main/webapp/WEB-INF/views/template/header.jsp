@@ -89,9 +89,10 @@
         Rescue
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueGallery?status=구조">Rescue Animals</a>
+       <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueGallery?status=구조">Rescue Animals</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueGallery?status=가족">Return to family</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueGallery?status=입양">Adopted!</a>
+        
       </div>
     </li>
     

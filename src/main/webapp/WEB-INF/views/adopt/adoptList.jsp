@@ -85,9 +85,9 @@
   
   <div class="input-group mt-3 mb-3">
   
-  <%-- 
+ 
   <c:catch>
-  <c:if test="${membership.id == 'admin'}"> --%>
+  <c:if test="${membership.id == 'admin'}"> 
   
   <form id="frm" action="./adoptList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
@@ -104,12 +104,15 @@
   <%-- <c:if test="$("#kind option:selected").text() =='PASS'">
   <select class="form-control search-slt" id="searcd" name="search">
              <option value="0" disabled selected hidden> 전체 </option>
-   </select>
-   </c:if> --%>
+   </select> --%>
+   
     <div class="input-group-append">
     <button class="btn btn-success" type="submit">Search</button>
   </div>
  </form> 
+ 
+ </c:if> 
+   </c:catch>
  </div>
  
   

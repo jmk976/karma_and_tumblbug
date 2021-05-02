@@ -218,7 +218,8 @@ reader.readAsDataURL(this.files[0]);
 							 
 <script type="text/javascript">
 
-
+let status ="${dto.status}"
+	$("#status").val(status).prop("selected", true); 
 
 var cnt = new Array();
 cnt[0] = new Array('전체');

@@ -330,7 +330,7 @@ td {
 				</tbody>
 				</table>
 				<div style="margin:0 auto;">
-				<input type="submit" id="btn" value="입력" class="btn btn-secondary">
+				<input type="button" id="btn" value="입력" class="btn btn-secondary">
             <a href="./adoptInsert"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
 		</form>
@@ -348,6 +348,7 @@ td {
     <U>오후 4시(일요일 및 공휴일 제외)까지 방문</U>해 주셔야 합니다.
     </div>
   </div>
+ <script type="text/javascript" src="../resources/jquery/adoptInsert.js"></script>
                 
 <script type="text/javascript">   
 
