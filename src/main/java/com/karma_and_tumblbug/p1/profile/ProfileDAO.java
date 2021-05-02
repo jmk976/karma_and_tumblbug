@@ -19,5 +19,7 @@ public class ProfileDAO {
 	public int updateProfile(ProfileDTO profileDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setProfile", profileDTO);
 	}
+	
+	
 
 }

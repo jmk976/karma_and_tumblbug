@@ -11,7 +11,44 @@
 	<update id="updateProfile" parameterType="ProfileDTO">
 		update profile set
 		nickname=#{nickname}, urlname={urlname}, intro={intro}, web={web}, privacy={privacy}, 
-		email={email}, message={message}, pjUpdate={pjUpdate}, news={news}
+		email={email}, pjUpdate={pjUpdate}, news={news}
 		where id={id}
 	</update>
+	
+	<select id="getProfile" parameterType="ProfileDTO"
+		resultType="ProfileDTO">
+		select * from profile where id=#{id}
+	</select>
+
+<!-- 	<select id="getProfile" parameterType="ProfileDTO"
+		resultMap="getProfileResult">
+		select P.*, PP.*
+		from profile P left join profilepic PP
+		on
+		P.id = PP.id
+		where P.id=#{id}
+	</select> -->
+
+	<!-- <resultMap type="ProfileDTO" id="getProfileResult"> -->
+	
+<!-- <select id="selectSnsUserBySnsId" resultMap="snsUserResultMap">
+    select a.username,
+    a.email,
+    a.nickname,
+    a.create_date,
+    a.modify_date,
+    b.sns_id,
+    b.sns_type,
+    b.sns_name,
+    b.sns_profile,
+    b.sns_connect_date
+    from users a,
+    sns_info b
+    where
+    a.id = b.id
+    AND b.sns_id = #{snsId}
+  	</select>
+	
+	 -->
+	
 </mapper>

@@ -40,6 +40,9 @@
 			alias="ProfileDTO" />
 		<typeAlias type="com.karma_and_tumblbug.p1.profile.ProfilePicDTO"
 			alias="ProfilePicDTO" />	
+		<typeAlias type="com.karma_and_tumblbug.p1.comments.CommentsDTO"
+			alias="CommentsDTO" />	
+			
 			
 			
 		<typeAlias type="java.lang.Long" alias="Long"/>
