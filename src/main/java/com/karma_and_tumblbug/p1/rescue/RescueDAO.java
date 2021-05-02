@@ -27,7 +27,21 @@ public class RescueDAO {
 	}
 	
 	public int setUpdate(RescueDTO rescueDTO) throws Exception {
-				return sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
+		System.out.println("rescueDAO의 setupdate:"+ rescueDTO.getSn());
+		int result= sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
+		System.out.println("rescueDAO의 setupdate의 sql 후 :"+ rescueDTO.getSn());
+		return result;
+	}
+	public RescueFileDTO getFileSelect(RescueFileDTO rescueFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileSelect", rescueFileDTO);
+	}
+	
+	public int setFileDelete(RescueFileDTO rescueFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", rescueFileDTO);
+	}
+	
+	public int setFileUpdate(RescueFileDTO rescueFileDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setFileUpdate", rescueFileDTO);
 	}
 	
 	public int setDelete(RescueDTO rescueDTO) throws Exception {

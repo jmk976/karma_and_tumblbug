@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,14 @@ public class RescueController {
 	public ModelAndView rescueGallery(RescueDTO rescueDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		
+	    rescueDTO.setPerPage(6);
+        
 		List<RescueDTO> list = rescueService.getList(rescueDTO);
 			
+
 		
-		
-		
-		mv.addObject("list", list);
+
+	    mv.addObject("list", list);
 		mv.addObject("pager", rescueDTO);
 		mv.setViewName("rescue/rescueGallery");
 		return mv;
@@ -63,16 +65,7 @@ public class RescueController {
 	
 	
 	
-	@GetMapping("rescueUpdate")
-	public void setUpdate() throws Exception{
-		
-	}
 	
-	@PostMapping("rescueUpdate")
-	public String setUpdate(RescueDTO rescueDTO) throws Exception{
-		int result = rescueService.setUpdate(rescueDTO);
-		return "redirect:../";
-	}
 	
 	@GetMapping("rescueDelete")
 	public ModelAndView setDelete(RescueDTO rescueDTO) throws Exception{
@@ -116,24 +109,80 @@ public class RescueController {
 	@PostMapping("rescueInsert")
 	public String setInsert(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception {
 		
+	
 		int result = rescueService.setInsert(rescueDTO, avatar, session);
 		System.out.println(avatar.getName()); //파라미터명
 		System.out.println(avatar.getOriginalFilename());//업로드시의 파일 , 확장자를 알 수 있음. 
 		System.out.println(avatar.getSize());// 파일의 크기(byte)
 		System.out.println(avatar.isEmpty());// 파일의 존재 유무
+	
 		
 		String message="등록 실패";
 		String path="./rescueInsert";
 		if(result>0) {
 			message="등록 성공";
-		    path="./rescueInsert";
+		    path="./rescueList";
 		}
 		model.addAttribute("msg", message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
 		
 	}
+	
+	@GetMapping("fileDelete")
+	public ModelAndView setFileDelete(RescueFileDTO rescueFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = rescueService.setFileDelete(rescueFileDTO);
+		
+		System.out.println("setFileDelete 결과"+result);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("rescueUpdate")
+	public ModelAndView setUpdate(RescueDTO rescueDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+    	rescueDTO = rescueService.getSelect(rescueDTO);
+		
+		mv.addObject("dto", rescueDTO);
+		mv.setViewName("rescue/rescueUpdate");
+		return mv;
+		
+	}
+	
+	@PostMapping("rescueUpdate")
+	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception{
+		
+		
+	
+		
+		System.out.println(avatar.getName());
+		 System.out.println(avatar.getSize());
+		System.out.println(avatar.getOriginalFilename());
+		System.out.println(avatar.isEmpty());
+		System.out.println(rescueDTO.getCity());
+		System.out.println(rescueDTO.getSn());
 
+		
+	
+
+		
+		int result = rescueService.setUpdate(rescueDTO, avatar);
+		String message="등록 실패";
+		String path="./rescueUpdate";
+		if(result>0) {
+			message="등록 성공";
+		    path="./rescueList";
+		    
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path",path);
+		return "common/commonResult";
+	
+	}
+	
+	
 	
 
 }
