@@ -10,15 +10,15 @@
 		#{message}, #{pjUpdate}, #{news}, #{id})
 	</insert>
 	
-	<insert id="setFileInsert" parameterType="ProfilePicDTO">
-		insert into profile values(profilePic_seq.nextval, #{id}, #{fileName}, #{originalName})
-	</insert>
-	
 	<update id="setUpdate" parameterType="ProfileDTO">
 		update profile set nickname=#{nickname}, urlname=#{urlname}, intro=#{intro}, web=#{web}, 
 		privacy=#{privacy}, email=#{email}, message=#{message}, pjUpdate=#{pjUpdate}, news=#{news} 
 		where id=#{id}
 	</update>
+	
+	<select id="getProfile" parameterType="ProfileDTO" resultType="ProfileDTO">
+		select * from profile where id=#{id}
+	</select>
 	
 	
 

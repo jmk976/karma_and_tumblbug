@@ -28,10 +28,9 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/payment/paymentList">Payment</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/project/myProject">My Project</a>
         <a class="nav-link" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
-         <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
-         <c:if test="${membership.id eq 'admin'}">
-          <a class="nav-link" href="${pageContext.request.contextPath}/project/adminProjectCheck">ProjectCheck</a>
-         </c:if>
+        <a class="nav-link" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
+		<a class="nav-link" href="${pageContext.request.contextPath}/profile/profileset">profile</a>   
+		<a class="nav-link" href="${pageContext.request.contextPath}/profile/profileHome">HOME</a>       
       </div>
     </li>
         <li class="nav-item">
@@ -51,7 +50,7 @@
       <a class="nav-link" href="${pageContext.request.contextPath}/project/projectList">Project</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id=">ProjectUpload</a>
+      <a class="nav-link" href="${pageContext.request.contextPath}/project/projectInsertInit?id="${membership.id}">ProjectUpload</a>
     </li>
 
     
@@ -62,10 +61,9 @@
         BOARD
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=notice">notice</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=news_letter">news letter</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=press">press</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=review">review</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/notice/noticeList">Notice</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/qna/qnaList">QnA</a>
+        <a class="dropdown-item" href="#">Link 3</a>
       </div>
     </li>
     

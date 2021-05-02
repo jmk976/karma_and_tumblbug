@@ -6,31 +6,24 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProfileDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	private final String NAMESPACE= "com.karma_and_tumblbug.p1.profile.ProfileDAO.";
-	
-	public int setInsert(ProfileDTO profileDTO)throws Exception{
-		int result = sqlSession.insert(NAMESPACE+"setInsert", profileDTO);
-		return result;
+
+	public ProfileDTO getProfile(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getProfile", profileDTO);
+	}
+
+	public int updateProfile(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setProfile", profileDTO);
 	}
 	
-	public int setUpdate(ProfileDTO profileDTO)throws Exception{
-		int result = sqlSession.update(NAMESPACE+"setUpdate", profileDTO);
-		return result;
-	}
-	
-	public int setFileInsert(ProfilePicDTO picDTO)throws Exception{
-		int result = sqlSession.insert(NAMESPACE+"setFileInsert", picDTO);
-		return result;
-	}
-	
-	public ProfileDTO getprofileCheck(ProfileDTO profileDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getprofileCheck", profileDTO);
-		
+	public int profileHome(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"profileHome", profileDTO);
 	}
 	
 	
+
 }
