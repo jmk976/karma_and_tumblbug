@@ -6,6 +6,8 @@ import com.karma_and_tumblbug.p1.util.Pager;
 
 public class RescueDTO extends Pager {
 	
+	
+	
 	protected void Pager() {
 		this.perPage=5;
 		this.perBlock=5;
