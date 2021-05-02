@@ -23,7 +23,6 @@
 					value="${dto.intro}" readonly="readonly">
 			</div>
 			<h5>밀어준 프로젝트</h5>
-			<h5>사진</h5>
 		</div>
 </body>
 </html>

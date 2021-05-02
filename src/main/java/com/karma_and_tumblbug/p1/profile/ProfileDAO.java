@@ -20,6 +20,10 @@ public class ProfileDAO {
 		return sqlSession.update(NAMESPACE+"setProfile", profileDTO);
 	}
 	
+	public int profileHome(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"profileHome", profileDTO);
+	}
+	
 	
 
 }

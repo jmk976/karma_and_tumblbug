@@ -34,6 +34,27 @@ public class ProfileController {
 		return mv;
 	}
 	
+	@GetMapping(value="profileHome")
+	public void profileHome(ProfileDTO profileDTO)throws Exception{
+		
+	}
+	
+	@RequestMapping("naverLogin")
+	public String naverLogin(HttpSession session) {
+		return "/profile/naverLogin";
+	}
+	
+	@GetMapping(value="account")
+	public ModelAndView getaccount(ProfileDTO profileDTO,MembershipDTO membershipDTO, HttpSession httpSession)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");
+		profileDTO.setId(membershipDTO.getId());
+		profileDTO = profileService.getProfile(profileDTO);
+		mv.addObject("dto", profileDTO);
+		mv.setViewName("profile/profileset");
+		return mv;
+	}
+	
 	@GetMapping(value = "updateProfile")
 	public void setProfile()throws Exception{
 		
@@ -45,23 +66,25 @@ public class ProfileController {
 		return "redirect:./profileset";
 	}
 	
-	@GetMapping("sendSMS")
-	@ResponseBody
-    public String sendSMS(String phoneNumber) {
-
-        Random rand  = new Random();
-        String numStr = "";
-        for(int i=0; i<4; i++) {
-            String ran = Integer.toString(rand.nextInt(10));
-            numStr+=ran;
-        }
-
-        System.out.println("수신자 번호 : " + phoneNumber);
-        System.out.println("인증번호 : " + numStr);
-        profileService.certifiedPhoneNumber(phoneNumber,numStr);
-        return numStr;
-    }
 	
+	
+//	@GetMapping("sendSMS")
+//	@ResponseBody
+//    public String sendSMS(String phoneNumber) {
+//
+//        Random rand  = new Random();
+//        String numStr = "";
+//        for(int i=0; i<4; i++) {
+//            String ran = Integer.toString(rand.nextInt(10));
+//            numStr+=ran;
+//        }
+//
+//        System.out.println("수신자 번호 : " + phoneNumber);
+//        System.out.println("인증번호 : " + numStr);
+//        profileService.certifiedPhoneNumber(phoneNumber,numStr);
+//        return numStr;
+//    }
+//	
 
 	
 	
