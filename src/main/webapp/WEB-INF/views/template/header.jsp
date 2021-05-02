@@ -12,6 +12,7 @@
     <c:if test="${empty membership}">
     <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/membership/login">Login</a>
+      <a class="nav-link" href="${pageContext.request.contextPath}/membership/login">Login</a>
     </li>
         <li class="nav-item">
       <a class="nav-link" href="${pageContext.request.contextPath}/membership/join">Join</a>
