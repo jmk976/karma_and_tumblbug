@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
@@ -20,10 +21,35 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	@GetMapping(value="projectList")
-	public ModelAndView getProjectList()throws Exception{
+	
+	
+	@PostMapping(value="summerFileDelete")
+	public ModelAndView setSummerFileDelete(ProjectDTO projectDTO,String fileName,HttpSession session) throws Exception{
+		ModelAndView mv  = new ModelAndView();
+		boolean result = projectService.setSummerFileDelete(projectDTO,fileName, session);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	
+	@PostMapping(value="summerFileUpload")
+	public ModelAndView setSummerFileUpload(ProjectDTO projectDTO,MultipartFile file,HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<ProjectDTO> array = projectService.getProjectList();
+		System.out.println("summerfileUpload");
+		System.out.println(file.getOriginalFilename());
+		String fileName = projectService.setSummerFileUpload(projectDTO, file, session);
+		fileName="../resources/images/project/s/"+fileName;
+		mv.addObject("result", fileName);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	
+	@GetMapping(value="projectList")
+	public ModelAndView getProjectList(ProjectDTO projectDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<ProjectDTO> array = projectService.getProjectList(projectDTO);
 		mv.addObject("projectList",array);
 		mv.setViewName("project/projectList");
 		return mv;
@@ -73,9 +99,70 @@ public class ProjectController {
 	}
 	
 	@PostMapping(value="projectUpdate")
-	public String setUpdateProject(ProjectDTO projectDTO) throws Exception{
-		System.out.println("controller");
-		int result = projectService.setUpdateProject(projectDTO);
-		return "project/projectList";
+	public String setUpdateProject(ProjectDTO projectDTO,MultipartFile files,HttpSession session,String searchTag) throws Exception{
+		System.out.println(searchTag);
+		projectService.setInsertSearchTag(projectDTO, searchTag);
+		int result = projectService.setUpdateProject(projectDTO,session,files);
+		return "redirect:./myProject";
+	}
+	
+	@GetMapping(value="projectDelete")
+	public String setDeleteProject(ProjectDTO projectDTO) throws Exception{
+		projectService.setDeleteProject(projectDTO);
+		return "redirect:./myProject";
+	}
+	
+	@GetMapping(value="fileDelete")
+	public ModelAndView setFileDelete(ProjectDTO projectDTO,MediaDTO mediaDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = projectService.setFileDelete(projectDTO,mediaDTO,session);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping(value="projectSelect")
+	public ModelAndView projectSelect(ProjectDTO projectDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		projectDTO = projectService.getProject(projectDTO);
+		mv.addObject("selectDTO", projectDTO);
+		mv.setViewName("project/projectSelect");
+		return mv;
+	}
+	@GetMapping(value="adminProjectCheck")
+	public ModelAndView adminProjectCheck() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<ProjectDTO> array = projectService.getAdminProjectCheck();
+		mv.addObject("adminProject", array);
+		mv.setViewName("project/adminProjectCheck");
+		return mv;
+	}
+	
+	@GetMapping(value="projectAdminUpdate")
+	public String projectAdminUpdate(ProjectDTO projectDTO) throws Exception{
+		String state = projectDTO.getState();
+		state = state.replace("'", "");
+		projectDTO = projectService.getProject(projectDTO);
+		projectDTO.setState(state);
+		int result = projectService.setStateUpdate(projectDTO);
+		return "redirect:./adminProjectCheck";
+	}
+	@GetMapping(value="projectSelectAdmin")
+	public ModelAndView projectSelectAdmin(ProjectDTO projectDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		projectDTO = projectService.getProject(projectDTO);
+		mv.addObject("selectDTO", projectDTO);
+		mv.setViewName("project/projectSelectAdmin");
+		return mv;
+	}
+	
+	@GetMapping(value="tagDelete")
+	public ModelAndView setSearchTagDelete(SearchDTO searchDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = projectService.setSearchTagDelete(searchDTO);
+		mv.addObject("result", result);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
 	}
 }

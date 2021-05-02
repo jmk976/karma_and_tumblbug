@@ -23,6 +23,7 @@
 				<label for="shipAddress">주소</label> <input type="text"
 					class="form-control myCheck" id="shipAddress" name="shipAddress">
 			</div>
+			
 			<div class="form-group">
 				<label for="shipPhone">받는 사람 휴대폰 번호</label> <input type="text"
 					class="form-control myCheck" placeholder="받는 분 번호를 입력해주세요"

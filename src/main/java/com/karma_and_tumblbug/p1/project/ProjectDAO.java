@@ -16,6 +16,9 @@ public class ProjectDAO {
 	
 	private final String NAMESPACE ="com.karma_and_tumblbug.p1.project.ProjectDAO.";
 	
+	public List<ProjectDTO> getProjectList(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getProjectListWithCategory",projectDTO);
+	}
 	public List<ProjectDTO> getProjectList() throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getProjectList");
 	}
@@ -39,5 +42,40 @@ public class ProjectDAO {
 	public int setUpdateProject(ProjectDTO projectDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setUpdateProject", projectDTO);
 	}
+	
+	public int setDeleteProject(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteProject", projectDTO);
+	}
+	
+	public int setFileInsert(MediaDTO mediaDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert",mediaDTO);
+	}
+	
+	public List<MediaDTO> getMyMedia(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMyMedia", projectDTO);
+	}
+	
+	
+	public int setFileDelete(MediaDTO mediaDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setFileDelete", mediaDTO);
+	}
+	
+	public MediaDTO getFileName(MediaDTO mediaDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFileName",mediaDTO);
+	}
+	
+	public int setInsertSearchTag(SearchDTO searchDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsertSearchTag", searchDTO);
+	}
+
+	public List<SearchDTO> getSearchTagList(ProjectDTO projectDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getSearchTagList", projectDTO);
+	}
+	
+	public int setSearchTagDelete(SearchDTO searchDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setSearchTagDelete", searchDTO);
+	}
+
+	
 	
 }

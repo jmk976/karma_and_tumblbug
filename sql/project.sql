@@ -216,30 +216,23 @@ id varchar2(20) constraint project_id_fk references membership on delete cascade
 title varchar2(20) default null,
 summary clob default null,
 category varchar2(20) default null,
-urlAddress varchar2(20) default null,
 makerName varchar2(20) default null,
 makerSummary clob default null,
 makerLocation varchar2(20) default null,
 targetAmount number default null,
 openDate varchar2(20) default null,
 closeDate varchar2(20) default null,
-refund clob default null,
-inform varchar2(20) default null,
-certificate clob default null,
 projectStory clob default null,
-email varchar2(40) default null,
 phone varchar2(20) default null,
 bankAccount varchar2(20) default null,
-taxReceipt varchar2(20) default null,
-gift_id number,
-media_id number,
-search_id number
+media_id number constraint project_pmid_uq unique,
+search_id number constraint project_psid_uq unique
 )
 
 
 
 
-
+create sequence project_seq;
 create sequence pGift_seq;
 create sequence pMedia_seq;
 create sequence pSearch_seq;
@@ -262,7 +255,6 @@ select * from project;
 
 
 drop table project;
-create sequence project_seq;
 
 insert into project
 values(
@@ -283,7 +275,7 @@ project_seq.nextval,'id1', 'title_test2', 'summary_test2','category_test2','url_
 
 
 create table project_gift(
-gift_id number constraint pg_giftid_fk references project on delete cascade,
+gift_id number constraint pg_giftid_fk references project(gift_id) on delete cascade,
 giftNum number constraint pg_gifrNum_pk primary key,
 price number,
 giftName varchar2(20),
@@ -311,11 +303,11 @@ select * from project_gift;
 
 
 create table project_media(
-media_id number constraint pm_mediaid_fk references project on delete cascade,
+media_id number constraint pm_mediaid_fk references project(media_id) on delete cascade,
 fileNum number constraint pm_fileNum_pk primary key,
-division varchar2(20),
-fileName varchar2(20),
-origineName varchar2(20)
+division varchar2(20) default null,
+fileName varchar2(400),
+origineName varchar2(400)
 
 )
 
@@ -342,7 +334,7 @@ select * from project_media;
 
 
 create table project_search(
-search_id number constraint ps_searchid_fk references project on delete cascade,
+search_id number constraint ps_searchid_fk references project(search_id) on delete cascade,
 searchNum number constraint ps_searchNum_pk primary key,
 searchTag varchar2(40)
 
@@ -368,6 +360,7 @@ values(
 
 
 drop table project_gift;
+
 drop table project_search;
 drop table project_media;
 drop table project;
@@ -380,9 +373,104 @@ select * from Project;
 delete from project where num=25;
 select project_seq.nextval from dual;
 
+delete from project_media;
 
 select * from project  where id='id1' order by num desc
 
 select * from tab;
 
+select state from project;
+
+select * from project_media where media_id=33;
+
+select * from project;
+
+delete from project;
+
+select pMedia_seq.nextval from dual;
+
+
+insert into project
+		(num, id, title, category,makerName,gift_id,media_id,search_id)
+		values(9999,'admin','must_del','must_del','must_del',pGift_seq.nextval,pMedia_seq.nextval,pSearch_seq.nextval);
+
+		
+insert into project_media
+		(media_id,filenum,division,filename,originename)
+		values(37,project_seq.nextval,'mustdel','del','del')
+	
+select * from project_search;
+		
+rollback work;
+
+
+create table project_search(
+search_id number constraint ps_searchid_fk references project(search_id) on delete cascade,
+searchNum number constraint ps_searchNum_pk primary key,
+searchTag varchar2(40)
+
+)
+
+select P.*, PS.* from
+project P left join project_search PS
+on P.search_id = PS.search_id
+where P.category='b' and PS.searchTag like '%a%'
+
+--------------------------------------------------
+-- 게시판
+create table board(
+boardSort varchar2(100) ,
+num number constraint board_num_pk primary key,
+title varchar2(200),
+id varchar2(20) constraint board_id_fk references membership,
+writer varchar2(200),
+regDate date,
+hit number,
+contents clob
+)
+
+--시퀀스
+create sequence board_seq
+---------------------------------------------------
+
+drop table board;
+
+select * from
+		(select rownum R, N.* from
+		(select * from notice where 
+		
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+			<when test="kind=='Contents'">
+				contents
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+
+		like '%' || #{search} || '%' and num>0 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
+		
+		
+	
+select * from
+(select rownum R, B.* from	
+(select * from board where
+boardSort ='notice'
+and
+
+writer like '%%' and num>0 order by num desc) B)
+
+
+
+
+
+select * from board;
+
 commit work;
+
+
+

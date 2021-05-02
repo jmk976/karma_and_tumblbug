@@ -205,6 +205,17 @@ public class Pager {
 	
 	
 	
+	protected String boardSort;
+
+	public String getBoardSort() {
+		return boardSort;
+	}
+
+
+	public void setBoardSort(String boardSort) {
+		this.boardSort = boardSort;
+	}
+	
 
 
 	

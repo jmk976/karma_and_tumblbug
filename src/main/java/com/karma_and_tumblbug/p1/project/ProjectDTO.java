@@ -1,5 +1,7 @@
 package com.karma_and_tumblbug.p1.project;
 
+import java.util.List;
+
 public class ProjectDTO {
 	
 	private long num;
@@ -7,45 +9,44 @@ public class ProjectDTO {
 	private String title;
 	private String summary;
 	private String category;
-	private String urlAddress;
 	private String makerName;
 	private String makerSummary;
 	private String makerLocation;
 	private long targetAmount;
 	private String openDate;
 	private String closeDate;
-	private String refund;
-	private String inform;
-	private String certificate;
 	private String projectStory;
-	private String email;
 	private String phone;
 	private String bankAccount;
-	private String taxReceipt;
-	private long gift_id;
 	private long media_id;
 	private long search_id;
 	private String state;
 	
+	private List<MediaDTO> mediaFiles;
+	private List<SearchDTO> searchList;
 	
 	
+	
+	
+	
+	
+	public List<SearchDTO> getSearchList() {
+		return searchList;
+	}
+	public void setSearchList(List<SearchDTO> searchList) {
+		this.searchList = searchList;
+	}
+	public List<MediaDTO> getMediaFiles() {
+		return mediaFiles;
+	}
+	public void setMediaFiles(List<MediaDTO> mediaFiles) {
+		this.mediaFiles = mediaFiles;
+	}
 	public String getState() {
 		return state;
 	}
 	public void setState(String state) {
 		this.state = state;
-	}
-	public String getTaxReceipt() {
-		return taxReceipt;
-	}
-	public void setTaxReceipt(String taxReceipt) {
-		this.taxReceipt = taxReceipt;
-	}
-	public long getGift_id() {
-		return gift_id;
-	}
-	public void setGift_id(long gift_id) {
-		this.gift_id = gift_id;
 	}
 	public long getMedia_id() {
 		return media_id;
@@ -89,12 +90,6 @@ public class ProjectDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getUrlAddress() {
-		return urlAddress;
-	}
-	public void setUrlAddress(String urlAddress) {
-		this.urlAddress = urlAddress;
-	}
 	public String getMakerName() {
 		return makerName;
 	}
@@ -132,35 +127,11 @@ public class ProjectDTO {
 	public void setCloseDate(String closeDate) {
 		this.closeDate = closeDate;
 	}
-	public String getRefund() {
-		return refund;
-	}
-	public void setRefund(String refund) {
-		this.refund = refund;
-	}
-	public String getInform() {
-		return inform;
-	}
-	public void setInform(String inform) {
-		this.inform = inform;
-	}
-	public String getCertificate() {
-		return certificate;
-	}
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
 	public String getProjectStory() {
 		return projectStory;
 	}
 	public void setProjectStory(String projectStory) {
 		this.projectStory = projectStory;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPhone() {
 		return phone;

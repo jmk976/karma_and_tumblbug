@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.karma_and_tumblbug.p1.board.BoardDAO">
+
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		select count(num) totalCount from board
+		where 
+		boardSort = #{boardSort}
+		and
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+			<when test="kind=='Contents'">
+				contents
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%' || #{search} || '%' and num>0
+	</select>
+
+	<select id="getList" parameterType="Pager" resultType="BoardDTO">
+		select * from
+		(select rownum R, B.* from
+		(select * from board where
+		boardSort = #{boardSort}
+		and
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+			<when test="kind=='Contents'">
+				contents
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%' || #{search} || '%' and num>0 order by num desc) B)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	
+	<insert id="setInsert" parameterType="BoardDTO">
+		insert into board
+		values(#{boardSort},board_seq.nextval,#{title},#{id},#{writer},sysdate,0,#{contents})
+	</insert>
+	
+	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
+		select * 
+		from board where
+		num = #{num}
+	</select>
+	
+	<update id="setHitUpdate" parameterType="BoardDTO">
+		update board set hit=(select hit from board where num=#{num})+1 where
+		num=#{num}
+	</update>
+	
+	<update id="setUpdate" parameterType="BoardDTO">
+		update board set boardsort=#{boardSort},id=#{id},title=#{title}, writer=#{writer}, regdate=sysdate,
+		hit=#{hit} ,contents=#{contents} where num=#{num}
+	</update>
+	
+	<delete id="setDelete" parameterType="BoardDTO">
+		delete from board where num=#{num}
+	</delete>
+	
+</mapper>
