@@ -410,12 +410,19 @@ searchNum number constraint ps_searchNum_pk primary key,
 searchTag varchar2(40)
 
 )
+
+select P.*, PS.* from
+project P left join project_search PS
+on P.search_id = PS.search_id
+where P.category='b' and PS.searchTag like '%a%'
+
 --------------------------------------------------
 -- 게시판
 create table board(
-tableSort number ,
+boardSort varchar2(100) ,
 num number constraint board_num_pk primary key,
 title varchar2(200),
+id varchar2(20) constraint board_id_fk references membership,
 writer varchar2(200),
 regDate date,
 hit number,
@@ -425,6 +432,43 @@ contents clob
 --시퀀스
 create sequence board_seq
 ---------------------------------------------------
+
+drop table board;
+
+select * from
+		(select rownum R, N.* from
+		(select * from notice where 
+		
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+			<when test="kind=='Contents'">
+				contents
+			</when>
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+
+		like '%' || #{search} || '%' and num>0 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
+		
+		
+	
+select * from
+(select rownum R, B.* from	
+(select * from board where
+boardSort ='notice'
+and
+
+writer like '%%' and num>0 order by num desc) B)
+
+
+
+
+
+select * from board;
 
 commit work;
 

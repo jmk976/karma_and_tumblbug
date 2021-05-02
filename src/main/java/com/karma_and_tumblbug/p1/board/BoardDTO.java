@@ -4,17 +4,27 @@ import java.sql.Date;
 
 public class BoardDTO {
 
-	private long boardSort;
+	private String boardSort;
 	private long num;
 	private String title;
 	private String writer;
 	private Date regDate;
 	private long hit;
 	private String contents;
-	public long getBoardSort() {
+	private String id;
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getBoardSort() {
 		return boardSort;
 	}
-	public void setBoardSort(long boardSort) {
+	public void setBoardSort(String boardSort) {
 		this.boardSort = boardSort;
 	}
 	public long getNum() {

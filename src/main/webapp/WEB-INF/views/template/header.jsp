@@ -62,9 +62,10 @@
         BOARD
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/notice/noticeList">Notice</a>
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/qna/qnaList">QnA</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=notice">notice</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=news_letter">news letter</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=press">press</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/board/boardList?boardSort=review">review</a>
       </div>
     </li>
     
