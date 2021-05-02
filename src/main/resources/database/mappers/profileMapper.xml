@@ -11,7 +11,15 @@
 	<update id="updateProfile" parameterType="ProfileDTO">
 		update profile set
 		nickname=#{nickname}, urlname={urlname}, intro={intro}, web={web}, privacy={privacy}, 
-		email={email}, message={message}, pjUpdate={pjUpdate}, news={news}
+		email={email}, pjUpdate={pjUpdate}, news={news}
 		where id={id}
 	</update>
+	
+	<select id="getProfile" parameterType="ProfileDTO"
+		resultType="ProfileDTO">
+		select * from profile where id=#{id}
+	</select>
+
+
+	
 </mapper>
