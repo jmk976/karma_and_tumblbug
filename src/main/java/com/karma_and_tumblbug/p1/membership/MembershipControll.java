@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma_and_tumblbug.p1.profile.ProfileDTO;
+
 @Controller
 @RequestMapping(value="/membership/**")
 public class MembershipControll {
@@ -72,6 +74,18 @@ public class MembershipControll {
 		int result = membershipService.join(membershipDTO);
 		return "redirect:../";
 	}
+	
+	@PostMapping(value = "joinProfile")
+	public String joinProfile(ProfileDTO profileDTO) throws Exception{
+		int result = membershipService.joinProfile(profileDTO);
+		return "redirect:../";
+	}
+	
+	@GetMapping(value="joinProfile")
+	public void joinProfile()throws Exception{
+		
+	}
+	
 	@GetMapping(value="memberPage")
 	public void memberPage()throws Exception{
 

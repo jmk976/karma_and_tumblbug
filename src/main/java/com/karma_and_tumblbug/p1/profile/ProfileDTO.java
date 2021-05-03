@@ -6,10 +6,10 @@ public class ProfileDTO {
 	private String intro;
 	private String web;
 	private String privacy;
-	private String email;
 	private String pjUpdate;
 	private String news;
 	private String id;
+	
 	public String getNickname() {
 		return nickname;
 	}
@@ -40,12 +40,6 @@ public class ProfileDTO {
 	public void setPrivacy(String privacy) {
 		this.privacy = privacy;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPjUpdate() {
 		return pjUpdate;
 	}
@@ -65,5 +59,6 @@ public class ProfileDTO {
 		this.id = id;
 	}
 	
-
+	
+	
 }

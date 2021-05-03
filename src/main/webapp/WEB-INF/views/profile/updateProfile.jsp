@@ -11,6 +11,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h3>profile update</h3>
+	
 	<form action="./updateProfile" method="post" id="frm">
 			<div class="form-group">
 				<label for="nickname">이름</label> <input type="text"
@@ -36,12 +37,15 @@
 				<label for="privacy">프라이버시</label> <input type="text"
 					class="form-control" id="privacy" name="privacy"
 					value="${dto.privacy}" >
-					
-			<a type="button" class="btn btn-primary" id="btn">UPDATE</a>
+	
 			</div>
 
-			
-		
+			<div class="form-group">
+				<input type="hidden" id="id" name="id" value="${membership.id}">
+				<input type="hidden" id="pjUpdate" name="pjUpdate" value="${dto.pjUpdate}">
+				<input type="hidden" id="news" name="news" value="${dto.news}">
+			</div>
+			<button type="submit" class="btn btn-primary">Update</button>
 	 </form>	
 </body>
 </html>

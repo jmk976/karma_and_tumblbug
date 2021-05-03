@@ -15,6 +15,10 @@
 		insert into membership
 		values(#{id},#{pw},#{name},#{birth},#{phone},#{address})
 	</insert>
+	
+	<insert id="joinProfile" parameterType="ProfileDTO">
+		insert into profile values(#{name}, 'random' ,default, default, default, default, default, #{id});
+	</insert>
 
 	<update id="update" parameterType="MembershipDTO">
 		update membership set

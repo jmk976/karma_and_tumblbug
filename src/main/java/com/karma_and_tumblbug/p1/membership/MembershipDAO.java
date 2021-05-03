@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.karma_and_tumblbug.p1.profile.ProfileDTO;
+
 @Repository
 public class MembershipDAO {
 	
@@ -18,6 +20,9 @@ public class MembershipDAO {
 	}
 	public int join(MembershipDTO membershipDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"join", membershipDTO);
+	}
+	public int joinProfile(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"joinProfile", profileDTO);
 	}
 	public int update(MembershipDTO membershipDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"update", membershipDTO);

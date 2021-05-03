@@ -46,7 +46,7 @@ public class ProfileController {
 	}
 	
 	@GetMapping(value="account")
-	public ModelAndView getaccount(ProfileDTO profileDTO,MembershipDTO membershipDTO, HttpSession httpSession)throws Exception{
+	public ModelAndView getaccount(ProfileDTO profileDTO, MembershipDTO membershipDTO, HttpSession httpSession)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");
 		profileDTO.setId(membershipDTO.getId());
@@ -57,7 +57,7 @@ public class ProfileController {
 	}
 	
 	@GetMapping(value = "updateProfile")
-	public void setProfile()throws Exception{
+	public void updateProfile()throws Exception{
 		
 	}
 	

@@ -19,11 +19,15 @@ public class ProfileDAO {
 	}
 
 	public int updateProfile(ProfileDTO profileDTO)throws Exception{
-		return sqlSession.update(NAMESPACE+"setProfile", profileDTO);
+		return sqlSession.update(NAMESPACE+"updateProfile", profileDTO);
 	}
 	
 	public int profileHome(ProfileDTO profileDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"profileHome", profileDTO);
+	}
+	
+	public int getaccount(ProfileDTO profileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getaccount", profileDTO);
 	}
 	
 
