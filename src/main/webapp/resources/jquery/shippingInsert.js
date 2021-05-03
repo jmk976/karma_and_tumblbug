@@ -1,55 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="container">
-		<h2>배송지 수정</h2>
-		<form id="frm" action="./shippingUpdate" method="post"
-			enctype="multipart/form-data">
-			<div class="form-group">
-				<label for="shipName">받는 사람</label> <input type="text"
-					class="form-control myCheck" value="${dto.shipName}"
-					id="shipName" name="shipName">
-			</div>
-			<div class="form-group">
-				<label for="shipAddress">주소</label><br>
-				<input type="text" id="sample6_postcode" placeholder="우편번호" name="shipAddress">
-				<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" name="shipAddress"><br>
-				<input type="text" id="sample6_address" placeholder="주소" name="shipAddress"><br>
-				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="shipAddress">
-				<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-				
-			</div>
-			<div class="form-group">
-				<label for="shipPhone">받는 사람 휴대폰 번호</label> <input type="text"
-					class="form-control myCheck" value="${dto.shipPhone}"
-					id="shipPhone" name="shipPhone">
-			</div>
-			<div class="form-check">
-				<label class="form-check-label"> <input type="checkbox"
-					class="form-check-input" value="?">기본 배송지로 등록
-				</label>
-			</div>
+/**
+ * 
+ */
 
-			<div class="form-group">
-				<input type="hidden" id="id" name="id" value="${membership.id}">
-				<input type="hidden" id="shipNum" name="shipNum" value="${dto.shipNum}">
-			</div>
-
-
-		<button type="submit" class="btn btn-primary">Update</button>
-			
-		</form>
-	</div>
-<script
-			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
-			function sample6_execDaumPostcode() {
+function sample6_execDaumPostcode() {
 				new daum.Postcode(
 						{
 							oncomplete : function(data) {
@@ -105,6 +58,12 @@
 							}
 						}).open();
 			}
-		</script>
-</body>
-</html>
+			
+
+
+
+
+
+
+
+
