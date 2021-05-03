@@ -10,13 +10,6 @@
 <h1>account</h1>
 	<div class="container">
 		<h5>계정</h5>
-<%-- 			<div class="card w-75">
-				<div class="card-body">
-					<h5 class="card-title">이메일</h5>
-					<p class="card-text">${dto.email}</p>
-					<a href="./profileUpdate?id=${membership.id}" class="update">수정</a>
-				</div>
-			</div> --%>
 			
 			<div class="card w-75">
 				<div class="card-body">
