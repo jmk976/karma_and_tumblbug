@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma_and_tumblbug.p1.board.BoardDTO;
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
 
 @Controller
@@ -125,7 +126,11 @@ public class ProjectController {
 	public ModelAndView projectSelect(ProjectDTO projectDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		projectDTO = projectService.getProject(projectDTO);
+		BoardDTO tempDTO = new BoardDTO();
+		tempDTO.setBoardSort(String.valueOf(projectDTO.getNum()));
+		List<BoardDTO> community = projectService.getCommunity(tempDTO);
 		mv.addObject("selectDTO", projectDTO);
+		mv.addObject("community", community);
 		mv.setViewName("project/projectSelect");
 		return mv;
 	}

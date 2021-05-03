@@ -115,16 +115,16 @@
 					<div class="form-group">
 						<label>검색용 태그</label>
 						<div>
-						<input type="button" value="add" class="btn btn-outline-danger"
-							id="addSearch">
+							<input type="button" value="add" class="btn btn-outline-danger"
+								id="addSearch">
 						</div>
 						<div>
-						<c:forEach items="${projectDTO.searchList}" var="search">
-						<span>
-						<span>${search.searchTag}</span><span class="tagDelete"
-					title="${search.searchNum}" style="color:red;">X&nbsp&nbsp</span>
-						</span>
-						</c:forEach>
+							<c:forEach items="${projectDTO.searchList}" var="search">
+								<span> <span>${search.searchTag}</span><span
+									class="tagDelete" title="${search.searchNum}"
+									style="color: red;">X&nbsp&nbsp</span>
+								</span>
+							</c:forEach>
 						</div>
 						<div id="addSearchTag" title="${projectDTO.searchList.size()}"></div>
 					</div>
@@ -141,9 +141,27 @@
 
 					</div>
 					<div class="form-group">
-						<label>장작자 활동 지역</label> <input type="text" class="form-control"
-							id="makerLocation" name="makerLocation"
-							value="${projectDTO.makerLocation}">
+						<label>장작자 활동 지역</label> <select class="form-control"
+							id="makerLocation" name="makerLocation" title="${projectDTO.makerLocation}">
+							<option value="default">활동 지역을 선택해 주세요</option>
+							<option>서울특별시</option>
+							<option>인천광역시</option>
+							<option>대전광역시</option>
+							<option>대구광역시</option>
+							<option>울산광역시</option>
+							<option>부산광역시</option>
+							<option>광주광역시</option>
+							<option>세종특별자치시</option>
+							<option>경기도</option>
+							<option>강원도</option>
+							<option>충청북도</option>
+							<option>충청남도</option>
+							<option>경상북도</option>
+							<option>경상남도</option>
+							<option>전라북도</option>
+							<option>전라남도</option>
+							<option>제주특별자치도</option>
+						</select>
 					</div>
 
 				</div>
@@ -156,8 +174,9 @@
 					<br>
 					<h3>펀딩 목표 설정</h3>
 					<div class="form-group">
-						<label for="title">목표 금액</label> <input type="number" step="10000"
-							class="form-control" id="targetAmount" name="targetAmount"
+						<label for="title">목표 금액</label> <input type="number"
+							min="1000000" step="100000" class="form-control"
+							id="targetAmount" name="targetAmount"
 							value="${projectDTO.targetAmount}">
 					</div>
 					<h3>펀딩 기간 설정</h3>
@@ -194,9 +213,26 @@
 					</div>
 					<h3>입금 계좌</h3>
 					<div class="form-group">
-						<label for="title">입금 계좌</label> <input type="text"
-							class="form-control" id="bankAccount" name="bankAccount"
-							value="${projectDTO.bankAccount}">
+						<label for="title">입금 계좌</label>
+						<div class="input-group mt-3 mb-3">
+							<div class="input-group-prepend">
+								<select class="form-control" name="bankAccount" id="bankName" title="${projectDTO.bankAccount}">
+									<option value="default">은행명</option>
+									<option>국민은행</option>
+									<option>우리은행</option>
+									<option>신한은행</option>
+									<option>농협</option>
+								</select> 
+								<p id="bankNameResult"></p>
+							</div>
+							<div class="form-group">
+								<input type="text"
+									class="form-control" id="bankAccount" name="bankAccount"
+									placeholder="공백, -없이 입력해주세요." maxlength="20"
+									oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+								<p id="bankAccountResult"></p>
+							</div>
+						</div>
 					</div>
 
 				</div>

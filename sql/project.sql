@@ -465,10 +465,10 @@ and
 writer like '%%' and num>0 order by num desc) B)
 
 
+alter table project modify(bankAccount varchar(100));
 
 
-
-select * from board;
+select * from board where boardSort='434' order by num desc;
 
 commit work;
 

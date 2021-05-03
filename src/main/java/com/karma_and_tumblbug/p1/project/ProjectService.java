@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.karma_and_tumblbug.p1.board.BoardDTO;
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
 import com.karma_and_tumblbug.p1.util.FileManager;
 
@@ -166,6 +167,11 @@ public class ProjectService {
 	
 	public int setSearchTagDelete(SearchDTO searchDTO) throws Exception{
 		return projectDAO.setSearchTagDelete(searchDTO);
+	}
+	
+	
+	public List<BoardDTO> getCommunity(BoardDTO boardDTO) throws Exception{
+		return projectDAO.getCommunity(boardDTO);
 	}
 	
 	
