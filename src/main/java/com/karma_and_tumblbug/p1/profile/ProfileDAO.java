@@ -30,6 +30,10 @@ public class ProfileDAO {
 		return sqlSession.selectOne(NAMESPACE+"getaccount", profileDTO);
 	}
 	
+	public int setFileInsert(ProfilePicDTO profilePicDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", profilePicDTO);
+	}
+	
 
 	
 
