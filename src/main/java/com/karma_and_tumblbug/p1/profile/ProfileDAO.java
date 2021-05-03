@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.karma_and_tumblbug.p1.membership.MembershipDTO;
+
 @Repository
 public class ProfileDAO {
 
@@ -24,6 +26,7 @@ public class ProfileDAO {
 		return sqlSession.selectOne(NAMESPACE+"profileHome", profileDTO);
 	}
 	
+
 	
 
 }
