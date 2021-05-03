@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,25 +46,15 @@ public class ProfileController {
 		return "/profile/naverLogin";
 	}
 	
-	@GetMapping(value="account")
-	public ModelAndView getaccount(ProfileDTO profileDTO, MembershipDTO membershipDTO, HttpSession httpSession)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");
-		profileDTO.setId(membershipDTO.getId());
-		profileDTO = profileService.getProfile(profileDTO);
-		mv.addObject("dto", profileDTO);
-		mv.setViewName("profile/profileset");
-		return mv;
-	}
-	
 	@GetMapping(value = "updateProfile")
 	public void updateProfile()throws Exception{
 		
 	}
 	
 	@PostMapping(value = "updateProfile")
-	public String updateProfile(ProfileDTO profileDTO)throws Exception{
+	public String updateProfile(ProfileDTO profileDTO, HttpSession session)throws Exception{
 		int result = profileService.updateProfile(profileDTO);
+		session.setAttribute("dto", profileDTO);
 		return "redirect:./profileset";
 	}
 	

@@ -15,36 +15,35 @@
 	<form action="./updateProfile" method="post" id="frm">
 			<div class="form-group">
 				<label for="nickname">이름</label> <input type="text"
-					class="form-control" id="nickname" name="nickname"
+					class="form-control myCheck" id="nickname" name="nickname"
 					value="${dto.nickname}">
 			</div>
 			<div class="form-group">
 				<label for="urlname">사용자 이름(URL)</label> <input type="text"
-					class="form-control" id="urlname" name="urlname"
+					class="form-control myCheck" id="urlname" name="urlname"
 					value="${dto.urlname}" >
 			</div>
 			<div class="form-group">
 				<label for="intro">소개</label> <input type="text"
-					class="form-control" id="intro" name="intro"
+					class="form-control myCheck" id="intro" name="intro"
 					value="${dto.intro}">
 			</div>
 			<div class="form-group">
 				<label for="web">웹사이트</label> <input type="text"
-					class="form-control" id="web" name="web" value="${dto.web}"
+					class="form-control myCheck" id="web" name="web" value="${dto.web}"
 					>
 			</div>
 			<div class="form-group">
 				<label for="privacy">프라이버시</label> <input type="text"
-					class="form-control" id="privacy" name="privacy"
+					class="form-control myCheck" id="privacy" name="privacy"
 					value="${dto.privacy}" >
 	
 			</div>
 
 			<div class="form-group">
-				<input type="hidden" id="id" name="id" value="${membership.id}">
-				<input type="hidden" id="pjUpdate" name="pjUpdate" value="${dto.pjUpdate}">
-				<input type="hidden" id="news" name="news" value="${dto.news}">
+				<input type="hidden" id="id" name="id" value="${dto.id}">
 			</div>
+			
 			<button type="submit" class="btn btn-primary">Update</button>
 	 </form>	
 </body>
