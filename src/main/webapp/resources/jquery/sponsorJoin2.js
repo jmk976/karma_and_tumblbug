@@ -3,7 +3,7 @@
  */
 
 $("#btnGeneral").click(function(){
-	alert("ver1")
+
 		
 		let result = true;
 		let agree = true;

@@ -79,7 +79,8 @@
         <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueList">Rescue List</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/rescue/rescueInsert">Rescue Add</a>
         <a class="dropdown-item" href="${pageContext.request.contextPath}/sponsor/sponsorList">Sponsor List</a>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/adopt/adoptList">Adopt List</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/sponsor/sponsorListMon">Monthly Sponsor List</a>
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/adopt/adoptList">Adopt List</a>
       </div>
     </li>
     

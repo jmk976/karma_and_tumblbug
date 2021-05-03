@@ -385,7 +385,7 @@ td {
 				</c:if>
 				</c:catch>
 			<input type="button" id="del" value="삭제" class="btn btn-secondary">
-            <a href="./adoptInsert"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
+            <a href="./adoptList"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
 		<form action="./adoptDelete" id="frm" method="get">
 		<input type="hidden" name="adoptNum" value="${dto.adoptNum}">

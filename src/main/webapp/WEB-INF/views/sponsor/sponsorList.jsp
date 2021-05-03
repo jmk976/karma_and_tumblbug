@@ -110,14 +110,10 @@
  </form> 
  </div>
  
-  <a href="./sponsorListMon" class="btn btn-info" role="button">  월별 총 후원 금액 보기 </a>
-  
-  
-  <%-- </c:if>
-  </c:catch> --%>
-  
+ 
 
-
+ 
+  
 
 </div>
    

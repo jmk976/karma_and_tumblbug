@@ -53,7 +53,7 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/javaSDK-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/user/local/apache-tomcat-9.0.43/lib/javaSDK-2.2.jar"/>
+	<classpathentry kind="lib" path="/user/local/apache-tomcat-9.0.43/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

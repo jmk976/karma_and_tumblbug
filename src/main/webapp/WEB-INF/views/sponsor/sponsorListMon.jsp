@@ -86,6 +86,7 @@
   
 <form id="frm" action="./sponsorListMon" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
+	
   
   <input type="month" class="form-control" name="search" id="search" value="${pagerMon.search}" placeholder="">
   

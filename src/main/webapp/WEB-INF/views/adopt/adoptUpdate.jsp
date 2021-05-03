@@ -380,7 +380,7 @@ td {
 				</table>
 				<div style="margin:0 auto;">
 			        <input type="submit" id="btn" value="수정" class="btn btn-secondary">
-            <a href="../"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
+            <a href="./adoptList"><input type="button" id="back" value="취소" class="btn btn-secondary"></a>
             </div>
 		</form>
 

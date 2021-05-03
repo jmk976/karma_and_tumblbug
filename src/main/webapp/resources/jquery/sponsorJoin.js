@@ -30,7 +30,7 @@
 
 
  $("#btnRegular").click(function(){
-		//alert("ver1")
+
 		
 		let result = true;
 	    let cal =true;

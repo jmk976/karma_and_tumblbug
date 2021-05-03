@@ -25,7 +25,10 @@ public class SponsorService {
 	public List<SponsorDTO> getListMon(Pager pager)throws Exception{
 		pager.makeRow();
 		long totalCountMon = sponsorDAO.getTotalCountMon(pager);
-		pager.makeRow();
+		System.out.println("totalCountMon:"+totalCountMon);
+		pager.makeNum(totalCountMon);
+		
+		System.out.println("pager.getTotalPage():"+pager.getTotalPage());
 		
 		return sponsorDAO.getListMon(pager);
 	}
@@ -49,6 +52,7 @@ public class SponsorService {
 		
 		//-----------페이징계산  ---------
 		long totalCount= sponsorDAO.getTotalCount(pager);
+		System.out.println("totalCount:"+totalCount);
 		pager.makeNum(totalCount);
 				
 		
