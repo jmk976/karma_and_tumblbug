@@ -6,7 +6,7 @@
 <mapper namespace="com.karma_and_tumblbug.p1.profile.ProfileDAO">
 	<update id="updateProfile" parameterType="ProfileDTO">
 		update profile set nickname=#{nickname}, urlname=#{urlname}, intro=#{intro}, web=#{web}, 
-		privacy=#{privacy} where id=#{id}
+		where id=#{id}
 	</update>
 	
 	<select id="getProfile" parameterType="ProfileDTO" resultType="ProfileDTO">

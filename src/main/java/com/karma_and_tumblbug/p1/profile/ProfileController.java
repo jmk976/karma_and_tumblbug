@@ -54,7 +54,9 @@ public class ProfileController {
 	@PostMapping(value = "updateProfile")
 	public String updateProfile(ProfileDTO profileDTO, HttpSession session)throws Exception{
 		int result = profileService.updateProfile(profileDTO);
-		session.setAttribute("dto", profileDTO);
+		if(result>0) {
+			session.setAttribute("dto", profileDTO);
+		}
 		return "redirect:./profileset";
 	}
 	

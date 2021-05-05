@@ -5,8 +5,9 @@ public class ProfileDTO {
 	private String urlname;
 	private String intro;
 	private String web;
-	private String privacy;
 	private String id;
+	
+	
 	
 	public String getNickname() {
 		return nickname;
@@ -32,18 +33,13 @@ public class ProfileDTO {
 	public void setWeb(String web) {
 		this.web = web;
 	}
-	public String getPrivacy() {
-		return privacy;
-	}
-	public void setPrivacy(String privacy) {
-		this.privacy = privacy;
-	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	
 
 	

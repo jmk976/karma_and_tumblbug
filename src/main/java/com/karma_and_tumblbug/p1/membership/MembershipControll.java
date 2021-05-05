@@ -75,16 +75,7 @@ public class MembershipControll {
 		return "redirect:../";
 	}
 	
-	@PostMapping(value = "joinProfile")
-	public String joinProfile(ProfileDTO profileDTO) throws Exception{
-		int result = membershipService.joinProfile(profileDTO);
-		return "redirect:../";
-	}
-	
-	@GetMapping(value="joinProfile")
-	public void joinProfile()throws Exception{
-		
-	}
+
 	
 	@GetMapping(value="memberPage")
 	public void memberPage()throws Exception{

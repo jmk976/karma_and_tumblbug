@@ -18,8 +18,8 @@ public class MembershipService {
 	public int join(MembershipDTO membershipDTO) throws Exception{
 		return membershipDAO.join(membershipDTO);
 	}
-	public int joinProfile(ProfileDTO profileDTO)throws Exception{
-		return membershipDAO.joinProfile(profileDTO);
+	public int joinProfile(ProfileDTO profileDTO, MembershipDTO membershipDTO)throws Exception{
+		return membershipDAO.joinProfile(profileDTO, membershipDTO);
 	}
 	public int update(MembershipDTO membershipDTO) throws Exception{
 		return membershipDAO.update(membershipDTO);

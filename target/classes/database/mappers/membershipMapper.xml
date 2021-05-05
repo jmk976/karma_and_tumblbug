@@ -14,10 +14,12 @@
 	<insert id="join" parameterType="MembershipDTO">
 		insert into membership
 		values(#{id},#{pw},#{name},#{birth},#{phone},#{address})
+		
 	</insert>
 	
 	<insert id="joinProfile" parameterType="ProfileDTO">
-		insert into profile values(#{name}, #{name}, #{id});
+		insert into profile (nickname, urlname, intro, web, id)
+		values(#{nickname}, #{urlname}, default, default, #{id})
 	</insert>
 
 	<update id="update" parameterType="MembershipDTO">

@@ -21,7 +21,7 @@ public class MembershipDAO {
 	public int join(MembershipDTO membershipDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"join", membershipDTO);
 	}
-	public int joinProfile(ProfileDTO profileDTO)throws Exception{
+	public int joinProfile(ProfileDTO profileDTO, MembershipDTO membershipDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"joinProfile", profileDTO);
 	}
 	public int update(MembershipDTO membershipDTO) throws Exception{
