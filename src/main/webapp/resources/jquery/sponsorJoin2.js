@@ -1,6 +1,16 @@
 /**
  * 
  */
+ 
+ 
+let pc = $("#paymentCheck").attr("title");
+
+
+if(typeof pc == undefined || pc == null || pc == "[]"){
+   alert("후원폼 작성 전 결제수단을 등록해 주시기 바랍니다. 결제수단으로 이동합니다");
+   location.href="../payment/paymentList";
+   };
+
 
 $("#btnGeneral").click(function(){
 
@@ -36,6 +46,16 @@ $("#btnGeneral").click(function(){
 	}
 });
 	
+	
+	$("#money").blur(function(){
+	 let money = $("#money").val();
+	 $("#totalMoney").val(money);
+});
+
+
+$("#document").ready(function(){
+ $("#lastPay").val(new Date().toISOString().substring(0, 10))
+});
 	
 
 	

@@ -16,12 +16,21 @@ img {
   
 }
 h5{
-  font-size: 27px;
+  font-family: 'MapoGoldenPier';
+  font-size: 24px;
   color: DarkOliveGreen;
   border-bottom: 5px dotted gray;
-  padding-top:20px;
-  padding-bottom:10px;
+  padding-top:25px;
+  padding-bottom:25px;
+  text-align: center;
 }
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 </style>
 
 </head>
@@ -44,9 +53,11 @@ h5{
 	
 	<c:if test="${not empty membership}">
 	
+	
+	
 	<div style="text-align: center;">
-	<a href="./sponsorJoin?sponSort=${'정기후원'}" class="btn btn-danger"> 정기후원 신청 </a>
-    <a href="./sponsorJoin?sponSort=${'일시후원'}" class="btn btn-info"> 일시후원 신청 </a>
+	<a href="./sponsorJoin?sponSort=${'정기후원'}&id=${membership.id}" class="btn btn-danger mem"> 정기후원 신청 </a>
+    <a href="./sponsorJoin?sponSort=${'일시후원'}&id=${membership.id}" class="btn btn-info mem"> 일시후원 신청 </a>
 	</div>
 	
 	</c:if>
@@ -64,11 +75,14 @@ h5{
 	
 	
 </div>
-
+<script type="text/javascript" src="../resources/jquery/sponsorCheck.js"></script>
 
 <script type="text/javascript">
+
 $(".ch").click(function(){ 
 	 alert("로그인 먼저 해주세요.");
+	 
+	 
 });
 </script>
 

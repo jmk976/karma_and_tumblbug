@@ -9,20 +9,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
-<script type="text/javascript">
-
-
-
-	
-
-</script>
+<style>
+.row_status{
+width: 100%;
+}
+</style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
 
 <div class="container">
-	
+	<div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
 	<h2>구조 동물 관리</h2>
 
 	<table class ="table">
@@ -99,7 +101,7 @@
 <section class="search-sec">
     <div class="container">
         <form id="frm" action="./rescueList"  novalidate="novalidate">
-        	 <div class="col">
+        	 <div class="row row_status">
              게시 진행사항:
             <select name="status" id="status" class="custom-select myCheck">
                             <option disabled selected hidden>선택</option> 
@@ -109,6 +111,7 @@
 						    <option value="보류">보류</option>
 						 </select>
             </div>
+            <br>
         		<input type="hidden" name="curPage" value="1" id="curPage">
             <div class="row">
                 <div class="col-lg-12">

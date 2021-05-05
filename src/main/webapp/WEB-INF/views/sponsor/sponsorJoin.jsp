@@ -17,6 +17,7 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
+			 <input type="hidden"  id="paymentCheck" title="${payList}">
 
 <c:if test="${dto.sponSort=='정기후원'}">
 <div class ="container">
@@ -25,11 +26,20 @@
 	
   	<div class="row">
 	  	  <div class="col">
-			  	 
-			  	   <label for="payment"> 후원방법 </label>
+			  	  <label for="payment"> 후원방법 </label>
+			  	  
+			  	  
 					  <select name="payment" class="custom-select myCheck">
-					    <option value="신용카드">신용카드</option>
-					    <option value="계좌이체">계좌이체</option>
+					      <option value="0" disabled selected hidden> 선택 </option>
+					        
+					      <c:forEach items="${payList}" var="pay"> 
+					         <c:if test="${pay.division eq 'account'}">
+					           <option value="${pay.bankName},${pay.bankAccount}">${pay.bankName},${pay.bankAccount}</option>
+					         </c:if>
+					          <c:if test="${pay.division eq 'card'}">
+					           <option value="${pay.cardNumber}">${pay.cardNumber}</option>
+					         </c:if>
+					       </c:forEach>
 					  </select>
 				
 	   	  </div>
@@ -147,10 +157,23 @@
 	  	  <div class="col">
 			  	 
 			  	   <label for="payment"> 후원방법 </label>
+			  	     
 					  <select name="payment" class="custom-select myCheck">
-					    <option value="신용카드">신용카드</option>
-					    <option value="계좌이체">계좌이체</option>
+					      <option value="0" disabled selected hidden> 선택 </option>
+					        
+					      <c:forEach items="${payList}" var="pay"> 
+					        
+					         <c:if test="${pay.division eq 'account'}">
+					           <option value="${pay.bankName},${pay.bankAccount}">${pay.bankName},${pay.bankAccount}</option>
+					         </c:if>
+					          <c:if test="${pay.division eq 'card'}">
+					           <option value="${pay.cardNumber}">${pay.cardNumber}</option>
+					         </c:if>
+					       </c:forEach>
 					  </select>
+					  
+					  
+			
 				
 	   	  </div>
 	   	  <div class="col">
@@ -221,7 +244,7 @@
   
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="agreeCheck">
-    <label class="form-check-label" for="exampleCheck1"> 선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
+    <label class="form-check-label" for="exampleCheck1">    선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
   </div>
   
    
@@ -234,15 +257,8 @@
 
 <script type="text/javascript">
 
-$("#money").blur(function(){
-	 let money = $("#money").val();
-	 $("#totalMoney").val(money);
-});
 
 
-$("#document").ready(function(){
- $("#lastPay").val(new Date().toISOString().substring(0, 10))
-});
 </script>
 
 </c:if>

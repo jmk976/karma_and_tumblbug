@@ -8,6 +8,31 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
+.jejumyeongjo * { 
+ font-family: 'Jeju Myeongjo', serif;
+}
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BCcardL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .img {
   float:left;
   object-fit: cover;
@@ -21,15 +46,18 @@
 img{
  width:400px;
 }
-h5{
-  font-size: 50px;
-  color: DarkOliveGreen;
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
   border-bottom: 5px dotted gray;
-  padding-top:20px;
-  padding-bottom:10px;
+  padding-top:30px;
+  padding-bottom:30px;
 }
 p{
 font-size: 22px;
+}
+.container{
+ 
+
 }
 </style>
 
@@ -38,12 +66,13 @@ font-size: 22px;
 <c:import url="../template/header.jsp"></c:import>
 
 <div class="container">
-  <h5> 입양신청</h5>
+  <h3> 입양 신청</h3>
   <div class="img">
   	  <img src="../resources/images/adoptDog.jpg" /> 
    </div> 
   <div>
-  <p><span style = "  font-weight: bold ; font-size: 30px; color: green;">입양신청을 하기 전에...</span><br>
+  <p><span style = " font-family: 'Jeju Myeongjo', serif;
+   font-weight: bold ; font-size: 30px; color: MediumSeaGreen;">입양신청을 하기 전에...</span><br>
 <br>
 사람으로 인해 상처받은 생명을 입양하고자 하시는 모든 분들께 깊은 감사를 드립니다.<br>
 <br>
@@ -53,9 +82,11 @@ font-size: 22px;
 유기동물을 키우시기에 적합하지 않다고 판단된 경우입니다.<br>
 이점 양해해 주시기 바라며,<br>
 <br>
-<span style = "color: green;">“한국동물구조관리협회는 여러가지 이유로 한번 이상 버림받은 생명을 사랑으로 돌봐 줄 가족을 찾는 곳입니다.”</span><br>
+<span style = "  font-family: 'Jeju Myeongjo', serif;
+color: MediumSeaGreen;">“한국동물구조관리협회는 여러가지 이유로 한번 이상 버림받은 생명을 사랑으로 돌봐 줄 가족을 찾는 곳입니다.”</span><br>
 <br>
-<span style = "  font-weight: bold ; font-size: 25px; color: green;">중성화 수술은 입양 조건의 필수!</span><br>
+<span style = "   font-family: 'Jeju Myeongjo', serif;
+ font-weight: bold ; font-size: 25px; color: MediumSeaGreen;">중성화 수술은 입양 조건의 필수!</span><br>
 <br>
 <br>
 안락사로 생명이 다하는 것에 대한 이기적이거나 값싼 동정심이 아닌 진정으로<br>
@@ -87,6 +118,7 @@ font-size: 22px;
 	
 	
 </div>
+
 
 
 <script type="text/javascript">

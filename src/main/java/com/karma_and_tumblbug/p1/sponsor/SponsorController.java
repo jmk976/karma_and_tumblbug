@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.karma_and_tumblbug.p1.payment.PaymentDTO;
+import com.karma_and_tumblbug.p1.payment.PaymentService;
 import com.karma_and_tumblbug.p1.util.Pager;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -22,11 +23,35 @@ public class SponsorController {
 	@Autowired
 	private SponsorService sponsorService;
 	
+	@Autowired
+	private PaymentService paymentService;
+	
+	@GetMapping("location")
+	public void location() throws Exception{
+		
+	}
+	
+	@GetMapping("about")
+	public void about() throws Exception{
+		
+	}
+	
 	@GetMapping("sponsorJoin")
 	public ModelAndView setInsert(SponsorDTO sponsorDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		PaymentDTO payDTO = new PaymentDTO();
+		payDTO.setId(sponsorDTO.getId());
+		
+		
+		
+		List<PaymentDTO> payList = paymentService.getList(payDTO);
+		
+		
+		
+
+		mv.addObject("payList", payList);
+
 		mv.addObject("dto", sponsorDTO);
-		mv.setViewName("sponsor/sponsorJoin");
 		
 		return mv;
 		

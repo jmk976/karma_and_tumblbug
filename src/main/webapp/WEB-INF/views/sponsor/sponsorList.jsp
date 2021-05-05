@@ -10,10 +10,11 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
-<c:import url="../template/header.jsp"></c:import>
+ <c:import url="../template/header.jsp"></c:import>
 
-
-<div class="container">
+    
+               
+  <div class="container">
 	
 	<h2>후원현황</h2>
 
@@ -113,11 +114,15 @@
  
 
  
+  </div>
+  </div>
   
-
-</div>
+  <!-- origin end -->
+   
    
 
+  
+  
   <script type="text/javascript">
  
 	  let kind='${pager.kind}';
@@ -147,9 +152,7 @@
   
   </script>
   
- </div>
-
-
+ 
  
 </body>
 </html>

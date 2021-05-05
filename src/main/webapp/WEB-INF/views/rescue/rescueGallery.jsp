@@ -14,7 +14,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 360px;
   max-width: none !important;
-  height: 750px;
+  height: 650px;
   max-height: none !important;
   margin: auto;
   text-align: left;
@@ -164,6 +164,26 @@ float: left;
 }
 
 
+h3{
+ 
+ font-family: 'BCcardL';
+ text-align: center;
+}
+
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BCcardL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.1/BCcardL.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
    
 </style>
 
@@ -177,13 +197,13 @@ float: left;
 
   <!-- Page Heading -->
   <c:if test="${pager.status =='구조'}">
-     <h1 class="my-4">구조동물공고</h1>
+     <h3 class="my-4">구조 동물 공고</h3>
   </c:if>
   <c:if test="${pager.status =='가족'}">
-     <h1 class="my-4">가족의 품으로</h1>
+     <h3 class="my-4">가족의 품으로</h3>
   </c:if>
   <c:if test="${pager.status =='입양'}">
-     <h1 class="my-4">입양됐어요</h1>
+     <h3 class="my-4">입양 됐어요</h3>
   </c:if>
   
    
@@ -419,6 +439,9 @@ float: left;
         </form>
     </div>
 </section>
+
+
+
 
 <script type="text/javascript" src="../resources/jquery/rescueGallery.js"></script>
 <script type="text/javascript">
