@@ -29,7 +29,7 @@ public class SponsorService {
 		pager.makeNum(totalCountMon);
 		
 		System.out.println("pager.getTotalPage():"+pager.getTotalPage());
-		
+		System.out.println("pager.getLastNum():"+pager.getLastNum());
 		return sponsorDAO.getListMon(pager);
 	}
 	

@@ -11,7 +11,7 @@ footer {
   background-color: MediumAquaMarine;
   margin-top: 20px;
   padding-top:50px;
-  padding: 10px;
+  padding: 20px; 
   text-align: center;
   color: white;
   width:100%;

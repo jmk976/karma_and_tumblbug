@@ -71,7 +71,7 @@ public class AdoptController {
 		
 		if(result>0) {
 			message="삭제 성공";
-			path = "./adoptList";
+			path = "./adoptUser";
 			
 		}
 		

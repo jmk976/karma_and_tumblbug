@@ -11,6 +11,19 @@
  width: 100%;
  display:inline-block;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 </style>
 <c:import url="../template/bootStrap.jsp"></c:import>
@@ -21,7 +34,7 @@
 
 <c:if test="${dto.sponSort=='정기후원'}">
 <div class ="container">
-		<h2> 정기후원 신청 </h2>
+		<h3> 정기후원 신청 </h3>
 	<form id="frmReg" action="./sponsorJoin" method="post" enctype="multipart/form-data">
 	
   	<div class="row">
@@ -29,7 +42,7 @@
 			  	  <label for="payment"> 후원방법 </label>
 			  	  
 			  	  
-					  <select name="payment" class="custom-select myCheck">
+					  <select name="payment" class="custom-select myCheck2">
 					      <option value="0" disabled selected hidden> 선택 </option>
 					        
 					      <c:forEach items="${payList}" var="pay"> 
@@ -107,13 +120,13 @@
   <div class="form-group"> 
     <label for="name">Name</label>
     <input type="text" class="form-control etc myCheck" value="${membership.name}" id="name" name="name" >
-    <small id="nameHelp" class="form-text text-muted" style="color:red">필수요소</small>
+    <small id="nameHelp" class="form-text text-muted" style="color:red;">필수요소</small>
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
     <input type="text" class="form-control etc myCheck" value="${membership.phone}"id="phone" name="phone" >
-       <small id="phoneHelp" class="form-text text-muted" style="color:red">필수요소</small>
+       <small id="phoneHelp" class="form-text text-muted" style="color:red;">필수요소</small>
    
     <!-- 비어 있으면 안됨 -->
   </div>
@@ -150,7 +163,7 @@
 <c:if test="${dto.sponSort=='일시후원'}">
 
 <div class ="container">
-		<h2> 일시후원 신청 </h2>
+		<h3> 일시후원 신청 </h3>
 	<form id="frm" action="./sponsorJoin" method="post" enctype="multipart/form-data">
 	
   	<div class="row">
@@ -218,14 +231,14 @@
   <div class="form-group"> 
     <label for="name">Name</label>
     <input type="text" class="form-control etc myCheck" value="${membership.name}" id="name" name="name" >
-    <small id="nameHelp" class="form-text text-muted" style="color:red">필수요소</small>
+    <small id="nameHelp" class="form-text text-muted" style="color:red;">필수요소</small>
     
     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
     <input type="text" class="form-control etc myCheck" value="${membership.phone}"id="phone" name="phone" >
-    <small id="phoneHelp" class="form-text text-muted" style="color:red">필수요소</small>
+    <small id="phoneHelp" class="form-text text-muted" style="color:red;">필수요소</small>
    
     <!-- 비어 있으면 안됨 -->
   </div>

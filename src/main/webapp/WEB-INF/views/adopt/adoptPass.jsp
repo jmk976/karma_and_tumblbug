@@ -7,10 +7,25 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 .result{
  padding-bottom:10px;
  border-bottom: 3px solid gray;
  text-align: center;
+}
+
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 </style>
@@ -19,9 +34,10 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
- <h2>입양신청 결과 페이지</h2>
+ <div class="container">
+ <h3>입양신청 결과 페이지</h3>
  <br>
- <div class="container card bg-light text-dark">
+<div class="container card bg-light text-dark">
     <div class="card-body">
 	<div class="result">${dto.pass}</div>
 	<br>
@@ -51,6 +67,7 @@
 	</c:if>
 	
 	<br>
+	</div>
 	</div>
 	</div>
 </body>

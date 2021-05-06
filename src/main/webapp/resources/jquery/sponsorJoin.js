@@ -35,17 +35,27 @@
 		let result = true;
 	    let cal =true;
         let agree =true;
+        let payCheck= true;
 		
 		$(".myCheck").each(function(s1, s2){
 			console.log(s1);
 				console.log($(s2).val());
 				console.log($(this).val());
+				let val=$(this).val();
 				
-				if($(this).val()==""){
+				if(val=="" ||val==null||typeof val==undefined){
 					result = false;
 				}
 		
 		});
+		
+		let pay =$(".myCheck2").prop("selected")
+		
+		if(typeof pay==undefined||pay=="" ||pay==null){
+			payCheck=false;
+			alert("결제수단을 선택해 주십시오");
+		}
+		
 		
 	
 
@@ -84,6 +94,8 @@ sponMonth = Number($("#sponMonth").val());
 			alert("동의 체크해주셔야 진행하실 수 있습니다.");
 			agree=false;
 			}
+			
+/*   payment 확인  */
 		
 
 	
@@ -91,7 +103,9 @@ sponMonth = Number($("#sponMonth").val());
 if(result){
 	if(agree){
 		if(cal){
+			if(payCheck){
 			$("#frmReg").submit()
+			        }
 				}
 			 }
 	}else {

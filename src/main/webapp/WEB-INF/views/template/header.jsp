@@ -23,7 +23,6 @@
 .nb {
     font-family: 'Bevan'; font-size: 22px; color: #MediumSeaGreen;
 
-   /*  display: inline; */
 }
 .container-fluid{
  padding-bottom:20px; 

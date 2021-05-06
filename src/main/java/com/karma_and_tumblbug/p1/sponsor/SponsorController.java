@@ -26,10 +26,7 @@ public class SponsorController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	@GetMapping("location")
-	public void location() throws Exception{
-		
-	}
+	
 	
 	@GetMapping("about")
 	public void about() throws Exception{
@@ -114,8 +111,7 @@ public class SponsorController {
 		ModelAndView modelAndView = new ModelAndView();
 		List<SponsorDTO> arr = sponsorService.getListMon(pager);
 		System.out.println("list service호출후 get search: "+pager.getSearch());
-		
-		
+	
      	
 		Long totalSumMon = sponsorService.getTotalSumMon(pager);
 		if(totalSumMon == null) {
