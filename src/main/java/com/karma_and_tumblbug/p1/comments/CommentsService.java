@@ -19,4 +19,14 @@ public class CommentsService {
 		return commentsDAO.getList(commentsDTO);
 	}
 
+	public int setDelete(int [] commentNum)throws Exception{
+		int result = 0;
+		for(int i=0;i<commentNum.length;i++) {
+			CommentsDTO commentsDTO = new CommentsDTO();
+			int num = commentNum[i];
+			commentsDTO.setCommentNum(num);
+			result = commentsDAO.setDelete(commentsDTO);
+		}
+		 return result;
+	}
 }

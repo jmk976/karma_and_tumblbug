@@ -42,6 +42,23 @@
 
 	</table>
 	
+	<!-- 댓글 -->
+	<div id="comments" title="${dto.num}"></div>
+		
+		<div>
+			<div class="form-group">
+ 				<label for="usr">Name:</label>
+				<input type="text" class="form-control" id="writer">
+			</div>
+		
+			<div class="form-group">
+  				<label for="comment">Comment:</label>
+  				<textarea class="form-control" rows="5" id="contents"></textarea>
+			</div>
+			
+			<button type="button" class="btn btn-success" id="write">Success</button>
+		</div>
+	
 
 
 
@@ -54,6 +71,9 @@
 			class="btn btn-outline-success">UPDATE</a>
 
 	</c:if>
+	
+	
+	<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 	
 
 
