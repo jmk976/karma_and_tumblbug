@@ -71,7 +71,7 @@ p {
 					class="form-control" id="phone" name="phone" class="etc"
 					value="${membership.phone}">
 				<p id="phoneResult"></p>
-				<!-- 비어있으면 안됨 -->
+			
 			</div>
 
 			<div id="addressParse" title="${membership.address}">
@@ -95,6 +95,8 @@ p {
 	</div>
 	<script type="text/javascript"
 		src="../resources/jquery/membershipUpdate.js"></script>
+	<script type="text/javascript"
+		src="../resources/jquery/sendSMS.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </body>

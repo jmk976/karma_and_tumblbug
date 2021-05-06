@@ -1,5 +1,7 @@
 package com.karma_and_tumblbug.p1.membership;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.karma_and_tumblbug.p1.profile.ProfileDTO;
 
 @Controller
 @RequestMapping(value="/membership/**")
@@ -18,6 +20,24 @@ public class MembershipControll {
 
 	@Autowired
 	private MembershipService membershipService;
+	
+	
+	@GetMapping("sendSMS")
+    public @ResponseBody
+    String sendSMS(String phoneNum) {
+
+        Random rand  = new Random();
+        String checkNum = "";
+        for(int i=0; i<4; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            checkNum+=ran;
+        }
+
+        System.out.println("수신자 번호 : " + phoneNum);
+        System.out.println("인증번호 : " + checkNum);
+        membershipService.checkPhoneNum(phoneNum, checkNum);
+        return checkNum;
+    }
 
 	
 	@GetMapping(value="joinCheck")
