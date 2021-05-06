@@ -12,8 +12,9 @@ insertPopup = function() {
  );
  
 }
-
 $("#insert").click(insertPopup);
+
+
 
 
 

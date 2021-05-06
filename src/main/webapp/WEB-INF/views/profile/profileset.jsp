@@ -51,43 +51,20 @@ ul.tabs li.current {
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">프로필</li>
-			<li class="tab-link" data-tab="tab-2">계정</li>
-			<li class="tab-link" data-tab="tab-3">결제수단</li>
-			<li class="tab-link" data-tab="tab-4">배송지</li>
+			<li><a href = "../membership/memberPage">계정</a></li>
+			<li><a href = "../payment/paymentList">결제수단</a></li>
+			<li><a href = "../shipping/shippingList">배송지</a></li>
+			
 		</ul>
 
 		<div id="tab-1" class="tab-content current">
 			<jsp:include page="profileset2.jsp" />
 		</div>
-		<div id="tab-2" class="tab-content">
-			<jsp:include page="profilesetA.jsp" />
-		</div>
-		<div id="tab-3" class="tab-content">
-			<jsp:include page="/WEB-INF/views/payment/paymentList.jsp" />
-		</div>
-		<div id="tab-4" class="tab-content">
-			<jsp:include page="/WEB-INF/views/shipping/shippingList.jsp" />
-		</div>
+		
 
 	</div>
-
-	<script type="text/javascript">
-				$(document).ready(function() {
-
-					$('ul.tabs li').click(function() {
-						var tab_id = $(this).attr('data-tab');
-
-						$('ul.tabs li').removeClass('current');
-						$('.tab-content').removeClass('current');
-
-						$(this).addClass('current');
-						$("#" + tab_id).addClass('current');
-					})
-
-				})
-	</script>
+<script type="text/javascript" src="../resources/jquery/profileset.js"></script>
 </body>
 </html>

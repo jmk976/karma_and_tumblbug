@@ -4,15 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.karma_and_tumblbug.p1.profile.ProfileDAO">
-
-	<insert id="setInsert" parameterType="ProfileDTO">
-		insert into profile values(#{nickname}, #{urlname}, #{intro}, #{web}, #{privacy}, #{email}, 
-		#{message}, #{pjUpdate}, #{news}, #{id})
-	</insert>
-	
-	<update id="setUpdate" parameterType="ProfileDTO">
+	<update id="updateProfile" parameterType="ProfileDTO">
 		update profile set nickname=#{nickname}, urlname=#{urlname}, intro=#{intro}, web=#{web}, 
-		privacy=#{privacy}, email=#{email}, message=#{message}, pjUpdate=#{pjUpdate}, news=#{news} 
 		where id=#{id}
 	</update>
 	
@@ -20,7 +13,14 @@
 		select * from profile where id=#{id}
 	</select>
 	
+	<insert id="setFileInsert" parameterType="ProfilePicDTO">
+		insert into profilePic values (profilePic_seq.nextval, #{id}, #{fileName}, #{originalName})
+	</insert>
 	
+	
+<!-- 
+	account snsLogin coolsms error
+	 -->
 
 
 </mapper>

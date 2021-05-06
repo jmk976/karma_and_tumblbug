@@ -28,7 +28,8 @@
 					<h5 class="card-title">${dto.shipName}</h5>
 					<p class="card-text">${dto.shipAddress}</p>
 					<p class="card-text">${dto.shipPhone}</p>
-					<a href="./shippingUpdate?shipNum=${dto.shipNum}" class="update">수정</a>
+					<a href="#" id="update" class="update"
+					onclick="updatePopup(${dto.shipNum}); return false;">수정</a>
 					<a href="./shippingDelete?shipNum=${dto.shipNum}" class="delete">삭제</a>
 				</div>
 			</div>
@@ -38,6 +39,21 @@
 
 
 	<script type="text/javascript" src="../resources/jquery/shippingList.js"></script>
+	<script type="text/javascript">
+	updatePopup = function(num) {
+	    var _width = '650';
+	    var _height = '600';
+	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+	    var _left = Math.ceil(( window.screen.width - _width )/2);
+	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+	    window.open('./shippingUpdate?shipNum='+num, 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top
+	 );
+	 
+	}
+	$("#update").click(updatePopup);
+	</script>
+	
+
 
 
 </body>

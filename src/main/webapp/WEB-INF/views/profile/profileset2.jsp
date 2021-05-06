@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h5>프로필 보여주는 창 profileset2</h5>
 	<div class="container">
 		<div class="form-group">
 			<div class="form-group">

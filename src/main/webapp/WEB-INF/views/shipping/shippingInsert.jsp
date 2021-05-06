@@ -20,10 +20,15 @@
 					id="shipName" name="shipName">
 			</div>
 			<div class="form-group">
-				<label for="shipAddress">주소</label> <input type="text"
-					class="form-control myCheck" id="shipAddress" name="shipAddress">
+				<label for="shipAddress">주소</label><br>
+				<input type="text" id="sample6_postcode" placeholder="우편번호" name="shipAddress">
+				<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" name="shipAddress"><br>
+				<input type="text" id="sample6_address" placeholder="주소" name="shipAddress"><br>
+				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="shipAddress">
+				<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+				
 			</div>
-			
+
 			<div class="form-group">
 				<label for="shipPhone">받는 사람 휴대폰 번호</label> <input type="text"
 					class="form-control myCheck" placeholder="받는 분 번호를 입력해주세요"
@@ -39,10 +44,14 @@
 				<input type="hidden" id="id" name="id" value="${membership.id}">
 			</div>
 
-		<!-- 	<button type="submit" class="btn btn-primary">Submit</button> -->
-			<input type="submit" id="btn" value="ADD" class="btn btn-primary">
+			<!-- 	<button type="submit" class="btn btn-primary">Submit</button> -->
+			<input type="submit" id="addbtn" value="ADD" class="btn btn-primary">
 		</form>
 
-
+		<script
+			src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="text/javascript" src="../resources/jquery/shippingInsert.js"></script>
+	
+	
 </body>
 </html>
