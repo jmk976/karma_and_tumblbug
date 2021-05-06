@@ -24,12 +24,21 @@ public class ProjectDTO {
 	
 	private List<MediaDTO> mediaFiles;
 	private List<SearchDTO> searchList;
+	private long pushAmount;
 	
 	
 	
 	
 	
 	
+	
+	
+	public long getPushAmount() {
+		return pushAmount;
+	}
+	public void setPushAmount(long pushAmount) {
+		this.pushAmount = pushAmount;
+	}
 	public List<SearchDTO> getSearchList() {
 		return searchList;
 	}

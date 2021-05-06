@@ -64,7 +64,7 @@ makerSummaryCheckFunc=function(){
 makerLocationCheckFunc=function(){
 	let mlVal=$("#makerLocation").val();
 	makerLocationCheck=false;
-	if(mlVal!='default'){
+	if(mlVal!='활동지역'){
 		makerLocationCheck=true;
 	}
 }

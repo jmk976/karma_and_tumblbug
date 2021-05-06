@@ -21,7 +21,7 @@ public class ConnectionTest extends MyAbstractTest {
 	@Autowired
 	private SqlSession SqlSession;
 	
-	@Test
+//	@Test
 	public void connectionTest() throws Exception {
 		assertNotNull(SqlSession);
 	}

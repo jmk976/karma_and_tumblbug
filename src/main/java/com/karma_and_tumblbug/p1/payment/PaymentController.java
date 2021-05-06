@@ -21,8 +21,15 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@GetMapping(value="paymentDelete")
-	public String setDelete(PaymentDTO paymentDTO)throws Exception{
+	public String setDelete(PaymentDTO paymentDTO,HttpSession session)throws Exception{
 		int result = paymentService.setDelete(paymentDTO);
+		session.removeAttribute("payList");
+		PaymentDTO pDTO = new PaymentDTO();
+		MembershipDTO dto = ((MembershipDTO)session.getAttribute("membership"));
+		pDTO.setId(dto.getId());
+		List<PaymentDTO> payList = paymentService.getList(pDTO);
+		session.setAttribute("payList", payList);
+		
 		return "redirect:./paymentList";
 	}
 
@@ -53,7 +60,7 @@ public class PaymentController {
 	}
 	
 	@PostMapping(value="paymentInsert")
-	public String getInsertAccount(PaymentDTO paymentDTO) throws Exception{
+	public String getInsertAccount(PaymentDTO paymentDTO,HttpSession session) throws Exception{
 		System.out.println(paymentDTO.getDefaultMethod());
 		System.out.println(paymentDTO.getId());
 		System.out.println(paymentDTO.getDivision());
@@ -66,6 +73,14 @@ public class PaymentController {
 		System.out.println(paymentDTO.getSecurityNumber());
 
 		int result = paymentService.setInsert(paymentDTO);
+		
+		session.removeAttribute("payList");
+		PaymentDTO pDTO = new PaymentDTO();
+		MembershipDTO dto = ((MembershipDTO)session.getAttribute("membership"));
+		pDTO.setId(dto.getId());
+		List<PaymentDTO> payList = paymentService.getList(pDTO);
+		session.setAttribute("payList", payList);
+		
 		return "payment/temp";
 	}
 	@PostMapping(value="card")

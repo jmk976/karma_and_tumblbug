@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.karma_and_tumblbug.p1.push.PushDAO">
+	<select id="getProjectPush" parameterType="PushDTO"
+		resultType="java.lang.String">
+		select sum(quantity) from project_push where projectNum=#{projectNum}
+	</select>
+
+	<select id="getPushSelect" parameterType="PushDTO"
+		resultType="PushDTO">
+		select * from project_push where num=#{num}
+	</select>
+	
+	<select id="getPushList" parameterType="PushDTO" resultType="PushDTO">
+		select * from project_push where id=#{id}
+	</select>
+
+	<insert id="setInsertPush" parameterType="PushDTO">
+		insert into project_push
+		values(pPush_seq.nextval,#{id},#{projectNum},#{paymentNum},#{quantity})
+	</insert>
+	
+	<delete id="setDeletePush" parameterType="PushDTO">
+		delete from project_push where
+		num=#{num}
+	</delete>
+	
+	
+
+</mapper>

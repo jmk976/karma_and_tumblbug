@@ -23,6 +23,9 @@
 			type="com.karma_and_tumblbug.p1.project.ProjectDTO"
 			alias="ProjectDTO" />
 		<typeAlias
+			type="com.karma_and_tumblbug.p1.push.PushDTO"
+			alias="PushDTO" />
+		<typeAlias
 			type="com.karma_and_tumblbug.p1.project.MediaDTO"
 			alias="MediaDTO" />
 		<typeAlias

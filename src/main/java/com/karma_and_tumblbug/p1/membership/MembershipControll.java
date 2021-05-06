@@ -1,5 +1,7 @@
 package com.karma_and_tumblbug.p1.membership;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma_and_tumblbug.p1.payment.PaymentDTO;
+import com.karma_and_tumblbug.p1.payment.PaymentService;
+
 @Controller
 @RequestMapping(value="/membership/**")
 public class MembershipControll {
 
 	@Autowired
 	private MembershipService membershipService;
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	
 	@GetMapping(value="joinCheck")
@@ -44,7 +52,11 @@ public class MembershipControll {
 		String path="membership/login";
 		membershipDTO = membershipService.login(membershipDTO);
 		if(membershipDTO!=null) {
+			PaymentDTO payDTO = new PaymentDTO();
+			payDTO.setId(membershipDTO.getId());
+			List<PaymentDTO> payList = paymentService.getList(payDTO);
 			session.setAttribute("membership", membershipDTO);
+			session.setAttribute("payList", payList);
 			if(session.getAttribute("state")==null) {
 				path="redirect:../";				
 			}else {

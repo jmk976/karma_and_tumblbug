@@ -470,6 +470,25 @@ alter table project modify(bankAccount varchar(100));
 
 select * from board where boardSort='434' order by num desc;
 
+create table project_push(
+num number constraint pp_num_pk primary key,
+id varchar2(20) constraint pp_id_fk references membership on delete cascade,
+projectNum number constraint pp_projectNumber_fk references project(num) on delete cascade,
+paymentNum number constraint pp_payNumber_fk references payment(num) on delete cascade,
+quantity number
+)
+
+create sequence pPush_seq;
+
+drop table project_push;
+
+select * from project_push;
+
+
+select sum(quantity) from project_push;
+
+select id,name from membership;
+select num, id from payment;
 commit work;
 
 

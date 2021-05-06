@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.karma_and_tumblbug.p1.board.BoardDTO;
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
+import com.karma_and_tumblbug.p1.payment.PaymentDTO;
+import com.karma_and_tumblbug.p1.payment.PaymentService;
+import com.karma_and_tumblbug.p1.push.PushDTO;
+import com.karma_and_tumblbug.p1.push.PushService;
 
 @Controller
 @RequestMapping(value="/project/**")
@@ -21,6 +26,12 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private PaymentService paymentService;
+	
+	@Autowired
+	private PushService pushService;
 
 	
 	
@@ -74,7 +85,9 @@ public class ProjectController {
 	public ModelAndView ProjectInsert(ProjectDTO projectDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		projectDTO = projectService.setInsertProject(projectDTO, session);
+		
 		mv.addObject("projectDTO", projectDTO);
+		
 		mv.setViewName("project/projectInsert");
 		return mv;
 	}
@@ -123,7 +136,7 @@ public class ProjectController {
 	}
 	
 	@GetMapping(value="projectSelect")
-	public ModelAndView projectSelect(ProjectDTO projectDTO) throws Exception{
+	public ModelAndView projectSelect(ProjectDTO projectDTO,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		projectDTO = projectService.getProject(projectDTO);
 		BoardDTO tempDTO = new BoardDTO();
@@ -131,6 +144,22 @@ public class ProjectController {
 		List<BoardDTO> community = projectService.getCommunity(tempDTO);
 		mv.addObject("selectDTO", projectDTO);
 		mv.addObject("community", community);
+		MembershipDTO mDto = (MembershipDTO)session.getAttribute("membership");
+		System.out.println("---------");
+
+		if(mDto!=null) {
+			
+		PushDTO pushDTO = new PushDTO();
+		pushDTO.setId(mDto.getId());
+		List<PushDTO> pushList = pushService.getPushList(pushDTO);
+		System.out.println("---------");
+		for(PushDTO dto : pushList) {
+			System.out.println(dto.getProjectNum());
+		}
+		mv.addObject("pList", pushList);
+		}
+		
+		
 		mv.setViewName("project/projectSelect");
 		return mv;
 	}
@@ -169,5 +198,14 @@ public class ProjectController {
 		mv.setViewName("common/ajaxResult");
 		
 		return mv;
+	}
+	
+	@GetMapping(value="projectSelectUpdate")
+	public void projectSelectUpdate(long num,Model model)throws Exception{
+		System.out.println(num);
+		ProjectDTO projectDTO = new ProjectDTO();
+		projectDTO.setNum(num);
+		projectDTO = projectService.getProject(projectDTO);
+		model.addAttribute("dto", projectDTO);
 	}
 }

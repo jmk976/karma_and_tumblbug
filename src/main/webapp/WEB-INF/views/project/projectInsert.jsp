@@ -143,7 +143,7 @@
 					<div class="form-group">
 						<label>장작자 활동 지역</label> <select class="form-control"
 							id="makerLocation" name="makerLocation" title="${projectDTO.makerLocation}">
-							<option value="default">활동 지역을 선택해 주세요</option>
+							<option>활동 지역</option>
 							<option>서울특별시</option>
 							<option>인천광역시</option>
 							<option>대전광역시</option>
@@ -177,6 +177,7 @@
 						<label for="title">목표 금액</label> <input type="number"
 							min="1000000" step="100000" class="form-control"
 							id="targetAmount" name="targetAmount"
+							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 							value="${projectDTO.targetAmount}">
 					</div>
 					<h3>펀딩 기간 설정</h3>
@@ -209,11 +210,22 @@
 					<div class="form-group">
 						<label for="title">휴대폰 번호</label> <input type="text"
 							class="form-control" id="phone" name="phone"
+							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 							value="${projectDTO.phone}">
 					</div>
 					<h3>입금 계좌</h3>
 					<div class="form-group">
 						<label for="title">입금 계좌</label>
+						<c:if test="${payList ne null}">
+						<select class="form-control">
+							<option>계좌 선택</option>
+							<c:forEach items="${payList}" var="pay">
+								<c:if test="${pay.division eq 'account'}">
+									<option>${pay.bankName},${pay.bankAccount}</option>
+								</c:if>
+							</c:forEach>
+						</select>
+						</c:if>
 						<div class="input-group mt-3 mb-3">
 							<div class="input-group-prepend">
 								<select class="form-control" name="bankAccount" id="bankName" title="${projectDTO.bankAccount}">
