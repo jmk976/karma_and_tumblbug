@@ -21,9 +21,8 @@
  font-size: 80%;
  }
 .nb {
-    font-family: 'Bevan'; ont-size: 22px; color: #MediumSeaGreen;
+    font-family: 'Bevan'; font-size: 22px; color: #MediumSeaGreen;
 
-   /*  display: inline; */
 }
 .container-fluid{
  padding-bottom:20px; 

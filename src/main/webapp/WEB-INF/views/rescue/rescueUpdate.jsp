@@ -17,7 +17,7 @@
 
 <div class ="container">
     <br>
-		<h2> 구조 동물 입력 9</h2>
+		<h2> 구조 동물 입력 </h2>
 <form id="frm" action="./rescueUpdate" method="post" enctype="multipart/form-data">
 	
 	

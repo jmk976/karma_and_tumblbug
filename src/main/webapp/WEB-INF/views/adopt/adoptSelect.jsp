@@ -59,6 +59,20 @@ td {
  padding:15px;
  margin: 15px;
 }
+
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 
@@ -68,7 +82,7 @@ td {
 <div class="container">
            
                 <input type="hidden" name="adoptNum" value="${dto.adoptNum}">
-                <h2>입양 신청</h2>
+                <h3>입양 신청</h3>
                  <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
                    <colgroup>
 				<col width="25%">
@@ -79,8 +93,7 @@ td {
 					<th scope="row"><span>진행 사항</span></th>
 					<td>
 			    
-                  
-                  
+         
 						<select disabled name="pass" id="pass" class="custom-select col-sm-6 form-control">
 							    <option value="자격통과">자격통과</option>
 							    <option value="전화통과">1차 전화상담 통과</option>

@@ -376,7 +376,7 @@ h3{
 <!-- /.container -->
 <section class="search-sec">
     <div class="container">
-        <form id="frm" action="./rescueGallery"  novalidate="novalidate">
+        <form id="frm2" action="./rescueGallery"  novalidate="novalidate">
         		<input type="hidden" name="curPage" value="1" id="curPage">
             <div class="row">
                 <div class="col-lg-12">
@@ -443,7 +443,7 @@ h3{
 
 
 
-<script type="text/javascript" src="../resources/jquery/rescueGallery.js"></script>
+
 <script type="text/javascript">
 
 
@@ -508,8 +508,9 @@ $(".sel").each(function(){
 	  let curPage = $(this).attr("title");
 	  $("#curPage").val(curPage);
 	  let search = '${pager.search}';
+
 	 
-	  $("#frm").submit();
+	  $("#frm2").submit();
   });
 	
   
@@ -537,6 +538,7 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 </script>
+<script type="text/javascript" src="../resources/jquery/rescueGallery.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>

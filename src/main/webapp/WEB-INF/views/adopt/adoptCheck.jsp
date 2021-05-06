@@ -102,7 +102,7 @@ color: MediumSeaGreen;">“한국동물구조관리협회는 여러가지 이유
  <c:if test="${not empty membership}">
 	
 	<div style="text-align: center;">
-	<a href="./adoptInsert" class="btn btn-info"> 입양신청하기 </a>
+	<a href="../rescue/rescueGallery?status=구조" class="btn btn-info"> 입양신청하기 </a>
 	</div>
 	
 	</c:if>
