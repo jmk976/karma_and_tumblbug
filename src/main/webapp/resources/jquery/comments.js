@@ -19,7 +19,7 @@ $("#comments").on("click", "#remove", function(){
 		traditional:true, //배열전송
 		data:{commentNum:ar},
 		success:function(data){
-			alert(data);
+			alert('삭제하였습니다');
 		}
 	})
 
