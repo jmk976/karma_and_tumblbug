@@ -182,7 +182,7 @@ http://stackoverflow.com/a/34696029/383904
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 300px;
   max-width: none !important;
-  height: 460px;
+  height: 400px;
   max-height: none !important;
   padding-top:0px;
   margin-top:10px;
@@ -346,11 +346,11 @@ h6{
       <div class="card">
       
       <c:if test="${dto.rescueFileDTO.originalName == null}">
-      <img class="card-img-top" id="myImg" alt="" style="width:100%" src="https://via.placeholder.com/560x420?text=Save+Animal">
+      <a href="./rescue/rescueGallery?status=구조"><img class="card-img-top" id="myImg" alt="" style="width:100%" src="https://via.placeholder.com/560x420?text=Save+Animal"></a>
       
       </c:if>
       <c:if test="${dto.rescueFileDTO.originalName != null}">
-       <img class="card-img-top" id="myImg" alt="" style="width:100%" src="./resources/upload/rescue/${dto.rescueFileDTO.fileName}">
+        <a href="./rescue/rescueGallery?status=구조"><img class="card-img-top" id="myImg" alt="" style="width:100%" src="./resources/upload/rescue/${dto.rescueFileDTO.fileName}"></a>
        </c:if>
 		       <!-- The Modal -->
 		<div id="myModal" class="modal">
@@ -368,7 +368,7 @@ h6{
           			${dto.resDate}
           			<br>
           			 <span style="color:blue;"> SN: ${dto.sn} </span><br>
-          			<span style="color:red;"> ${dto.zoneSn} </span>
+          			
           			</i>
           		</li>
           		
@@ -408,14 +408,7 @@ h6{
                 <input type="hidden" name="kind" value="${dto.kind}">
         
             </form>
-        <c:if test="${pager.status =='구조'}">
-      	 <c:if test="${not empty membership}">
-      	     <a><button onclick="con()">입양신청</button></a>
-      	 </c:if>
-      	 <c:if test="${empty membership}">
-      	     <a><button class="ask">입양신청</button></a>
-      	 </c:if>
-      </c:if>
+       
 
 
   

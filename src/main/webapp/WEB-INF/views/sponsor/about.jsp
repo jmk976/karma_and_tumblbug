@@ -9,6 +9,11 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style>
+
+
+html, body { height: 100%; }
+body { margin: 0; font: sans-serif; }
+
 h3{
 
   text-align: center;
@@ -51,10 +56,20 @@ span {
 대 국민적 홍보를 하고 있으며 서울시의유기동물 위탁 사업으로 유기동물 구조 · 보호관리 · 입양사업과 유기동물 <br>
 발생방지를 위하여 사진전, 대형 TV를 통한 VIDEO 방영,<br>
 방송 매체 등을 통한 홍보활동에 주력하고 있습니다.<br>
-
-
-※ 협회방문 가능시간 : 평일 오전 9:00 ~ 오후 5:00, 토요일 오전 9:00 ~ 오후 4:00
-※ 점심시간 12:00 ~ 13:00
+<br>
+<br>
+※ 협회방문 가능시간 : 평일 오전 9:00 ~ 오후 5:00, 토요일 오전 9:00 ~ 오후 4:00<br>
+※ 점심시간 12:00 ~ 13:00<br>
 </div>
+
+
+
+
+
+
+
+
+
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

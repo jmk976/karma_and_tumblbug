@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style>
+html, body { height: 100%; }
+body { margin: 0; }
 @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
 
 .jejumyeongjo * { 
@@ -126,6 +128,5 @@ $(".ch").click(function(){
 	 alert("로그인 먼저 해주세요.");
 });
 </script>
-
 </body>
 </html>
