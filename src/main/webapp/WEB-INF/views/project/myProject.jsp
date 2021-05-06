@@ -22,6 +22,19 @@ img {
 div {
 	padding: 10px;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -31,7 +44,7 @@ div {
 
 
 
-		<h1>내가 작성한 프로젝트</h1>
+		<h3>내가 작성한 프로젝트</h3>
 		
 		<c:forEach items="${myProjects}" var="mProject">
 		<c:if test="${mProject.state eq 'temporary' }">
@@ -159,7 +172,8 @@ div {
 						</div>
 						<div>
 							<div class="input-group">
-								<h4 class="card-title">${mProject.title}&nbsp
+								<a href="./projectSelect?num=${mProject.num}"><h4 class="card-title">${mProject.title}</h4></a>
+								<h4>&nbsp
 									|&nbsp&nbsp&nbsp&nbsp</h4>
 								<p class="card-text r" id="state">게시</p>
 							</div>

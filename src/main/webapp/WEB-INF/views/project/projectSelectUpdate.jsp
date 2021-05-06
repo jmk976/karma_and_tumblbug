@@ -15,13 +15,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <form action="/p1/board/projectBoardInsert" method="post" id="frm">
 			<input hidden="true" name="boardSort" value="${dto.num}">
 			<input hidden="true" name="id" value="${dto.id}"> <input
 				hidden="true" name="writer" value="${dto.makerName}">
 			<input hidden="true" name="num" value="${dto.num}">
-				<label>제목</label> <input type="text" name="title">
+				<label>제목</label>
+				<br> <input type="text" name="title">
+				<br>
 				<label>내용</label>
 				<textarea style="resize:none;" id="contents" name="contents" class="myCheck"></textarea>
 
@@ -31,5 +32,6 @@
 </form>
 <script type="text/javascript" src="../resources/jquery/summerFile.js"></script>
 <script type="text/javascript" src="../resources/jquery/projectSelectUpdate.js"></script>
+
 </body>
 </html>

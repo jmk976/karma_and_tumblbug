@@ -21,7 +21,7 @@
  font-size: 80%;
  }
 .nb {
-    font-family: 'Bevan'; ont-size: 22px; color: #MediumSeaGreen;
+    font-family: 'Bevan'; font-size: 22px; color: #MediumSeaGreen;
 
    /*  display: inline; */
 }
@@ -111,6 +111,7 @@ nav li  {
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/adopt/adoptUser">My Adoption</a>
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/payment/paymentList">Payment</a>
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/shipping/shippingList">shipping</a>
+		        <a class="dropdown-item" href="${pageContext.request.contextPath}/push/pushList?id=${membership.id}">Push List</a>
 		
 				       
 		      </div>
@@ -140,6 +141,7 @@ nav li  {
 			        <a class="dropdown-item" href="${pageContext.request.contextPath}/sponsor/sponsorList">Sponsor List</a>
 			        <a class="dropdown-item" href="${pageContext.request.contextPath}/sponsor/sponsorListMon">Monthly Sponsor List</a>
 			        <a class="dropdown-item" href="${pageContext.request.contextPath}/adopt/adoptList">Adopt List</a>
+			        <a class="dropdown-item" href="${pageContext.request.contextPath}/project/adminProjectCheck">Project Check</a>
 			     </div>
 			</li>
       </c:if>

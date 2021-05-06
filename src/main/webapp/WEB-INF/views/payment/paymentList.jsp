@@ -6,13 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<h1>${membership.name}'spayList</h1>
 
 	<div class="container">
+		<h3>결제 수단</h3>
 		<a type="button" class="btn btn-primary" id="addBtn">결제 수단 추가 </a>
 
 
@@ -28,10 +43,12 @@
 						<c:if test="${pay.division eq 'account'}">
 							<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>
-							<h6 class="card-subtitle mb-2 text-muted bankAccount" title ="${pay.bankAccount}"></h6>
+							<h6 class="card-subtitle mb-2 text-muted bankAccount"
+								title="${pay.bankAccount}"></h6>
 						</c:if>
 						<c:if test="${pay.division eq 'card'}">
-							<h6 class="card-subtitle mb-2 text-muted cardNum" title="${pay.cardNumber}"></h6>
+							<h6 class="card-subtitle mb-2 text-muted cardNum"
+								title="${pay.cardNumber}"></h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
 						</c:if>
 
@@ -51,10 +68,12 @@
 						<c:if test="${pay.division eq 'account'}">
 							<h6 class="card-subtitle mb-2 text-muted">${pay.ownerName}</h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.bankName}</h6>
-							<h6 class="card-subtitle mb-2 text-muted bankAccount" title ="${pay.bankAccount}"></h6>
+							<h6 class="card-subtitle mb-2 text-muted bankAccount"
+								title="${pay.bankAccount}"></h6>
 						</c:if>
 						<c:if test="${pay.division eq 'card'}">
-							<h6 class="card-subtitle mb-2 text-muted cardNum" title="${pay.cardNumber}"></h6>
+							<h6 class="card-subtitle mb-2 text-muted cardNum"
+								title="${pay.cardNumber}"></h6>
 							<h6 class="card-subtitle mb-2 text-muted">${pay.expirationDate}</h6>
 						</c:if>
 

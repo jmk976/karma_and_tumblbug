@@ -19,6 +19,19 @@
 #searchSample {
 	display: none;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 
 <title>PROJECT UPLOAD</title>
@@ -28,7 +41,7 @@
 	<div class="container">
 
 
-		<h1>ProjectUplod</h1>
+		<h4>프로젝트 작성</h4>
 
 		<br>
 		<!-- Nav tabs -->
@@ -65,7 +78,7 @@
 			<div class="tab-content">
 				<div id="home" class="container tab-pane active">
 					<br>
-					<h3>프로젝트 개요</h3>
+					<h4>프로젝트 개요</h4>
 					<input type="hidden" id="state" name="state" value=""> <input
 						type="hidden" name="id" value="${projectDTO.id}"> <input
 						type="hidden" id="projectNum" name="num" value="${projectDTO.num}">
@@ -104,12 +117,10 @@
 					<div class="form-group">
 						<label for="title">프로젝트 카테고리</label> <select class="form-control"
 							id="category" name="category" title="${projectDTO.category}">
-							<option>카테고리 선택</option>
-							<option>a</option>
-							<option>b</option>
-							<option>c</option>
-							<option>d</option>
-							<option>e</option>
+							<option value="default">카테고리 선택</option>
+					<option>유기 동물 구조</option>
+					<option>야생 동물 구조</option>
+					<option>임시 보호</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -128,7 +139,7 @@
 						</div>
 						<div id="addSearchTag" title="${projectDTO.searchList.size()}"></div>
 					</div>
-					<h3>창작자 정보</h3>
+					<h4>창작자 정보</h4>
 
 					<div class="form-group">
 						<label>창작자 이름</label> <input type="text" class="form-control"
@@ -172,7 +183,7 @@
 
 				<div id="menu1" class="container tab-pane fade">
 					<br>
-					<h3>펀딩 목표 설정</h3>
+					<h4>펀딩 목표 설정</h4>
 					<div class="form-group">
 						<label for="title">목표 금액</label> <input type="number"
 							min="1000000" step="100000" class="form-control"
@@ -180,7 +191,7 @@
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 							value="${projectDTO.targetAmount}">
 					</div>
-					<h3>펀딩 기간 설정</h3>
+					<h4>펀딩 기간 설정</h4>
 					<div class="form-group">
 						<label>프로젝트 공개일시</label> <input type="date" class="form-control"
 							id="openDate" name="openDate" value="${projectDTO.openDate}">
@@ -194,7 +205,7 @@
 
 
 				<div id="menu2" class="container tab-pane fade">
-					<h3>프로젝트 스토리</h3>
+					<h4>프로젝트 스토리</h4>
 					<div class="form-group">
 						<label for="title">프로젝트 스토리</label> <br>
 						<textarea name="projectStory" style="resize: none;"
@@ -206,14 +217,14 @@
 
 				<div id="menu3" class="container tab-pane fade">
 					<br>
-					<h3>본인 인증</h3>
+					<h4>본인 인증</h4>
 					<div class="form-group">
 						<label for="title">휴대폰 번호</label> <input type="text"
 							class="form-control" id="phone" name="phone"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 							value="${projectDTO.phone}">
 					</div>
-					<h3>입금 계좌</h3>
+					<h4>입금 계좌</h4>
 					<div class="form-group">
 						<label for="title">입금 계좌</label>
 						<c:if test="${payList ne null}">

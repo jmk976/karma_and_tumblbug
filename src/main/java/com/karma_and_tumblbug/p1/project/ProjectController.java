@@ -145,17 +145,12 @@ public class ProjectController {
 		mv.addObject("selectDTO", projectDTO);
 		mv.addObject("community", community);
 		MembershipDTO mDto = (MembershipDTO)session.getAttribute("membership");
-		System.out.println("---------");
 
 		if(mDto!=null) {
 			
 		PushDTO pushDTO = new PushDTO();
 		pushDTO.setId(mDto.getId());
 		List<PushDTO> pushList = pushService.getPushList(pushDTO);
-		System.out.println("---------");
-		for(PushDTO dto : pushList) {
-			System.out.println(dto.getProjectNum());
-		}
 		mv.addObject("pList", pushList);
 		}
 		

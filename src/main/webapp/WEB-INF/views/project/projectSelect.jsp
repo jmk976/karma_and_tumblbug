@@ -21,12 +21,26 @@
 .card {
 	margin: 5px;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
+	<h3>프로젝트 상세 보기</h3>
 		<div style="text-align: center;">
 			<h4>${selectDTO.category}</h4>
 			<h1>${selectDTO.title}</h1>
@@ -43,8 +57,8 @@
 					</c:forEach>
 					<div>
 						<p>목표 금액 : ${selectDTO.targetAmount}</p>
-						<p>개시 일시 : ${selectDTO.openDate}</p>
 						<p>종료 일시 : ${selectDTO.closeDate}</p>
+						<p>후원 진행 상태 : ${selectDTO.pushAmount}&nbsp / &nbsp${selectDTO.targetAmount}</p>
 					</div>
 				</div>
 			</div>
@@ -56,13 +70,21 @@
 						<li class="nav-item"><a class="nav-link active"
 							data-toggle="tab" href="#home">스토리</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu1">커뮤니티</a></li>
+							href="#menu1">제작자 소개</a></li>
+							<li class="nav-item"><a class="nav-link" data-toggle="tab"
+							href="#menu2">커뮤니티</a></li>
 					</ul>
 				</div>
 				<div class="tab-content">
 					<div id="home" class="container tab-pane active">
 						${selectDTO.projectStory}</div>
-					<div id="menu1" class="container tab-pane fade">
+						<div id="menu1" class="container tab-pane fade">
+						<h4>활동 지역</h4>
+						<h5>${selectDTO.makerLocation}</h5>
+						<h4>제작자 소개</h4>
+						${selectDTO.makerSummary}
+						</div>
+					<div id="menu2" class="container tab-pane fade">
 						<c:if
 							test="${not empty membership and membership.id eq selectDTO.id}">
 
@@ -72,7 +94,7 @@
 						</c:if>
 						<c:forEach items="${community}" var="comm">
 							<div class="card" style="width: 50rem; margin: 1rem;">
-								<h3 class="card-text">${comm.title}</h3>
+								<h4 class="card-text">${comm.title}</h4>
 								<br>
 								<div style="height: auto; width: 100%; boarder: 1px solid gray;">
 									${comm.contents}</div>
@@ -89,7 +111,7 @@
 					test="${not empty membership and membership.id ne selectDTO.id}">
 
 					<c:if test="${pList eq null}">
-						<c:if test="${payList ne null}">
+						<c:if test="${payList.size()>0}">
 							<c:forEach begin="1" end="4" var="i">
 								<div class="card autoSelect" title="${i*10000}">
 									<div class="card-body">
@@ -131,7 +153,7 @@
 
 
 						<c:if test="${not loop_flag2}">
-							<c:if test="${payList ne null}">
+							<c:if test="${payList.size()>0}">
 								<c:forEach begin="1" end="4" var="i">
 									<div class="card autoSelect" title="${i*10000}">
 										<div class="card-body">
@@ -165,7 +187,7 @@
 						</c:if>
 					</c:if>
 
-					<c:if test="${payList eq null}">
+					<c:if test="${payList.size()<1}">
 						<div class="card">
 							<p>후원을 위해 결제수단을 등록해 주세요</p>
 							<a href="/p1/payment/paymentList" type="submit"
@@ -176,7 +198,7 @@
 				<c:if
 					test="${not empty membership and membership.id eq selectDTO.id}">
 					<div class="card">
-						<p>${selectDTO.makerName}</p>
+						<p>내가 만든 프로젝트 입니다.</p>
 					</div>
 				</c:if>
 

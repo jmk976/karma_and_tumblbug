@@ -16,14 +16,26 @@ p {
 .b {
 	color: blue;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
 
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
-		<h2>memberJoin</h2>
+		<h3>회원가입</h3>
 
 		<form action="./join" method="post" id="frm">
 			<div class="form-group">
@@ -32,22 +44,22 @@ p {
 				<p id="idCheckResult"></p>
 			</div>
 			<div class="form-group">
-				<label for="pw">Password</label> <input type="password"
+				<label for="pw">비밀번호</label> <input type="password"
 					class="form-control" id="pw" name="pw">
 				<p id="pwResult"></p>
 			</div>
 			<div class="form-group">
-				<label for="pw2">Password check</label> <input type="password"
+				<label for="pw2">비밀번호 확인</label> <input type="password"
 					class="form-control" id="pw2" name="pw2">
 				<p id="pw2Result"></p>
 			</div>
 			<div class="form-group">
-				<label for="name">NAME</label> <input type="text"
+				<label for="name">이름</label> <input type="text"
 					class="form-control" id="name" name="name">
 				<p id="nameResult"></p>
 			</div>
 			<div class="form-group">
-				<label for="birth">BIRTH</label>
+				<label for="birth">생년월일</label>
 
 				<div class="input-group mb-3" id="birth">
 
@@ -71,18 +83,18 @@ p {
 				<p id="birthResult"></p>
 			</div>
 			<div class="form-group">
-				<label for="phone">PHONE</label> <input type="text"
+				<label for="phone">휴대전화</label> <input type="text"
 					class="form-control" id="phone" name="phone" class="etc">
 				<p id="phoneResult"></p>
 				
 			</div>
 			
 			<div>
-			<label for="address">ADDRESS</label>
+			<label for="address">주소</label>
 			<div class="input-group mb-3" id="findBtn">
 				<input type="text" readonly="readonly" class="form-control" id="road_name" name="address" placeholder="주소 검색">
 				<div class="input-group-append">
-					<a class="btn btn-success" type="button" >FIND</a>
+					<a class="btn btn-success" type="button" >찾기</a>
 				</div>
 				</div>
 					<input type="text" class="form-control" id="address" name="address"
@@ -90,7 +102,7 @@ p {
 				<p id="addressResult"></p>
 			</div>
 
-			<a type="button" class="btn btn-primary" id="btn">JOIN</a>
+			<a type="button" class="btn btn-primary" id="btn">가입</a>
 
 		</form>
 	</div>

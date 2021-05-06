@@ -6,13 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h1>Project Upload Init</h1>
-		<h3>프로젝트 개요</h3>
+		<h3>프로젝트 올리기</h3>
+		<h4>프로젝트 개요</h4>
 
 		<form action="./projectInsertInit" method="post" id="frm">
 		<div class="form-group">
@@ -23,12 +39,10 @@
 			<div class="form-group">
 				<label for="title">프로젝트 카테고리</label> <select class="form-control"
 					id="category" name="category">
-					<option>default</option>
-					<option>a</option>
-					<option>b</option>
-					<option>c</option>
-					<option>d</option>
-					<option>e</option>
+					<option value="default">카테고리 선택</option>
+					<option>유기 동물 구조</option>
+					<option>야생 동물 구조</option>
+					<option>임시 보호</option>
 				</select>
 
 				<p id="titleCheckResult"></p>

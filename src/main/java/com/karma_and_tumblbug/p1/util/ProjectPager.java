@@ -3,7 +3,7 @@ package com.karma_and_tumblbug.p1.util;
 public class ProjectPager {
 	
 	private int perPage=9;
-	private int perBlock=1;
+	private int perBlock=5;
 	
 	private long curPage;
 	private long startRow;

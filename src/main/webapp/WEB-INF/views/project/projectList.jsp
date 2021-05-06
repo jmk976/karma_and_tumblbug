@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
+
 a {
 	color: black;
 }
@@ -16,22 +17,33 @@ img {
 	width: 100%;
 	object-fit: contain;
 }
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h1>Project List</h1>
-		<form action="./projectList" id="frm" class="form-inline">
+		<h3>프로젝트 둘러보기</h3>
+		<form action="./projectList" id="frm" class="form-inline" >
 			<div class="input-group">
 				<select id="category" name="category">
 					<option value="default">카테고리 선택</option>
-					<option>a</option>
-					<option>b</option>
-					<option>c</option>
-					<option>d</option>
-					<option>e</option>
+					<option>유기 동물 구조</option>
+					<option>야생 동물 구조</option>
+					<option>임시 보호</option>
 				</select> <a type="button" id="setCategory" class="btn btn-primary">선택
 					카테고리의 프로젝트만 보기</a>
 			</div>

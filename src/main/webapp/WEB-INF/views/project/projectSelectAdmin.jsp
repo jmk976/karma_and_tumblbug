@@ -6,16 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
+	<h3>프로젝트 점검</h3>
 		<div style="text-align: center;">
 			<h4>${selectDTO.category}</h4>
-			<h1>${selectDTO.title}</h1>
+			<h2>${selectDTO.title}</h2>
 			<h5>${selectDTO.makerName}</h5>
-			<h3 style="color: red;">${selectDTO.state}</h3>
+			<h4 style="color: red;">${selectDTO.state}</h4>
 		</div>
 		<div class="card">
 			<div class="card-body">
@@ -49,13 +65,13 @@
 				<div class="form-group">
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item"><a class="nav-link active"
-							data-toggle="tab" href="#home">스토리</a></li>
+							data-toggle="tab" href="#home">프로젝트 개요</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu1">커뮤니티</a></li>
+							href="#menu1">펀딩 목표</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu2">커뮤니티</a></li>
+							href="#menu2">프로젝트 스토리</a></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#menu3">커뮤니티</a></li>
+							href="#menu3">작성자 추가 정보</a></li>
 					</ul>
 				</div>
 				
@@ -65,7 +81,7 @@
 					<div class="tab-content">
 						<div id="home" class="container tab-pane active">
 							<br>
-							<h3>프로젝트 개요</h3>
+							<h4>프로젝트 개요</h4>
 							<input type="hidden" id="state" name="state" value=""> <input
 								type="hidden" name="id" value="${selectDTO.id}"> <input
 								type="hidden" id="projectNum" name="num"
@@ -118,7 +134,7 @@
 									</div>
 								</div>
 							</div>
-							<h3>창작자 정보</h3>
+							<h4>창작자 정보</h4>
 
 							<div class="form-group">
 								<label>창작자 이름</label> <input readonly="readonly" type="text"
@@ -167,7 +183,7 @@
 
 
 						<div id="menu2" class="container tab-pane fade">
-							<h3>프로젝트 스토리</h3>
+							<h4>프로젝트 스토리</h4>
 							<div class="form-group">
 								<label for="title">프로젝트 스토리</label> <br>
 								${selectDTO.projectStory}
@@ -178,13 +194,13 @@
 
 						<div id="menu3" class="container tab-pane fade">
 							<br>
-							<h3>본인 인증</h3>
+							<h4>본인 인증</h4>
 							<div class="form-group">
 								<label for="title">휴대폰 번호</label> <input readonly="readonly"
 									type="text" class="form-control" id="phone" name="phone"
 									value="${selectDTO.phone}">
 							</div>
-							<h3>입금 계좌</h3>
+							<h4>입금 계좌</h4>
 							<div class="form-group">
 								<label for="title">입금 계좌</label> <input readonly="readonly"
 									type="text" class="form-control" id="bankAccount"

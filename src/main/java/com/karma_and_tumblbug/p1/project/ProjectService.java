@@ -56,8 +56,6 @@ public class ProjectService {
 				pushDTO.setProjectNum(array.get(i).getNum());
 				String amount = pushDAO.getProjectPush(pushDTO);
 				
-				System.out.println(amount);
-				System.out.println(amount==null);
 				long num=0;
 				if(amount == null) {
 					num=0;
@@ -78,7 +76,6 @@ public class ProjectService {
 				PushDTO pushDTO = new PushDTO();
 				pushDTO.setProjectNum(array.get(i).getNum());
 				String amount = pushDAO.getProjectPush(pushDTO);
-				System.out.println(amount);
 				long num=0;
 				if(amount==null) {
 					num=0;
@@ -117,7 +114,6 @@ public class ProjectService {
 			PushDTO pushDTO = new PushDTO();
 			pushDTO.setProjectNum(array.get(i).getNum());
 			String amount = pushDAO.getProjectPush(pushDTO);
-			System.out.println(amount);
 			long num=0;
 			if(amount==null) {
 				num=0;

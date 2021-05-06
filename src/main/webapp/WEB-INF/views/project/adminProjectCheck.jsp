@@ -6,13 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h1>project list</h1>
-		<h2>submit</h2>
+		<h3>프로젝트 점검</h3>
+		<h4>submit</h4>
 		<c:forEach items="${adminProject}" var="aProject">
 			<c:if test="${aProject.state eq 'submit'}">
 				<div class="card" >
@@ -47,7 +62,7 @@
 				</div>
 			</c:if>
 		</c:forEach>
-		<h2>denied</h2>
+		<h4>denied</h4>
 		<c:forEach items="${adminProject}" var="aProject">
 			<c:if test="${aProject.state eq 'denied'}">
 				<div class="card">
@@ -77,7 +92,7 @@
 				</div>
 			</c:if>
 		</c:forEach>
-		<h2>accept</h2>
+		<h4>accept</h4>
 		<c:forEach items="${adminProject}" var="aProject">
 			<c:if test="${aProject.state eq 'accept'}">
 				<div class="card">

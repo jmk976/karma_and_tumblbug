@@ -19,14 +19,28 @@ p{
 color:red;
 height:15px;
 }
+.nb2 {
+    font-family: 'Bevan'; font-size: 40px; color: #MediumSeaGreen;
+    
+             float: none;
+            left: 35%;  
+           display: block;
+       text-align: center;
 
+   /*  display: inline; */
+}
 </style>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 
-	<h1>LOGIN</h1>
+<h1>  </h1>	
+	<div class="nav justify-content-center">
+      <a class="nb2" href="${pageContext.request.contextPath}/" style="color: MediumSeaGreen">Care Animals Project</a>
+    </div>
+    <br>
+	
 
 	<form action="./login" method="post" id="frm">
 	<div class="form-group">
