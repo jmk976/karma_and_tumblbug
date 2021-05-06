@@ -779,7 +779,13 @@ insert into membership values('id1','pw1','민준','1990-01-01','010-2003-1111',
  insert into membership values('id110','pw1','수아','1991-01-10','010-2023-1110','address_test');
     
 
-
+create table comments(
+      commentNum number constraint comments_CN_PK primary key,
+      num number constraint comments_NUM_FK references board (num) on delete cascade,
+      writer varchar2(200),
+      contents varchar2(4000),
+      regdate date
+);
 
 
 
