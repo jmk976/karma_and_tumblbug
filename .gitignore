@@ -182,3 +182,4 @@ target/m2e-wtp/web-resources/META-INF/maven/com.karma_and_tumblbug/p1/pom.proper
 *.properties
 target/m2e-wtp/web-resources/META-INF/maven/com.karma_and_tumblbug/p1/pom.properties
 sql/project.sql
+target/m2e-wtp/web-resources/META-INF/maven/com.karma_and_tumblbug/p1/pom.properties
