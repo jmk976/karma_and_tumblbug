@@ -15,6 +15,10 @@ let phoneCheck=false;
 let bankAccountCheck=false;
 let finalCheck=false;
 let num=$("#addSearchTag").attr("title");
+let bank = $("#bankName").attr("title");
+let sNum = bank.indexOf(",")
+let bank1 = bank.substring(0,sNum);
+let bank2 = bank.substring(sNum+1);
 
 titleCheckFunc=function(){
 	let tVal=$("#title").val();
@@ -60,7 +64,7 @@ makerSummaryCheckFunc=function(){
 makerLocationCheckFunc=function(){
 	let mlVal=$("#makerLocation").val();
 	makerLocationCheck=false;
-	if(mlVal.length>0){
+	if(mlVal!='활동지역'){
 		makerLocationCheck=true;
 	}
 }
@@ -158,10 +162,11 @@ $(document).ready(function(){
 	if(typeof $("#nullCheck").attr("src") =="undefined"){
 		$("#add").attr("style","");
 		$("#thumbNail").attr("disabled");
-		
 	}
 	$("#category").val($("#category").attr("title"));
-	
+	$("#makerLocation").val($("#makerLocation").attr("title"));
+	$("#bankName").val(bank1);
+	$("#bankAccount").val(bank2);
 })
 
 $("#tempSave").click(function(){

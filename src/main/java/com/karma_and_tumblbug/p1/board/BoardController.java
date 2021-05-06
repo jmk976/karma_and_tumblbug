@@ -126,6 +126,21 @@ public class BoardController {
 		return mv;
 	}
 	
+	@PostMapping(value="projectBoardInsert")
+	public String setInsertProjectBoard(BoardDTO boardDTO,Model model,long num) throws Exception{
+		System.out.println("cont-contents"+boardDTO.getContents());
+		System.out.println(num);
+		int result = boardService.setInsert(boardDTO);
+		String message = "실패";
+		String path = "/p1/project/projectSelect?num="+num;
+		if(result>0) {
+			message="성공";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		return "payment/temp";
+		
+	}
 	
 	
 }

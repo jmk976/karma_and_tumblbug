@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.karma_and_tumblbug.p1.board.BoardDTO;
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
+import com.karma_and_tumblbug.p1.push.PushDAO;
+import com.karma_and_tumblbug.p1.push.PushDTO;
 import com.karma_and_tumblbug.p1.util.FileManager;
 
 @Service
@@ -20,6 +23,9 @@ public class ProjectService {
 
 	@Autowired
 	private FileManager fileManager;
+	
+	@Autowired
+	private PushDAO pushDAO;
 
 
 	public String setSummerFileUpload(ProjectDTO projectDTO, MultipartFile file,HttpSession session) throws Exception{
@@ -45,6 +51,21 @@ public class ProjectService {
 				dto.setMedia_id(array.get(i).getMedia_id());
 				List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
 				array.get(i).setMediaFiles(mDtos);
+//				
+				PushDTO pushDTO = new PushDTO();
+				pushDTO.setProjectNum(array.get(i).getNum());
+				String amount = pushDAO.getProjectPush(pushDTO);
+				
+				System.out.println(amount);
+				System.out.println(amount==null);
+				long num=0;
+				if(amount == null) {
+					num=0;
+				} else {
+					num=Long.parseLong(amount);
+				}
+				array.get(i).setPushAmount(num);
+//				
 			}
 		} else {
 			array = projectDAO.getProjectList(projectDTO);
@@ -53,6 +74,19 @@ public class ProjectService {
 				dto.setMedia_id(array.get(i).getMedia_id());
 				List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
 				array.get(i).setMediaFiles(mDtos);
+//				
+				PushDTO pushDTO = new PushDTO();
+				pushDTO.setProjectNum(array.get(i).getNum());
+				String amount = pushDAO.getProjectPush(pushDTO);
+				System.out.println(amount);
+				long num=0;
+				if(amount==null) {
+					num=0;
+				} else {
+					num=Long.parseLong(amount);
+				}
+				array.get(i).setPushAmount(num);
+//				
 			}
 		}
 		
@@ -79,6 +113,18 @@ public class ProjectService {
 			dto.setMedia_id(array.get(i).getMedia_id());
 			List<MediaDTO> mDtos = projectDAO.getMyMedia(dto);
 			array.get(i).setMediaFiles(mDtos);
+			
+			PushDTO pushDTO = new PushDTO();
+			pushDTO.setProjectNum(array.get(i).getNum());
+			String amount = pushDAO.getProjectPush(pushDTO);
+			System.out.println(amount);
+			long num=0;
+			if(amount==null) {
+				num=0;
+			} else {
+				num=Long.parseLong(amount);
+			}
+			array.get(i).setPushAmount(num);
 		}
 		return array;
 	}
@@ -166,6 +212,11 @@ public class ProjectService {
 	
 	public int setSearchTagDelete(SearchDTO searchDTO) throws Exception{
 		return projectDAO.setSearchTagDelete(searchDTO);
+	}
+	
+	
+	public List<BoardDTO> getCommunity(BoardDTO boardDTO) throws Exception{
+		return projectDAO.getCommunity(boardDTO);
 	}
 	
 	

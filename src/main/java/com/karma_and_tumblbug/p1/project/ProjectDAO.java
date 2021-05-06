@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.karma_and_tumblbug.p1.board.BoardDTO;
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
 
 @Repository
@@ -74,6 +75,10 @@ public class ProjectDAO {
 	
 	public int setSearchTagDelete(SearchDTO searchDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setSearchTagDelete", searchDTO);
+	}
+	
+	public List<BoardDTO> getCommunity(BoardDTO boardDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getCommunity", boardDTO);
 	}
 
 	
