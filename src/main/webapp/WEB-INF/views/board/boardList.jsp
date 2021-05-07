@@ -14,8 +14,21 @@
 	<div class="container">
 
 
+		<c:if test="${sort eq 'notice'}">
+			<h1>공지사항</h1>
+		</c:if>
 
-		<h1>${sort}</h1>
+		<c:if test="${sort eq 'news_letter'}">
+			<h1>보호소 이야기</h1>
+		</c:if>
+
+		<c:if test="${sort eq 'press'}">
+			<h1>보도자료</h1>
+		</c:if>
+
+		<c:if test="${sort eq 'review'}">
+			<h1>입양후기</h1>
+		</c:if>
 
 		<table class="table">
 			<thead class="thead-dark">
@@ -42,9 +55,16 @@
 
 				<tr>
 					<td><c:if test="${not empty membership}">
-
-							<a href="./boardInsert?boardSort=${sort}" type="button"
-								class="btn btn-outline-primary">WRITE</a>
+							<c:if test="${sort eq 'review'}">
+								<a href="./boardInsert?boardSort=${sort}" type="button"
+									class="btn btn-outline-primary">WRITE</a>
+							</c:if>
+							<c:if test="${sort ne 'review'}">
+								<c:if test="${membership.id eq 'admin' }">
+									<a href="./boardInsert?boardSort=${sort}" type="button"
+										class="btn btn-outline-primary">WRITE</a>
+								</c:if>
+							</c:if>
 						</c:if></td>
 				</tr>
 			</tbody>
@@ -115,6 +135,6 @@
 			$('#frm').submit();
 		})
 	</script>
-	
+
 </body>
 </html>

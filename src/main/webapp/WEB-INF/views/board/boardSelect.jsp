@@ -12,7 +12,6 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 
-<h1>${dto.id}Select</h1>
 
 	<table class="table">
 		<thead class="thead-dark">

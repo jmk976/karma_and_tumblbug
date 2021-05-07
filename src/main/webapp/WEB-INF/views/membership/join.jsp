@@ -84,7 +84,7 @@ h3{
 			</div>
 			<div class="form-group">
 				<label for="phone">휴대전화</label> <input type="text"
-					class="form-control" id="phone" name="phone" class="etc">
+					class="form-control" id="phone" name="phone" class="etc" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				<p id="phoneResult"></p>
 				
 			</div>

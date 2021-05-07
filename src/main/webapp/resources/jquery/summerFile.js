@@ -43,7 +43,6 @@ function uploadFile(files){
 		processData:false,
 		contentType:false,
 		success: function(result){
-			alert("ok");
 			fileName=result.trim();
 			console.log(fileName);
 			$("#"+id).summernote('insertImage',fileName);

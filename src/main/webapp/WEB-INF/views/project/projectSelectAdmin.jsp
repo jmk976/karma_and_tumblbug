@@ -20,6 +20,11 @@ h3{
     font-weight: normal;
     font-style: normal;
 }
+img {
+	height: 200px;
+	width: 100%;
+	object-fit: contain;
+}
 </style>
 <title>Insert title here</title>
 </head>

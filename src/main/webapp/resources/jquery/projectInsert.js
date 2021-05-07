@@ -41,6 +41,9 @@ categoryCheckFunc=function(){
 	categoryCheck=false;
 	if(cVal!='default'){
 		categoryCheck=true;
+	}else{
+		
+		
 	}
 }
 
@@ -64,8 +67,10 @@ makerSummaryCheckFunc=function(){
 makerLocationCheckFunc=function(){
 	let mlVal=$("#makerLocation").val();
 	makerLocationCheck=false;
-	if(mlVal!='활동지역'){
+	if(mlVal!='default'){
 		makerLocationCheck=true;
+	}else{
+		$("#makerLocation").val("default");
 	}
 }
 
@@ -167,6 +172,7 @@ $(document).ready(function(){
 	$("#makerLocation").val($("#makerLocation").attr("title"));
 	$("#bankName").val(bank1);
 	$("#bankAccount").val(bank2);
+	$("#makerLocation").val("default");
 })
 
 $("#tempSave").click(function(){

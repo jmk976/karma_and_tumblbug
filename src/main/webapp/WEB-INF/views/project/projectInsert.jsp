@@ -32,6 +32,11 @@ h3{
     font-weight: normal;
     font-style: normal;
 }
+img {
+	height: 200px;
+	width: 100%;
+	object-fit: contain;
+}
 </style>
 
 <title>PROJECT UPLOAD</title>
@@ -50,7 +55,7 @@ h3{
 				<li class="nav-item"><a class="nav-link active"
 					data-toggle="tab" href="#home">프로젝트 개요</a></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href="#menu1">펀딩 및 선물 구성</a></li>
+					href="#menu1">펀딩 세부 정보</a></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href="#menu2">스토리 텔링</a></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
@@ -62,12 +67,14 @@ h3{
 						<button type="button" class="btn btn-outline-primary" id="submit">제출</button>
 					</div>
 				</li>
+				<!-- 
 				<li><a type="button" class="btn btn-outline-primary"
 					id="finalCheck">finalCheck</a></li>
 				<li><a type="button" class="btn btn-outline-primary"
 					id="valCheck">console</a></li>
 				<li><a type="button" class="btn btn-outline-primary"
 					id="summerCheck">summer</a></li>
+					 -->
 			</ul>
 		</div>
 		<!-- Tab panes -->
@@ -228,14 +235,6 @@ h3{
 					<div class="form-group">
 						<label for="title">입금 계좌</label>
 						<c:if test="${payList ne null}">
-						<select class="form-control">
-							<option>계좌 선택</option>
-							<c:forEach items="${payList}" var="pay">
-								<c:if test="${pay.division eq 'account'}">
-									<option>${pay.bankName},${pay.bankAccount}</option>
-								</c:if>
-							</c:forEach>
-						</select>
 						</c:if>
 						<div class="input-group mt-3 mb-3">
 							<div class="input-group-prepend">
