@@ -44,7 +44,6 @@ font-size:30px;:
 	cursor: pointer;
   	font-family: 'MapoGoldenPier'; 
   	text-align: center;
-  padding-bottom:30px;
   
 }
 
@@ -69,6 +68,13 @@ ul.tabs li.current {
 .tab-content.current {
 	display: inherit;
 }
+.img{
+width: 400px;
+display: block;
+margin-left: auto;
+
+margin-right: auto;
+}
 </style>
 </head>
 <body>
@@ -76,10 +82,10 @@ ul.tabs li.current {
 	<div class="container">
 		<ul class="tabs">
 			
-			<li><a href = "">프로필</a></li>
-			<li><a href = "../membership/memberPage">계정</a></li>
-			<li><a href = "../payment/paymentList">결제수단</a></li>
-			<li><a href = "../shipping/shippingList">배송지</a></li>
+			<li><a href = "">profile</a></li>
+			<li><a href = "../membership/memberPage">account</a></li>
+			<li><a href = "../payment/paymentList">payment</a></li>
+			<li><a href = "../shipping/shippingList">shipping</a></li>
 			
 		</ul>
 		<div class="container2">
@@ -101,7 +107,10 @@ ul.tabs li.current {
 			</div>
 
 			<a href="./updateProfile" type="button" class="btn btn-outline-primary">수정</a>
+			
 		</div>
+		
+		<a href=""><img class="img" alt="" src="../resources/images/btnG_완성형.png"></a>
 		
 		
 
