@@ -61,11 +61,6 @@ public class ProfileController {
 		return "redirect:./profileset";
 	}
 	
-	@GetMapping(value="profilesetA")
-	public void profilesetA()throws Exception{
-
-	}
-	
 
 	
 	

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container2">
 		<div class="form-group">
 			<div class="form-group">
 				<label for="nickname">이름</label> <input type="text"
