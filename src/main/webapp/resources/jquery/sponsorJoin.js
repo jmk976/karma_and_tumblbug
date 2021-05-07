@@ -44,15 +44,17 @@
 				let val=$(this).val();
 				
 				if(val=="" ||val==null||typeof val==undefined){
+					alert("이름과 연락처를 작성했는지 확인해주세요.")
 					result = false;
 				}
 		
 		});
 		
-		let pay =$(".myCheck2").prop("selected")
+		let pay =$("#payment").val();
+	   		
 		
-		if(typeof pay==undefined||pay=="" ||pay==null){
-			payCheck=false;
+		if(typeof pay==undefined||pay=="" ||pay==null||pay==0){
+			
 			alert("결제수단을 선택해 주십시오");
 		}
 		
@@ -102,14 +104,15 @@ sponMonth = Number($("#sponMonth").val());
 		
 if(result){
 	if(agree){
-		if(cal){
-			if(payCheck){
+		if(payCheck){
+		      if(cal){
+		
 			$("#frmReg").submit()
 			        }
 				}
 			 }
 	}else {
-			alert("이름과 연락처를 작성했는지 확인해주세요.")
+			alert("후원에 성공하지 못했습니다. 입력조건을 확인해주세요.")
 	
 	}
 		

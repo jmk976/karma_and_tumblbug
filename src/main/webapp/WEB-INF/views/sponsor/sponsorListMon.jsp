@@ -5,6 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
@@ -12,7 +27,7 @@
 
 <div class="container">
 	
-	<h2> ${pagerMon.search} 월 후원현황</h2>
+	<h3> ${pagerMon.search} 월 후원현황</h3>
 	 <div class="card bg-light text-dark">
     	<div class="card-body">
     		<h5 class="card-title">총 금액</h5>

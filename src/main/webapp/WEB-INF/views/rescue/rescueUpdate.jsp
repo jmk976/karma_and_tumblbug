@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 
 
@@ -17,7 +32,7 @@
 
 <div class ="container">
     <br>
-		<h2> 구조 동물 입력 </h2>
+		<h3> 구조 동물 입력 </h3>
 <form id="frm" action="./rescueUpdate" method="post" enctype="multipart/form-data">
 	
 	

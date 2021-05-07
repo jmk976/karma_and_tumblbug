@@ -9,7 +9,6 @@
 <style>
 h3{
   font-family: 'MapoGoldenPier';  text-align: center;
-  border-bottom: 5px dotted gray;
   padding-top:30px;
   padding-bottom:30px;
 }
@@ -29,7 +28,7 @@ h3{
 
 <div class="container">
 	
-	<h2>입양신청현황</h2>
+	<h3>입양신청현황</h3>
 
 	<table class ="table">
 	

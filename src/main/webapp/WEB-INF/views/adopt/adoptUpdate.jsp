@@ -9,6 +9,20 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 
 .container table {
@@ -68,7 +82,7 @@ td {
 <div class="container">
             <form class="form-horizontal" role="form" method="post" action="./adoptUpdate" class="form-horizontal">
                 <input type="hidden" name="adoptNum" value="${dto.adoptNum}">
-                <h2>입양 신청 업데이트 페이지</h2>
+                <h3>입양 신청 업데이트 페이지</h3>
                  <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">
                    <colgroup>
 				<col width="25%">

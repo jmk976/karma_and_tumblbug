@@ -42,8 +42,8 @@ h3{
 			  	  <label for="payment"> 후원방법 </label>
 			  	  
 			  	  
-					  <select name="payment" class="custom-select myCheck2">
-					      <option value="0" disabled selected hidden> 선택 </option>
+					  <select name="payment" id="payment" class="custom-select myCheck2">
+					      <option value="0" disabled selected> 선택 </option>
 					        
 					      <c:forEach items="${payList}" var="pay"> 
 					         <c:if test="${pay.division eq 'account'}">
@@ -171,7 +171,7 @@ h3{
 			  	 
 			  	   <label for="payment"> 후원방법 </label>
 			  	     
-					  <select name="payment" class="custom-select myCheck">
+					  <select name="payment" id="payment" class="custom-select myCheck">
 					      <option value="0" disabled selected hidden> 선택 </option>
 					        
 					      <c:forEach items="${payList}" var="pay"> 
