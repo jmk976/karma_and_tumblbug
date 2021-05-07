@@ -161,7 +161,7 @@ img {
 					<div class="form-group">
 						<label>장작자 활동 지역</label> <select class="form-control"
 							id="makerLocation" name="makerLocation" title="${projectDTO.makerLocation}">
-							<option>활동 지역</option>
+							<option value="default">활동 지역</option>
 							<option>서울특별시</option>
 							<option>인천광역시</option>
 							<option>대전광역시</option>
