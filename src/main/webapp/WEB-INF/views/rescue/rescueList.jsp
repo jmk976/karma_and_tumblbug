@@ -13,6 +13,20 @@
 .row_status{
 width: 100%;
 }
+
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 </head>
 <body>
@@ -25,7 +39,7 @@ width: 100%;
                             <span></span>
                             <span></span>
                         </div>
-	<h2>구조 동물 관리</h2>
+	<h3>구조 동물 관리</h3>
 
 	<table class ="table">
 	

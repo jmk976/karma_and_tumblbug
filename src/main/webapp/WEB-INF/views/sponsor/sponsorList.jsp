@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
 
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
@@ -16,7 +31,7 @@
                
   <div class="container">
 	
-	<h2>후원현황</h2>
+	<h3>후원현황</h3>
 
 	<table class ="table">
 	
@@ -69,7 +84,7 @@
    		 </div>
   	</div>
  	
- 	
+ 	<br>
  	<div class="container">
      
   <ul class="pagination">
@@ -88,9 +103,9 @@
   
   <div class="input-group mt-3 mb-3">
   
-  <%-- 
+
   <c:catch>
-  <c:if test="${membership.id == 'admin'}"> --%>
+  <c:if test="${membership.id == 'admin'}"> 
   
   <form id="frm" action="./sponsorList" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
@@ -109,6 +124,10 @@
     <button class="btn btn-success" type="submit">Search</button>
   </div>
  </form> 
+ 
+ </c:if>
+ </c:catch> 
+ 
  </div>
  
  

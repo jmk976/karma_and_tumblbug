@@ -56,6 +56,22 @@ td {
  padding:15px;
  margin: 15px;
 }
+
+
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 </style>
 <c:import url="../template/bootStrap.jsp"></c:import>
 
@@ -68,7 +84,7 @@ td {
           
 <div class="container">
   <br>
-   <h2>입양 신청</h2>
+   <h3>입양 신청</h3>
             <form id="frm" class="form-horizontal" action="./adoptInsert" method="post">
                 
              <table cellpadding="0" cellspacing="0" summary="입양상담신청 게시판">

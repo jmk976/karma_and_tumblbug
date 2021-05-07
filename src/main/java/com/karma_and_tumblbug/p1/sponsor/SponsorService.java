@@ -26,10 +26,16 @@ public class SponsorService {
 		pager.makeRow();
 		long totalCountMon = sponsorDAO.getTotalCountMon(pager);
 		System.out.println("totalCountMon:"+totalCountMon);
+		if(totalCountMon==0) {
+			totalCountMon=1;
+		}
 		pager.makeNum(totalCountMon);
+		
 		
 		System.out.println("pager.getTotalPage():"+pager.getTotalPage());
 		System.out.println("pager.getLastNum():"+pager.getLastNum());
+		System.out.println("pager.getLastNum():"+pager.getTotalPage());
+
 		return sponsorDAO.getListMon(pager);
 	}
 	
