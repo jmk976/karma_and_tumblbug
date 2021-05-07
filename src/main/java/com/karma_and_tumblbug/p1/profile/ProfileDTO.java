@@ -2,24 +2,14 @@ package com.karma_and_tumblbug.p1.profile;
 
 public class ProfileDTO {
 	private String nickname;
-	private String urlname;
 	private String intro;
 	private String web;
 	private String id;
-	
-	
-	
 	public String getNickname() {
 		return nickname;
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}
-	public String getUrlname() {
-		return urlname;
-	}
-	public void setUrlname(String urlname) {
-		this.urlname = urlname;
 	}
 	public String getIntro() {
 		return intro;

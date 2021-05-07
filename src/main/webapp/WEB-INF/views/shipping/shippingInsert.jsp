@@ -26,7 +26,6 @@
 				<input type="text" id="sample6_address" placeholder="주소" name="shipAddress"><br>
 				<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="shipAddress">
 				<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-				
 			</div>
 
 			<div class="form-group">
@@ -44,7 +43,7 @@
 				<input type="hidden" id="id" name="id" value="${membership.id}">
 			</div>
 
-			<!-- 	<button type="submit" class="btn btn-primary">Submit</button> -->
+		
 			<input type="submit" id="addbtn" value="ADD" class="btn btn-primary">
 		</form>
 
