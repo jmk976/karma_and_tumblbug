@@ -7,21 +7,39 @@
 <meta charset="UTF-8">
 <c:import url="../template/bootStrap.jsp"></c:import>
 <title>Insert title here</title>
+<style type="text/css">
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.container {
+	padding-top:30px;
+  	padding-bottom:30px;
+	text-align: center;
+}
+
+
+
+</style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h3>profile update</h3>
 	
-	<form action="./updateProfile" method="post" id="frm">
+	<form action="./updateProfile" method="post" id="frm" class="container">
 			<div class="form-group">
 				<label for="nickname">이름</label> <input type="text"
 					class="form-control myCheck" id="nickname" name="nickname"
 					value="${dto.nickname}">
-			</div>
-			<div class="form-group">
-				<label for="urlname">사용자 이름(URL)</label> <input type="text"
-					class="form-control myCheck" id="urlname" name="urlname"
-					value="${dto.urlname}" >
 			</div>
 			<div class="form-group">
 				<label for="intro">소개</label> <input type="text"
@@ -32,12 +50,6 @@
 				<label for="web">웹사이트</label> <input type="text"
 					class="form-control myCheck" id="web" name="web" value="${dto.web}"
 					>
-			</div>
-			<div class="form-group">
-				<label for="privacy">프라이버시</label> <input type="text"
-					class="form-control myCheck" id="privacy" name="privacy"
-					value="${dto.privacy}" >
-	
 			</div>
 
 			<div class="form-group">

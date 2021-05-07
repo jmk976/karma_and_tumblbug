@@ -16,12 +16,16 @@ body {
 .container {
 	width: 500px;
 	margin: 0 auto;
+	padding-top:30px;
+  padding-bottom:30px;
 }
 
 ul.tabs {
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
+	text-align: center;
+	border-bottom: 5px dotted gray;
 }
 
 ul.tabs li {
@@ -30,6 +34,18 @@ ul.tabs li {
 	display: inline-block;
 	padding: 10px 15px;
 	cursor: pointer;
+  	font-family: 'MapoGoldenPier'; 
+  	text-align: center;
+  
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+	
 }
 
 ul.tabs li.current {
@@ -39,8 +55,6 @@ ul.tabs li.current {
 
 .tab-content {
 	display: none;
-	background: #ededed;
-	padding: 15px;
 }
 
 .tab-content.current {

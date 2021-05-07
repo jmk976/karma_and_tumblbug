@@ -83,8 +83,13 @@ h3{
 				<label for="phone">휴대전화</label> <input type="text"
 					class="form-control" id="phone" name="phone" class="etc"
 					value="${membership.phone}">
-				<p id="phoneResult"></p>
-			
+				
+			<div class="form-group">
+					<input type="button" id="sendphoneNum" value="인증번호 전송"><br>
+					인증번호: <input type="text" id="checkNum">
+					<input type="button" id="" value="확인"> 
+				</div>	
+			<p id="phoneResult"></p>
 			</div>
 
 			<div id="addressParse" title="${membership.address}">

@@ -8,7 +8,27 @@
 <title>Insert title here</title>
 <style type="text/css">
 .container {
-	margin-top: 25px;
+	padding-top:30px;
+  	padding-bottom:30px;
+	text-align: center;
+}
+.card-body {
+	padding-top:30px;
+  	padding-bottom:30px;
+	text-align: center;
+}
+h3{
+  font-family: 'MapoGoldenPier';  text-align: center;
+  border-bottom: 5px dotted gray;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+@font-face {
+    font-family: 'MapoGoldenPier';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 </style>
 
@@ -18,12 +38,12 @@
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
-		<h5>등록된 배송지</h5>
+		<h3>등록된 배송지</h3>
 		<a href="" id="insert">+ 배송지 추가</a>
 
 
 		<c:forEach items="${list}" var="dto">
-			<div class="card w-75">
+			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">${dto.shipName}</h5>
 					<p class="card-text">${dto.shipAddress}</p>

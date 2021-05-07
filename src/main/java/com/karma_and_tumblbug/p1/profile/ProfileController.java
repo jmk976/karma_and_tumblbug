@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.karma_and_tumblbug.p1.membership.MembershipDTO;
+import com.karma_and_tumblbug.p1.shipping.ShippingDTO;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -28,7 +29,7 @@ public class ProfileController {
 	@GetMapping(value="profileset")
 	public ModelAndView getProfile(ProfileDTO profileDTO, HttpSession httpSession)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		MembershipDTO membershipDTO = (MembershipDTO)httpSession.getAttribute("membership");
+		MembershipDTO membershipDTO = ((MembershipDTO)httpSession.getAttribute("membership"));
 		profileDTO.setId(membershipDTO.getId());
 		profileDTO = profileService.getProfile(profileDTO);
 		mv.addObject("dto", profileDTO);
@@ -47,17 +48,22 @@ public class ProfileController {
 	}
 	
 	@GetMapping(value = "updateProfile")
-	public void updateProfile()throws Exception{
-		
+	public void updateProfile(ProfileDTO profileDTO, Model model)throws Exception{
+		MembershipDTO dto = new MembershipDTO();
+		profileDTO.setId(dto.getId());
+		profileDTO = profileService.getProfile(profileDTO);
+		model.addAttribute("dto", profileDTO);
 	}
 	
 	@PostMapping(value = "updateProfile")
-	public String updateProfile(ProfileDTO profileDTO, HttpSession session)throws Exception{
+	public String updateProfile(ProfileDTO profileDTO)throws Exception{
 		int result = profileService.updateProfile(profileDTO);
-		if(result>0) {
-			session.setAttribute("dto", profileDTO);
-		}
 		return "redirect:./profileset";
+	}
+	
+	@GetMapping(value="profilesetA")
+	public void profilesetA()throws Exception{
+
 	}
 	
 
