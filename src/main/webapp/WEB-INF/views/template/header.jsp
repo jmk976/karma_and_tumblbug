@@ -103,8 +103,7 @@ nav li  {
 		
 		      <div class="dropdown-menu">
 				<a class="dropdown-item" href="${pageContext.request.contextPath}/membership/memberPage">My Page</a>
-				<a class="dropdown-item" href="${pageContext.request.contextPath}/profile/profileset">profile</a>   
-				<a class="dropdown-item" href="${pageContext.request.contextPath}/profile/profileHome">HOME</a>
+				<a class="dropdown-item" href="${pageContext.request.contextPath}/profile/profileset">My profile</a>
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/project/myProject">My Project</a>
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/sponsor/sponsorList?curPage=1&kind=Id&search=${membership.id}">My Sponsor</a>
 		        <a class="dropdown-item" href="${pageContext.request.contextPath}/adopt/adoptUser">My Adoption</a>

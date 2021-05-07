@@ -59,6 +59,13 @@ function sample6_execDaumPostcode() {
 						}).open();
 			}
 			
+$("#addBtn").click(function(){
+	$("#frm").submit();
+	setTimeout(
+		opener.location.reload()
+	,2000);
+});
+			
 
 
 
