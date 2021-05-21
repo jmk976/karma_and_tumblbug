@@ -2,7 +2,7 @@
  * 
  */
  
- 
+/*   payment 확인  */ 
 let pc = $("#paymentCheck").attr("title");
 
 
@@ -46,23 +46,19 @@ $("#btnGeneral").click(function(){
 			agree=false;
 		}
 		
-	if(result){
-			if(agree){
-				if(payCheck){
-			$("#frm").submit()
-			     }
-			}
-	}else {
-				alert("후원에 성공하지 못했습니다. 입력조건을 확인해주세요.")
-	
-			
-			
-		
-	}
+		if(result){
+				if(agree){
+					if(payCheck){
+				$("#frm").submit()
+				     }
+				}
+		}else {
+					alert("후원에 성공하지 못했습니다. 입력조건을 확인해주세요.")
+		}
 });
 	
 	
-	$("#money").blur(function(){
+$("#money").blur(function(){
 	 let money = $("#money").val();
 	 $("#totalMoney").val(money);
 });

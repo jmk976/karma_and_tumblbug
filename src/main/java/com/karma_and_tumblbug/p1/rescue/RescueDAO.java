@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
-
-
-
 @Repository
 public class RescueDAO {
 	
@@ -27,10 +24,7 @@ public class RescueDAO {
 	}
 	
 	public int setUpdate(RescueDTO rescueDTO) throws Exception {
-		System.out.println("rescueDAO의 setupdate:"+ rescueDTO.getSn());
-		int result= sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
-		System.out.println("rescueDAO의 setupdate의 sql 후 :"+ rescueDTO.getSn());
-		return result;
+		return sqlSession.update(NAMESPACE+"setUpdate", rescueDTO);
 	}
 	public RescueFileDTO getFileSelect(RescueFileDTO rescueFileDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getFileSelect", rescueFileDTO);

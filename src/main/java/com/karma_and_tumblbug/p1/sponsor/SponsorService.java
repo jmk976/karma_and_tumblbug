@@ -23,52 +23,33 @@ public class SponsorService {
 	}
 	
 	public List<SponsorDTO> getListMon(Pager pager)throws Exception{
+		// -------startRow, lastRow--------
 		pager.makeRow();
+		//-------------페이징계산  -----------
 		long totalCountMon = sponsorDAO.getTotalCountMon(pager);
-		System.out.println("totalCountMon:"+totalCountMon);
+		
 		if(totalCountMon==0) {
 			totalCountMon=1;
 		}
+		
 		pager.makeNum(totalCountMon);
-		
-		
-		System.out.println("pager.getTotalPage():"+pager.getTotalPage());
-		System.out.println("pager.getLastNum():"+pager.getLastNum());
-		System.out.println("pager.getLastNum():"+pager.getTotalPage());
-
 		return sponsorDAO.getListMon(pager);
-	}
-	
-	public long getTotalCountMon(Pager pager)throws Exception{
-		return 0;
 	}
 	
 	public Long getTotalSumMon(Pager pager)throws Exception{
 		return sponsorDAO.getTotalSumMon(pager);
 	}
 	
-	public List<SponsorDTO> getList(Pager pager) throws Exception{
-		
-		
 	
+	
+	public List<SponsorDTO> getList(Pager pager) throws Exception{
 		// -------startRow, lastRow--------
 		pager.makeRow();
-	
-		//-------------------------------
-		
-		//-----------페이징계산  ---------
+		//------------페이징계산 -------------
 		long totalCount= sponsorDAO.getTotalCount(pager);
-		System.out.println("totalCount:"+totalCount);
+
 		pager.makeNum(totalCount);
-				
-		
 		return sponsorDAO.getList(pager);
-	}
-	
-	public long getTotalCount(Pager pager) throws Exception {
-		
-		return 0;
-	
 	}
 	
 	public Long getTotalSum(Pager pager) throws Exception{
@@ -76,5 +57,13 @@ public class SponsorService {
 	}
 
 	
+	public long getTotalCountMon(Pager pager)throws Exception{
+		return 0;
+	}
+	
+	public long getTotalCount(Pager pager) throws Exception {
+		return 0;
+	}
+
 	
 }

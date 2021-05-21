@@ -75,7 +75,6 @@ h5{
 	
 	
 </div>
-<script type="text/javascript" src="../resources/jquery/sponsorCheck.js"></script>
 
 <script type="text/javascript">
 

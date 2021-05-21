@@ -27,54 +27,36 @@ public class SponsorController {
 	private PaymentService paymentService;
 	
 	
-	
-	@GetMapping("about")
-	public void about() throws Exception{
-		
-	}
-	
 	@GetMapping("sponsorJoin")
 	public ModelAndView setInsert(SponsorDTO sponsorDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		PaymentDTO payDTO = new PaymentDTO();
 		payDTO.setId(sponsorDTO.getId());
 		
-		
-		
 		List<PaymentDTO> payList = paymentService.getList(payDTO);
 		
-		
-		
-
 		mv.addObject("payList", payList);
-
 		mv.addObject("dto", sponsorDTO);
 		
 		return mv;
-		
 	}
 	
 	@PostMapping("sponsorJoin")
 	public String setInsert(SponsorDTO sponsorDTO, Model model) throws Exception {
-		
-		System.out.println(sponsorDTO.getLastPay());
 		int result = sponsorService.setInsert(sponsorDTO);
 		String message="후원 신청이 실패했습니다. 다시 시도해주세요.";
 		String path="./sponsorCheck";
+		
 		if(result>0) {
 			message="후원해주셔서 감사합니다.";
 		    path="../";
 		}
+		
 		model.addAttribute("msg", message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
-		
 	}
 	
-	@GetMapping("sponsorCheck")
-	public void sponsorCheck() throws Exception{
-		
-	}
 	
 	@GetMapping("sponsorSelect")
     public ModelAndView getSelect(SponsorDTO sponsorDTO) throws Exception {
@@ -89,16 +71,12 @@ public class SponsorController {
 	@RequestMapping("sponsorList")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		System.out.println(pager.getCurPage());
 		
-		System.out.println("Service 호출전: "+pager.getTotalPage());
 		List<SponsorDTO> ar = sponsorService.getList(pager);
-		System.out.println("Service 호출: "+pager.getTotalPage());
 		
 		Long totalSum = sponsorService.getTotalSum(pager);
 		
 		modelAndView.addObject("totalSum", totalSum);
-
 
 		modelAndView.addObject("list", ar);
 		modelAndView.setViewName("sponsor/sponsorList");
@@ -110,18 +88,14 @@ public class SponsorController {
 	public ModelAndView getListMon(Pager pager)throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		List<SponsorDTO> arr = sponsorService.getListMon(pager);
-		System.out.println("list service호출후 get search: "+pager.getSearch());
 	
-     	
 		Long totalSumMon = sponsorService.getTotalSumMon(pager);
+		
 		if(totalSumMon == null) {
-			System.out.println("r괜찮다");
-		   totalSumMon =(long) 0;
-			
+		   totalSumMon = (long) 0;
 		}else {
 		modelAndView.addObject("totalSumMon", totalSumMon);
 		}
-
       
 		modelAndView.addObject("listMon", arr);
 		modelAndView.addObject("pagerMon",pager);
@@ -129,7 +103,12 @@ public class SponsorController {
 		return modelAndView;
 	}
 	
+	@GetMapping("sponsorCheck")
+	public void sponsorCheck() throws Exception{
+	}
 	
-	
+	@GetMapping("about")
+	public void about() throws Exception{	
+	}
 
 }

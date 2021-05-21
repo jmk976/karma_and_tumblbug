@@ -201,15 +201,6 @@ h3{
   } 
 
 
-
- /* 
- let kind='${pager.kind}';
-	  $(".sel").each(function(){
-		 let t = $(this).text(); 
-		 if(t==kind) {
-			 $(this).prop("selected", true);
-		 }
-	  }); */
   
   $(".p").click(function(){
 	  let curPage = $(this).attr("title");
@@ -218,12 +209,7 @@ h3{
 	 
 	  $("#frm").submit();
   });
-	/*   $("#curPage").val(curPage);
-	  $("#kind").val(kind);
-	  $("#search").val(search);
-	  $("#frm").submit(); */
-	 //location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
-	  
+	
  $("#search").click(function(){
 	let s = $("#species").val();
 	let result = "";

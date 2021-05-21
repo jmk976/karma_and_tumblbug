@@ -187,25 +187,6 @@ h3{
     	 </c:if>
  
   	</div> 
-  	
-  	<%-- <div id="files" title="${dto.rescueFileDTO.size()}"></div>
-						<div class="inputArea">
-							 <label for="gdsImg">이미지</label>
-							 <input type="file" id="avatar" name="avatar" />
-							 <div class="select_img">
-							  <img src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}" />
-							  <input type="hidden" name="gdsImg" value="${goods.gdsImg}" />
-						
-							 </div>
-							 
-							 
-							
-							</div>
-							
- --%>
- 
-  
-   
 
    <input type="button" id="btn" value="입력" class="btn btn-primary">
   <a href="./rescueList"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
@@ -254,10 +235,8 @@ for (i=1; i < cnt[province].length;i++){
 
 	if( city == sel.options[i].value){
 	    sel.options[i].selected = true;
-
 	}
 }
-
 
 function changeCity(add) {
 sel = document.getElementById('city');

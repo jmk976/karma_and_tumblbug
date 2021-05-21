@@ -84,84 +84,6 @@ float: left;
 
 #myImg:hover {opacity: 0.7;}
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {  
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-  from {-webkit-transform:scale(0)} 
-  to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-  from {transform:scale(0)} 
-  to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
-}
 
 
 h3{
@@ -205,9 +127,7 @@ h3{
   <c:if test="${pager.status =='입양'}">
      <h3 class="my-4">입양 됐어요</h3>
   </c:if>
-  
-   
-  
+
 
   <div class="row">
    <c:forEach items="${list}" var="dto"> 
@@ -217,17 +137,11 @@ h3{
       
       <c:if test="${dto.rescueFileDTO.originalName == null}">
       <img class="card-img-top" id="myImg" alt="" style="width:100%" src="https://via.placeholder.com/560x420?text=Save+Animal">
-      
       </c:if>
       <c:if test="${dto.rescueFileDTO.originalName != null}">
        <img class="card-img-top" id="myImg" alt="" style="width:100%" src="../resources/upload/rescue/${dto.rescueFileDTO.fileName}">
        </c:if>
-		       <!-- The Modal -->
-		<div id="myModal" class="modal">
-		  <span class="close">&times;</span>
-		  <img class="modal-content" id="img01" >
-		  <div id="caption">크게보기</div>
-		</div>
+
 		
         <div class="card-body">
           <p class="card-text">
@@ -318,25 +232,24 @@ h3{
           		
           		</c:if>
           	</ul>
-         </p>
+            </p>
             </div>
-            <form action="../adopt/adoptInsert" id="frm" method="get">
-              <input type="hidden" name="sn" value="${dto.sn}">
-               <input type="hidden" name="species" value="${dto.species}">
-                <input type="hidden" name="kind" value="${dto.kind}">
+            
+       <form action="../adopt/adoptInsert" id="frm" method="get">
+             <input type="hidden" name="sn" value="${dto.sn}">
+              <input type="hidden" name="species" value="${dto.species}">
+              <input type="hidden" name="kind" value="${dto.kind}"> 
         
-            </form>
-        <c:if test="${pager.status =='구조'}">
-      	 <c:if test="${not empty membership}">
-      	     <a><button onclick="con()">입양신청</button></a>
-      	 </c:if>
-      	 <c:if test="${empty membership}">
-      	     <a><button class="ask">입양신청</button></a>
-      	 </c:if>
-      </c:if>
-
-
-  
+	           
+	        <c:if test="${pager.status =='구조'}">
+		      	 <c:if test="${not empty membership}">
+		      	     <a><button onclick="con()">입양신청</button></a>
+		      	 </c:if>
+		      	 <c:if test="${empty membership}">
+		      	     <a><button class="ask">입양신청</button></a>
+		      	 </c:if>
+            </c:if>
+        </form>
     </div>
     
 
@@ -344,11 +257,6 @@ h3{
   </c:forEach>
  </div>
   <!-- /.row -->
-
-
-
- 
-  
 
   <!-- Pagination -->
    <ul class="pagination justify-content-center">
@@ -441,9 +349,6 @@ h3{
 </section>
 
 
-
-
-
 <script type="text/javascript">
 
 
@@ -454,90 +359,96 @@ $(".ask").click(function(){
 </script>
 
 <script type="text/javascript">
-
 var cnt = new Array();
 cnt[0] = new Array('전체');
 cnt["서울특별시"] = new Array("전체","강남구","강동구","강북구","강서구","광진구","구로구","금천구","노원구","도봉구","동대문구","서대문구","서초구","성동구","성북구","송파구","영등포구","은평구","종로구","중구","중랑구");
 cnt["경기도"] = new Array("전체","고양시","과천시","광명시","구리시","군포시","남양주시","동두천시","부천시","성남시","수원시","시흥시","안산시","안양시","오산시","의왕시","의정부시","평택시","하남시","가평군","광주시","김포시","안성시","양주시","양평군","여주군","연천군","용인시","이천군","파주시","포천시","화성시");
 cnt["인천광역시"] = new Array("전체","계양구","남구","남동구","동구","부평구","서구","연수구","중구","강화군","옹진군");
 
+let province ="${pager.province}"
+	$("#province").val(province).prop("selected", true); 
+
+let city ="${pager.city}"
+	
+let sel = document.getElementById('city');
+
+for (i=1; i < cnt[province].length;i++){ 
+	sel.options[i] = new Option(cnt[province][i], cnt[province][i]);
+
+	if( city == sel.options[i].value){
+	    sel.options[i].selected = true;
+
+	}
+}
+
 function changeCity(add) {
 	sel = document.getElementById('city');
 	
 	for (i=1; i < cnt[add].length;i++){ 
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
-//    document.form.test2.options[i] = new Option(num[i],vnum[i]);
-
 	} 
  }
-
+ 
 var cntt = new Array(); 
 cntt[0] = new Array('전체');
 cntt["개"] = new Array("선택","Mix","그레이하운드","그레이트피레니즈","닥스훈트","도베르만","리트리버","롯트와일러","말티즈","미니핀","바셋하운드","비글","보스턴테리어","복서","세타","세인트버나드","시베리안허스키","시츄","샤모예드","샤페이","슈나우저","스피츠","알래스칸말라뮤트","요크셔테리어","웰시코기","진도","제페니즈친","차우차우","치와와","코카스파니엘","콜리","퍼그","포메라니안","포인터","폭스테리어","푸들","페키니즈","보더콜리","기타","프렌치불독","시바견","비숑프리제","불테리어","잭러셀테리어"); 
 cntt["고양이"] = new Array("선택","코리안숏헤어","샴","페르시안","러시안블루","터키시앙고라","배회고양이","기타"); 
 cntt["기타"] = new Array("선택","토끼","페릿","기니피그","이구아나","고슴도치","카멜레온","도마뱀","거북이","뱀","가고일 게코","사바나모니터","기타"); 
 
+let species="${pager.species}"
+	$("#species").val(species).prop("selected", true);
+	
+let kind="${pager.kind}"
+
+let sel2 = document.getElementById('kind');
+
+for (i=1; i < cntt[species].length;i++){ 
+	sel2.options[i] = new Option(cntt[species][i], cntt[species][i]); 
+	
+	if( kind == sel2.options[i].value){
+	    sel2.options[i].selected = true;
+
+	}
+} 
+
 function change_serch(ku) { 
-	sel = document.getElementById('kind');
+	sel2 = document.getElementById('kind');
 	
 	for (i=1; i < cntt[ku].length;i++){ 
-		sel.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
+		sel2.options[i] = new Option(cntt[ku][i], cntt[ku][i]); 
 	} 
  } 
- 
- 
-	
-
-
- 
 </script>
   
 
 <script type="text/javascript">
 
 
-let kind='${pager.kind}';
-$(".sel").each(function(){
-	 let t = $(this).text(); 
-	 if(t==kind) {
-		 $(this).prop("selected", true);
-	 }
-}); 
+	let status='${pager.status}';
+	$(".sel").each(function(){
+		 let t = $(this).text(); 
+		 if(t==status) {
+			 $(this).prop("selected", true);
+		 }
+	}); 
 
-  $(".p").click(function(){
-	  let curPage = $(this).attr("title");
-	  $("#curPage").val(curPage);
-	  let search = '${pager.search}';
 
+
+	 $(".p").click(function(){
+		  let curPage = $(this).attr("title");
+		  $("#curPage").val(curPage);
+		 
+		  $("#frm2").submit();
+	 });
 	 
-	  $("#frm2").submit();
-  });
+	 
+	 
 	
-  
-  </script>
-  
-  <script>
-// Get the modal
-var modal = document.getElementById("myModal");
+ </script>
+ 
+ 
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-  modal.style.display = "none";
-}
-</script>
 <script type="text/javascript" src="../resources/jquery/rescueGallery.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 

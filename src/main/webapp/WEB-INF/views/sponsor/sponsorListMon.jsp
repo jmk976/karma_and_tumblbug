@@ -65,68 +65,46 @@ h3{
 		</tbody>
 	</table>
 	
-	
- <%-- <c:catch>
-	<c:if test="${member.id=='admin'}">
-	</div> 
-	<div class="container">
-      <a href="./noticeInsert"> <button type="button" class="btn btn-dark">글작성</button></a>
-	</div>
-	 </c:if>
- </c:catch> --%>
- 
- 	
-   
-   
  	
  	
  	<div class="container">
      
-  <ul class="pagination">
-  
-    <c:if test="${pagerMon.pre}">
-    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.startNum-1}">Previous</a></li>
-    </c:if>
-    
-    <c:forEach begin="${pagerMon.startNum}" end="${pagerMon.lastNum}" var="i"> 
-    <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
-    </c:forEach>
-    
-    <c:if test="${pagerMon.next}">    
-    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.lastNum+1}">Next</a></li>
-    </c:if> 
-  </ul>
-  
+	  <ul class="pagination">
+	  
+	    <c:if test="${pagerMon.pre}">
+	    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.startNum-1}">Previous</a></li>
+	    </c:if>
+	    
+	    <c:forEach begin="${pagerMon.startNum}" end="${pagerMon.lastNum}" var="i"> 
+	    <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
+	    </c:forEach>
+	    
+	    <c:if test="${pagerMon.next}">    
+	    <li class="page-item"><a class="page-link p" href="#" title="${pagerMon.lastNum+1}">Next</a></li>
+	    </c:if> 
+	  </ul>
+	  
   <div class="input-group mt-3 mb-3">
   
-<form id="frm" action="./sponsorListMon" class="form-inline">
+	<form id="frm" action="./sponsorListMon" class="form-inline">
 		<input type="hidden" name="curPage" value="1" id="curPage">
-	
+
+  		<input type="month" class="form-control" name="search" id="search" value="${pagerMon.search}">
   
-  <input type="month" class="form-control" name="search" id="search" value="${pagerMon.search}" placeholder="">
-  
-    <div class="input-group-append">
-    <button class="btn btn-success" id="sub" type="submit">Search</button>
-  </div>
- </form> 
- 
+    	<div class="input-group-append">
+    		<button class="btn btn-success" id="sub" type="submit">Search</button>
+  		</div>
+ 	</form> 
  
   <a href="./sponsorList" class="btn btn-info"> 전체 후원금 보기 </a>
  
- 
- 
-</div>
-
-</div>
+		</div>
+	</div>
 </div>
    
 
   <script type="text/javascript">
   
-
-
-  
- 
   
  $("#sub").click(function(){
 	 alert($("#search").val());
@@ -141,11 +119,7 @@ h3{
 	 
 	  $("#frm").submit();
 	  
-	/*   $("#curPage").val(curPage);
-	  $("#kind").val(kind);
-	  $("#search").val(search);
-	  $("#frm").submit(); */
-	 //location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+	
 	  
   });
   

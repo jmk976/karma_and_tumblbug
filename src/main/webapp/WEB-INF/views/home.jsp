@@ -352,12 +352,7 @@ h6{
       <c:if test="${dto.rescueFileDTO.originalName != null}">
         <a href="./rescue/rescueGallery?status=구조"><img class="card-img-top" id="myImg" alt="" style="width:100%" src="./resources/upload/rescue/${dto.rescueFileDTO.fileName}"></a>
        </c:if>
-		       <!-- The Modal -->
-		<div id="myModal" class="modal">
-		  <span class="close">&times;</span>
-		  <img class="modal-content" id="img01" >
-		  <div id="caption">크게보기</div>
-		</div>
+		       
 		
         <div class="card-body">
           <p class="card-text">

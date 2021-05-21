@@ -28,7 +28,7 @@ let k = $("#kind").val()
 				alert("종류를 선택하시오.");
 			}
 			
- if($("input[name=famAgree]:radio:checked").length <1){
+if($("input[name=famAgree]:radio:checked").length <1){
 	alert("가족 동의를 체크하시오.")
 	result2 = false;
 }

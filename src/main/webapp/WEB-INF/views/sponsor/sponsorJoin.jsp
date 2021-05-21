@@ -30,18 +30,19 @@ h3{
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-			 <input type="hidden"  id="paymentCheck" title="${payList}">
+
+<input type="hidden"  id="paymentCheck" title="${payList}">
 
 <c:if test="${dto.sponSort=='정기후원'}">
 <div class ="container">
 		<h3> 정기후원 신청 </h3>
-	<form id="frmReg" action="./sponsorJoin" method="post" enctype="multipart/form-data">
+	<form id="frmReg" action="./sponsorJoin" method="post">
 	
   	<div class="row">
+  	
 	  	  <div class="col">
 			  	  <label for="payment"> 후원방법 </label>
-			  	  
-			  	  
+			  	
 					  <select name="payment" id="payment" class="custom-select myCheck2">
 					      <option value="0" disabled selected> 선택 </option>
 					        
@@ -56,6 +57,7 @@ h3{
 					  </select>
 				
 	   	  </div>
+	   	  
 	   	  <div class="col">
 	   		    <label for="sponSort"> 후원분류 </label>
 	     		<input type="text" readonly="readonly" class="form-control" value="${dto.sponSort}" name="sponSort">
@@ -87,31 +89,31 @@ h3{
    
    
    <div class="row">
-	  	  <div class="col">
-	        <label for="firstPay" class="mr-sm-2">첫 결제일</label>
-	  		<input id="firstPay" readonly="readonly" type="date" class="myCheck">
-	  		</div>
-	  		<div class="col">
+	  	   <div class="col">
+	        	<label for="firstPay" class="mr-sm-2">첫 결제일</label>
+	  			<input id="firstPay" readonly="readonly" type="date" class="myCheck">
+	  	   </div>
+	  	   
+	  	   <div class="col">
 			  <label for="sponMonth" class="mr-sm-2">납부개월 수</label>
 			  <input type="text" class="form-control mb-2 mr-sm-2 myCheck" name="sponMonth" value="3" id="sponMonth">
 			   개월 
-			   </div>
+		   </div>
 			 
 			  <input type="button" id="cal" class="btn btn-primary mb-2 display:inline-block;" value="계산하기" />
-	    
-	       </div>
+   </div>
  
    <div class="row">
-   <div class="col">
-        <label for="lastPay" class="mr-sm-2">최종 결제일</label>
-  		<input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2" placeholder="자동입력" name="lastPay" id="lastPay">
-  		   </div>
-  		   <div class="col">
-		  <label for="totalMoney" class="mr-sm-2">총 금액</label>
-		  <input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2 myCheck" placeholder="자동입력" name="totalMoney" id="totalMoney">
-		   원
-		   </div>
-		   </div>
+   		<div class="col">
+        	<label for="lastPay" class="mr-sm-2">최종 결제일</label>
+  			<input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2" placeholder="자동입력" name="lastPay" id="lastPay">
+  	    </div>
+  	    <div class="col">
+		    <label for="totalMoney" class="mr-sm-2">총 금액</label>
+		    <input type="text" readonly="readonly" class="form-control mb-2 mr-sm-2 myCheck" placeholder="자동입력" name="totalMoney" id="totalMoney">
+		     원
+	    </div>
+   </div>
 		   
    
   
@@ -121,26 +123,21 @@ h3{
     <label for="name">Name</label>
     <input type="text" class="form-control etc myCheck" value="${membership.name}" id="name" name="name" >
     <small id="nameHelp" class="form-text text-muted" style="color:red;">필수요소</small>
-    <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="phone">Phone</label>
     <input type="text" class="form-control etc myCheck" value="${membership.phone}"id="phone" name="phone" >
-       <small id="phoneHelp" class="form-text text-muted" style="color:red;">필수요소</small>
-   
-    <!-- 비어 있으면 안됨 -->
+    <small id="phoneHelp" class="form-text text-muted" style="color:red;">필수요소</small>
   </div>
   <div class="form-group">
     <label for="email">E-mail</label>
     <input type="text" class="form-control etc" id="email" name="email" aria-describedby="#">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-     <!-- 비어 있으면 안됨 -->
   </div>
   <div class="form-group">
     <label for="address">주소</label>
     <input type="text" class="form-control etc" value="${membership.address}" id="address" name="address" >
-    <!-- 비어 있으면 안됨 -->
   </div>
+  
       <input type="hidden" class="form-control etc" value="${membership.id}" id="id" name="id" >
   
   <div class="form-group form-check">
@@ -148,14 +145,12 @@ h3{
     <label class="form-check-label" for="exampleCheck1"> 선택한 후원방법에 따라 자동결제되는 것에 동의합니다. </label>
   </div>
   
-   
- 
   
   <input type="button" id="btnRegular" value="결제" class="btn btn-primary">
   <a href="./sponsorCheck"><input type="button" id="back" value="취소" class="btn btn-primary"></a>
-</form></div>
-
-
+  
+</form>
+</div>
 
 
 </c:if>

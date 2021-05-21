@@ -56,6 +56,7 @@ public class HomeController {
 	    model.addAttribute("list", list);
 		model.addAttribute("pager", rescueDTO);
 		
+		
 		return "home";
 	}
 	

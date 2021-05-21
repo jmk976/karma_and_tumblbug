@@ -22,7 +22,6 @@
 	 	where sn=#{sn}
 	</update>
 
-
 	<delete id="setDelete" parameterType="RescueDTO">
 		delete rescue where sn=#{sn}
 	</delete>
@@ -82,6 +81,7 @@ select * from
 				(select status, sn, zoneSn, resDate, province, city, location, species, kind, sex, age, color, desex, character, weight, health, feature,adoptDate,returnDate
                     from rescue 
             <where>
+            
        		<if test="status != null">
         	   status like '%'||#{status}||'%'
         	</if>
@@ -108,12 +108,11 @@ select * from
         	</if>
         	
            </where>
-          
                )R left join rescueFile RF
 			on R.sn = RF.sn order by sn desc ) A)
             where N between #{startRow} and #{lastRow} order by sn desc
   
-	</select> 
+</select> 
 	
 	
 	<select id="getTotalCount" resultType="Long" parameterType="RescueDTO">
@@ -149,8 +148,6 @@ select * from
 	</select>
 	
 			
-
-	
 	<insert id="setInsert" parameterType="RescueDTO">
 		insert into rescue values(#{status}, #{sn}, #{zoneSn}, #{resDate}, #{province}, #{city}, #{location}, 
 		#{species}, #{kind}, #{sex}, #{age}, #{color}, #{desex}, #{character}, #{weight}, #{health}, #{feature}, 

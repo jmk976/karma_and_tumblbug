@@ -65,16 +65,7 @@ h3{
 		</tbody>
 	</table>
 	
-	
- <%-- <c:catch>
-	<c:if test="${member.id=='admin'}">
-	</div> 
-	<div class="container">
-      <a href="./noticeInsert"> <button type="button" class="btn btn-dark">글작성</button></a>
-	</div>
-	 </c:if>
- </c:catch> --%>
- 
+
  	
    
     <div class="card bg-light text-dark">
@@ -85,61 +76,50 @@ h3{
   	</div>
  	
  	<br>
- 	<div class="container">
-     
-  <ul class="pagination">
-    <c:if test="${pager.pre}">
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
-    </c:if>
-    
-    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"> 
-    <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
-    </c:forEach>
-    
-    <c:if test="${pager.next}">    
-    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
-    </c:if> 
-  </ul>
+ 	
+ <div class="container">
+	  <ul class="pagination">
+	    <c:if test="${pager.pre}">
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.startNum-1}">Previous</a></li>
+	    </c:if>
+	    
+	    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"> 
+	    <li class="page-item"><a class="page-link p" href="#" title="${i}"> ${i} </a></li>
+	    </c:forEach>
+	    
+	    <c:if test="${pager.next}">    
+	    <li class="page-item"><a class="page-link p" href="#" title="${pager.lastNum+1}">Next</a></li>
+	    </c:if> 
+	  </ul>
+		  
+    <div class="input-group mt-3 mb-3">
   
-  <div class="input-group mt-3 mb-3">
-  
-
-  <c:catch>
-  <c:if test="${membership.id == 'admin'}"> 
-  
-  <form id="frm" action="./sponsorList" class="form-inline">
-		<input type="hidden" name="curPage" value="1" id="curPage">
-  <div class="input-group-prepend">
-   	<select class="form-control" name="kind" id="kind">
-
-    	<option class="sel">Name</option>
-    	<option class="sel">Id</option>
-    	<option class="sel" selected>SponSort</option>
- 	 </select>
-  </div>
-  
-  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
-  
-    <div class="input-group-append">
-    <button class="btn btn-success" type="submit">Search</button>
-  </div>
- </form> 
+	   <c:catch>
+	   <c:if test="${membership.id == 'admin'}"> 
+		  <form id="frm" action="./sponsorList" class="form-inline">
+				<input type="hidden" name="curPage" value="1" id="curPage">
+		  <div class="input-group-prepend">
+		   	<select class="form-control" name="kind" id="kind">
+		
+		    	<option class="sel">Name</option>
+		    	<option class="sel">Id</option>
+		    	<option class="sel" selected>SponSort</option>
+		 	 </select>
+		  </div>
+		  
+		  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">
+		  
+		    <div class="input-group-append">
+		    	<button class="btn btn-success" type="submit">Search</button>
+		    </div>
+		 </form>  
+	  </c:if>
+	  </c:catch> 
  
- </c:if>
- </c:catch> 
- 
+   </div>
  </div>
- 
- 
-
- 
-  </div>
-  </div>
   
-  <!-- origin end -->
-   
-   
-
+ </div>
   
   
   <script type="text/javascript">
@@ -158,17 +138,9 @@ h3{
 	  let search = '${pager.search}';
 	 
 	  $("#frm").submit();
-	  
-	/*   $("#curPage").val(curPage);
-	  $("#kind").val(kind);
-	  $("#search").val(search);
-	  $("#frm").submit(); */
-	 //location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
-	  
+	    
   });
-  
-  
-  
+ 
   </script>
   
  

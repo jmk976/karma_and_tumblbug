@@ -4,15 +4,14 @@
 
 
 
+
+
 function con(){
-	let frm = document.getElementById("frm");
 
-
-	let result =confirm("선택하신 구조동물을 입양 신청하시겠습니까?");
+	let result = confirm("선택하신 구조동물을 입양 신청하시겠습니까?");
 	if(result){
 	
-		frm.submit();
-
+		 $("#frm").submit();
 	
 	} else{
 		

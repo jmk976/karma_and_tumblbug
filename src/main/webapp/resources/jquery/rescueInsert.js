@@ -88,8 +88,6 @@ let k = $("#kind").val()
 			}
 			
 
-				
-
 		  if(result==true & result2==true & result3==true & result4==true & result5==true){
 			$("#frm").submit()
 		}else {

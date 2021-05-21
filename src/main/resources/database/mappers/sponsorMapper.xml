@@ -10,6 +10,7 @@
     #{money}, sysdate, #{lastPay}, #{sponMonth}, #{totalMoney},
     #{name}, #{phone}, #{email}, #{address}, #{id})
 	</insert>
+	
 	<delete id="setDelete" parameterType="SponsorDTO">
 		delete sponsor where sponNum = #{sponNum}
 	</delete>
@@ -17,104 +18,74 @@
  	<select id="getSelect" parameterType="SponsorDTO" resultType="SponsorDTO">
    		 select * from sponsor where sponNum=#{sponNum}
  	</select>
+ 	
+ 	
   
-  	
     <select id="getListMon" parameterType="Pager" resultType="SponsorDTO">
-      
         select * 
         from 
-        (select rownum R, N.*  
-        from 
-            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
-            to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
-   		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l order by sponNum desc)
-   where R between #{startRow} and #{lastRow}
-    
+       		 (select rownum R, N.*  
+        		from 
+            		(select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            		to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) N
+   				where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l order by sponNum desc)
+   	    where R between #{startRow} and #{lastRow}
     </select>
     
     <select id="getTotalCountMon" resultType="Long" parameterType="Pager">
 	    select count(sponNum)
         from  
-            ( select sponNum, sponSort, money, firstPay, sponMonth, name, id, 
+            ( select sponNum, 
             to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor) 
    		where f <![CDATA[<=]]> #{search} and #{search} <![CDATA[<=]]> l
-	  </select>
+    </select>
 	  
-	  <select id="getTotalSumMon" resultType="Long" parameterType="Pager">
+    <select id="getTotalSumMon" resultType="Long" parameterType="Pager">
 	    select sum(money)
         from 
             ( select money,
             to_char(firstPay, 'YYYY-MM') f, to_char(lastPay, 'YYYY-MM') l from sponsor)
    		where f <![CDATA[<=]]> #{search}and #{search} <![CDATA[<=]]> l
-	  </select>
+	</select>
+	
+	 <sql id="searcher">
+	  <!-- 공통으로 사용하는 sql문  -->
+	   where
+	 	<choose>
+				   <when test="kind =='Id'"> 
+				       id
+				   </when>
+				   
+				   <when test="kind =='Name'">
+				        name
+				   </when>
+				   
+				   <otherwise>
+				       sponSort
+				   </otherwise>
+				   
+				 </choose>
+				 like '%'||#{search}||'%' and sponNum > 0
+	 </sql>
 	  
-    
     <select id="getList" parameterType="Pager" resultType="SponsorDTO">
     	 select * from 
     	 (select rownum R, N.* from 
 				(select * from sponsor 
-				where 
-				<choose>
-				   <when test="kind =='Id'"> 
-				       id
-				   </when>
-				   
-				   <when test="kind =='Name'">
-				        name
-				   </when>
-				   
-				   <otherwise>
-				       sponSort
-				   </otherwise>
-				   
-				 </choose>
-				 like '%'||#{search}||'%' and sponNum > 0 order by sponNum desc) N)
-		  
-    	  where R between #{startRow} and #{lastRow}
-    
-			
+				<include refid="searcher"></include>
+				order by sponNum desc) N)
+    	  where R between #{startRow} and #{lastRow}	
     </select>
     
-    
-     <select id="getTotalCount" resultType="Long" parameterType="Pager">
+    <select id="getTotalCount" resultType="Long" parameterType="Pager">
 	      select count(sponNum) from sponsor
-	      where
-	      <choose>
-				   <when test="kind =='Id'"> 
-				       id
-				   </when>
-				   
-				   <when test="kind =='Name'">
-				        name
-				   </when>
-				   
-				   <otherwise>
-				       sponSort
-				   </otherwise>
-				   
-				 </choose>
-				 like '%'||#{search}||'%' and sponNum > 0
-	  </select>
+	            <include refid="searcher"></include>
+	</select>
 	  
-	   <select id="getTotalSum" resultType="Long" parameterType="Pager">
+	<select id="getTotalSum" resultType="Long" parameterType="Pager">
 	      select sum(totalMoney) from sponsor
-	      where
-	      <choose>
-				  <when test="kind =='Id'"> 
-				       id
-				   </when>
-				   
-				   <when test="kind =='Name'">
-				        name
-				   </when>
-				   
-				   <otherwise>
-				       sponSort
-				   </otherwise>
-				   
-				 </choose>
-				 like '%'||#{search}||'%' and sponNum > 0
-	  </select>
+	         <include refid="searcher"></include>
+    </select>
 	  
 
 

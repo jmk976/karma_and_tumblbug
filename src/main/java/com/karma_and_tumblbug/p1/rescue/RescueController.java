@@ -36,9 +36,6 @@ public class RescueController {
 	    rescueDTO.setPerPage(6);
         
 		List<RescueDTO> list = rescueService.getList(rescueDTO);
-			
-
-		
 
 	    mv.addObject("list", list);
 		mv.addObject("pager", rescueDTO);
@@ -60,13 +57,6 @@ public class RescueController {
 		return mv;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	@GetMapping("rescueDelete")
 	public ModelAndView setDelete(RescueDTO rescueDTO) throws Exception{
 		ModelAndView mv= new ModelAndView();
@@ -74,12 +64,9 @@ public class RescueController {
 		int result = rescueService.setDelete(rescueDTO);
 		String message="삭제 실패";
 		String path = "./rescueList";
-		
 		if(result>0) {
 			message="삭제 성공";
-			
 		}
-		
 		mv.addObject("msg",message);
 		mv.addObject("path",path);
 		
@@ -101,21 +88,13 @@ public class RescueController {
 	
 	@GetMapping("rescueInsert")
 	public void setInsert()throws Exception{
-		
-
 	}
-	
-	
+
 	@PostMapping("rescueInsert")
-	public String setInsert(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception {
-		
+	public String setInsert(RescueDTO rescueDTO, MultipartFile avatar,
+			HttpSession session, Model model) throws Exception {
 	
 		int result = rescueService.setInsert(rescueDTO, avatar, session);
-		System.out.println(avatar.getName()); //파라미터명
-		System.out.println(avatar.getOriginalFilename());//업로드시의 파일 , 확장자를 알 수 있음. 
-		System.out.println(avatar.getSize());// 파일의 크기(byte)
-		System.out.println(avatar.isEmpty());// 파일의 존재 유무
-	
 		
 		String message="등록 실패";
 		String path="./rescueInsert";
@@ -126,7 +105,6 @@ public class RescueController {
 		model.addAttribute("msg", message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
-		
 	}
 	
 	@GetMapping("fileDelete")
@@ -148,41 +126,23 @@ public class RescueController {
 		mv.addObject("dto", rescueDTO);
 		mv.setViewName("rescue/rescueUpdate");
 		return mv;
-		
 	}
 	
 	@PostMapping("rescueUpdate")
-	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,HttpSession session, Model model) throws Exception{
-		
-		
-	
-		
-		System.out.println(avatar.getName());
-		 System.out.println(avatar.getSize());
-		System.out.println(avatar.getOriginalFilename());
-		System.out.println(avatar.isEmpty());
-		System.out.println(rescueDTO.getCity());
-		System.out.println(rescueDTO.getSn());
+	public String setUpdate(RescueDTO rescueDTO,MultipartFile avatar,
+			HttpSession session, Model model) throws Exception{
 
-		
-	
-
-		
 		int result = rescueService.setUpdate(rescueDTO, avatar);
 		String message="등록 실패";
 		String path="./rescueUpdate";
 		if(result>0) {
 			message="등록 성공";
 		    path="./rescueList";
-		    
 		}
 		model.addAttribute("msg", message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
-	
 	}
-	
-	
-	
+
 
 }

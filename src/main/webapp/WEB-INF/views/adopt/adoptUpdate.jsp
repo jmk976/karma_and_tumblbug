@@ -417,14 +417,9 @@ td {
 <script type="text/javascript"> 
 $('input[name="famAgree"]').val(['${dto.famAgree}']);
 $('input[name="adoptEx"]').val(['${dto.adoptEx}']);
-
-
 $('input[name="haveAnimal"]').val(['${dto.haveAnimal}']);
-
 $('input[name="housingType"]').val(['${dto.housingType}']);
 $('input[name="desexAgree"]').val(['${dto.desexAgree}']);
-
-
 
 
  $('doucument').ready(function(){
@@ -444,12 +439,9 @@ $('input[name="desexAgree"]').val(['${dto.desexAgree}']);
          $(this).attr('disabled', "true");
      });
 	 
-	
 	 $("input[name=housingType]").each(function(i) {       //testradio 버튼 전체 disable
          $(this).attr('disabled', "true");
      });
-
-	
 });
 
 

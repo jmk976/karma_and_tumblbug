@@ -180,10 +180,7 @@ h3{
   	</div> 
      <div>
     	 <span>${dto.rescueFileDTO.originalName}</span>
-    	<%--  <span class="fileDelete" title="${dto.rescueFileDTO.num}">  <img src="../resources/images/delete-icon.png"/></span>
-    	 <br> <small><%=request.getRealPath("/") %></small> --%>
      </div> 
-  
    
 
    <input type="button" id="btn" value="입력" class="btn btn-primary">
@@ -219,12 +216,12 @@ function changeCity(add) {
 	
 	for (i=1; i < cnt[add].length;i++){ 
 		sel.options[i] = new Option(cnt[add][i], cnt[add][i]);
-//    document.form.test2.options[i] = new Option(num[i],vnum[i]);
 
 	} 
  }
 </script>
- <script type="text/javascript" src="../resources/jquery/rescueInsert.js"></script>
+
+<script type="text/javascript" src="../resources/jquery/rescueInsert.js"></script>
 <script type="text/javascript" > 
 var cntt = new Array(); 
 cntt[0] = new Array('전체');
@@ -240,7 +237,7 @@ function change_serch(ku) {
 	} 
  } 
 </script>
-   <script type="text/javascript" src="../resources/jquery/rescueUpdate.js"></script>
+ <script type="text/javascript" src="../resources/jquery/rescueUpdate.js"></script>
   
 </body>
 

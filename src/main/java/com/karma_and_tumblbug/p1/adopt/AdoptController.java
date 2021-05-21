@@ -39,11 +39,8 @@ public class AdoptController {
 	
 	@PostMapping("adoptUpdate")
 	public ModelAndView setUpdate(AdoptDTO adoptDTO, ModelAndView mv)throws Exception{
-		System.out.println("adoptDTO.getPass():"+adoptDTO.getPass());
-		System.out.println("adoptDTO.getAdoptNum():"+adoptDTO.getAdoptNum());
+	
 		int result = adoptService.setUpdate(adoptDTO);
-		System.out.println("입력후 adoptDTO.getPass():"+adoptDTO.getPass());
-		System.out.println("입력후 adoptDTO.getAdoptNum():"+adoptDTO.getAdoptNum());
 		
 		String message="업데이트 실패";
 		String path = "./";
@@ -89,9 +86,7 @@ public class AdoptController {
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println(pager.getCurPage());
 		
-		System.out.println("Service 호출전: "+pager.getTotalPage());
 		List<AdoptDTO> ar = adoptService.getList(pager);
-		System.out.println("Service 호출: "+pager.getTotalPage());
 		
 		modelAndView.addObject("list", ar);
 		modelAndView.setViewName("adopt/adoptList");
@@ -100,11 +95,10 @@ public class AdoptController {
 	}
 	
 	@GetMapping("adoptInsert")
-	public ModelAndView setInsert(AdoptDTO adoptDTO, HttpSession session)throws Exception{
+	public ModelAndView setInsert(AdoptDTO adoptDTO)throws Exception{
 	  ModelAndView mv = new ModelAndView();
 	
 	  mv.addObject("dto", adoptDTO);
-
 	  return mv;
 	}
 	
@@ -117,22 +111,15 @@ public class AdoptController {
 	    if(result>0) {
 	    	message = "입양 신청 성공했습니다.";
 	    	path= "../";
-	    	
 	    }
 	    model.addAttribute("msg", message);
 		model.addAttribute("path",path);
 		return "common/commonResult";
-	    		
-		
 	}
 	
 	@GetMapping("adoptSelect")
 	public String getSelect(AdoptDTO adoptDTO, Model model)throws Exception{
 		adoptDTO = adoptService.getSelect(adoptDTO);
-		
-		String address = adoptDTO.getMembershipDTO().getAddress();
-		System.out.println("address:"+address);
-		System.out.println(adoptDTO.getPass());
 		
 		model.addAttribute("dto", adoptDTO);
 		return "adopt/adoptSelect";

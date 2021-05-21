@@ -43,8 +43,8 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/user/local/apache-tomcat-9.0.43/lib/javaSDK-2.2.jar"/>
-	<classpathentry kind="lib" path="/user/local/apache-tomcat-9.0.43/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/jangmingyeong/Downloads/lib 2/javaSDK-2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/jangmingyeong/Downloads/lib 2/json-simple-1.1.1.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

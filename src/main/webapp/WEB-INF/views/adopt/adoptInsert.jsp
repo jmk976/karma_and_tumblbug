@@ -167,7 +167,6 @@ h3{
 					<td>
 						<input value="${dto.sn}" type="text" id="sn" name="sn" class="col-sm-6" autofocus>
 				         <small class="help-block">(예: 120318-001, 서울-송파-2012-00072) </small>
-						
 					</td>
 				</tr>
 				<tr>
